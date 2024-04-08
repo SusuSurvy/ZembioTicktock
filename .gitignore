@@ -1,0 +1,130 @@
+# =============== #
+# Unity generated #
+# =============== #
+
+Assets/GameResources/Materials/Dummy/*
+Temp/
+Obj/
+UnityGenerated/
+Library/
+Assets/AssetStoreTools*
+Assets/AssetBundles/*
+Assets/AssetBundles_encrypted/*
+Assets/AssetBundles_encrypted.meta
+!Assets/AssetBundles/Empty
+Assets/Demoes/
+Assets/Assets/*
+Assets/Demoes.meta
+Assets/StreamingAssets/AssetBundles/*
+!Assets/StreamingAssets/AssetBundles/Empty
+Assets/codeandweb.com/*
+Assets/FMOD/*
+Assets/FMOD.meta
+!Assets/FMOD/Empty
+Assets/Editor Default Resources.meta
+Assets/codeandweb.com.meta
+fmod_editor.log
+fmod.log
+Assets/LocalResources/FMOD/
+# Assets/LocalAssets/AssetsManifest.bytes
+# Assets/LocalAssets/AssetsManifest.bytes.meta
+# Assets/LocalAssets/LocalResourcesManifest.bytes
+# Assets/LocalAssets/LocalResourcesManifest.bytes.meta
+Assets/Scenes/Login_Develop.unity
+Assets/Scenes/Login_Develop.unity.meta
+#NinjaMustDie3Config/client/*
+#NinjaMustDie3Config/server/*
+Assets/ThirdParty/cstolua/LuaWrap/*.meta
+Assets/ThirdParty/cstolua/LuaWrap/Base/*.meta
+!Assets/Assets/EditorSave/
+!Assets/Assets/SDKResources/
+sign.db
+*.symbols.zip
+Assets/XLua/Gen.meta
+Assets/XLua/Gen/*.meta
+Assets/XLua/Gen/Resources
+Assets/LocalResources/BinaryDatas/Lua/*
+Assets/LocalResources/BinaryDatas/Lua.meta
+*.idea
+*.vs
+NinjaMustDie3StandAlone
+Assets/Assets/EditorSave/EditorSetting.asset
+Assets/Assets/EditorSave/EditorSetting.asset.meta
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+*.apk
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+~$*
+Assets/StreamingAssets/AssetBundleMD5.bytes.meta
+Assets/StreamingAssets/AssetBundleMD5.bytes
+Assets/Resources/ApplicationVersion.asset
+Assets/Resources/ApplicationVersion.asset.meta
+Assets/StreamingAssets/AssetBundles.meta
+Assets/AssetBundles.meta
+.vs/*
+UpgradeLog.htm
+Assets/Plugins/Editor/JetBrains/Unity3DRider.cs.meta
+Assets/Plugins/Editor/JetBrains/Unity3DRider.cs
+Assets/Plugins/Editor/JetBrains.meta
+Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll.meta
+.idea/*
+Assets/StreamingAssets.meta
+build.log
+patch.log
+/Assets/StreamingAssets
+/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
+/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset.meta
+BuildCache/
+/build/
+Assets/LuaDeepProfilerAssetSetting.asset
+Assets/LuaDeepProfilerAssetSetting.asset.meta
+Assets/LuaDeepProfilerSetting.asset
+Assets/LuaDeepProfilerSetting.asset.meta
+/Framework_Data
+/MonoBleedingEdge
+/build/build32
+/build/build64
+.vsconfig
+.vscode
+/Config/AutoDownloadTools/DownLoadLog.txt
+obj/Debug/
+/Config/VGameConfig
+UserSettings/
+Logs/
+BuildPackage/
+outpackage/
+Assets/UWA/UwaDataUploader/config.json
+Assets/UWA/UwaDataUploader/config.json.meta
+/Config/dockerTools/config.ini
+/Config/tableexport/bin/*
+/Config/tableexport/Data
+/Config/tableexport/Excel
+/Config/tableexport/PreDefine
+MemoryCaptures/
+Assets/TempTexture/
+Assets/TempTexture.meta
+/HybridCLRData/AssembliesPostIl2CppStrip
+/HybridCLRData/HotUpdateDlls
+/HybridCLRData/StrippedAOTDllsTempProj
