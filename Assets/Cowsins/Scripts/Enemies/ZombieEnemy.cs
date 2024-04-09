@@ -76,8 +76,8 @@ public class ZombieEnemy : EnemyHealth, IPoolable
 
     public void OnSpawn()
     {
-        CreateEnemy();
         gameObject.SetActive(true);
+        CreateEnemy();
     }
 
     public void OnDespawn()

@@ -35,6 +35,7 @@ public class EnemyManager : MonoBehaviour {
 
     private void Reset()
     {
+      
         _needCreate = true;
         poolDic.Clear();
         foreach (var prefab in prefabs)
@@ -43,6 +44,7 @@ public class EnemyManager : MonoBehaviour {
             poolDic[prefab.name] = queue;
         }
         _enemysList.Clear();
+        CreateEnemy();
     }
 
     public void Update()
@@ -53,7 +55,7 @@ public class EnemyManager : MonoBehaviour {
         }
 
         _currentTime += Time.deltaTime;
-        if (_currentTime > 3)
+        if (_currentTime > 15)
         {
             CreateEnemy();
             _currentTime = 0;

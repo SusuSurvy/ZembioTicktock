@@ -3443,8 +3443,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 100030, guid: c112ecfb7d4833d45aef91eea80c02ec, type: 3}
-  - {fileID: 100120, guid: 134188bbc0bc1a043b01746e53b8b134, type: 3}
-  - {fileID: 100120, guid: 630a857f911283f43909dd9301f125d0, type: 3}
   Player: {fileID: 929780848}
 --- !u!4 &305832082
 Transform:
