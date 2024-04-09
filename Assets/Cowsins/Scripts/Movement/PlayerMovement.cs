@@ -1008,7 +1008,12 @@ public class PlayerMovement : MonoBehaviour
         Invoke(nameof(RegainDash), dashCooldown);
         UIEvents.onDashUsed?.Invoke(currentDashes);
     }
-    
+
+    public void Damage(float damage)
+    {
+        stats.Damage(damage);
+    }
+
     #endregion
 }
 }

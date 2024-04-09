@@ -48,7 +48,8 @@ public class ZombieEnemy : EnemyHealth, IPoolable
 
     public void PlayAni(string aniName)
     {
-        _animator.Play(aniName);
+        _animator.Play(aniName, -1, 0f);
+        _animator.Update(0);
     }
 
     public override void Damage(float _damage)

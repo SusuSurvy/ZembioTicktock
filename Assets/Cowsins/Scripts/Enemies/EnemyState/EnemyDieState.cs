@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EnemyDieState : EnemyStateBase
 {
-    private float _currentTime;
     public override void OnEnter()
     {
         _currentTime = 0;

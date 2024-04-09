@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract  class EnemyStateBase
 {
+    protected float _currentTime = 0;
     protected ZombieEnemy _zombie;
     protected PlayerMovement _player;
 

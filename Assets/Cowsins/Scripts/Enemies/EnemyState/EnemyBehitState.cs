@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EnemyBehitState : EnemyStateBase
 {
-    private float _currentTime = 0;
     public override void OnEnter()
     {
         _currentTime = 0;

@@ -14,10 +14,22 @@ public class EnemyAttackState : EnemyStateBase
 
     public override void Update(float dt)
     {
-        if (_zombie.GetDistance() > 2f)
+        _currentTime += dt;
+        if (_currentTime > 1)
         {
-            _zombie.SetState(new EnemyChaseState(_player, _zombie));
+            _currentTime = 0;
+            if (_zombie.GetDistance() > 2f)
+            {
+                _zombie.SetState(new EnemyChaseState(_player, _zombie));
+            }
+            else
+            {
+                _player.Damage(3);
+                _zombie.PlayAni("attack2");
+            }
         }
+
+      
     }
 
 

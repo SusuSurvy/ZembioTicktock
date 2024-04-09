@@ -12,7 +12,9 @@ public class EnemyManager : MonoBehaviour {
     public static EnemyManager Instance;
     // Prefab的引用
     public List<GameObject> prefabs;
-    
+
+    private List<ZombieEnemy> _enemysList = new List<ZombieEnemy>();
+    private bool _needCreate = false;
 
     private Vector2 _leftBottom = new Vector3(-51,  -28);
     private Vector2 _rightUp = new Vector3(51,  72);
@@ -24,20 +26,32 @@ public class EnemyManager : MonoBehaviour {
     private void Awake() {
         if (Instance == null) {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+           // DontDestroyOnLoad(gameObject);
         } else {
             Destroy(gameObject);
         }
+        Reset();
+    }
 
+    private void Reset()
+    {
+        _needCreate = true;
+        poolDic.Clear();
         foreach (var prefab in prefabs)
         {
             Queue<ZombieEnemy> queue = new Queue<ZombieEnemy>();
             poolDic[prefab.name] = queue;
         }
+        _enemysList.Clear();
     }
 
     public void Update()
     {
+        if (!_needCreate)
+        {
+            return;
+        }
+
         _currentTime += Time.deltaTime;
         if (_currentTime > 3)
         {
@@ -67,12 +81,25 @@ public class EnemyManager : MonoBehaviour {
             obj = poolDic[prefab.name].Dequeue();
         }
         obj.OnSpawn();
+        _enemysList.Add(obj);
         return obj;
     }
 
     // 回收对象的方法
     public void Despawn(ZombieEnemy obj) {
         obj.OnDespawn();
+        _enemysList.Remove(obj);
         poolDic[obj.transform.name].Enqueue(obj);
+    }
+
+    public void DestroyAllEnemy()
+    {
+        _needCreate = false;
+        foreach (var enemy in _enemysList)
+        {
+            enemy.OnDespawn();
+            poolDic[enemy.transform.name].Enqueue(enemy);
+        }
+        _enemysList.Clear();
     }
 }
