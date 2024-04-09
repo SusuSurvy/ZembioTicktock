@@ -15,7 +15,7 @@ public class EnemyAttackState : EnemyStateBase
     public override void Update(float dt)
     {
         _currentTime += dt;
-        if (_currentTime > 1)
+        if (_currentTime > 0.7f)
         {
             _currentTime = 0;
             if (_zombie.GetDistance() > 2f)
