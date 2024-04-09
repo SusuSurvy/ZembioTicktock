@@ -1,5 +1,5 @@
 /// <summary>
-/// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 
+/// This script belongs to cowsins?as a part of the cowsins?FPS Engine. All rights reserved. 
 /// </summary>
 #if UNITY_EDITOR
 using UnityEditor;
@@ -58,8 +58,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     [HideInInspector]public Transform player;
 
     public Events events;
-
-        private bool isDead;
+ 
+    public bool isDead;
 
 
     // Start is called before the first frame update"

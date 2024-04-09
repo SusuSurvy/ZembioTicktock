@@ -952,7 +952,7 @@ public class PlayerMovement : MonoBehaviour
         if (!(wallRight && InputManager.x < 0) && !(wallLeft && InputManager.x > 0)) rb.AddForce(-wallNormal * 100, ForceMode.Force);
 
         rb.AddForce(wallDirection, ForceMode.Force);
-
+        
 
     }
 

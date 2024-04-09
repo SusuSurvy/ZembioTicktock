@@ -3,9 +3,7 @@ namespace cowsins {
 public class TrainingTarget : EnemyHealth
 {
     [SerializeField]private float timeToRevive;
-
-    private bool isDead = false;
-
+    
     public override void Damage(float damage)
     {
         if (isDead) return;

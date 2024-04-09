@@ -69,7 +69,7 @@ public class PlayerCrouchState : PlayerBaseState
     {
 
         RaycastHit hitt;
-        if (!InputManager.crouching) // Prevent from uncrouching when there´s a roof and we can get hit with it
+        if (!InputManager.crouching) // Prevent from uncrouching when thereç£— a roof and we can get hit with it
         {
             if (Physics.Raycast(_ctx.transform.position, _ctx.transform.up, out hitt, 5.5f, player.weapon.hitLayer))
             {
