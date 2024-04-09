@@ -58,8 +58,11 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     [HideInInspector]public Transform player;
 
     public Events events;
- 
-    public bool isDead;
+
+    public bool isDead
+    {
+        get { return health <= 0; }
+    }
 
 
     // Start is called before the first frame update"
@@ -96,7 +99,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         if (shieldSlider != null) shieldSlider.value = Mathf.Lerp(shieldSlider.value, shield, Time.deltaTime * 4); 
 
         // Manage health
-        if (health <= 0 && !isDead) Die();
+       // if (health <= 0 && !isDead) Die();
     }
     /// <summary>
     /// Since it is IDamageable, it can take damage, if a shot is landed, damage the enemy
@@ -134,7 +137,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     }
     public virtual void Die()
     {
-            isDead = true;
         // Custom event on damaged
         events.OnDeath.Invoke();
 

@@ -22,7 +22,7 @@ public class EnemyChaseState : EnemyStateBase
     }
 
 
-    public EnemyChaseState(PlayerMovement player, ZombieController zombie) : base(player, zombie)
+    public EnemyChaseState(PlayerMovement player, ZombieEnemy zombie) : base(player, zombie)
     {
     }
 }

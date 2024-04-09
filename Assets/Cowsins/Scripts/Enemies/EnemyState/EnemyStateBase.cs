@@ -5,10 +5,10 @@ using UnityEngine;
 
 public abstract  class EnemyStateBase
 {
-    protected ZombieController _zombie;
+    protected ZombieEnemy _zombie;
     protected PlayerMovement _player;
 
-    public EnemyStateBase(PlayerMovement player, ZombieController zombie)
+    public EnemyStateBase(PlayerMovement player, ZombieEnemy zombie)
     {
         _player = player;
         _zombie = zombie;

@@ -13,7 +13,6 @@ public class TrainingTarget : EnemyHealth
     public override void Die()
     {
         if (isDead) return;
-        isDead = true;
         events.OnDeath.Invoke();
         Invoke("Revive", timeToRevive);
 
@@ -31,7 +30,6 @@ public class TrainingTarget : EnemyHealth
         }
     private void Revive()
     {
-        isDead = false;
         GetComponent<Animator>().Play("Target_Revive");
         health = maxHealth;
         shield = maxShield;

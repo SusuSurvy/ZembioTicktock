@@ -21,7 +21,7 @@ public class EnemyAttackState : EnemyStateBase
     }
 
 
-    public EnemyAttackState(PlayerMovement player, ZombieController zombie) : base(player, zombie)
+    public EnemyAttackState(PlayerMovement player, ZombieEnemy zombie) : base(player, zombie)
     {
     }
 }
