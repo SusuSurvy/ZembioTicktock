@@ -168,18 +168,45 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TransferPlayer",
+                    "name": "EquipGun",
                     "type": "Button",
-                    "id": "44fb1d35-6155-40d9-941d-49b5c9c3ccfe",
+                    "id": "8cfc18e2-9385-4e1b-b764-273c2fdf9a12",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EquipGun",
+                    "name": "ClearAllEnemy",
                     "type": "Button",
-                    "id": "8cfc18e2-9385-4e1b-b764-273c2fdf9a12",
+                    "id": "209660df-187d-4f51-80cf-22cdb17f0f9f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EnemyCrazy",
+                    "type": "Button",
+                    "id": "06e29322-a4b6-4a75-addf-2475be30b0c6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CloseLight",
+                    "type": "Button",
+                    "id": "8e891b15-59c0-4884-ae1a-04566ae6ef79",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenLight",
+                    "type": "Button",
+                    "id": "5cfea9f9-3f0b-4978-9643-87ca1e8074bd",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -600,7 +627,7 @@
                     "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "ToggleFlashLight",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -608,7 +635,7 @@
                 {
                     "name": "",
                     "id": "c949e48c-38a3-4836-b619-dcfef4ecd6a0",
-                    "path": "<Keyboard>/#(6)",
+                    "path": "<Keyboard>/#(2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -629,23 +656,56 @@
                 },
                 {
                     "name": "",
-                    "id": "ce8f92fa-f08c-421c-8870-2d415f260fd1",
-                    "path": "<Keyboard>/#(2)",
+                    "id": "5191fcf5-5318-4b43-90cf-fd59ae346edd",
+                    "path": "<Keyboard>/#(6)",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "TransferPlayer",
+                    "action": "EquipGun",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "5191fcf5-5318-4b43-90cf-fd59ae346edd",
-                    "path": "<Keyboard>/#(9)",
+                    "id": "2e08a155-93cc-4aa3-9254-d6a6758b0e53",
+                    "path": "<Keyboard>/#(3)",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "EquipGun",
+                    "action": "ClearAllEnemy",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa609326-9ce8-408c-bd0b-d398c126fe08",
+                    "path": "<Keyboard>/#(4)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "EnemyCrazy",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "37c8f6c5-fc50-48a0-8cd1-f141346fa3ef",
+                    "path": "<Keyboard>/#(5)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "CloseLight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c2f3ad3-9f68-459c-a8d8-9eb32698fd44",
+                    "path": "<Keyboard>/#(P)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "OpenLight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

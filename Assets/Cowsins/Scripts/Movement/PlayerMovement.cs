@@ -359,6 +359,9 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     private void Awake() => GetAllReferences();
+
+    public FlickeringLight Light;
+    
     private void Start()
     {
 
@@ -1017,6 +1020,16 @@ public class PlayerMovement : MonoBehaviour
     public void RecoverHp(float damage)
     {
         stats.RecoverHp(damage);
+    }
+
+    public void CloseLight()
+    {
+        Light.CloseLight();
+    }
+    
+    public void OpenLight()
+    {
+        Light.OpenLight();
     }
 
     #endregion

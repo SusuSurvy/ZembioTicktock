@@ -104,11 +104,12 @@ namespace cowsins
 
 
             inputActions.GameControls.Pause.started += ctx => PauseMenu.Instance.TogglePause();
-            inputActions.GameControls.RecoverHp.started += ctx => UITicktockPanel.Instance.SendMessage("6");
+            inputActions.GameControls.RecoverHp.started += ctx => UITicktockPanel.Instance.SendMessage("2");
             inputActions.GameControls.CallEnemy.started += ctx => UITicktockPanel.Instance.SendMessage("1");
-            inputActions.GameControls.EquipGun.started += ctx => UITicktockPanel.Instance.SendMessage("9");
-            inputActions.GameControls.TransferPlayer.started += ctx => UITicktockPanel.Instance.SendMessage("2");
-
+            inputActions.GameControls.ClearAllEnemy.started += ctx => UITicktockPanel.Instance.SendMessage("3");
+            inputActions.GameControls.EnemyCrazy.started += ctx => UITicktockPanel.Instance.SendMessage("4");
+            inputActions.GameControls.CloseLight.started += ctx => UITicktockPanel.Instance.SendMessage("5");
+            inputActions.GameControls.OpenLight.started += ctx => UITicktockPanel.Instance.OpenLight();
             SceneManager.activeSceneChanged += OnSceneChange;
         }
 

@@ -9,14 +9,23 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     public PlayerMovement playerMovement;
 
     public NavMeshAgent NavMeshAgent;
-
+    private float originalSpeed = 3.4f;
+    private float crazySpeed = 4.7f;
+    private float crazyTime = 0;
+    private Color originalColor = new Color(154f / 255, 154f / 255, 154f / 255);
+    private Color crazylColor = new Color(255f / 255, 117f / 255, 117f / 255);
     private EnemyStateBase _currentState;
+
+    private Material _material;
     // Start is called before the first frame update
     void CreateEnemy()
     {
+        _material = GetComponentInChildren<SkinnedMeshRenderer>().material;
         NavMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponentInChildren<Animator>();
+        NavMeshAgent.speed = originalSpeed;
         SetState(new EnemyChaseState(playerMovement, this));
+        _material.color = originalColor;
     }
     
     public void SetPosition(Vector3 pos)
@@ -33,6 +42,15 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     {
         base.Update();
         _currentState?.Update(Time.deltaTime);
+        if (crazyTime > 0)
+        {
+            crazyTime -= Time.deltaTime;
+            if (crazyTime < 0)
+            {
+                NavMeshAgent.speed = originalSpeed;
+                _material.color = originalColor;
+            }
+        }
     }
     
     public void SetState(EnemyStateBase state)
@@ -84,5 +102,12 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     {
        
         gameObject.SetActive(false);
+    }
+
+    public void CrazyEnemy()
+    {
+        crazyTime = 5;
+        NavMeshAgent.speed = crazySpeed;
+        _material.color = crazylColor;
     }
 }

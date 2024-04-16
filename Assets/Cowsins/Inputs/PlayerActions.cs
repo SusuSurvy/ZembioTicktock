@@ -190,18 +190,45 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""TransferPlayer"",
+                    ""name"": ""EquipGun"",
                     ""type"": ""Button"",
-                    ""id"": ""44fb1d35-6155-40d9-941d-49b5c9c3ccfe"",
+                    ""id"": ""8cfc18e2-9385-4e1b-b764-273c2fdf9a12"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EquipGun"",
+                    ""name"": ""ClearAllEnemy"",
                     ""type"": ""Button"",
-                    ""id"": ""8cfc18e2-9385-4e1b-b764-273c2fdf9a12"",
+                    ""id"": ""209660df-187d-4f51-80cf-22cdb17f0f9f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EnemyCrazy"",
+                    ""type"": ""Button"",
+                    ""id"": ""06e29322-a4b6-4a75-addf-2475be30b0c6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CloseLight"",
+                    ""type"": ""Button"",
+                    ""id"": ""8e891b15-59c0-4884-ae1a-04566ae6ef79"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenLight"",
+                    ""type"": ""Button"",
+                    ""id"": ""5cfea9f9-3f0b-4978-9643-87ca1e8074bd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -622,7 +649,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/t"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""ToggleFlashLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -630,7 +657,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c949e48c-38a3-4836-b619-dcfef4ecd6a0"",
-                    ""path"": ""<Keyboard>/#(6)"",
+                    ""path"": ""<Keyboard>/#(2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -651,23 +678,56 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ce8f92fa-f08c-421c-8870-2d415f260fd1"",
-                    ""path"": ""<Keyboard>/#(2)"",
+                    ""id"": ""5191fcf5-5318-4b43-90cf-fd59ae346edd"",
+                    ""path"": ""<Keyboard>/#(6)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""TransferPlayer"",
+                    ""action"": ""EquipGun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5191fcf5-5318-4b43-90cf-fd59ae346edd"",
-                    ""path"": ""<Keyboard>/#(9)"",
+                    ""id"": ""2e08a155-93cc-4aa3-9254-d6a6758b0e53"",
+                    ""path"": ""<Keyboard>/#(3)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""EquipGun"",
+                    ""action"": ""ClearAllEnemy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa609326-9ce8-408c-bd0b-d398c126fe08"",
+                    ""path"": ""<Keyboard>/#(4)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""EnemyCrazy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37c8f6c5-fc50-48a0-8cd1-f141346fa3ef"",
+                    ""path"": ""<Keyboard>/#(5)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""CloseLight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c2f3ad3-9f68-459c-a8d8-9eb32698fd44"",
+                    ""path"": ""<Keyboard>/#(P)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""OpenLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -707,8 +767,11 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_GameControls_ToggleFlashLight = m_GameControls.FindAction("ToggleFlashLight", throwIfNotFound: true);
         m_GameControls_RecoverHp = m_GameControls.FindAction("RecoverHp", throwIfNotFound: true);
         m_GameControls_CallEnemy = m_GameControls.FindAction("CallEnemy", throwIfNotFound: true);
-        m_GameControls_TransferPlayer = m_GameControls.FindAction("TransferPlayer", throwIfNotFound: true);
         m_GameControls_EquipGun = m_GameControls.FindAction("EquipGun", throwIfNotFound: true);
+        m_GameControls_ClearAllEnemy = m_GameControls.FindAction("ClearAllEnemy", throwIfNotFound: true);
+        m_GameControls_EnemyCrazy = m_GameControls.FindAction("EnemyCrazy", throwIfNotFound: true);
+        m_GameControls_CloseLight = m_GameControls.FindAction("CloseLight", throwIfNotFound: true);
+        m_GameControls_OpenLight = m_GameControls.FindAction("OpenLight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -788,8 +851,11 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_GameControls_ToggleFlashLight;
     private readonly InputAction m_GameControls_RecoverHp;
     private readonly InputAction m_GameControls_CallEnemy;
-    private readonly InputAction m_GameControls_TransferPlayer;
     private readonly InputAction m_GameControls_EquipGun;
+    private readonly InputAction m_GameControls_ClearAllEnemy;
+    private readonly InputAction m_GameControls_EnemyCrazy;
+    private readonly InputAction m_GameControls_CloseLight;
+    private readonly InputAction m_GameControls_OpenLight;
     public struct GameControlsActions
     {
         private @PlayerActions m_Wrapper;
@@ -812,8 +878,11 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         public InputAction @ToggleFlashLight => m_Wrapper.m_GameControls_ToggleFlashLight;
         public InputAction @RecoverHp => m_Wrapper.m_GameControls_RecoverHp;
         public InputAction @CallEnemy => m_Wrapper.m_GameControls_CallEnemy;
-        public InputAction @TransferPlayer => m_Wrapper.m_GameControls_TransferPlayer;
         public InputAction @EquipGun => m_Wrapper.m_GameControls_EquipGun;
+        public InputAction @ClearAllEnemy => m_Wrapper.m_GameControls_ClearAllEnemy;
+        public InputAction @EnemyCrazy => m_Wrapper.m_GameControls_EnemyCrazy;
+        public InputAction @CloseLight => m_Wrapper.m_GameControls_CloseLight;
+        public InputAction @OpenLight => m_Wrapper.m_GameControls_OpenLight;
         public InputActionMap Get() { return m_Wrapper.m_GameControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -877,12 +946,21 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @CallEnemy.started += instance.OnCallEnemy;
             @CallEnemy.performed += instance.OnCallEnemy;
             @CallEnemy.canceled += instance.OnCallEnemy;
-            @TransferPlayer.started += instance.OnTransferPlayer;
-            @TransferPlayer.performed += instance.OnTransferPlayer;
-            @TransferPlayer.canceled += instance.OnTransferPlayer;
             @EquipGun.started += instance.OnEquipGun;
             @EquipGun.performed += instance.OnEquipGun;
             @EquipGun.canceled += instance.OnEquipGun;
+            @ClearAllEnemy.started += instance.OnClearAllEnemy;
+            @ClearAllEnemy.performed += instance.OnClearAllEnemy;
+            @ClearAllEnemy.canceled += instance.OnClearAllEnemy;
+            @EnemyCrazy.started += instance.OnEnemyCrazy;
+            @EnemyCrazy.performed += instance.OnEnemyCrazy;
+            @EnemyCrazy.canceled += instance.OnEnemyCrazy;
+            @CloseLight.started += instance.OnCloseLight;
+            @CloseLight.performed += instance.OnCloseLight;
+            @CloseLight.canceled += instance.OnCloseLight;
+            @OpenLight.started += instance.OnOpenLight;
+            @OpenLight.performed += instance.OnOpenLight;
+            @OpenLight.canceled += instance.OnOpenLight;
         }
 
         private void UnregisterCallbacks(IGameControlsActions instance)
@@ -941,12 +1019,21 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @CallEnemy.started -= instance.OnCallEnemy;
             @CallEnemy.performed -= instance.OnCallEnemy;
             @CallEnemy.canceled -= instance.OnCallEnemy;
-            @TransferPlayer.started -= instance.OnTransferPlayer;
-            @TransferPlayer.performed -= instance.OnTransferPlayer;
-            @TransferPlayer.canceled -= instance.OnTransferPlayer;
             @EquipGun.started -= instance.OnEquipGun;
             @EquipGun.performed -= instance.OnEquipGun;
             @EquipGun.canceled -= instance.OnEquipGun;
+            @ClearAllEnemy.started -= instance.OnClearAllEnemy;
+            @ClearAllEnemy.performed -= instance.OnClearAllEnemy;
+            @ClearAllEnemy.canceled -= instance.OnClearAllEnemy;
+            @EnemyCrazy.started -= instance.OnEnemyCrazy;
+            @EnemyCrazy.performed -= instance.OnEnemyCrazy;
+            @EnemyCrazy.canceled -= instance.OnEnemyCrazy;
+            @CloseLight.started -= instance.OnCloseLight;
+            @CloseLight.performed -= instance.OnCloseLight;
+            @CloseLight.canceled -= instance.OnCloseLight;
+            @OpenLight.started -= instance.OnOpenLight;
+            @OpenLight.performed -= instance.OnOpenLight;
+            @OpenLight.canceled -= instance.OnOpenLight;
         }
 
         public void RemoveCallbacks(IGameControlsActions instance)
@@ -1002,7 +1089,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnToggleFlashLight(InputAction.CallbackContext context);
         void OnRecoverHp(InputAction.CallbackContext context);
         void OnCallEnemy(InputAction.CallbackContext context);
-        void OnTransferPlayer(InputAction.CallbackContext context);
         void OnEquipGun(InputAction.CallbackContext context);
+        void OnClearAllEnemy(InputAction.CallbackContext context);
+        void OnEnemyCrazy(InputAction.CallbackContext context);
+        void OnCloseLight(InputAction.CallbackContext context);
+        void OnOpenLight(InputAction.CallbackContext context);
     }
 }

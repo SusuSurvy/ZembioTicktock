@@ -104,4 +104,20 @@ public class EnemyManager : MonoBehaviour {
         }
         _enemysList.Clear();
     }
+
+    public void KillAllEnemy()
+    {
+        foreach (var enemy in _enemysList)
+        {
+            enemy.Damage(99999);
+        }
+    }
+    
+    public void CrazyAllEnemy()
+    {
+        foreach (var enemy in _enemysList)
+        {
+            enemy.CrazyEnemy();
+        }
+    }
 }

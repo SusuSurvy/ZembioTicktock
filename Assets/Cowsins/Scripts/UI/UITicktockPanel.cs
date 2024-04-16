@@ -40,10 +40,10 @@ namespace cowsins
         private Dictionary<string, string> _danmuInfo = new Dictionary<string, string>()
         {
             ["1"] = "召唤怪物",
-            ["2"] = "随机传送",
-            ["3"] = "关闭手电筒",
-            ["4"] = "丢掉武器",
-            ["5"] = "人物无敌10s",
+            ["2"] = "血量+10",
+            ["3"] = "清空怪物",
+            ["4"] = "怪物狂暴5s",
+            ["5"] = "关闭手电筒",
             ["6"] = "人物回血",
             ["7"] = "清空怪物",
             ["8"] = "怪物狂暴",
@@ -108,21 +108,32 @@ namespace cowsins
                 ShowDanmu(_danmuInfo["1"], texture);
                 CallEnemy();
             }
-            else if (str.Contains("6"))
+            else if (str.Contains("2"))
             {
-                ShowDanmu(_danmuInfo["6"], texture);
+                ShowDanmu(_danmuInfo["2"], texture);
                 RecoverHp();
+            }
+            else if (str.Contains("3"))
+            {
+                ShowDanmu(_danmuInfo["3"], texture);
+                ClearAllEnemy();
+            }
+            else if (str.Contains("4"))
+            {
+                ShowDanmu(_danmuInfo["4"], texture);
+                CrazyAllEnemy();
+            }
+            else if (str.Contains("5"))
+            {
+                ShowDanmu(_danmuInfo["5"], texture);
+                Player.CloseLight();
             }
             else if (str.Contains("9"))
             {
                 ShowDanmu(_danmuInfo["9"], texture);
                 EquipGun();
             }
-            else if (str.Contains("2"))
-            {
-                ShowDanmu(_danmuInfo["2"], texture);
-                TransferPlayer();
-            }
+          
         }
 
         public void RecoverHp()
@@ -141,9 +152,24 @@ namespace cowsins
            // EnemyManager.Instance.CreateEnemy();
         }
         
+        public void OpenLight()
+        {
+            Player.OpenLight();
+        }
+        
         public void TransferPlayer()
         {
           
+        }
+        
+        public void ClearAllEnemy()
+        {
+            EnemyManager.Instance.KillAllEnemy();
+        }
+        
+        public void CrazyAllEnemy()
+        {
+            EnemyManager.Instance.CrazyAllEnemy();
         }
     }
 }

@@ -17,6 +17,18 @@ public class FlickeringLight : MonoBehaviour
         StartCoroutine(Flicker());
     }
 
+    public void OpenLight()
+    {
+        maxIntensity = 1.6f;
+        myLight.spotAngle = 23;
+    }
+
+    public void CloseLight()
+    {
+        maxIntensity = 0.3f;
+        myLight.spotAngle = 13;
+    }
+
     IEnumerator Flicker()
     {
         while (true)
