@@ -362,6 +362,8 @@ public class PlayerMovement : MonoBehaviour
 
     public FlickeringLight Light;
     
+    public WeaponPickeable Jiatelin;
+    public WeaponPickeable NormalGun;
     private void Start()
     {
 
@@ -1030,6 +1032,16 @@ public class PlayerMovement : MonoBehaviour
     public void OpenLight()
     {
         Light.OpenLight();
+    }
+
+    public void EquipJiatelin()
+    {
+        Jiatelin.Interact();
+    }
+    
+    public void EquipGun()
+    {
+        NormalGun.Interact();
     }
 
     #endregion

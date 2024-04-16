@@ -211,6 +211,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "EquipJiatelin",
+                    "type": "Button",
+                    "id": "ee3a1c75-6d81-4688-9efa-45ff8484f4d8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -706,6 +715,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "OpenLight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dbcb974b-e640-45ce-ace0-f2e316959bdb",
+                    "path": "<Keyboard>/#(7)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "EquipJiatelin",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

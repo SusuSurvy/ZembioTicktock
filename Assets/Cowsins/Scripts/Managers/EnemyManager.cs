@@ -53,7 +53,6 @@ public class EnemyManager : MonoBehaviour {
         {
             return;
         }
-
         _currentTime += Time.deltaTime;
         if (_currentTime > 15)
         {

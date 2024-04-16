@@ -40,6 +40,10 @@ namespace cowsins
                     menu.alpha = 0; 
                 }
                 if (menu.alpha < 1) menu.alpha += Time.deltaTime * fadeSpeed;
+                else
+                {
+                    Time.timeScale = 0;
+                }
 
                 if(disablePlayerUIWhilePaused)playerUI.SetActive(false); 
             }
@@ -52,6 +56,7 @@ namespace cowsins
 
         public void UnPause()
         {
+            Time.timeScale = 1;
             isPaused = false;
             stats.CheckIfCanGrantControl();
             Cursor.lockState = CursorLockMode.Locked;

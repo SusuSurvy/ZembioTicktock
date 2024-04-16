@@ -5795,6 +5795,17 @@ Transform:
   - {fileID: 1850534259}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &797302019 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1579534663180628573, guid: 15da3fccf9cbc6b4493c402b62f5ecbf, type: 3}
+  m_PrefabInstance: {fileID: 124131502}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c504d91168d89b488ae6424a8aea4ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &811672352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11641,7 +11652,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "1.\u53EC\u5524\u602A\u7269\t2.\u8840\u91CF+10\n3.\u6E05\u7A7A\u602A\u7269\t4.\u602A\u7269\u72C2\u66B45s"
+  m_Text: "1.\u53EC\u5524\u602A\u7269\t2.\u8840\u91CF+10\n3.\u6E05\u7A7A\u602A\u7269\t4.\u602A\u7269\u72C2\u66B45s\n5.\u5173\u95ED\u624B\u7535\u7B52\t6.\u53EC\u5524\u624B\u67AA\n7.\u53EC\u5524\u52A0\u7279\u6797"
 --- !u!222 &1538116668
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15006,6 +15017,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2296131530988553961, guid: 15da3fccf9cbc6b4493c402b62f5ecbf, type: 3}
   m_PrefabInstance: {fileID: 2020205546}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2020205551 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1579534663180628573, guid: 15da3fccf9cbc6b4493c402b62f5ecbf, type: 3}
+  m_PrefabInstance: {fileID: 2020205546}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c504d91168d89b488ae6424a8aea4ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2034628553
 GameObject:
   m_ObjectHideFlags: 0
@@ -16192,7 +16214,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
   m_Intensity: 1
-  m_Range: 128.8
+  m_Range: 125.47
   m_SpotAngle: 22.7
   m_InnerSpotAngle: 13.7
   m_CookieSize: 10
@@ -16317,6 +16339,10 @@ PrefabInstance:
     - target: {fileID: 1959336525331284897, guid: fa4cc848e07107e459dce4ea99d04302, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127552191805600130, guid: fa4cc848e07107e459dce4ea99d04302, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2166260324618388420, guid: fa4cc848e07107e459dce4ea99d04302, type: 3}
       propertyPath: leanSpeed
@@ -16470,6 +16496,14 @@ PrefabInstance:
       propertyPath: canDash
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4612824603642630891, guid: fa4cc848e07107e459dce4ea99d04302, type: 3}
+      propertyPath: Jiatelin
+      value: 
+      objectReference: {fileID: 797302019}
+    - target: {fileID: 4612824603642630891, guid: fa4cc848e07107e459dce4ea99d04302, type: 3}
+      propertyPath: NormalGun
+      value: 
+      objectReference: {fileID: 2020205551}
     - target: {fileID: 4612824603642630891, guid: fa4cc848e07107e459dce4ea99d04302, type: 3}
       propertyPath: allowJump
       value: 1

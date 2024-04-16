@@ -109,6 +109,8 @@ public class PlayerMovementEditor : Editor
                     if (myScript.maxSpeedAllowed < myScript.runSpeed) myScript.maxSpeedAllowed = myScript.runSpeed;
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("whatIsGround"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("Light"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("Jiatelin"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("NormalGun"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("frictionForceAmount"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("maxSlopeAngle"));
                     break;

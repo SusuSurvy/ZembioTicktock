@@ -32,8 +32,8 @@ namespace cowsins {
 
             if (!CheckIfInventoryFull())
             {
-                Destroy(gameObject);
-                return;
+               // Destroy(gameObject);
+               // return;
             }
 
             Weapon_SO oldWeapon = inv.weapon;
@@ -50,7 +50,7 @@ namespace cowsins {
             inv.weapon = weapon;
             // Apply attachments to the weapon
             ApplyAttachments(inv);
-            //Since this slot is selected, let¥s unholster it
+            //Since this slot is selected, letÁ£ó unholster it
             inv.UnHolster(inv.inventory[inv.currentWeapon].gameObject,true);
             // Set bullets
             WeaponIdentification curWeapon = inv.inventory[inv.currentWeapon].GetComponent<WeaponIdentification>();
@@ -59,7 +59,7 @@ namespace cowsins {
             //UI
             inv.slots[inv.currentWeapon].weapon = weapon;
             inv.slots[inv.currentWeapon].GetImage();
-            //Now, let¥s set the new weapon graphics on the pickeable
+            //Now, letÁ£ó set the new weapon graphics on the pickeable
             currentBullets = saveBulletsLeftInMagazine;
             totalBullets = saveTotalBullets;
 
@@ -68,9 +68,9 @@ namespace cowsins {
                 CowsinsUtilities.ApplyPreset(UIController.instance.crosshair.GetComponent<CrosshairShape>().currentPreset, UIController.instance.crosshair.GetComponent<CrosshairShape>());
     #endif
                 
-                weapon = oldWeapon;
+               // weapon = oldWeapon;
                 image.sprite = weapon.icon;
-                Destroy(graphics.transform.GetChild(0).gameObject);
+             //   Destroy(graphics.transform.GetChild(0).gameObject);
                 GetVisuals();
         }
 
@@ -87,7 +87,7 @@ namespace cowsins {
                     weaponPicked.transform.localPosition = weapon.weaponObject.transform.localPosition;
                     //Assign the weapon to the inventory
                     inv.inventory[i] = weaponPicked;
-                    //Since this slot is selected and it was empty, let¥s unholster it
+                    //Since this slot is selected and it was empty, letÁ£ó unholster it
                     if (inv.inventory[inv.currentWeapon] == inv.inventory[i])
                     {
                         inv.inventory[i].gameObject.SetActive(true);
@@ -111,11 +111,11 @@ namespace cowsins {
                     }
     #endif
 
-                    // Don¥t return true
+                    // DonÁ£ò return true
                     return false;
                 }
             }
-            // Inventory is full, we¥ll check what to do then
+            // Inventory is full, weÁ£çl check what to do then
             return true;
 
         }
@@ -161,7 +161,7 @@ namespace cowsins {
             interactText = weapon._name;
             image.sprite = weapon.icon;
             // Manage graphics
-            Destroy(graphics.transform.GetChild(0).gameObject);
+           // Destroy(graphics.transform.GetChild(0).gameObject);
             Instantiate(weapon.pickUpGraphics, graphics);
         }
 

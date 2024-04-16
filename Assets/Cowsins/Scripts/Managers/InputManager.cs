@@ -109,6 +109,8 @@ namespace cowsins
             inputActions.GameControls.ClearAllEnemy.started += ctx => UITicktockPanel.Instance.SendMessage("3");
             inputActions.GameControls.EnemyCrazy.started += ctx => UITicktockPanel.Instance.SendMessage("4");
             inputActions.GameControls.CloseLight.started += ctx => UITicktockPanel.Instance.SendMessage("5");
+            inputActions.GameControls.EquipGun.started += ctx => UITicktockPanel.Instance.SendMessage("6");
+            inputActions.GameControls.EquipJiatelin.started += ctx => UITicktockPanel.Instance.SendMessage("7");
             inputActions.GameControls.OpenLight.started += ctx => UITicktockPanel.Instance.OpenLight();
             SceneManager.activeSceneChanged += OnSceneChange;
         }

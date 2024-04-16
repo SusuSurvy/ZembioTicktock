@@ -44,11 +44,8 @@ namespace cowsins
             ["3"] = "清空怪物",
             ["4"] = "怪物狂暴5s",
             ["5"] = "关闭手电筒",
-            ["6"] = "人物回血",
-            ["7"] = "清空怪物",
-            ["8"] = "怪物狂暴",
-            ["9"] = "装备手枪",
-            ["10"] = "加子弹",
+            ["6"] = "装备手枪",
+            ["7"] = "装备加特林",
         };
         public GameObject textPrefab;
         public Transform danmuContainer;
@@ -128,10 +125,15 @@ namespace cowsins
                 ShowDanmu(_danmuInfo["5"], texture);
                 Player.CloseLight();
             }
-            else if (str.Contains("9"))
+            else if (str.Contains("6"))
             {
-                ShowDanmu(_danmuInfo["9"], texture);
+                ShowDanmu(_danmuInfo["6"], texture);
                 EquipGun();
+            }
+            else if (str.Contains("7"))
+            {
+                ShowDanmu(_danmuInfo["7"], texture);
+                EquipJiatelin();
             }
           
         }
@@ -148,8 +150,11 @@ namespace cowsins
         
         public void EquipGun()
         {
-            Debug.LogError("EquipGun");
-           // EnemyManager.Instance.CreateEnemy();
+            Player.EquipGun();
+        }
+        public void EquipJiatelin()
+        {
+            Player.EquipJiatelin();
         }
         
         public void OpenLight()
