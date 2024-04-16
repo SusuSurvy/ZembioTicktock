@@ -17,15 +17,46 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     private EnemyStateBase _currentState;
 
     private Material _material;
+
+    public string ChaseAni;
+
+    public bool InGround = false;
     // Start is called before the first frame update
     void CreateEnemy()
     {
+        InGround = false;
         _material = GetComponentInChildren<SkinnedMeshRenderer>().material;
         NavMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponentInChildren<Animator>();
         NavMeshAgent.speed = originalSpeed;
-        SetState(new EnemyChaseState(playerMovement, this));
         _material.color = originalColor;
+        int random = UnityEngine.Random.Range(0, 5);
+        if (random == 0)
+        {
+            ChaseAni = "run";
+        }
+        else if (random == 1)
+        {
+            ChaseAni = "walk";
+        }
+        else if (random == 2)
+        {
+            ChaseAni = "zombieRun";
+        }
+        else if (random == 3)
+        {
+            ChaseAni = "crawl";
+            InGround = true;
+        }
+        else if (random == 4)
+        {
+            ChaseAni = "shamble";
+        }
+        else
+        {
+            ChaseAni = "zombieRun";
+        }
+        SetState(new EnemyChaseState(playerMovement, this));
     }
     
     public void SetPosition(Vector3 pos)

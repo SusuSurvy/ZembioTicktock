@@ -9,23 +9,7 @@ public class EnemyChaseState : EnemyStateBase
     {
         _zombie.NavMeshAgent.enabled = true;
         base.OnEnter();
-        int random = UnityEngine.Random.Range(0, 4);
-        if (random == 0)
-        {
-            _zombie.PlayAni("run");
-        }
-        else if (random == 1)
-        {
-            _zombie.PlayAni("walk");
-        }
-        else if (random == 2)
-        {
-            _zombie.PlayAni("zombieRun");
-        }
-        else if (random == 3)
-        {
-            _zombie.PlayAni("crawl");
-        }
+        _zombie.PlayAni(_zombie.ChaseAni);
     }
 
     public override void Update(float dt)

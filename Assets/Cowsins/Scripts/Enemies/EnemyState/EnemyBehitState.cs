@@ -10,7 +10,19 @@ public class EnemyBehitState : EnemyStateBase
         _currentTime = 0;
         base.OnEnter();
         _zombie.NavMeshAgent.enabled = false;
-        _zombie.PlayAni("hit1");
+        if (!_zombie.InGround)
+        {
+            int random = UnityEngine.Random.Range(0, 2);
+            if (random == 0)
+            {
+                _zombie.PlayAni("hit1"); 
+            }
+            else
+            {
+                _zombie.PlayAni("hit2"); 
+            }
+           
+        }
     }
 
     public EnemyBehitState(PlayerMovement player, ZombieEnemy zombie) : base(player, zombie)
