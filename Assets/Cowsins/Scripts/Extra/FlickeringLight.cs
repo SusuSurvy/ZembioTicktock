@@ -1,4 +1,5 @@
 using System.Collections;
+using cowsins;
 using UnityEngine;
 
 public class FlickeringLight : MonoBehaviour
@@ -10,23 +11,28 @@ public class FlickeringLight : MonoBehaviour
     public float maxWaitTime = 0.1f;   // 闪烁的最大间隔时间
     private Light myLight;
     private float timer; // 计时器
-
+    public AudioClip openClip;
+    public AudioClip closeClip;
     void Start()
     {
         myLight = GetComponent<Light>();
         StartCoroutine(Flicker());
+        maxIntensity = 1.6f;
+        myLight.spotAngle = 30;
     }
 
     public void OpenLight()
     {
         maxIntensity = 1.6f;
-        myLight.spotAngle = 23;
+        myLight.spotAngle = 30;
+        SoundManager.Instance.PlaySound(openClip, 0, 0, false, 0);
     }
 
     public void CloseLight()
     {
         maxIntensity = 0.3f;
         myLight.spotAngle = 13;
+        SoundManager.Instance.PlaySound(closeClip, 0, 0, false, 0);
     }
 
     IEnumerator Flicker()

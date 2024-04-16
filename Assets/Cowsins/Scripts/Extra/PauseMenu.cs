@@ -19,6 +19,7 @@ namespace cowsins
 
         private void Awake()
         {
+            Time.timeScale = 1;
             if (Instance != null && Instance != this) Destroy(this);
             else Instance = this;
 

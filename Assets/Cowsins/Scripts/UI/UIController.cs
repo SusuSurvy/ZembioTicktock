@@ -400,9 +400,13 @@ public class UIController : MonoBehaviour
             nextLevel.text = (ExperienceManager.instance.playerLevel + 2).ToString();
         }
 
-    public void ChangeScene(int scene) => SceneManager.LoadScene(scene);
+        public void ChangeScene(int scene)
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(scene);
+        }
 
-    public void UpdateCoins(int amount) => coinsText.text = CoinManager.Instance.coins.ToString(); 
+        public void UpdateCoins(int amount) => coinsText.text = CoinManager.Instance.coins.ToString(); 
 
     private void OnEnable()
     {

@@ -7,7 +7,8 @@ public class ZombieEnemy : EnemyHealth, IPoolable
 {
     private Animator _animator;
     public PlayerMovement playerMovement;
-
+    public AudioClip AttackClip;
+    public AudioClip CreateClip;
     public NavMeshAgent NavMeshAgent;
     private float originalSpeed = 3.4f;
     private float crazySpeed = 4.7f;

@@ -10,6 +10,7 @@ public class EnemyAttackState : EnemyStateBase
         _zombie.NavMeshAgent.enabled = false;
         base.OnEnter();
         _zombie.PlayAni("attack2");
+        SoundManager.Instance.PlaySound(_zombie.AttackClip, 0, 0, false, 0);
     }
 
     public override void Update(float dt)

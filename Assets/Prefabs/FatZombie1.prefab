@@ -715,7 +715,11 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   playerMovement: {fileID: 0}
+  AttackClip: {fileID: 8300000, guid: 050daf331b4b60744931406436363629, type: 3}
+  CreateClip: {fileID: 8300000, guid: 4f0032a6696bc154f9c7ceeee18ae3d4, type: 3}
   NavMeshAgent: {fileID: 0}
+  ChaseAni: 
+  InGround: 0
 --- !u!65 &1732965176134027908
 BoxCollider:
   m_ObjectHideFlags: 0

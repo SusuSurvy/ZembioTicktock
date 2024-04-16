@@ -28,6 +28,10 @@ public class MainMenuManager : MonoBehaviour
 
     public void WaitToLerp(bool boolean) => waitToLerp = boolean;
 
-    public void ChangeScene(int scene) => SceneManager.LoadScene(scene); 
+    public void ChangeScene(int scene)
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(scene);
+    }
 }
 }

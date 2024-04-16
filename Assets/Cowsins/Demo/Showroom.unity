@@ -16280,6 +16280,8 @@ MonoBehaviour:
   flickerDuration: 0.1
   minWaitTime: 0.05
   maxWaitTime: 0.5
+  openClip: {fileID: 8300000, guid: 1ec0a652bc14ac541b8629f6d1dd9f82, type: 3}
+  closeClip: {fileID: 8300000, guid: f2deeef1e5fa9cb40ba419891a7740c1, type: 3}
 --- !u!1001 &4612824604806609158
 PrefabInstance:
   m_ObjectHideFlags: 0

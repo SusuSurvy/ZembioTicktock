@@ -10,6 +10,11 @@ public class EnemyChaseState : EnemyStateBase
         _zombie.NavMeshAgent.enabled = true;
         base.OnEnter();
         _zombie.PlayAni(_zombie.ChaseAni);
+        int random = UnityEngine.Random.Range(0, 10);
+        if (random == 0)
+        {
+            SoundManager.Instance.PlaySound(_zombie.CreateClip, 0, 0, false, 0);
+        }
     }
 
     public override void Update(float dt)
