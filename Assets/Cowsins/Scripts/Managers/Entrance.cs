@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using cowsins;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -10,6 +12,7 @@ public class Entrance : MonoBehaviour
     private ConnectDouYin _connectDouYin;
     private AudioSource _audioSource;
     private float _waitTime;
+    private Dictionary<string, Texture2D> _headIconDic = new Dictionary<string, Texture2D>();
 
     public Text Text;
     public void Awake()
@@ -41,36 +44,83 @@ public class Entrance : MonoBehaviour
         if (!_connectDouYin.enabled) return;
         _connectDouYin.OnGiftMessage = data =>
         {
-            var gift = $"感谢{data["name"]}";
-            var url = data["head_img"];
-            StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
+            Debug.LogError("送出礼物");
+            foreach (var VARIABLE in data)
             {
-                //TODO
-            }));
+                Debug.LogError(VARIABLE.Value);
+            }
+            Text.text = CantactString(data);
+            var url = data["head_img"];
+            if (!_headIconDic.ContainsKey(url))
+            {
+                StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
+                {
+                    _headIconDic[url] = teu;
+                }));
+            }
+
+          
         };
         _connectDouYin.OnEnterRoomMessage = data =>
         {
+            Debug.LogError("进入房间");
             var url = data["head_img"];
-            var name = $"{data["name"]}进入房间，生成丧尸";
-            Text.text = name;
-            EnemyManager.Instance.CreateEnemy();
-            StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
-            {
-                Text.text = name;
-                //TODO
-            }));
+            if (!_headIconDic.ContainsKey(url))
+           {
+               StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
+               {
+                   _headIconDic[url] = teu;
+               }));
+           }
         };
         _connectDouYin.OnChatMessage = data =>
         {
+            foreach (var VARIABLE in data)
+            {
+                Debug.LogError(VARIABLE.Value);
+            }
             var content = data["content"];
+            Text.text = CantactString(data);
+           
             var name = data["name"];
             if (name.Contains("用户")) return;
             var url = data["head_img"];
-           // if (!ReGexTools.IsChinese(content)) return;
-            StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
+            if (_headIconDic.ContainsKey(url))
             {
-                //TODO
-            }));
+                Text.text = "显示头像";
+                UITicktockPanel.Instance.SendMessage(content, _headIconDic[url]);
+            }
+            else
+            {
+                StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
+                {
+                    _headIconDic[url] = teu;
+                    if (teu != null)
+                    {
+                        Text.text = "下载头像完成";  
+                    }
+                    else
+                    {
+                        Text.text = "头像为空";  
+                    }
+                    UITicktockPanel.Instance.SendMessage(content, _headIconDic[url]);
+                    //TODO
+                }));
+            }
+           // if (!ReGexTools.IsChinese(content)) return;
+          
         };
+    }
+
+    private string CantactString(Dictionary<string, string> dic)
+    {
+        string str = "";
+        foreach (var VARIABLE in dic)
+        {
+            str += VARIABLE.Key + "__";
+            str += VARIABLE.Value + ";";
+        }
+
+        return str;
     }
 }

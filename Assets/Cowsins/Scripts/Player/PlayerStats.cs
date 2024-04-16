@@ -112,6 +112,32 @@ public class PlayerStats : MonoBehaviour, IDamageable
         // effect on heal 
         UIEvents.onHealthChanged?.Invoke(health, shield, false);
     }
+    
+    public void RecoverHp(float healAmount)
+    {
+        // If we are full health do not heal 
+        // Also checks if we have an initial shield or not
+        if (maxShield != 0 && shield == maxShield || maxShield == 0 && health == maxHealth) return;
+
+        events.OnHeal.Invoke(); // Invoke our custom event
+
+        if (health + healAmount > maxHealth) // Check if heal exceeds health 
+        {
+            float remaining = maxHealth - health + healAmount;
+            health = maxHealth;
+
+            // Check if we have a shield to be healed
+            if(maxShield != 0)
+            {
+                if (shield + remaining > maxShield) shield = maxShield; // Then we have to apply the remaining heal to our shield 
+                else shield += remaining;
+            }
+        }
+        else health += healAmount; // If not just apply your heal
+
+        // effect on heal 
+        UIEvents.onHealthChanged?.Invoke(health, shield, false);
+    }
     /// <summary>
     /// Perform any actions On death
     /// </summary>

@@ -16,24 +16,25 @@ namespace cowsins
     {
         #region variables
         // Inputs
-        public static bool shooting = false, 
-            reloading, 
-            aiming, 
-            jumping, 
-            sprinting, 
-            crouching, 
-            crouchingDown, 
-            interacting, 
-            dropping, 
-            nextweapon, 
-            previousweapon, 
-            inspecting, 
-            melee, 
-            pausing, 
-            dashing, 
+        public static bool shooting = false,
+            reloading,
+            aiming,
+            jumping,
+            sprinting,
+            crouching,
+            crouchingDown,
+            interacting,
+            dropping,
+            nextweapon,
+            previousweapon,
+            inspecting,
+            melee,
+            pausing,
+            dashing,
             invertedAxis,
             yMovementActioned,
-            toggleFlashLight;
+            toggleFlashLight,
+            callEnemy;
 
         public static float x,
             y, 
@@ -103,6 +104,10 @@ namespace cowsins
 
 
             inputActions.GameControls.Pause.started += ctx => PauseMenu.Instance.TogglePause();
+            inputActions.GameControls.RecoverHp.started += ctx => UITicktockPanel.Instance.SendMessage("6");
+            inputActions.GameControls.CallEnemy.started += ctx => UITicktockPanel.Instance.SendMessage("1");
+            inputActions.GameControls.EquipGun.started += ctx => UITicktockPanel.Instance.SendMessage("9");
+            inputActions.GameControls.TransferPlayer.started += ctx => UITicktockPanel.Instance.SendMessage("2");
 
             SceneManager.activeSceneChanged += OnSceneChange;
         }

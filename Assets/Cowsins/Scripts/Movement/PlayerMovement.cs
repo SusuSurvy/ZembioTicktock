@@ -1013,6 +1013,11 @@ public class PlayerMovement : MonoBehaviour
     {
         stats.Damage(damage);
     }
+    
+    public void RecoverHp(float damage)
+    {
+        stats.RecoverHp(damage);
+    }
 
     #endregion
 }

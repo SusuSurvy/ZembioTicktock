@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using BestHTTP.WebSocket;
 using System.Collections.Generic;
 using System.Collections;
+using cowsins;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 using UnityEngine.Networking;
@@ -42,7 +43,13 @@ public class ConnectDouYin: MonoBehaviour
     void OnOpen(WebSocket ws)
     {
         DouyinText.text = "连接成功";
-        Debug.LogError("连接成功"); 
+        Debug.LogError("连接成功");
+        // string url = "http://p3-webcast.douyinpic.com/img/webcast/small_DefAvatar.png~tplv-obj.image";
+        // StartCoroutine(DownLoadHeadImage(url, teu =>
+        // {
+        //     UITicktockPanel.Instance.SendMessage("1", teu);
+        //     Debug.LogError("下载完成");
+        // }));
     }
     void OnMessageReceived(WebSocket ws, string msg)
     {
@@ -65,15 +72,22 @@ public class ConnectDouYin: MonoBehaviour
     }
     void OnClosed(WebSocket ws, UInt16 code, string message)
     {
-        Debug.Log(message);
         webSocket.Close();
     }
     private void OnDestroy()
     {
-        if (webSocket != null && webSocket.IsOpen)
+        if (webSocket != null)
         {
-            Debug.Log("连接断开");
-            webSocket.Close();
+            webSocket.OnOpen -= OnOpen;
+            webSocket.OnMessage -= OnMessageReceived;
+            webSocket.OnError -= OnError;
+            webSocket.OnClosed -= OnClosed;
+            Debug.LogError("关闭回调");
+            if (webSocket.IsOpen)
+            {
+                Debug.Log("连接断开");
+                webSocket.Close();
+            }
         }}
     void OnError(WebSocket ws, Exception ex)
     {
@@ -84,13 +98,21 @@ public class ConnectDouYin: MonoBehaviour
     private bool _isDownLoad;
     public IEnumerator DownLoadHeadImage(string url,Action<Texture2D> complete)
     {
+        DouyinText.text = "开始下载";
         if (!_isDownLoad)
         {
+            DouyinText.text = url;
             _isDownLoad = true;
             var www = UnityWebRequestTexture.GetTexture(url);
             yield return www.SendWebRequest();
-            var texture = DownloadHandlerTexture.GetContent(www);
-            complete?.Invoke(texture);
+            if (www.result != UnityWebRequest.Result.Success) {
+                DouyinText.text = "error:" + www.error;
+            } else {
+                // 请求成功，处理Texture
+                var texture = DownloadHandlerTexture.GetContent(www);
+                DouyinText.text = "下载完成";
+                complete?.Invoke(texture);
+            }
             _isDownLoad = false;
         }
     }

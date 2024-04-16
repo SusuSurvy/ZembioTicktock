@@ -170,6 +170,42 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RecoverHp"",
+                    ""type"": ""Button"",
+                    ""id"": ""ab91b988-29da-42bf-96b1-0088b2c8bde1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CallEnemy"",
+                    ""type"": ""Button"",
+                    ""id"": ""50f3ae18-4bd8-403d-bdc7-828175fa8295"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TransferPlayer"",
+                    ""type"": ""Button"",
+                    ""id"": ""44fb1d35-6155-40d9-941d-49b5c9c3ccfe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""8cfc18e2-9385-4e1b-b764-273c2fdf9a12"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -590,6 +626,50 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""ToggleFlashLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c949e48c-38a3-4836-b619-dcfef4ecd6a0"",
+                    ""path"": ""<Keyboard>/#(6)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""RecoverHp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7a595fd-c86f-4df2-bd7e-5a4ff6d7fe33"",
+                    ""path"": ""<Keyboard>/#(1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""CallEnemy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce8f92fa-f08c-421c-8870-2d415f260fd1"",
+                    ""path"": ""<Keyboard>/#(2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""TransferPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5191fcf5-5318-4b43-90cf-fd59ae346edd"",
+                    ""path"": ""<Keyboard>/#(9)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""EquipGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -625,6 +705,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_GameControls_Pause = m_GameControls.FindAction("Pause", throwIfNotFound: true);
         m_GameControls_Movement = m_GameControls.FindAction("Movement", throwIfNotFound: true);
         m_GameControls_ToggleFlashLight = m_GameControls.FindAction("ToggleFlashLight", throwIfNotFound: true);
+        m_GameControls_RecoverHp = m_GameControls.FindAction("RecoverHp", throwIfNotFound: true);
+        m_GameControls_CallEnemy = m_GameControls.FindAction("CallEnemy", throwIfNotFound: true);
+        m_GameControls_TransferPlayer = m_GameControls.FindAction("TransferPlayer", throwIfNotFound: true);
+        m_GameControls_EquipGun = m_GameControls.FindAction("EquipGun", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -702,6 +786,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_GameControls_Pause;
     private readonly InputAction m_GameControls_Movement;
     private readonly InputAction m_GameControls_ToggleFlashLight;
+    private readonly InputAction m_GameControls_RecoverHp;
+    private readonly InputAction m_GameControls_CallEnemy;
+    private readonly InputAction m_GameControls_TransferPlayer;
+    private readonly InputAction m_GameControls_EquipGun;
     public struct GameControlsActions
     {
         private @PlayerActions m_Wrapper;
@@ -722,6 +810,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_GameControls_Pause;
         public InputAction @Movement => m_Wrapper.m_GameControls_Movement;
         public InputAction @ToggleFlashLight => m_Wrapper.m_GameControls_ToggleFlashLight;
+        public InputAction @RecoverHp => m_Wrapper.m_GameControls_RecoverHp;
+        public InputAction @CallEnemy => m_Wrapper.m_GameControls_CallEnemy;
+        public InputAction @TransferPlayer => m_Wrapper.m_GameControls_TransferPlayer;
+        public InputAction @EquipGun => m_Wrapper.m_GameControls_EquipGun;
         public InputActionMap Get() { return m_Wrapper.m_GameControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -779,6 +871,18 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @ToggleFlashLight.started += instance.OnToggleFlashLight;
             @ToggleFlashLight.performed += instance.OnToggleFlashLight;
             @ToggleFlashLight.canceled += instance.OnToggleFlashLight;
+            @RecoverHp.started += instance.OnRecoverHp;
+            @RecoverHp.performed += instance.OnRecoverHp;
+            @RecoverHp.canceled += instance.OnRecoverHp;
+            @CallEnemy.started += instance.OnCallEnemy;
+            @CallEnemy.performed += instance.OnCallEnemy;
+            @CallEnemy.canceled += instance.OnCallEnemy;
+            @TransferPlayer.started += instance.OnTransferPlayer;
+            @TransferPlayer.performed += instance.OnTransferPlayer;
+            @TransferPlayer.canceled += instance.OnTransferPlayer;
+            @EquipGun.started += instance.OnEquipGun;
+            @EquipGun.performed += instance.OnEquipGun;
+            @EquipGun.canceled += instance.OnEquipGun;
         }
 
         private void UnregisterCallbacks(IGameControlsActions instance)
@@ -831,6 +935,18 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @ToggleFlashLight.started -= instance.OnToggleFlashLight;
             @ToggleFlashLight.performed -= instance.OnToggleFlashLight;
             @ToggleFlashLight.canceled -= instance.OnToggleFlashLight;
+            @RecoverHp.started -= instance.OnRecoverHp;
+            @RecoverHp.performed -= instance.OnRecoverHp;
+            @RecoverHp.canceled -= instance.OnRecoverHp;
+            @CallEnemy.started -= instance.OnCallEnemy;
+            @CallEnemy.performed -= instance.OnCallEnemy;
+            @CallEnemy.canceled -= instance.OnCallEnemy;
+            @TransferPlayer.started -= instance.OnTransferPlayer;
+            @TransferPlayer.performed -= instance.OnTransferPlayer;
+            @TransferPlayer.canceled -= instance.OnTransferPlayer;
+            @EquipGun.started -= instance.OnEquipGun;
+            @EquipGun.performed -= instance.OnEquipGun;
+            @EquipGun.canceled -= instance.OnEquipGun;
         }
 
         public void RemoveCallbacks(IGameControlsActions instance)
@@ -884,5 +1000,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnToggleFlashLight(InputAction.CallbackContext context);
+        void OnRecoverHp(InputAction.CallbackContext context);
+        void OnCallEnemy(InputAction.CallbackContext context);
+        void OnTransferPlayer(InputAction.CallbackContext context);
+        void OnEquipGun(InputAction.CallbackContext context);
     }
 }

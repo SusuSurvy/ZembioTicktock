@@ -1,5 +1,5 @@
 /// <summary>
-/// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 
+/// This script belongs to cowsins?as a part of the cowsins?FPS Engine. All rights reserved. 
 /// </summary>
 #if UNITY_EDITOR
 using UnityEditor;
@@ -34,7 +34,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField, Tooltip("UI Element ( TMPro text ) that displays current and maximum health.")] private TextMeshProUGUI healthTextDisplay;
 
-    [SerializeField, Tooltip("UI Element ( TMPro te¡xt ) that displays current and maximum shield.")] private TextMeshProUGUI shieldTextDisplay;
+    [SerializeField, Tooltip("UI Element ( TMPro teî“¾t ) that displays current and maximum shield.")] private TextMeshProUGUI shieldTextDisplay;
 
     [Tooltip("This image shows damage and heal states visually on your screen, you can change the image" +
             "to any you like, but note that color will be overriden by the script"), SerializeField]
