@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace cowsins
 {
     public class CameraEffects : MonoBehaviour
     {
         [SerializeField] private PlayerMovement player;
-        [SerializeField] private Rigidbody playerRigidbody;
+        [SerializeField] private NavMeshAgent playerRigidbody;
 
         [SerializeField] private float tiltSpeed, tiltAmount;
         [SerializeField] private float headBobAmplitude = 0.2f;

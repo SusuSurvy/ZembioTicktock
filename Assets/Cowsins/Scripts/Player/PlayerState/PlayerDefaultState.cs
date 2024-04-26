@@ -51,9 +51,12 @@ public class PlayerDefaultState : PlayerBaseState
 
     void HandleMovement()
     {
-        if (InputManager.x != 0 || InputManager.y != 0) player.events.OnMove.Invoke();
-        player.Movement(stats.controllable);
-        if (!stats.controllable) return;
+        if (InputManager.x != 0 || InputManager.y != 0)
+        {
+            player.events.OnMove.Invoke();
+            player.Movement(stats.controllable);
+            if (!stats.controllable) return;
+        }
         player.Look();
         player.FootSteps();
         player.HandleVelocities();

@@ -35,8 +35,6 @@ public class EnemyManager : MonoBehaviour {
 
     private void Reset()
     {
-      
-        _needCreate = true;
         poolDic.Clear();
         foreach (var prefab in prefabs)
         {

@@ -5,11 +5,11 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.Events;
 namespace cowsins {
 // Add a rigidbody if needed, PlayerMovement.cs requires a rigidbody to work 
-[RequireComponent(typeof(Rigidbody))]
 //[RequireComponent(typeof(____))] Player Movement also requires a non trigger collider. Attach your preffered collider method
 public class PlayerMovement : MonoBehaviour
 {
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerStats stats;
 
     // References
-    private Rigidbody rb;
+    //private Rigidbody rb;
 
     [HideInInspector] public WeaponController weapon;
 
@@ -384,7 +384,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rb.velocity.magnitude > maxSpeedAllowed) rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeedAllowed);
+      //  if (rb.velocity.magnitude > maxSpeedAllowed) rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeedAllowed);
         Stamina();
         
         if (!PlayerStats.Controllable) return;
@@ -392,8 +392,8 @@ public class PlayerMovement : MonoBehaviour
         if (canWallRun)
         {
             CheckWalls();
-            if (InputManager.yMovementActioned && (wallLeft || wallRight) && CheckHeight() && rb.velocity.magnitude > walkSpeed) WallRun();
-            else StopWallRun();
+       //     if (InputManager.yMovementActioned && (wallLeft || wallRight) && CheckHeight() && rb.velocity.magnitude > walkSpeed) WallRun();
+          //  else StopWallRun();
         }
     }
 
@@ -426,23 +426,23 @@ public class PlayerMovement : MonoBehaviour
                     shouldRun = false;
                 }
 
-                if (shouldRun && (canRunBackwards || Vector3.Dot(orientation.forward, rb.velocity) > 0))
-                {
-                    if (canRunWhileShooting || !InputManager.shooting)
-                    {
-                        currentSpeed = runSpeed;
-                    }
-                }
+                // if (shouldRun && (canRunBackwards || Vector3.Dot(orientation.forward, rb.velocity) > 0))
+                // {
+                //     if (canRunWhileShooting || !InputManager.shooting)
+                //     {
+                //         currentSpeed = runSpeed;
+                //     }
+                // }
             }
             else
             {
                 currentSpeed = walkSpeed;
             }
 
-            if (rb.velocity.sqrMagnitude < 0.0001f)
-            {
-                currentSpeed = walkSpeed;
-            }
+            // if (rb.velocity.sqrMagnitude < 0.0001f)
+            // {
+            //     currentSpeed = walkSpeed;
+            // }
 
         }
 
@@ -456,19 +456,19 @@ public class PlayerMovement : MonoBehaviour
                 return;
             }
 
-            if (rb.velocity.sqrMagnitude > minSpeedToUseSpeedLines * minSpeedToUseSpeedLines)
-            {
-                speedLines.Play(); // Play speedlines
-            }
-            else
-            {
-                speedLines.Stop(); // Stop speedlines
-            }
+            // if (rb.velocity.sqrMagnitude > minSpeedToUseSpeedLines * minSpeedToUseSpeedLines)
+            // {
+            //     speedLines.Play(); // Play speedlines
+            // }
+            // else
+            // {
+            //     speedLines.Stop(); // Stop speedlines
+            // }
 
             // HandleEmission
             var emission = speedLines.emission;
-            float emissionRate = (rb.velocity.magnitude > runSpeed) ? 200 : 70;
-            emission.rateOverTime = emissionRate * speedLinesAmount;
+         //   float emissionRate = (rb.velocity.magnitude > runSpeed) ? 200 : 70;
+         //   emission.rateOverTime = emissionRate * speedLinesAmount;
         }
 
 
@@ -480,14 +480,14 @@ public class PlayerMovement : MonoBehaviour
         if(crouchCancelMethod == CrouchCancelMethod.FullStop)
             currentSpeed = crouchSpeed;
 
-        if (rb.velocity.magnitude >= walkSpeed && grounded && allowSliding && !hasJumped)
-        { // Handle sliding
-            events.OnSlide.Invoke(); // Invoke your own method on the moment you slid NOT WHILE YOU ARE SLIDING
-                                     // Add the force on slide
-            rb.AddForce(orientation.transform.forward * slideForce);
-            //staminaLoss
-            if (usesStamina) stamina -= staminaLossOnSlide;
-        }
+        // if (rb.velocity.magnitude >= walkSpeed && grounded && allowSliding && !hasJumped)
+        // { // Handle sliding
+        //     events.OnSlide.Invoke(); // Invoke your own method on the moment you slid NOT WHILE YOU ARE SLIDING
+        //                              // Add the force on slide
+        //     rb.AddForce(orientation.transform.forward * slideForce);
+        //     //staminaLoss
+        //     if (usesStamina) stamina -= staminaLossOnSlide;
+        // }
     }
 
     public void StopCrouch()
@@ -551,36 +551,46 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public void Movement(bool move)
     {
-
+        
         //Extra gravity
-        rb.AddForce(Vector3.down * Time.deltaTime * 10);
+        // rb.AddForce(Vector3.down * Time.deltaTime * 10);
+        //
+        // //Find actual velocity relative to where player is looking
+        // Vector2 mag = FindVelRelativeToLook();
+        // float xMag = mag.x, yMag = mag.y;
+        //
+        // //Counteract sliding and sloppy movement
+        // FrictionForce(InputManager.x, InputManager.y, mag);
+        //
+        // //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
+        // if (InputManager.x > 0 && xMag > currentSpeed || InputManager.x < 0 && xMag < -currentSpeed) InputManager.x = 0;
+        // if (InputManager.y > 0 && yMag > currentSpeed || InputManager.y < 0 && yMag < -currentSpeed) InputManager.y = 0;
+        //
+         float multiplier = (!grounded) ? controlAirborne : 1;
+         float multiplierV = (!grounded) ? controlAirborne : 1;
+        //
+         float multiplier2 = (weapon.weapon != null) ? weapon.weapon.weightMultiplier : 1;
+        //
+        // if (rb.velocity.sqrMagnitude < .02f) rb.velocity = Vector3.zero;
+        //
+        // if (!move)
+        // {
+        //     if (grounded) rb.velocity = Vector3.zero; 
+        //     return;
+        // }
+        Vector3 movementInput = new Vector3(InputManager.x, 0f, InputManager.y);
 
-        //Find actual velocity relative to where player is looking
-        Vector2 mag = FindVelRelativeToLook();
-        float xMag = mag.x, yMag = mag.y;
+        // 需要转换输入向量为世界空间向量
+        Vector3 worldMovement = orientation.TransformDirection(movementInput);
 
-        //Counteract sliding and sloppy movement
-        FrictionForce(InputManager.x, InputManager.y, mag);
+        // 根据速度和帧时间计算移动距离
+        Vector3 velocity = worldMovement * _agent.acceleration * Time.deltaTime;
 
-        //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
-        if (InputManager.x > 0 && xMag > currentSpeed || InputManager.x < 0 && xMag < -currentSpeed) InputManager.x = 0;
-        if (InputManager.y > 0 && yMag > currentSpeed || InputManager.y < 0 && yMag < -currentSpeed) InputManager.y = 0;
-
-        float multiplier = (!grounded) ? controlAirborne : 1;
-        float multiplierV = (!grounded) ? controlAirborne : 1;
-
-        float multiplier2 = (weapon.weapon != null) ? weapon.weapon.weightMultiplier : 1;
-
-        if (rb.velocity.sqrMagnitude < .02f) rb.velocity = Vector3.zero;
-
-        if (!move)
-        {
-            if (grounded) rb.velocity = Vector3.zero; 
-            return;
-        }
-
-        rb.AddForce(orientation.transform.forward * InputManager.y * acceleration * Time.deltaTime * multiplier * multiplierV / multiplier2);
-        rb.AddForce(orientation.transform.right * InputManager.x * acceleration * Time.deltaTime * multiplier / multiplier2);
+        // 使用NavMeshAgent.Move()来移动玩家，受到NavMesh的约束，如避开障碍物等
+        _agent.Move(velocity);
+       // _agent.Move(orientation.transform.forward * new Vector3(orientation.transform.forward.x * InputManager.y * _agent.acceleration * Time.deltaTime, 0, orientation.transform.forward.z * InputManager.x *  _agent.acceleration * Time.deltaTime));
+       // rb.AddForce(orientation.transform.forward * InputManager.y * acceleration * Time.deltaTime * multiplier * multiplierV / multiplier2);
+        //rb.AddForce(orientation.transform.right * InputManager.x * acceleration * Time.deltaTime * multiplier / multiplier2);
     }
 
     /// <summary>
@@ -589,14 +599,14 @@ public class PlayerMovement : MonoBehaviour
     public void FootSteps()
     {
         // Reset timer if conditions are met + dont play the footsteps
-        if (!grounded || rb.velocity.sqrMagnitude <= .1f)
+        if (!grounded || _agent.velocity.sqrMagnitude <= .1f)
         {
             stepTimer = 1 - footstepSpeed;
             return;
         }
 
         // Wait for the next time to play a sound
-        stepTimer -= Time.deltaTime * rb.velocity.magnitude / 15;
+        stepTimer -= Time.deltaTime * _agent.velocity.magnitude / 15;
 
         // Play the sound and reset
         if (stepTimer <= 0)
@@ -649,36 +659,36 @@ public class PlayerMovement : MonoBehaviour
         if (doubleJumpResetsFallDamage) GetComponent<PlayerStats>().height = transform.position.y;
 
         //Add jump forces
-        if (wallRunning) // When we wallrun, we want to add extra side forces
-        {
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            rb.AddForce(transform.up * upwardsWallJumpForce);
-            rb.AddForce(wallNormal * normalWallJumpForce, ForceMode.Impulse);
-        }
-        else
-        {
-            rb.AddForce(Vector2.up * jumpForce * 1.5f);
-            rb.AddForce(normalVector * jumpForce * 0.5f);
-            // Handle directional jumping
-            if (!grounded && directionalJumpMethod != DirectionalJumpMethod.None && maxJumps > 1 && !wallOpposite)
-            {
-                if (Vector3.Dot(rb.velocity, new Vector3(InputManager.x, 0, InputManager.y)) > .5f)
-                    rb.velocity = rb.velocity / 2;
-                if (directionalJumpMethod == DirectionalJumpMethod.InputBased) // Input based method for directional jumping
-                {
-                    rb.AddForce(orientation.right * InputManager.x * directionalJumpForce, ForceMode.Impulse);
-                    rb.AddForce(orientation.forward * InputManager.y * directionalJumpForce, ForceMode.Impulse);
-                }
-                if (directionalJumpMethod == DirectionalJumpMethod.ForwardMovement) // Forward Movement method for directional jumping, dependant on orientation
-                    rb.AddForce(orientation.forward * Mathf.Abs(InputManager.y) * directionalJumpForce, ForceMode.VelocityChange);
-            }
-
-            //If jumping while falling, reset y velocity.
-            if (rb.velocity.y < 0.5f)
-                rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            else if (rb.velocity.y > 0)
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / 2, rb.velocity.z);
-        }
+        // if (wallRunning) // When we wallrun, we want to add extra side forces
+        // {
+        //     rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        //     rb.AddForce(transform.up * upwardsWallJumpForce);
+        //     rb.AddForce(wallNormal * normalWallJumpForce, ForceMode.Impulse);
+        // }
+        // else
+        // {
+        //     rb.AddForce(Vector2.up * jumpForce * 1.5f);
+        //     rb.AddForce(normalVector * jumpForce * 0.5f);
+        //     // Handle directional jumping
+        //     if (!grounded && directionalJumpMethod != DirectionalJumpMethod.None && maxJumps > 1 && !wallOpposite)
+        //     {
+        //         if (Vector3.Dot(rb.velocity, new Vector3(InputManager.x, 0, InputManager.y)) > .5f)
+        //             rb.velocity = rb.velocity / 2;
+        //         if (directionalJumpMethod == DirectionalJumpMethod.InputBased) // Input based method for directional jumping
+        //         {
+        //             rb.AddForce(orientation.right * InputManager.x * directionalJumpForce, ForceMode.Impulse);
+        //             rb.AddForce(orientation.forward * InputManager.y * directionalJumpForce, ForceMode.Impulse);
+        //         }
+        //         if (directionalJumpMethod == DirectionalJumpMethod.ForwardMovement) // Forward Movement method for directional jumping, dependant on orientation
+        //             rb.AddForce(orientation.forward * Mathf.Abs(InputManager.y) * directionalJumpForce, ForceMode.VelocityChange);
+        //     }
+        //
+        //     //If jumping while falling, reset y velocity.
+        //     if (rb.velocity.y < 0.5f)
+        //         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        //     else if (rb.velocity.y > 0)
+        //         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / 2, rb.velocity.z);
+        // }
 
         //staminaLoss
         if (usesStamina) stamina -= staminaLossOnJump;
@@ -748,28 +758,28 @@ public class PlayerMovement : MonoBehaviour
         if (!grounded || InputManager.jumping || hasJumped) return;
 
         //Slow down sliding + prevent from infinite sliding
-        if (InputManager.crouching && allowCrouch)
-        {
-            rb.AddForce(acceleration * Time.deltaTime * -rb.velocity.normalized * slideCounterMovement);
-            return;
-        }
-
-        // Counter movement ( Friction while moving )
-        // Prevent from sliding not on purpose
-        if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
-            rb.AddForce(acceleration * orientation.transform.right * Time.deltaTime * -mag.x * frictionForceAmount);
-        if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
-            rb.AddForce(acceleration * orientation.transform.forward * Time.deltaTime * -mag.y * frictionForceAmount);
-
-        if (Math.Abs(x) < 0.05f && Math.Abs(y) < 0.05f && grounded && floorAngle > 0) rb.AddForce(acceleration * -rb.velocity * Time.deltaTime);
-
-        //Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
-        if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > currentSpeed)
-        {
-            float fallspeed = rb.velocity.y;
-            Vector3 n = rb.velocity.normalized * currentSpeed;
-            rb.velocity = new Vector3(n.x, fallspeed, n.z);
-        }
+        // if (InputManager.crouching && allowCrouch)
+        // {
+        // //    rb.AddForce(acceleration * Time.deltaTime * -rb.velocity.normalized * slideCounterMovement);
+        //     return;
+        // }
+        //
+        // // Counter movement ( Friction while moving )
+        // // Prevent from sliding not on purpose
+        // if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
+        //     rb.AddForce(acceleration * orientation.transform.right * Time.deltaTime * -mag.x * frictionForceAmount);
+        // if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
+        //     rb.AddForce(acceleration * orientation.transform.forward * Time.deltaTime * -mag.y * frictionForceAmount);
+        //
+        // if (Math.Abs(x) < 0.05f && Math.Abs(y) < 0.05f && grounded && floorAngle > 0) rb.AddForce(acceleration * -rb.velocity * Time.deltaTime);
+        //
+        // //Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
+        // if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > currentSpeed)
+        // {
+        //     float fallspeed = rb.velocity.y;
+        //     Vector3 n = rb.velocity.normalized * currentSpeed;
+        //     rb.velocity = new Vector3(n.x, fallspeed, n.z);
+        // }
     }
 
     /// <summary>
@@ -780,12 +790,12 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 FindVelRelativeToLook()
     {
         float lookAngle = orientation.transform.eulerAngles.y;
-        float moveAngle = Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg;
+        float moveAngle = Mathf.Atan2(_agent.velocity.x, _agent.velocity.z) * Mathf.Rad2Deg;
 
         float u = Mathf.DeltaAngle(lookAngle, moveAngle);
         float v = 90 - u;
 
-        float magnitue = rb.velocity.magnitude;
+        float magnitue = _agent.velocity.magnitude;
         float yMag = magnitue * Mathf.Cos(u * Mathf.Deg2Rad);
         float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad);
 
@@ -805,9 +815,12 @@ public class PlayerMovement : MonoBehaviour
         float angle = Vector3.Angle(Vector3.up, v);
         return angle;
     }
+
     /// <summary>
     /// Basically find everything the script needs to work
     /// </summary>
+    ///
+    private NavMeshAgent _agent;
     void GetAllReferences()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -817,8 +830,7 @@ public class PlayerMovement : MonoBehaviour
         // in order to prevent errors regarding inputs not being received.
         if (InputManager.inputManager == null)
             Instantiate(Resources.Load("InputManager"));
-
-        rb = GetComponent<Rigidbody>();
+        _agent = GetComponent<NavMeshAgent>();
         _audio = GetComponent<AudioSource>();
         weapon = GetComponent<WeaponController>();
         stats = GetComponent<PlayerStats>();
@@ -928,36 +940,36 @@ public class PlayerMovement : MonoBehaviour
     //Shootout to Dave on YT for some of the code related to wallrun.
     private void WallRun()
     {
-        wallNormal = wallRight ? wallRightHit.normal : wallLeftHit.normal;
-        wallDirection = Vector3.Cross(wallNormal, transform.up).normalized * 10;
-        // Fixing wallrunning directions depending on the orientation 
-        if ((orientation.forward - wallDirection).magnitude > (orientation.forward + wallDirection).magnitude) wallDirection = -wallDirection;
-
-        // Handling WallRun Cancel
-        if (OppositeVectors() < -.5f) StopWallRun();
-
-        if (cancelWallRunMethod == CancelWallRunMethod.Timer)
-        {
-            wallRunTimer -= Time.deltaTime;
-            if (wallRunTimer <= 0)
-            {
-                rb.AddForce(wallNormal * stopWallRunningImpulse, ForceMode.Impulse);
-                StopWallRun();
-            }
-        }
-
-        // Start Wallrunning
-        if (!wallRunning) StartWallRunning();
-
-        rb.useGravity = useGravity;
-
-        if (useGravity && rb.velocity.y < 0) rb.AddForce(transform.up * wallrunGravityCounterForce, ForceMode.Force);
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxWallRunSpeed);
-
-        if (!(wallRight && InputManager.x < 0) && !(wallLeft && InputManager.x > 0)) rb.AddForce(-wallNormal * 100, ForceMode.Force);
-
-        rb.AddForce(wallDirection, ForceMode.Force);
-        
+        // wallNormal = wallRight ? wallRightHit.normal : wallLeftHit.normal;
+        // wallDirection = Vector3.Cross(wallNormal, transform.up).normalized * 10;
+        // // Fixing wallrunning directions depending on the orientation 
+        // if ((orientation.forward - wallDirection).magnitude > (orientation.forward + wallDirection).magnitude) wallDirection = -wallDirection;
+        //
+        // // Handling WallRun Cancel
+        // if (OppositeVectors() < -.5f) StopWallRun();
+        //
+        // if (cancelWallRunMethod == CancelWallRunMethod.Timer)
+        // {
+        //     wallRunTimer -= Time.deltaTime;
+        //     if (wallRunTimer <= 0)
+        //     {
+        //         rb.AddForce(wallNormal * stopWallRunningImpulse, ForceMode.Impulse);
+        //         StopWallRun();
+        //     }
+        // }
+        //
+        // // Start Wallrunning
+        // if (!wallRunning) StartWallRunning();
+        //
+        // rb.useGravity = useGravity;
+        //
+        // if (useGravity && rb.velocity.y < 0) rb.AddForce(transform.up * wallrunGravityCounterForce, ForceMode.Force);
+        // rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxWallRunSpeed);
+        //
+        // if (!(wallRight && InputManager.x < 0) && !(wallLeft && InputManager.x > 0)) rb.AddForce(-wallNormal * 100, ForceMode.Force);
+        //
+        // rb.AddForce(wallDirection, ForceMode.Force);
+        //
 
     }
 
@@ -966,8 +978,8 @@ public class PlayerMovement : MonoBehaviour
         wallRunning = true;
         wallRunTimer = wallRunDuration;
         events.OnStartWallRun.Invoke();
-        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-        rb.AddForce(wallDirection, ForceMode.Impulse);
+       // rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+       // rb.AddForce(wallDirection, ForceMode.Impulse);
         if (resetJumpsOnWallrun) jumpCount = maxJumps;
     }
 
@@ -976,11 +988,11 @@ public class PlayerMovement : MonoBehaviour
         if (wallRunning)
         {
             events.OnStopWallRun.Invoke();
-            rb.AddForce(wallNormal * stopWallRunningImpulse, ForceMode.Impulse);
+      //      rb.AddForce(wallNormal * stopWallRunningImpulse, ForceMode.Impulse);
             if (resetJumpsOnWallrun) jumpCount = maxJumps - 1;
         }
         wallRunning = false;
-        rb.useGravity = true;
+    //    rb.useGravity = true;
     }
 
     private float OppositeVectors() { return Vector3.Dot(wallDirection, orientation.forward); }
@@ -995,8 +1007,8 @@ public class PlayerMovement : MonoBehaviour
         if (resetJumpsOnWallBounce) jumpCount = maxJumps - 1;
         events.OnWallBounce.Invoke();
         Vector3 direction = Vector3.Reflect(orientation.forward, wallOppositeHit.normal);
-        rb.AddForce(direction * wallBounceForce, ForceMode.VelocityChange);
-        rb.AddForce(transform.up * wallBounceUpwardsForce, ForceMode.Impulse);
+       // rb.AddForce(direction * wallBounceForce, ForceMode.VelocityChange);
+      //  rb.AddForce(transform.up * wallBounceUpwardsForce, ForceMode.Impulse);
     }
     #endregion
     #region dashing

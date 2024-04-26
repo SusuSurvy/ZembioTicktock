@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace cowsins
 {
     public class CameraFOVManager : MonoBehaviour
     {
-        [SerializeField] private Rigidbody player;
+        [SerializeField] private NavMeshAgent player;
 
         private float baseFOV;
         private Camera cam;
