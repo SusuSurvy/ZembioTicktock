@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using cowsins;
 using UnityEngine.AI;
+using System;
 public class ZombieEnemy : EnemyHealth, IPoolable
 {
     private Animator _animator;
@@ -141,5 +142,10 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         crazyTime = 5;
         NavMeshAgent.speed = crazySpeed;
         _material.color = crazylColor;
+    }
+
+    public static implicit operator ZombieEnemy(GameObject v)
+    {
+        throw new NotImplementedException();
     }
 }

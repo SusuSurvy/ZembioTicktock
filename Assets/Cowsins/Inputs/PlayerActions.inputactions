@@ -220,6 +220,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Summoning",
+                    "type": "Button",
+                    "id": "4955dfc5-ab34-44fb-a6a8-3bdb4caffdcd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -726,6 +735,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "EquipJiatelin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8519c88e-7bfb-428c-a62a-2607b0486790",
+                    "path": "<Keyboard>/#(8)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Summoning",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

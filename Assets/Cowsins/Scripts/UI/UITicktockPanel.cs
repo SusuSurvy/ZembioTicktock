@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace cowsins
 {
@@ -36,6 +38,12 @@ namespace cowsins
     
     public class UITicktockPanel : MonoBehaviour
     {
+        public NavMeshAgent NavMeshAgent;
+        public GameObject prefab;
+        private GameObject instantiatedObject;
+        public GameObject PlayerCoordinates; 
+        private Vector2 _leftBottom = new Vector3(-51, -28);
+        private Vector2 _rightUp = new Vector3(51, 72);
         public Texture2D headIcon;
         private Dictionary<string, string> _danmuInfo = new Dictionary<string, string>()
         {
@@ -46,6 +54,7 @@ namespace cowsins
             ["5"] = "关闭手电筒",
             ["6"] = "装备手枪",
             ["7"] = "装备加特林",
+            ["8"] = "已生成",
         };
         public GameObject textPrefab;
         public Transform danmuContainer;
@@ -135,7 +144,12 @@ namespace cowsins
                 ShowDanmu(_danmuInfo["7"], texture);
                 EquipJiatelin();
             }
-          
+            else if (str.Contains("8"))
+            {
+                ShowDanmu(_danmuInfo["8"], texture);
+                CreateSummoning(PlayerCoordinates.transform);
+            }
+
         }
 
         public void RecoverHp()
@@ -147,6 +161,7 @@ namespace cowsins
         {
             EnemyManager.Instance.CreateEnemy();
         }
+
         
         public void EquipGun()
         {
@@ -176,5 +191,69 @@ namespace cowsins
         {
             EnemyManager.Instance.CrazyAllEnemy();
         }
+
+        public void SetPosition(Vector3 pos)
+        {
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(pos, out hit, 100, NavMesh.AllAreas))
+            {
+                NavMeshAgent.Warp(hit.position);
+            }
+        }
+        void CreateSummoning(Transform characterTransform)
+        {
+            if (prefab != null && characterTransform != null)
+            {
+                Vector3 spawnPosition = GetValidSpawnPositionAround(characterTransform.position);
+                if (spawnPosition != Vector3.zero)
+                {
+                    instantiatedObject = Instantiate(prefab, spawnPosition, Quaternion.identity);
+                    instantiatedObject.SetActive(true);
+
+                    instantiatedObject.tag = "Building";
+                }
+            }
+        }
+
+        Vector3 GetValidSpawnPositionAround(Vector3 characterPosition)
+        {
+            Vector3 spawnPosition = Vector3.zero;
+            int maxAttempts = 10;
+            int attempts = 0;
+
+            while (attempts < maxAttempts)
+            {
+
+                float radius = 3f;
+                float angle = UnityEngine.Random.Range(0f, Mathf.PI * 2f);
+                float x = characterPosition.x + radius * Mathf.Cos(angle);
+                float z = characterPosition.z + radius * Mathf.Sin(angle);
+                float y = characterPosition.y;
+                spawnPosition = new Vector3(x, y, z);
+
+                Collider[] colliders = Physics.OverlapSphere(spawnPosition, 0.5f);
+
+                bool positionValid = true;
+                foreach (Collider collider in colliders)
+                {
+
+                    if (collider.gameObject.CompareTag("Building"))
+                    {
+                        positionValid = false;
+                        break;
+                    }
+                }
+
+                if (positionValid)
+                {
+                    return spawnPosition;
+                }
+
+                attempts++;
+            }
+
+            return Vector3.zero;
+        }
+
     }
 }
