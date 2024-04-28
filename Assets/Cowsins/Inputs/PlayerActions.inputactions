@@ -229,6 +229,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CallEnemy1",
+                    "type": "Button",
+                    "id": "7dfce587-ad93-4251-b9d5-4dbfe91ce45c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -746,6 +755,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Summoning",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57d21918-9802-482d-8954-242338c095d6",
+                    "path": "<Keyboard>/#([)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "CallEnemy1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

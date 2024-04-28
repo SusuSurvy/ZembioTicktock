@@ -100,19 +100,36 @@ public class EnemyManager : MonoBehaviour {
 
     
 
-    public void CreateEnemy()
+    public void CreateEnemy(int targetEnemy = -1)
     {
-        ZombieEnemy enemy = Spawn();
-        float randomX = UnityEngine.Random.Range(_leftBottom.x, _rightUp.x);
-        float randomY = UnityEngine.Random.Range(_leftBottom.y, _rightUp.y);
+        ZombieEnemy enemy = Spawn(targetEnemy);
+        float randomX = 0;
+        float randomY = 0;
+        if (targetEnemy == 0)
+        {
+            Vector3 pos = Player.transform.position;
+             randomX = UnityEngine.Random.Range(pos.x - 10, pos.z + 10);
+             randomY = UnityEngine.Random.Range(pos.z - 10 , pos.z + 10);
+        }
+        else
+        {
+             randomX = UnityEngine.Random.Range(_leftBottom.x, _rightUp.x);
+             randomY = UnityEngine.Random.Range(_leftBottom.y, _rightUp.y);
+        }
         enemy.SetPosition(new Vector3(randomX, 0.65f, randomY));
+        
+  
     }
 
     // 生成对象的方法
 
-    public ZombieEnemy Spawn() {
+    public ZombieEnemy Spawn(int targetEnemy = -1) {
         ZombieEnemy obj;
-        int random = UnityEngine.Random.Range(0, prefabs.Count);
+        int random = targetEnemy;
+        if (targetEnemy == -1)
+        {
+            UnityEngine.Random.Range(0, prefabs.Count); 
+        }
         GameObject prefab = prefabs[random];
         if (poolDic[prefab.name].Count == 0) {
             obj = Instantiate(prefab).GetComponent<ZombieEnemy>();

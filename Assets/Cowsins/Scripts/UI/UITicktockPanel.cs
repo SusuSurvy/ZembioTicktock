@@ -54,7 +54,8 @@ namespace cowsins
             ["5"] = "关闭手电筒",
             ["6"] = "装备手枪",
             ["7"] = "装备加特林",
-            ["8"] = "已生成",
+            ["8"] = "生成人偶",
+            ["["] = "生成突脸怪",
         };
         public GameObject textPrefab;
         public Transform danmuContainer;
@@ -149,6 +150,11 @@ namespace cowsins
                 ShowDanmu(_danmuInfo["8"], texture);
                 CreateSummoning(PlayerCoordinates.transform);
             }
+            else if (str.Contains("["))
+            {
+                ShowDanmu(_danmuInfo["["], texture);
+                EnemyManager.Instance.CreateEnemy(0);
+            }
 
         }
 
@@ -186,6 +192,7 @@ namespace cowsins
         {
             EnemyManager.Instance.KillAllEnemy();
         }
+        
         
         public void CrazyAllEnemy()
         {

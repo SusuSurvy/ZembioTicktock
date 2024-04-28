@@ -251,6 +251,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CallEnemy1"",
+                    ""type"": ""Button"",
+                    ""id"": ""7dfce587-ad93-4251-b9d5-4dbfe91ce45c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -770,6 +779,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""Summoning"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57d21918-9802-482d-8954-242338c095d6"",
+                    ""path"": ""<Keyboard>/#([)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""CallEnemy1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -814,6 +834,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_GameControls_OpenLight = m_GameControls.FindAction("OpenLight", throwIfNotFound: true);
         m_GameControls_EquipJiatelin = m_GameControls.FindAction("EquipJiatelin", throwIfNotFound: true);
         m_GameControls_Summoning = m_GameControls.FindAction("Summoning", throwIfNotFound: true);
+        m_GameControls_CallEnemy1 = m_GameControls.FindAction("CallEnemy1", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -900,6 +921,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_GameControls_OpenLight;
     private readonly InputAction m_GameControls_EquipJiatelin;
     private readonly InputAction m_GameControls_Summoning;
+    private readonly InputAction m_GameControls_CallEnemy1;
     public struct GameControlsActions
     {
         private @PlayerActions m_Wrapper;
@@ -929,6 +951,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         public InputAction @OpenLight => m_Wrapper.m_GameControls_OpenLight;
         public InputAction @EquipJiatelin => m_Wrapper.m_GameControls_EquipJiatelin;
         public InputAction @Summoning => m_Wrapper.m_GameControls_Summoning;
+        public InputAction @CallEnemy1 => m_Wrapper.m_GameControls_CallEnemy1;
         public InputActionMap Get() { return m_Wrapper.m_GameControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1013,6 +1036,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Summoning.started += instance.OnSummoning;
             @Summoning.performed += instance.OnSummoning;
             @Summoning.canceled += instance.OnSummoning;
+            @CallEnemy1.started += instance.OnCallEnemy1;
+            @CallEnemy1.performed += instance.OnCallEnemy1;
+            @CallEnemy1.canceled += instance.OnCallEnemy1;
         }
 
         private void UnregisterCallbacks(IGameControlsActions instance)
@@ -1092,6 +1118,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Summoning.started -= instance.OnSummoning;
             @Summoning.performed -= instance.OnSummoning;
             @Summoning.canceled -= instance.OnSummoning;
+            @CallEnemy1.started -= instance.OnCallEnemy1;
+            @CallEnemy1.performed -= instance.OnCallEnemy1;
+            @CallEnemy1.canceled -= instance.OnCallEnemy1;
         }
 
         public void RemoveCallbacks(IGameControlsActions instance)
@@ -1154,5 +1183,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnOpenLight(InputAction.CallbackContext context);
         void OnEquipJiatelin(InputAction.CallbackContext context);
         void OnSummoning(InputAction.CallbackContext context);
+        void OnCallEnemy1(InputAction.CallbackContext context);
     }
 }
