@@ -1,0 +1,239 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AM_PunisherPriest
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group
+    m_Weight: 0
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:body
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Face_GRP
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Face_GRP/PunisherPriest:model:eyebrows
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Face_GRP/PunisherPriest:model:eyelashes
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Face_GRP/PunisherPriest:model:hair
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Face_GRP/PunisherPriest:model:L_eye
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Face_GRP/PunisherPriest:model:Mouth_GRP
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Face_GRP/PunisherPriest:model:Mouth_GRP/PunisherPriest:model:LowerTeeth
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Face_GRP/PunisherPriest:model:Mouth_GRP/PunisherPriest:model:Tongue
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Face_GRP/PunisherPriest:model:Mouth_GRP/PunisherPriest:model:UpperTeeth
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Face_GRP/PunisherPriest:model:R_eye
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Jewels_GRP
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Jewels_GRP/PunisherPriest:model:L_bracelet1
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Jewels_GRP/PunisherPriest:model:L_bracelet2
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Jewels_GRP/PunisherPriest:model:L_ring1
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Jewels_GRP/PunisherPriest:model:L_ring2
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Jewels_GRP/PunisherPriest:model:L_ring3
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Jewels_GRP/PunisherPriest:model:R_bracelet
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Jewels_GRP/PunisherPriest:model:R_ring1
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Jewels_GRP/PunisherPriest:model:R_ring2
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Jewels_GRP/PunisherPriest:model:R_ring3
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Suit_GRP
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Suit_GRP/PunisherPriest:model:belt
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Suit_GRP/PunisherPriest:model:belt_cloth
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Suit_GRP/PunisherPriest:model:cape
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Suit_GRP/PunisherPriest:model:cloth
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Suit_GRP/PunisherPriest:model:Collar
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Suit_GRP/PunisherPriest:model:hat
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Suit_GRP/PunisherPriest:model:lace
+    m_Weight: 1
+  - m_Path: PunisherPriest:Group/PunisherPriest:Geometry/PunisherPriest:model:geo/PunisherPriest:model:Suit_GRP/PunisherPriest:model:Shoes
+    m_Weight: 1
+  - m_Path: PunisherPriest:root
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:ik_foot_root
+    m_Weight: 0
+  - m_Path: PunisherPriest:root/PunisherPriest:ik_foot_root/PunisherPriest:ik_foot_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:ik_foot_root/PunisherPriest:ik_foot_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:ik_hand_root
+    m_Weight: 0
+  - m_Path: PunisherPriest:root/PunisherPriest:ik_hand_root/PunisherPriest:ik_hand_gun
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:ik_hand_root/PunisherPriest:ik_hand_gun/PunisherPriest:ik_hand_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:ik_hand_root/PunisherPriest:ik_hand_gun/PunisherPriest:ik_hand_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:index_01_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:index_01_l/PunisherPriest:index_02_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:index_01_l/PunisherPriest:index_02_l/PunisherPriest:index_03_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:middle_01_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:middle_01_l/PunisherPriest:middle_02_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:middle_01_l/PunisherPriest:middle_02_l/PunisherPriest:middle_03_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:pinky_01_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:pinky_01_l/PunisherPriest:pinky_02_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:pinky_01_l/PunisherPriest:pinky_02_l/PunisherPriest:pinky_03_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:ring_01_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:ring_01_l/PunisherPriest:ring_02_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:ring_01_l/PunisherPriest:ring_02_l/PunisherPriest:ring_03_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:thumb_01_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:thumb_01_l/PunisherPriest:thumb_02_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:thumb_01_l/PunisherPriest:thumb_02_l/PunisherPriest:thumb_03_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:hand_l/PunisherPriest:unrealWeapon_L
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:lowerarm_l/PunisherPriest:lowerarm_twist_01_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_l/PunisherPriest:upperarm_l/PunisherPriest:upperarm_twist_01_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:index_01_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:index_01_r/PunisherPriest:index_02_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:index_01_r/PunisherPriest:index_02_r/PunisherPriest:index_03_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:middle_01_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:middle_01_r/PunisherPriest:middle_02_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:middle_01_r/PunisherPriest:middle_02_r/PunisherPriest:middle_03_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:pinky_01_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:pinky_01_r/PunisherPriest:pinky_02_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:pinky_01_r/PunisherPriest:pinky_02_r/PunisherPriest:pinky_03_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:ring_01_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:ring_01_r/PunisherPriest:ring_02_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:ring_01_r/PunisherPriest:ring_02_r/PunisherPriest:ring_03_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:thumb_01_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:thumb_01_r/PunisherPriest:thumb_02_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:thumb_01_r/PunisherPriest:thumb_02_r/PunisherPriest:thumb_03_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:hand_r/PunisherPriest:unrealWeapon_R
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:lowerarm_r/PunisherPriest:lowerarm_twist_01_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:clavicle_r/PunisherPriest:upperarm_r/PunisherPriest:upperarm_twist_01_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:neck_01
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:neck_01/PunisherPriest:head
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:neck_01/PunisherPriest:head/PunisherPriest:unrealEye_L
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:neck_01/PunisherPriest:head/PunisherPriest:unrealEye_R
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:neck_01/PunisherPriest:head/PunisherPriest:unrealHat_M
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:neck_01/PunisherPriest:head/PunisherPriest:unrealJaw_M
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:spine_01/PunisherPriest:spine_02/PunisherPriest:spine_03/PunisherPriest:unrealCross_M
+    m_Weight: 0
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:thigh_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:thigh_l/PunisherPriest:calf_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:thigh_l/PunisherPriest:calf_l/PunisherPriest:calf_twist_01_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:thigh_l/PunisherPriest:calf_l/PunisherPriest:foot_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:thigh_l/PunisherPriest:calf_l/PunisherPriest:foot_l/PunisherPriest:ball_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:thigh_l/PunisherPriest:thigh_twist_01_l
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:thigh_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:thigh_r/PunisherPriest:calf_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:thigh_r/PunisherPriest:calf_r/PunisherPriest:calf_twist_01_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:thigh_r/PunisherPriest:calf_r/PunisherPriest:foot_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:thigh_r/PunisherPriest:calf_r/PunisherPriest:foot_r/PunisherPriest:ball_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:thigh_r/PunisherPriest:thigh_twist_01_r
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:unrealStrap_L
+    m_Weight: 0
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:unrealStrap_L/PunisherPriest:unrealStrap1_L
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:unrealStrap_L/PunisherPriest:unrealStrap1_L/PunisherPriest:unrealStrap2_L
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:unrealStrap_L/PunisherPriest:unrealStrap1_L/PunisherPriest:unrealStrap2_L/PunisherPriest:unrealStrap3_L
+    m_Weight: 1
+  - m_Path: PunisherPriest:root/PunisherPriest:pelvis/PunisherPriest:unrealStrap_L/PunisherPriest:unrealStrap1_L/PunisherPriest:unrealStrap2_L/PunisherPriest:unrealStrap3_L/PunisherPriest:unrealStrap4_L
+    m_Weight: 1
