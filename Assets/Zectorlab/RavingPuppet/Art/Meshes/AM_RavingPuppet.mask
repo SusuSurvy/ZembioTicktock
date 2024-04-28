@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AM_RavingPuppet
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: RavingPuppet:Group
+    m_Weight: 0
+  - m_Path: RavingPuppet:Group/RavingPuppet:Geometry
+    m_Weight: 0
+  - m_Path: RavingPuppet:Group/RavingPuppet:Geometry/RavingPuppet:body
+    m_Weight: 0
+  - m_Path: RavingPuppet:Group/RavingPuppet:Geometry/RavingPuppet:boots
+    m_Weight: 0
+  - m_Path: RavingPuppet:Group/RavingPuppet:Geometry/RavingPuppet:coat
+    m_Weight: 0
+  - m_Path: RavingPuppet:Group/RavingPuppet:Geometry/RavingPuppet:eyes
+    m_Weight: 0
+  - m_Path: RavingPuppet:Group/RavingPuppet:Geometry/RavingPuppet:node
+    m_Weight: 0
+  - m_Path: RavingPuppet:Group/RavingPuppet:Geometry/RavingPuppet:polySurface2
+    m_Weight: 0
+  - m_Path: RavingPuppet:Group/RavingPuppet:Geometry/RavingPuppet:suit
+    m_Weight: 0
+  - m_Path: RavingPuppet:Group/RavingPuppet:Geometry/RavingPuppet:teeth
+    m_Weight: 0
+  - m_Path: RavingPuppet:root
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:ik_foot_root
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:ik_foot_root/RavingPuppet:ik_foot_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:ik_foot_root/RavingPuppet:ik_foot_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:ik_hand_root
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:ik_hand_root/RavingPuppet:ik_hand_gun
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:ik_hand_root/RavingPuppet:ik_hand_gun/RavingPuppet:ik_hand_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:ik_hand_root/RavingPuppet:ik_hand_gun/RavingPuppet:ik_hand_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:index_01_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:index_01_l/RavingPuppet:index_02_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:index_01_l/RavingPuppet:index_02_l/RavingPuppet:index_03_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:middle_01_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:middle_01_l/RavingPuppet:middle_02_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:middle_01_l/RavingPuppet:middle_02_l/RavingPuppet:middle_03_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:pinky_01_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:pinky_01_l/RavingPuppet:pinky_02_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:pinky_01_l/RavingPuppet:pinky_02_l/RavingPuppet:pinky_03_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:ring_01_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:ring_01_l/RavingPuppet:ring_02_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:ring_01_l/RavingPuppet:ring_02_l/RavingPuppet:ring_03_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:thumb_01_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:thumb_01_l/RavingPuppet:thumb_02_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:thumb_01_l/RavingPuppet:thumb_02_l/RavingPuppet:thumb_03_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:hand_l/RavingPuppet:unrealWeapon_L
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:lowerarm_l/RavingPuppet:lowerarm_twist_01_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_l/RavingPuppet:upperarm_l/RavingPuppet:upperarm_twist_01_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:index_01_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:index_01_r/RavingPuppet:index_02_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:index_01_r/RavingPuppet:index_02_r/RavingPuppet:index_03_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:middle_01_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:middle_01_r/RavingPuppet:middle_02_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:middle_01_r/RavingPuppet:middle_02_r/RavingPuppet:middle_03_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:pinky_01_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:pinky_01_r/RavingPuppet:pinky_02_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:pinky_01_r/RavingPuppet:pinky_02_r/RavingPuppet:pinky_03_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:ring_01_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:ring_01_r/RavingPuppet:ring_02_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:ring_01_r/RavingPuppet:ring_02_r/RavingPuppet:ring_03_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:thumb_01_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:thumb_01_r/RavingPuppet:thumb_02_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:thumb_01_r/RavingPuppet:thumb_02_r/RavingPuppet:thumb_03_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:hand_r/RavingPuppet:unrealWeapon_R
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:lowerarm_r/RavingPuppet:lowerarm_twist_01_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:clavicle_r/RavingPuppet:upperarm_r/RavingPuppet:upperarm_twist_01_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:neck_01
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:neck_01/RavingPuppet:head
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:spine_01/RavingPuppet:spine_02/RavingPuppet:spine_03/RavingPuppet:neck_01/RavingPuppet:head/RavingPuppet:unrealTwist_M
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:thigh_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:thigh_l/RavingPuppet:calf_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:thigh_l/RavingPuppet:calf_l/RavingPuppet:calf_twist_01_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:thigh_l/RavingPuppet:calf_l/RavingPuppet:foot_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:thigh_l/RavingPuppet:calf_l/RavingPuppet:foot_l/RavingPuppet:ball_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:thigh_l/RavingPuppet:thigh_twist_01_l
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:thigh_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:thigh_r/RavingPuppet:calf_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:thigh_r/RavingPuppet:calf_r/RavingPuppet:calf_twist_01_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:thigh_r/RavingPuppet:calf_r/RavingPuppet:foot_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:thigh_r/RavingPuppet:calf_r/RavingPuppet:foot_r/RavingPuppet:ball_r
+    m_Weight: 1
+  - m_Path: RavingPuppet:root/RavingPuppet:pelvis/RavingPuppet:thigh_r/RavingPuppet:thigh_twist_01_r
+    m_Weight: 1
