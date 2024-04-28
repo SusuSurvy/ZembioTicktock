@@ -1,0 +1,1144 @@
+fileFormatVersion: 2
+guid: 1ccb637277ace2f41988e63be45192c6
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Attack_01
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Attack_01
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 2
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: PunisherPriest:pelvis
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:thigh_l
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:thigh_r
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:calf_l
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:calf_r
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:foot_l
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:foot_r
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:spine_01
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:spine_02
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:neck_01
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:clavicle_l
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:clavicle_r
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:upperarm_l
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:upperarm_r
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:lowerarm_l
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:lowerarm_r
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:hand_l
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:hand_r
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:ball_l
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:ball_r
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:unrealEye_L
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:unrealEye_R
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:unrealJaw_M
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:thumb_01_l
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:thumb_02_l
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:thumb_03_l
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:index_01_l
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:index_02_l
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:index_03_l
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:middle_01_l
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:middle_02_l
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:middle_03_l
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:ring_01_l
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:ring_02_l
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:ring_03_l
+      humanName: Left Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:pinky_01_l
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:pinky_02_l
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:pinky_03_l
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:thumb_01_r
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:thumb_02_r
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:thumb_03_r
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:index_01_r
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:index_02_r
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:index_03_r
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:middle_01_r
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:middle_02_r
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:middle_03_r
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:ring_01_r
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:ring_02_r
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:ring_03_r
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:pinky_01_r
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:pinky_02_r
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:pinky_03_r
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: PunisherPriest:spine_03
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: SK_PunisherPriest(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:Group
+      parentName: SK_PunisherPriest(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:Geometry
+      parentName: PunisherPriest:Group
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:geo
+      parentName: PunisherPriest:Geometry
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:body
+      parentName: PunisherPriest:model:geo
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:Face_GRP
+      parentName: PunisherPriest:model:geo
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:Mouth_GRP
+      parentName: PunisherPriest:model:Face_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:UpperTeeth
+      parentName: PunisherPriest:model:Mouth_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:LowerTeeth
+      parentName: PunisherPriest:model:Mouth_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:Tongue
+      parentName: PunisherPriest:model:Mouth_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:L_eye
+      parentName: PunisherPriest:model:Face_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:R_eye
+      parentName: PunisherPriest:model:Face_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:eyelashes
+      parentName: PunisherPriest:model:Face_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:eyebrows
+      parentName: PunisherPriest:model:Face_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:hair
+      parentName: PunisherPriest:model:Face_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:Suit_GRP
+      parentName: PunisherPriest:model:geo
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:cloth
+      parentName: PunisherPriest:model:Suit_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:Collar
+      parentName: PunisherPriest:model:Suit_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:cape
+      parentName: PunisherPriest:model:Suit_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:lace
+      parentName: PunisherPriest:model:Suit_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:belt
+      parentName: PunisherPriest:model:Suit_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:belt_cloth
+      parentName: PunisherPriest:model:Suit_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:Shoes
+      parentName: PunisherPriest:model:Suit_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:hat
+      parentName: PunisherPriest:model:Suit_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:Jewels_GRP
+      parentName: PunisherPriest:model:geo
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:L_bracelet1
+      parentName: PunisherPriest:model:Jewels_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:R_ring2
+      parentName: PunisherPriest:model:Jewels_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:R_bracelet
+      parentName: PunisherPriest:model:Jewels_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:R_ring3
+      parentName: PunisherPriest:model:Jewels_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:L_ring1
+      parentName: PunisherPriest:model:Jewels_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:L_ring3
+      parentName: PunisherPriest:model:Jewels_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:L_ring2
+      parentName: PunisherPriest:model:Jewels_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:L_bracelet2
+      parentName: PunisherPriest:model:Jewels_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:model:R_ring1
+      parentName: PunisherPriest:model:Jewels_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:root
+      parentName: SK_PunisherPriest(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1.0012472, y: 1.0012472, z: 1.0012472}
+    - name: PunisherPriest:ik_foot_root
+      parentName: PunisherPriest:root
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ik_foot_l
+      parentName: PunisherPriest:ik_foot_root
+      position: {x: -0.1707627, y: 0.080721274, z: 0.13465731}
+      rotation: {x: 0.020530319, y: 0.71223336, z: -0.011723512, w: 0.7015445}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ik_foot_r
+      parentName: PunisherPriest:ik_foot_root
+      position: {x: 0.17076288, y: 0.08072148, z: 0.13465573}
+      rotation: {x: 0.70154446, y: 0.011724248, z: 0.71223336, w: -0.020531043}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ik_hand_root
+      parentName: PunisherPriest:root
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ik_hand_gun
+      parentName: PunisherPriest:ik_hand_root
+      position: {x: 0.56646097, y: 0.0033541175, z: 1.1167965}
+      rotation: {x: 0.6188495, y: 0.06954111, z: -0.38913614, w: 0.6787948}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ik_hand_l
+      parentName: PunisherPriest:ik_hand_gun
+      position: {x: -0.77885425, y: -0.6960191, z: 0.438695}
+      rotation: {x: 0.68747425, y: 0.61435795, z: -0.38722545, w: -0.00000030318785}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ik_hand_r
+      parentName: PunisherPriest:ik_hand_gun
+      position: {x: 3.5527135e-16, y: 0, z: 3.5527136e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:pelvis
+      parentName: PunisherPriest:root
+      position: {x: -2.2889489e-17, y: -0.022596369, z: 0.9945279}
+      rotation: {x: -0.010767704, y: 0.7070248, z: -0.010767704, w: 0.7070248}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:unrealStrap_L
+      parentName: PunisherPriest:pelvis
+      position: {x: -0.08524411, y: -0.24187198, z: -0.19276966}
+      rotation: {x: -0.009847296, y: 0.9474914, z: 0.31962103, w: 0.0023595723}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:unrealStrap1_L
+      parentName: PunisherPriest:unrealStrap_L
+      position: {x: -0.11602161, y: 3.5527135e-16, z: -4.6629365e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:unrealStrap2_L
+      parentName: PunisherPriest:unrealStrap1_L
+      position: {x: -0.11602161, y: -4.2632563e-16, z: -3.5527136e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:unrealStrap3_L
+      parentName: PunisherPriest:unrealStrap2_L
+      position: {x: -0.11602161, y: -1.4210854e-16, z: -3.1086244e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:unrealStrap4_L
+      parentName: PunisherPriest:unrealStrap3_L
+      position: {x: -0.11602161, y: -2.1316282e-16, z: -3.819167e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:thigh_l
+      parentName: PunisherPriest:pelvis
+      position: {x: 0.06768481, y: 0.033872347, z: -0.14604037}
+      rotation: {x: -0.011955343, y: 0.042896364, z: 0.027332984, w: 0.99863404}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:thigh_twist_01_l
+      parentName: PunisherPriest:thigh_l
+      position: {x: 0.19263929, y: 1.6824259e-10, z: 3.637197e-12}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:calf_l
+      parentName: PunisherPriest:thigh_l
+      position: {x: 0.38527858, y: 3.3648517e-10, z: 7.2744298e-12}
+      rotation: {x: 0.000000012738431, y: 6.840736e-10, z: 0.05362137, w: 0.9985613}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:calf_twist_01_l
+      parentName: PunisherPriest:calf_l
+      position: {x: 0.22120568, y: 1.9374231e-10, z: 2.3428724e-12}
+      rotation: {x: 1.4629396e-10, y: 0.0000000013582862, z: 7.2878265e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:foot_l
+      parentName: PunisherPriest:calf_l
+      position: {x: 0.44241136, y: 3.8748466e-10, z: 4.6858515e-12}
+      rotation: {x: 0.03375972, y: -0.045236904, z: -0.06456475, w: 0.9963159}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ball_l
+      parentName: PunisherPriest:foot_l
+      position: {x: 0.10012246, y: -0.10878131, z: -0.0000000012460245}
+      rotation: {x: 0.0066130618, y: 0.028320499, z: 0.68277174, w: 0.7300527}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:spine_01
+      parentName: PunisherPriest:pelvis
+      position: {x: -0.17426933, y: 6.217249e-17, z: 1.4222314e-16}
+      rotation: {x: 1.3287978e-15, y: -9.6091606e-17, z: -0.07212635, w: 0.9973955}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:spine_02
+      parentName: PunisherPriest:spine_01
+      position: {x: -0.14981283, y: 2.1316282e-16, z: -2.2073043e-16}
+      rotation: {x: 1.3317586e-15, y: -3.6829932e-17, z: -0.027644545, w: 0.9996179}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:spine_03
+      parentName: PunisherPriest:spine_02
+      position: {x: -0.17131798, y: -6.0396133e-16, z: 5.9401027e-18}
+      rotation: {x: 1.0992047e-15, y: 1.5602672e-16, z: 0.14053637, w: 0.9900755}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:unrealCross_M
+      parentName: PunisherPriest:spine_03
+      position: {x: -0.045530293, y: -0.18321475, z: -5.6937687e-16}
+      rotation: {x: 0.34940526, y: 0.9369717, z: -3.597807e-17, w: -7.876787e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:clavicle_l
+      parentName: PunisherPriest:spine_03
+      position: {x: -0.08566574, y: 0.03390612, z: -0.043181486}
+      rotation: {x: 0.0063142134, y: -0.8074111, z: -0.003791487, w: 0.58994335}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:upperarm_l
+      parentName: PunisherPriest:clavicle_l
+      position: {x: -0.21082267, y: 0.000000018430693, z: -1.7053025e-15}
+      rotation: {x: -0.0064615943, y: 0.12586184, z: 0.0047352267, w: 0.99201554}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:upperarm_twist_01_l
+      parentName: PunisherPriest:upperarm_l
+      position: {x: -0.13252304, y: 0.00000001158542, z: -3.410605e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:lowerarm_l
+      parentName: PunisherPriest:upperarm_l
+      position: {x: -0.2650461, y: 0.00000002317084, z: -6.82121e-15}
+      rotation: {x: -0.002132768, y: 0.018741425, z: 0.040135458, w: 0.9990163}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:lowerarm_twist_01_l
+      parentName: PunisherPriest:lowerarm_l
+      position: {x: -0.15855327, y: 0.000000013861167, z: 0.0000000031144027}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:hand_l
+      parentName: PunisherPriest:lowerarm_l
+      position: {x: -0.31710654, y: 0.000000027722335, z: 0.000000006228807}
+      rotation: {x: -0.70634997, y: 0.032681696, z: -0.032734066, w: 0.70634985}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:unrealWeapon_L
+      parentName: PunisherPriest:hand_l
+      position: {x: -0.110044055, y: 0.059034612, z: 0.003945453}
+      rotation: {x: -0.20800729, y: 0.6923096, z: 0.20674407, w: 0.65931576}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:middle_01_l
+      parentName: PunisherPriest:hand_l
+      position: {x: -0.11220467, y: 2.2737367e-15, z: 0.000000009809245}
+      rotation: {x: -0.022318792, y: 0.010054237, z: -0.08053883, w: 0.99645084}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:middle_02_l
+      parentName: PunisherPriest:middle_01_l
+      position: {x: -0.04927988, y: -1.4210854e-15, z: 0.000000004308184}
+      rotation: {x: -0.00032629422, y: -0.00009529845, z: -0.04080952, w: 0.9991669}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:middle_03_l
+      parentName: PunisherPriest:middle_02_l
+      position: {x: -0.03720433, y: -5.684342e-16, z: 0.0000000032525058}
+      rotation: {x: -0.00043466847, y: 0.000078708945, z: -0.082679704, w: 0.9965761}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:thumb_01_l
+      parentName: PunisherPriest:hand_l
+      position: {x: -0.024129028, y: 0.027896466, z: -0.029671393}
+      rotation: {x: 0.38740256, y: -0.35945138, z: 0.09249638, w: 0.84389484}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:thumb_02_l
+      parentName: PunisherPriest:thumb_01_l
+      position: {x: -0.050427243, y: -1.9895197e-15, z: 0.0000000044084913}
+      rotation: {x: -2.9018253e-11, y: 0.0000000010954309, z: 0.026480976, w: 0.99964935}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:thumb_03_l
+      parentName: PunisherPriest:thumb_02_l
+      position: {x: -0.040313702, y: -1.4210854e-16, z: 0.00000000361269}
+      rotation: {x: 0.0004397087, y: 0.017083678, z: -0.025726251, w: 0.999523}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:index_01_l
+      parentName: PunisherPriest:hand_l
+      position: {x: -0.10541323, y: 0.007981362, z: -0.030602867}
+      rotation: {x: -0.0019088449, y: 0.009918261, z: -0.060062595, w: 0.99814355}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:index_02_l
+      parentName: PunisherPriest:index_01_l
+      position: {x: -0.051842794, y: 0, z: 0.0000000045322412}
+      rotation: {x: 0.0006190338, y: 0.001382242, z: -0.037149858, w: 0.99930865}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:index_03_l
+      parentName: PunisherPriest:index_02_l
+      position: {x: -0.03551064, y: 5.684342e-16, z: 0.000000003104439}
+      rotation: {x: 0.013388007, y: -0.0028917664, z: 0.040374942, w: 0.99909073}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ring_01_l
+      parentName: PunisherPriest:hand_l
+      position: {x: -0.108762294, y: 0.005633229, z: 0.031391237}
+      rotation: {x: -0.121123105, y: 0.027640566, z: -0.07720716, w: 0.9892443}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ring_02_l
+      parentName: PunisherPriest:ring_01_l
+      position: {x: -0.048954304, y: -2.2737367e-15, z: 0.0000000042797215}
+      rotation: {x: 0.0023324243, y: -0.0001371427, z: -0.036186706, w: 0.9993424}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ring_03_l
+      parentName: PunisherPriest:ring_02_l
+      position: {x: -0.034248766, y: 1.2789769e-15, z: 0.0000000029941218}
+      rotation: {x: -0.004830239, y: 0.00018384063, z: -0.044995368, w: 0.9989755}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:pinky_01_l
+      parentName: PunisherPriest:hand_l
+      position: {x: -0.106084116, y: 0.021269755, z: 0.058996987}
+      rotation: {x: -0.11073052, y: 0.026217785, z: -0.07811459, w: 0.990429}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:pinky_02_l
+      parentName: PunisherPriest:pinky_01_l
+      position: {x: -0.04284253, y: -5.684342e-16, z: 0.0000000037454124}
+      rotation: {x: -0.0027693636, y: -0.0017161486, z: -0.038695756, w: 0.99924576}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:pinky_03_l
+      parentName: PunisherPriest:pinky_02_l
+      position: {x: -0.027852247, y: -2.842171e-16, z: 0.0000000024349212}
+      rotation: {x: -0.01835597, y: -0.0027724511, z: -0.08497004, w: 0.9962106}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:neck_01
+      parentName: PunisherPriest:spine_03
+      position: {x: -0.14587784, y: -1.4210854e-16, z: -6.2077907e-16}
+      rotation: {x: 1.3114261e-15, y: 2.3473173e-16, z: 0.17618962, w: 0.9843563}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:head
+      parentName: PunisherPriest:neck_01
+      position: {x: -0.082729355, y: 1.4210854e-16, z: -8.273547e-17}
+      rotation: {x: 1.0892199e-15, y: -2.1493093e-16, z: -0.19359256, w: 0.981082}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:unrealHat_M
+      parentName: PunisherPriest:head
+      position: {x: -0.14626257, y: 0.009104964, z: 7.176931e-16}
+      rotation: {x: 0.9942607, y: -0.106984444, z: -7.657035e-16, w: -1.4397703e-16}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:unrealEye_R
+      parentName: PunisherPriest:head
+      position: {x: -0.103811376, y: -0.058306783, z: 0.03372239}
+      rotation: {x: 0.00000015878643, y: -0.000000019289404, z: 0.7322674, w: 0.6810173}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:unrealEye_L
+      parentName: PunisherPriest:head
+      position: {x: -0.103811376, y: -0.058306783, z: -0.03372239}
+      rotation: {x: -0.00000015878643, y: 0.00000001928941, z: 0.7322674, w: 0.6810173}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:unrealJaw_M
+      parentName: PunisherPriest:head
+      position: {x: -0.038644936, y: -0.018699009, z: 2.8738845e-17}
+      rotation: {x: 0.5772039, y: 0.8166, z: -1.4658785e-17, w: -8.5345875e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:clavicle_r
+      parentName: PunisherPriest:spine_03
+      position: {x: -0.08566574, y: 0.03390612, z: 0.043181486}
+      rotation: {x: 0.8074111, y: 0.006314321, z: 0.58994335, w: 0.0037914086}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:upperarm_r
+      parentName: PunisherPriest:clavicle_r
+      position: {x: 0.21082267, y: -0.000000018430692, z: 1.7053025e-15}
+      rotation: {x: -0.006461577, y: 0.12586197, z: 0.0047353976, w: 0.9920155}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:lowerarm_r
+      parentName: PunisherPriest:upperarm_r
+      position: {x: 0.2650461, y: -0.00000002317084, z: 6.536993e-15}
+      rotation: {x: -0.0021327499, y: 0.018741671, z: 0.040135007, w: 0.9990162}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:hand_r
+      parentName: PunisherPriest:lowerarm_r
+      position: {x: 0.31710654, y: -0.000000027722335, z: -0.0000000062288064}
+      rotation: {x: -0.70634997, y: 0.032681696, z: -0.032734066, w: 0.70634985}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:unrealWeapon_R
+      parentName: PunisherPriest:hand_r
+      position: {x: 0.110044055, y: -0.059034612, z: -0.003945453}
+      rotation: {x: -0.20800738, y: 0.6923095, z: 0.20674416, w: 0.6593158}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ring_01_r
+      parentName: PunisherPriest:hand_r
+      position: {x: 0.108762294, y: -0.005633229, z: -0.031391237}
+      rotation: {x: -0.121122986, y: 0.027639985, z: -0.077204436, w: 0.9892446}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ring_02_r
+      parentName: PunisherPriest:ring_01_r
+      position: {x: 0.048954304, y: 1.1368684e-15, z: -0.0000000042797215}
+      rotation: {x: 0.0023326261, y: -0.00013814484, z: -0.03618706, w: 0.9993423}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ring_03_r
+      parentName: PunisherPriest:ring_02_r
+      position: {x: 0.034248766, y: -1.2789769e-15, z: -0.000000002994122}
+      rotation: {x: -0.004830239, y: 0.00018384063, z: -0.044995368, w: 0.9989755}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:pinky_01_r
+      parentName: PunisherPriest:hand_r
+      position: {x: 0.106084116, y: -0.021269755, z: -0.058996987}
+      rotation: {x: -0.11073052, y: 0.026217645, z: -0.07811399, w: 0.99042904}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:pinky_02_r
+      parentName: PunisherPriest:pinky_01_r
+      position: {x: 0.04284253, y: 8.5265126e-16, z: -0.0000000037454124}
+      rotation: {x: -0.0027693862, y: -0.0017159885, z: -0.038696703, w: 0.99924564}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:pinky_03_r
+      parentName: PunisherPriest:pinky_02_r
+      position: {x: 0.027852247, y: 2.842171e-16, z: -0.0000000024349207}
+      rotation: {x: -0.01835597, y: -0.0027724511, z: -0.08497004, w: 0.9962106}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:middle_01_r
+      parentName: PunisherPriest:hand_r
+      position: {x: 0.11220467, y: -1.9895197e-15, z: -0.000000009809245}
+      rotation: {x: -0.022318827, y: 0.010054556, z: -0.080537826, w: 0.996451}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:middle_02_r
+      parentName: PunisherPriest:middle_01_r
+      position: {x: 0.04927988, y: 1.9895197e-15, z: -0.000000004308184}
+      rotation: {x: -0.000326257, y: -0.000095122436, z: -0.040804375, w: 0.9991671}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:middle_03_r
+      parentName: PunisherPriest:middle_02_r
+      position: {x: 0.03720433, y: 2.842171e-16, z: -0.0000000032525058}
+      rotation: {x: -0.00043466847, y: 0.000078708945, z: -0.082679704, w: 0.9965761}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:thumb_01_r
+      parentName: PunisherPriest:hand_r
+      position: {x: 0.024129028, y: -0.027896466, z: 0.029671393}
+      rotation: {x: 0.38740245, y: -0.35945043, z: 0.09249663, w: 0.8438952}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:thumb_02_r
+      parentName: PunisherPriest:thumb_01_r
+      position: {x: 0.050427243, y: 1.9895197e-15, z: -0.0000000044084905}
+      rotation: {x: -2.9018253e-11, y: 0.0000000010954309, z: 0.026480976, w: 0.99964935}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:thumb_03_r
+      parentName: PunisherPriest:thumb_02_r
+      position: {x: 0.040313702, y: -4.2632563e-16, z: -0.00000000361269}
+      rotation: {x: 0.0004397087, y: 0.017083678, z: -0.025726251, w: 0.999523}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:index_01_r
+      parentName: PunisherPriest:hand_r
+      position: {x: 0.10541323, y: -0.007981362, z: 0.030602867}
+      rotation: {x: -0.0019088449, y: 0.009918261, z: -0.060062595, w: 0.99814355}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:index_02_r
+      parentName: PunisherPriest:index_01_r
+      position: {x: 0.051842794, y: 1.4210854e-15, z: -0.0000000045322412}
+      rotation: {x: 0.00061887637, y: 0.0013824848, z: -0.03714446, w: 0.99930876}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:index_03_r
+      parentName: PunisherPriest:index_02_r
+      position: {x: 0.03551064, y: -1.9895197e-15, z: -0.000000003104439}
+      rotation: {x: 0.013388007, y: -0.0028917664, z: 0.040374942, w: 0.99909073}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:lowerarm_twist_01_r
+      parentName: PunisherPriest:lowerarm_r
+      position: {x: 0.15855327, y: -0.000000013861167, z: -0.0000000031144036}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:upperarm_twist_01_r
+      parentName: PunisherPriest:upperarm_r
+      position: {x: 0.13252304, y: -0.00000001158542, z: 2.8421708e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:thigh_r
+      parentName: PunisherPriest:pelvis
+      position: {x: 0.06768481, y: 0.033872347, z: 0.14604037}
+      rotation: {x: -0.042896368, y: -0.011955346, z: 0.99863404, w: -0.027333042}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:thigh_twist_01_r
+      parentName: PunisherPriest:thigh_r
+      position: {x: -0.19263929, y: -1.5455509e-10, z: -3.6372682e-12}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:calf_r
+      parentName: PunisherPriest:thigh_r
+      position: {x: -0.38527858, y: -3.0911018e-10, z: -7.274643e-12}
+      rotation: {x: 0, y: 0, z: 0.05362137, w: 0.9985613}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:calf_twist_01_r
+      parentName: PunisherPriest:calf_r
+      position: {x: -0.22120568, y: -2.1052014e-10, z: -4.152625e-12}
+      rotation: {x: 0, y: 0, z: 1.7347235e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:foot_r
+      parentName: PunisherPriest:calf_r
+      position: {x: -0.44241136, y: -4.2104029e-10, z: -8.30525e-12}
+      rotation: {x: 0.03375972, y: -0.045236908, z: -0.06456476, w: 0.9963159}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PunisherPriest:ball_r
+      parentName: PunisherPriest:foot_r
+      position: {x: -0.10012246, y: 0.1087813, z: 7.5187245e-10}
+      rotation: {x: 0.0066130725, y: 0.028320508, z: 0.68277174, w: 0.7300527}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: PunisherPriest:root
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 56933c234f9174b48abf2d247260f69e, type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
