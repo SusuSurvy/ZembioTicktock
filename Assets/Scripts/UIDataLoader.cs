@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Management;
 using System.Management.Instrumentation;
+using System.Text;
 using sysDia = System.Diagnostics;
 
 public class UIDataLoader : MonoBehaviour
 {
     // Start is called before the first frame update
     public UIDataItem ItemObj;
+    public Text Text;
     public static Dictionary<string, string> GameNameConst = new Dictionary<string, string>()
     {
         ["UserHp"] = "玩家血量",
@@ -85,11 +87,10 @@ public class UIDataLoader : MonoBehaviour
 
     private void OnClick()
     {
-        GetCpuIDNew();
-       // string cpuId = GetCpuID();
-       // Debug.LogError(cpuId);
-        // SaveDataAndEnterGame();
-        // SceneManager.LoadScene(1);
+        Text.text = GetMotherboardID();
+        SaveDataAndEnterGame();
+         SceneManager.LoadScene(1);
+        //StartCoroutine(IEConfigPwd());
     }
     
     public static string GetCpuID()
@@ -121,7 +122,7 @@ public class UIDataLoader : MonoBehaviour
             string str = Application.streamingAssetsPath + "/GetSerialNumber.exe";
             Debug.LogError(str);
             sysDia.Process.Start(Application.streamingAssetsPath + "/GetSerialNumber.exe");
-            StartCoroutine(IEConfigPwd());
+         
           
         }
         else
@@ -131,31 +132,87 @@ public class UIDataLoader : MonoBehaviour
         }
     }
     
-    private IEnumerator IEConfigPwd()
+    public string GetMotherboardID()
     {
-        string pwdPath = "pwd.txt";
-        Debug.Log("检测正在获取写入");
-        //当有这个文档的时候
-        yield return new WaitUntil(() => File.Exists(pwdPath));
- 
-        Debug.Log("写入成功");
-        Debug.Log("开始读取");
-        string pwdstr = File.ReadAllText(pwdPath);
-        bool havaID=true;
-        //这里自己做验证
-        //。。。。。
-        //。。。。。
-        if (havaID)
+        string motherboardID = "";
+        try
         {
-            PlayerPrefs.SetString("xxxxx", pwdstr);
-            Debug.Log("获取成功！！！！！");
-            File.Delete(pwdPath);
-           
+            // 设置启动进程的参数
+            sysDia.ProcessStartInfo procStartInfo = new sysDia.ProcessStartInfo("cmd", "/c wmic baseboard get SerialNumber")
+            {
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            // 启动进程以执行命令
+            using (sysDia.Process process = sysDia.Process.Start(procStartInfo))
+            {
+                // 读取命令的标准输出
+                motherboardID = process.StandardOutput.ReadToEnd();
+                process.WaitForExit();
+            }
+
+            //处理输出的字符串，提取主板序列号
+            string[] lines = motherboardID.Split('\n');
+            if (lines.Length >= 2)
+            {
+                motherboardID = lines[1].Trim(); // 通常序列号位于第二行
+            }
+            else
+            {
+                Debug.LogError("无法获取主板序列号。");
+                motherboardID = "";
+            }
         }
-        else
+        catch (System.Exception e)
         {
-            Debug.Log("设备类型不一致！！！！！");
+            Debug.LogError("获取主板序列号时出错: " + e.Message);
         }
+
+        return motherboardID;
+    }
+
+
+    string GetCPUSerialNumber()
+    {
+        var process = new sysDia.Process
+        {
+            StartInfo = new sysDia.ProcessStartInfo
+            {
+                FileName = "wmic",
+                Arguments = "cpu get ProcessorId",
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                CreateNoWindow = true
+            }
+        };
+        process.Start();
+        string result = process.StandardOutput.ReadToEnd();
+        process.WaitForExit();
  
+        // 清理结果字符串并获取CPU序列号
+        string[] lines = result.Split('\n');
+        foreach (var line in lines)
+        {
+            if (line.Trim().StartsWith("ProcessorId"))
+            {
+                string[] parts = line.Split(' ');
+                foreach (var part in parts)
+                {
+                    if (!string.IsNullOrEmpty(part) && part != "ProcessorId")
+                    {
+                        return part.Trim();
+                    }
+                }
+            }
+        }
+        return "Unknown";
+    }
+    
+    private IEnumerator IEConfigPwd(string arguments = null)
+    {
+        yield return new WaitForSeconds(2f);
+       
     }
 }

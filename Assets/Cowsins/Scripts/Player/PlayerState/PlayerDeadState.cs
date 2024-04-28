@@ -7,9 +7,9 @@ public class PlayerDeadState : PlayerBaseState
         : base(currentContext, playerStateFactory) { }
 
     public override void EnterState() {
-        Debug.Log("Dead");
+        //Debug.Log("Dead");
         _ctx.GetComponent<PlayerStats>().LoseControl();
-        _ctx.GetComponent<Rigidbody>().isKinematic = true;
+        //_ctx.GetComponent<Rigidbody>().isKinematic = true;
         EnemyManager.Instance.DestroyAllEnemy();
     }
 
