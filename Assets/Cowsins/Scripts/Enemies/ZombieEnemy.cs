@@ -50,10 +50,6 @@ public class ZombieEnemy : EnemyHealth, IPoolable
             ChaseAni = "crawl";
             InGround = true;
         }
-        else if (random == 4)
-        {
-            ChaseAni = "shamble";
-        }
         else
         {
             ChaseAni = "zombieRun";

@@ -9,7 +9,7 @@ public class EnemyDieState : EnemyStateBase
     {
         _currentTime = 0;
         base.OnEnter();
-        _zombie.NavMeshAgent.enabled = false;
+        _zombie.NavMeshAgent.isStopped = true;
         _zombie.PlayAni("fallToFace");
     }
 

@@ -7,7 +7,7 @@ public class EnemyChaseState : EnemyStateBase
 {
     public override void OnEnter()
     {
-        _zombie.NavMeshAgent.enabled = true;
+        _zombie.NavMeshAgent.isStopped = false;
         base.OnEnter();
         _zombie.PlayAni(_zombie.ChaseAni);
         int random = UnityEngine.Random.Range(0, 10);
