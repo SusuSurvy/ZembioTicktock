@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Test.unity
+    guid: 8c1b2753fe2eaff429b064325c076d5a
+  - enabled: 1
     path: Assets/Abandoned_Psychiatric_Hospitals/Scenes/Demo.unity
     guid: b34a0947846960d4daf8dde04f70b1d4
   m_configObjects:
