@@ -377,7 +377,7 @@ namespace Assets.ProgressBars.Scripts
 		{
 			var multiplier = _digitsAfterComma * 10;
 			if (multiplier == 0)
-				return ((int)(number)) + _textSuffix;
+				return "任务完成" + ((int)(number)) + "%" +_textSuffix;
 			string result = ((int)(number * multiplier) / (float)multiplier).ToString(CultureInfo.InvariantCulture);
 			if (result.IndexOf(".", StringComparison.Ordinal) == -1) {
 				int i = _digitsAfterComma;
