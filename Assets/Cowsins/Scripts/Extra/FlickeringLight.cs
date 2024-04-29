@@ -17,25 +17,27 @@ public class FlickeringLight : MonoBehaviour
     void Start()
     {
         myLight = GetComponent<Light>();
-        StartCoroutine(Flicker());
-        maxIntensity = 0.8f;
-        minIntensity = 0.5f;
-        myLight.spotAngle = 48;
+      //  StartCoroutine(Flicker());
+        // maxIntensity = 0.8f;
+        // minIntensity = 0.5f;
+        // myLight.spotAngle = 48;
     }
 
     public void OpenLight()
     {
-        maxIntensity = 0.8f;
-        minIntensity = 0.5f;
-        myLight.spotAngle = 48;
+        myLight.enabled = true;
+        // maxIntensity = 0.8f;
+        // minIntensity = 0.5f;
+        // myLight.spotAngle = 48;
         SoundManager.Instance.PlaySound(openClip, 0, 0, false, 0);
     }
 
     public void CloseLight()
     {
-        maxIntensity = 0.3f;
-        minIntensity = 0.1f;
-        myLight.spotAngle = 13;
+        // maxIntensity = 0.3f;
+        // minIntensity = 0.1f;
+        // myLight.spotAngle = 13;
+        myLight.enabled = false;
         SoundManager.Instance.PlaySound(closeClip, 0, 0, false, 0);
     }
 

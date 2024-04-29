@@ -128,7 +128,7 @@ public class EnemyManager : MonoBehaviour {
         int random = targetEnemy;
         if (targetEnemy == -1)
         {
-            UnityEngine.Random.Range(0, prefabs.Count); 
+            random = UnityEngine.Random.Range(0, prefabs.Count); 
         }
         GameObject prefab = prefabs[random];
         if (poolDic[prefab.name].Count == 0) {
