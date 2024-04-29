@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -6,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Management;
 using System.Management.Instrumentation;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using sysDia = System.Diagnostics;
 
@@ -23,6 +25,8 @@ public class UIDataLoader : MonoBehaviour
 
     public Button EnterGameBtn;
     public static UIDataLoader Instance { get; private set; }
+
+    public InputField InputField;
 
     private Dictionary<string, int> GameLoadData = new Dictionary<string, int>()
     {
@@ -54,7 +58,7 @@ public class UIDataLoader : MonoBehaviour
         {
             Instance = this;
         } 
-        EnterGameBtn.onClick.AddListener(OnClick);
+        EnterGameBtn.onClick.AddListener(LoginIn);
         _items = new List<UIDataItem>();
         foreach (var info in GameLoadData)
         {
@@ -63,6 +67,8 @@ public class UIDataLoader : MonoBehaviour
             item.gameObject.transform.SetParent(this.transform);
             _items.Add(item);
         }
+
+        InputField.text = SystemInfo.deviceUniqueIdentifier.ToString();
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -87,9 +93,10 @@ public class UIDataLoader : MonoBehaviour
 
     private void OnClick()
     {
-        Text.text = GetMotherboardID();
-        SaveDataAndEnterGame();
-         SceneManager.LoadScene(1);
+        //GerServerKeycode();
+        // Text.text = GetMotherboardID();
+        // SaveDataAndEnterGame();
+        //  SceneManager.LoadScene(1);
         //StartCoroutine(IEConfigPwd());
     }
     
@@ -112,28 +119,13 @@ public class UIDataLoader : MonoBehaviour
 
         return cpuId;
     }
-
-    public  void GetCpuIDNew()
-    {
-        string id = PlayerPrefs.GetString("xxxxx");
-        if (string.IsNullOrEmpty(id))
-        {
-            Debug.Log("PlayerPrefs没有id,启动GetSerialNumber程序");
-            string str = Application.streamingAssetsPath + "/GetSerialNumber.exe";
-            Debug.LogError(str);
-            sysDia.Process.Start(Application.streamingAssetsPath + "/GetSerialNumber.exe");
-         
-          
-        }
-        else
-        {
-			
-			
-        }
-    }
     
     public string GetMotherboardID()
     {
+        if (InputField.text != "")
+        {
+            return InputField.text;
+        }
         string motherboardID = "";
         try
         {
@@ -214,5 +206,119 @@ public class UIDataLoader : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
        
+    }
+
+    public void PushKeycode()
+    {
+        string keyCode = GetMotherboardID();
+        
+    }
+
+    private void GerServerKeycode()
+    {
+        string keyCode = GetMotherboardID();
+        string cacheUrl = Application.persistentDataPath + "/" + "AstarPathFindingData.bytes";
+        string ossUrl = "10.10.5.156/100100000006330/AstarPathFindingData.bytes";
+        Oss.GetObject(ossUrl, cacheUrl, downloadUrl =>
+        {
+            if (downloadUrl != null)
+            {
+                Text.text = downloadUrl;
+                Debug.LogError(downloadUrl);
+            }
+        });
+    }
+    
+    public long GetCurrentUnixTimestampSeconds()
+    {
+        DateTime now = DateTime.UtcNow;
+        DateTime epochStart = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        long timestamp = (long)(now - epochStart).TotalSeconds;
+        return timestamp;
+    }
+    
+    public int CalculateDaysSince(long registrationTimestamp)
+    {
+        DateTime now = DateTime.UtcNow;
+        DateTime epochStart = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        DateTime registrationDate = epochStart.AddSeconds(registrationTimestamp);
+
+        TimeSpan elapsed = now - registrationDate;
+        return elapsed.Days;
+    }
+
+    // public void SignIn()
+    // {
+    //     ObjsData data = new ObjsData();
+    //     data.Kecode =  GetMotherboardID();
+    //     data.SignInTime = GetCurrentUnixTimestampSeconds();
+    //     data.PlayDay = 30;
+    //     string dataUrl =  Application.persistentDataPath + "/keycodeData.bytes" ;
+    //     File.WriteAllBytes(dataUrl, SerializeToByteArray(data));
+    //     string uploadUrl = string.Format("{0}/{1}", data.Kecode, "keycodeData.bytes");
+    //     Oss.PutObjectFromFile(uploadUrl, dataUrl, (str) =>
+    //     {
+    //         Text.text = str;
+    //     });
+    // }
+
+    private void EnterGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void LoginIn()
+    {
+        SceneManager.LoadScene(1);
+        return;
+        string keycode = GetMotherboardID();
+        string ossUrl = string.Format("{0}/{1}", keycode, "keycodeData.bytes");
+        string cacheUrl = Application.persistentDataPath + "/keycodeData.bytes";
+        Oss.GetObject(ossUrl, cacheUrl, downloadUrl =>
+        {
+            if (downloadUrl != null)
+            {
+              
+                byte[] bytes = LoadFromFile(downloadUrl);
+                BinaryFormatter formatter = new BinaryFormatter();
+                MemoryStream stream = new MemoryStream(bytes);
+                ObjsData dynamicObjData = formatter.Deserialize(stream) as ObjsData;
+                int lastDay = dynamicObjData.PlayDay - CalculateDaysSince(dynamicObjData.SignInTime);
+                if (lastDay < 0)
+                {
+                    Text.text = "您的卡密已到期，请重新注册登录" ;
+                }
+                else
+                {
+                    Text.text = "您还可以玩" + lastDay + "天，即将进入游戏" ;
+                    SceneManager.LoadScene(1);
+                }
+
+            
+            }
+            else
+            {
+                Text.text = "未查询到您的账号信息，请联系管理员注册";
+            }
+        });
+    }
+    
+    public static byte[] LoadFromFile (string path) {
+        using (var stream = new FileStream(path, FileMode.Open)) {
+            var bytes = new byte[(int)stream.Length];
+            stream.Read(bytes, 0, (int)stream.Length);
+            return bytes;
+        }
+    }
+
+
+    private byte[] SerializeToByteArray(ObjsData obj)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        using (var ms = new MemoryStream())
+        {
+            bf.Serialize(ms, obj);
+            return ms.ToArray();
+        }
     }
 }
