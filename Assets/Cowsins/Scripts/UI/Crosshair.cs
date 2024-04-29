@@ -52,7 +52,7 @@ namespace cowsins
         [Tooltip(" Color of the crosshair whenever you aim at an enemy "), SerializeField]
         private Color enemySpottedColor;
 
-        [SerializeField] private float resizeSpeed = 3f;
+        [SerializeField] private float resizeSpeed = 1f;
 
         [HideInInspector]
         public float spread;

@@ -31,7 +31,7 @@ public class SoundManager :MonoBehaviour
         src.spatialBlend = spatialBlend;
         float pitchAdded = randomPitch ? Random.Range(-pitch, pitch) : pitch; 
         src.pitch = 1 + pitchAdded;
-        src.PlayOneShot(clip); 
+        src.PlayOneShot(clip);
         yield return null; 
     }
 }

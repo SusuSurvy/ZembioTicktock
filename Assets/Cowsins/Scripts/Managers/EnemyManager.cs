@@ -23,6 +23,7 @@ public class EnemyManager : MonoBehaviour {
 
     private float _currentTime = 0;
     public PlayerMovement Player;
+    
     private void Awake() {
         if (Instance == null) {
             Instance = this;
