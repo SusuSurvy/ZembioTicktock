@@ -158,6 +158,11 @@ namespace cowsins
 
         }
 
+        public void CloseLight()
+        {
+            Player.CloseLight();
+        }
+
         public void RecoverHp()
         {
             Player.RecoverHp(10);
@@ -166,6 +171,31 @@ namespace cowsins
         public void CallEnemy()
         {
             EnemyManager.Instance.CreateEnemy(EnemyType.Any);
+        }
+        
+        public void CallEnemyDoll()
+        {
+            EnemyManager.Instance.CreateEnemy(EnemyType.Doll);
+        }
+        
+        public void CallEnemyGirl()
+        {
+            EnemyManager.Instance.CreateEnemy(EnemyType.Girl);
+        }
+        
+        public void CallEnemyFat()
+        {
+            EnemyManager.Instance.CreateEnemy(EnemyType.FatWomen);
+        }
+        
+        public void CallEnemyRemote()
+        {
+            EnemyManager.Instance.CreateEnemy(EnemyType.Remote);
+        }
+        
+        public void CallEnemyBoss()
+        {
+            EnemyManager.Instance.CreateEnemy(EnemyType.Boss);
         }
 
         
