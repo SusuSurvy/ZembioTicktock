@@ -364,9 +364,17 @@ public class PlayerMovement : MonoBehaviour
     
     public WeaponPickeable Jiatelin;
     public WeaponPickeable NormalGun;
+
+    private Vector3 heightCenter;
+    public Vector3 GetTransCenter()
+    {
+        return transform.position + heightCenter;
+    }
+    
     private void Start()
     {
-
+        BoxCollider collider = transform.GetComponent<BoxCollider>();
+        heightCenter = collider.center;
         playerScale = transform.localScale;
         canRun = true;
         canJump = true;

@@ -165,7 +165,7 @@ namespace cowsins
         
         public void CallEnemy()
         {
-            EnemyManager.Instance.CreateEnemy(EnemyType.Any);
+            EnemyManager.Instance.CreateEnemy(EnemyType.Remote);
         }
 
         

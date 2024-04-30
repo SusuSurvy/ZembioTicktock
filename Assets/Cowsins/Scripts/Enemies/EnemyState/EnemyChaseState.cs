@@ -20,9 +20,9 @@ public class EnemyChaseState : EnemyStateBase
     public override void Update(float dt)
     {
         _zombie.NavMeshAgent.destination = _player.transform.position;
-        if (_zombie.GetDistance() < 1.5f)
+        if (_zombie.GetDistance() < _zombie.GetAttackDis())
         {
-            _zombie.SetState(new EnemyAttackState(_player, _zombie));
+            _zombie.ChangeState(EnemyState.Attack);
         }
     }
 

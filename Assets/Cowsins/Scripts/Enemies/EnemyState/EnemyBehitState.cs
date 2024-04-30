@@ -34,14 +34,7 @@ public class EnemyBehitState : EnemyStateBase
         _currentTime += dt;
         if (_currentTime > 0.6f)
         {
-            if (_zombie.GetDistance() < 1.5f)
-            {
-                _zombie.SetState(new EnemyAttackState(_player, _zombie));
-            }
-            else
-            {
-                _zombie.SetState(new EnemyChaseState(_player, _zombie));
-            }
+            _zombie.ChangeState(EnemyState.Chase);
         }
     }
 }

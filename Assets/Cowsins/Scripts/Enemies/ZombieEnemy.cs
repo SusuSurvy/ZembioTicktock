@@ -4,6 +4,26 @@ using UnityEngine;
 using cowsins;
 using UnityEngine.AI;
 using System;
+
+public enum EnemyState
+{
+    Idle = 0,
+    Chase = 1,
+    Attack = 2,
+    BeAttack = 3,
+    Die = 4,
+}
+
+public enum EnemyType
+{
+    Any = 0,
+    Girl = 1,
+    FatWomen = 2,
+    Remote = 3,
+    Boss = 4,
+    Doll = 5,
+}
+
 public class ZombieEnemy : EnemyHealth, IPoolable
 {
     private Animator _animator;
@@ -18,21 +38,34 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     private Color crazylColor = new Color(255f / 255, 117f / 255, 117f / 255);
     private EnemyStateBase _currentState;
 
+    public EnemyType EnemyType;
+
     private Material _material;
+
+    protected Vector3 heightCenter;
 
     public string ChaseAni;
 
     public bool InGround = false;
+
+    public Vector3 GetTransCenter()
+    {
+        return transform.position + heightCenter;
+    }
+
     // Start is called before the first frame update
     void CreateEnemy()
     {
         InGround = false;
+        BoxCollider collider = transform.GetComponent<BoxCollider>();
+        heightCenter = collider.center;
         _material = GetComponentInChildren<SkinnedMeshRenderer>().material;
         NavMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponentInChildren<Animator>();
         NavMeshAgent.speed = originalSpeed;
         _material.color = originalColor;
         SetPosition(GetBornPos());
+        transform.LookAt(playerMovement.transform);
         GetChaseAniName();
         InitOriginalState();
     }
@@ -63,9 +96,13 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     public void SetPosition(Vector3 pos)
     {
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(pos, out hit, 100, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(pos, out hit, 100, NavMesh.AllAreas) && NavMeshAgent.CalculatePath( playerMovement.transform.position, new NavMeshPath()))
         {
             NavMeshAgent.Warp(hit.position);
+        }
+        else
+        {
+            SetPosition(GetBornPos());
         }
     }
 
@@ -84,8 +121,60 @@ public class ZombieEnemy : EnemyHealth, IPoolable
             }
         }
     }
+
+    public virtual float GetAttackDis()
+    {
+        return 1.5f;
+    }
+
+    public virtual void SetAttackState()
+    {
+        SetState(new EnemyAttackState(playerMovement, this));
+    }
     
-    public void SetState(EnemyStateBase state)
+    public virtual void SetIdleState()
+    {
+        SetState( new DollIdleState(playerMovement, this));
+    }
+    
+    public virtual void SetBeAttackState()
+    {
+        SetState( new EnemyBehitState(playerMovement, this));
+    }
+    
+    public virtual void SetChaseState()
+    {
+        SetState( new EnemyDieState(playerMovement, this));
+    }
+    
+    public virtual void SetDieState()
+    {
+        SetState( new EnemyDieState(playerMovement, this));
+    }
+
+    public void ChangeState(EnemyState state)
+    {
+        switch (state)
+        {
+            case EnemyState.Attack:
+                SetAttackState();
+                break;
+            case EnemyState.Idle:
+                SetIdleState();
+                break;
+            case EnemyState.BeAttack:
+                SetBeAttackState();
+                break;
+            case EnemyState.Die:
+                SetDieState();
+                break;
+            case EnemyState.Chase:
+                SetChaseState();
+                break;
+        }
+    }
+
+    protected void SetState(EnemyStateBase state)
     {
         _currentState?.OnExit();
         _currentState = state;

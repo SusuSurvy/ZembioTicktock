@@ -9,31 +9,24 @@ public interface IPoolable {
     void OnDespawn();
 }
 
-public enum EnemyType
-{
-    Any = 0,
-    Girl = 1,
-    FatWomen = 2,
-    Remote = 3,
-    Boss = 4,
-    Doll = 5,
-}
-
 public class EnemyManager : MonoBehaviour {
     public static EnemyManager Instance;
     // Prefab的引用
     public List<GameObject> prefabs;
 
     private List<ZombieEnemy> _enemysList = new List<ZombieEnemy>();
+    private List<Bullet> _bulletList = new List<Bullet>();
     private bool _needCreate = false;
 
     private Vector2 _leftBottom = new Vector3(-51,  -28);
     private Vector2 _rightUp = new Vector3(51,  72);
     // 对象池容器
-    private Dictionary<string, Queue<ZombieEnemy>>  poolDic = new Dictionary<string, Queue<ZombieEnemy>>();
+    private Dictionary<string, Queue<EnemyHealth>>  poolDic = new Dictionary<string, Queue<EnemyHealth>>();
 
     private float _currentTime = 0;
     public PlayerMovement Player;
+
+    public GameObject Bullet;
     
     private void Awake() {
         if (Instance == null) {
@@ -48,11 +41,15 @@ public class EnemyManager : MonoBehaviour {
     private void Reset()
     {
         poolDic.Clear();
+       
         foreach (var prefab in prefabs)
         {
-            Queue<ZombieEnemy> queue = new Queue<ZombieEnemy>();
+            Queue<EnemyHealth> queue = new Queue<EnemyHealth>();
             poolDic[prefab.name] = queue;
         }
+        Queue<EnemyHealth> bulletQueue = new Queue<EnemyHealth>();
+        poolDic[Bullet.name] = bulletQueue;
+        _bulletList.Clear();
         _enemysList.Clear();
     }
 
@@ -116,7 +113,7 @@ public class EnemyManager : MonoBehaviour {
         ZombieEnemy enemy = Spawn(enemyType);
        
     }
-
+    
     // 生成对象的方法
 
     public ZombieEnemy Spawn(EnemyType enemyType) {
@@ -126,12 +123,33 @@ public class EnemyManager : MonoBehaviour {
         {
             case EnemyType.Any:
                 index = UnityEngine.Random.Range(0, prefabs.Count -1); //不能随机生成人偶
+                switch (index)
+                {
+                    case 0:
+                        enemyType = EnemyType.Girl;
+                        break;
+                    case 1:
+                        enemyType = EnemyType.FatWomen;
+                        break;
+                    case 2:
+                        enemyType = EnemyType.Remote;
+                        break;
+                    case 3:
+                        enemyType = EnemyType.Boss;
+                        break;
+                    case 4:
+                        enemyType = EnemyType.Doll;
+                        break;
+                }
                 break;
             case EnemyType.Girl:
                 index = 0;
                 break;
             case EnemyType.Doll:
                 index = 3;
+                break;
+            case  EnemyType.Remote:
+                index = 2;
                 break;
         }
       
@@ -141,8 +159,10 @@ public class EnemyManager : MonoBehaviour {
             obj.playerMovement = Player;
             obj.name = prefab.name;
         } else {
-            obj = poolDic[prefab.name].Dequeue();
+            EnemyHealth enemyObj = poolDic[prefab.name].Dequeue();
+            obj = enemyObj.GetComponent<ZombieEnemy>();
         }
+        obj.EnemyType = enemyType;
         obj.OnSpawn();
         _enemysList.Add(obj);
         return obj;
@@ -181,4 +201,34 @@ public class EnemyManager : MonoBehaviour {
             enemy.CrazyEnemy();
         }
     }
+
+    public void CreatBullet(Vector3 pos)
+    {
+        Bullet bt = SpawnBullet();
+        bt.transform.position = pos;
+        bt.SetTarget(Player);
+    }
+
+    public void DestroyBullet(Bullet bullet)
+    {
+        bullet.gameObject.SetActive(false);
+        _bulletList.Remove(bullet);
+        poolDic[bullet.name].Enqueue(bullet);
+    }
+
+    private Bullet SpawnBullet()
+    {
+        Bullet obj = null;
+        if (poolDic[Bullet.name].Count == 0) {
+            obj = Instantiate(Bullet).GetComponent<Bullet>();
+            obj.name = Bullet.name;
+        } else {
+            EnemyHealth enemyObj = poolDic[Bullet.name].Dequeue();
+            obj = enemyObj.GetComponent<Bullet>();
+        }
+        obj.gameObject.SetActive(true);
+        _bulletList.Add(obj);
+        return obj;
+    }
+
 }

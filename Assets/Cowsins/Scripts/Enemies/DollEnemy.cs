@@ -6,7 +6,7 @@ public class DollEnemy : ZombieEnemy
 {
     public override void InitOriginalState()
     {
-        SetState(new DollIdleState(playerMovement, this));
+        ChangeState(EnemyState.Idle);
     }
     
     public override Vector3 GetBornPos()
