@@ -108,21 +108,21 @@ public class EnemyManager : MonoBehaviour {
 
     
 
-    public void CreateEnemy(EnemyType enemyType)
+    public ZombieEnemy CreateEnemy(EnemyType enemyType, Vector3? bornPos = null)
     {
-        ZombieEnemy enemy = Spawn(enemyType);
-       
+        ZombieEnemy enemy = Spawn(enemyType, bornPos);
+        return enemy;
     }
     
     // 生成对象的方法
 
-    public ZombieEnemy Spawn(EnemyType enemyType) {
+    public ZombieEnemy Spawn(EnemyType enemyType, Vector3? bornPos) {
         ZombieEnemy obj;
         int index = 0;
         switch (enemyType)
         {
             case EnemyType.Any:
-                index = UnityEngine.Random.Range(0, prefabs.Count -1); //不能随机生成人偶
+                index = UnityEngine.Random.Range(0, prefabs.Count - 1); //不能随机生成人偶和boss
                 switch (index)
                 {
                     case 0:
@@ -146,10 +146,13 @@ public class EnemyManager : MonoBehaviour {
                 index = 0;
                 break;
             case EnemyType.Doll:
-                index = 3;
+                index = 4;
                 break;
             case  EnemyType.Remote:
                 index = 2;
+                break;
+            case EnemyType.Boss:
+                index = 3;
                 break;
         }
       
@@ -163,6 +166,7 @@ public class EnemyManager : MonoBehaviour {
             obj = enemyObj.GetComponent<ZombieEnemy>();
         }
         obj.EnemyType = enemyType;
+        obj.OriginalBornPos = bornPos;
         obj.OnSpawn();
         _enemysList.Add(obj);
         return obj;

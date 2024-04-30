@@ -33,7 +33,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     [Tooltip("initial enemy shield"), SerializeField]
     protected float  maxShield;
 
-    [SerializeField] private GameObject deathEffect; 
+    [SerializeField] public GameObject deathEffect; 
 
     [Tooltip("display enemy status via UI"), SerializeField] 
     protected Slider healthSlider,shieldSlider;

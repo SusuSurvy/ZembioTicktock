@@ -48,6 +48,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
 
     public bool InGround = false;
 
+    public Vector3? OriginalBornPos;
     public Vector3 GetTransCenter()
     {
         return transform.position + heightCenter;
@@ -95,6 +96,12 @@ public class ZombieEnemy : EnemyHealth, IPoolable
 
     public void SetPosition(Vector3 pos)
     {
+        if (OriginalBornPos != null)
+        {
+            pos = OriginalBornPos.Value;
+            OriginalBornPos = null;
+        }
+
         NavMeshHit hit;
         if (NavMesh.SamplePosition(pos, out hit, 100, NavMesh.AllAreas) && NavMeshAgent.CalculatePath( playerMovement.transform.position, new NavMeshPath()))
         {
