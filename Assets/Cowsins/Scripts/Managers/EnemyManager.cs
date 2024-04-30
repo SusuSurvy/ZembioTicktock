@@ -8,6 +8,17 @@ public interface IPoolable {
     void OnSpawn();
     void OnDespawn();
 }
+
+public enum EnemyType
+{
+    Any = 0,
+    Girl = 1,
+    FatWomen = 2,
+    Remote = 3,
+    Boss = 4,
+    Doll = 5,
+}
+
 public class EnemyManager : MonoBehaviour {
     public static EnemyManager Instance;
     // Prefab的引用
@@ -43,7 +54,6 @@ public class EnemyManager : MonoBehaviour {
             poolDic[prefab.name] = queue;
         }
         _enemysList.Clear();
-        CreateEnemy();
     }
 
     public void Update()
@@ -55,7 +65,7 @@ public class EnemyManager : MonoBehaviour {
         _currentTime += Time.deltaTime;
         if (_currentTime > 15)
         {
-            CreateEnemy();
+            CreateEnemy(EnemyType.Any);
             _currentTime = 0;
         }
     }
@@ -101,37 +111,31 @@ public class EnemyManager : MonoBehaviour {
 
     
 
-    public void CreateEnemy(int targetEnemy = -1)
+    public void CreateEnemy(EnemyType enemyType)
     {
-        ZombieEnemy enemy = Spawn(targetEnemy);
-        float randomX = 0;
-        float randomY = 0;
-        if (targetEnemy == 0)
-        {
-            Vector3 pos = Player.transform.position;
-             randomX = UnityEngine.Random.Range(pos.x - 10, pos.z + 10);
-             randomY = UnityEngine.Random.Range(pos.z - 10 , pos.z + 10);
-        }
-        else
-        {
-             randomX = UnityEngine.Random.Range(_leftBottom.x, _rightUp.x);
-             randomY = UnityEngine.Random.Range(_leftBottom.y, _rightUp.y);
-        }
-        enemy.SetPosition(new Vector3(randomX, 0.65f, randomY));
-        
-  
+        ZombieEnemy enemy = Spawn(enemyType);
+       
     }
 
     // 生成对象的方法
 
-    public ZombieEnemy Spawn(int targetEnemy = -1) {
+    public ZombieEnemy Spawn(EnemyType enemyType) {
         ZombieEnemy obj;
-        int random = targetEnemy;
-        if (targetEnemy == -1)
+        int index = 0;
+        switch (enemyType)
         {
-            random = UnityEngine.Random.Range(0, prefabs.Count); 
+            case EnemyType.Any:
+                index = UnityEngine.Random.Range(0, prefabs.Count -1); //不能随机生成人偶
+                break;
+            case EnemyType.Girl:
+                index = 0;
+                break;
+            case EnemyType.Doll:
+                index = 3;
+                break;
         }
-        GameObject prefab = prefabs[random];
+      
+        GameObject prefab = prefabs[index];
         if (poolDic[prefab.name].Count == 0) {
             obj = Instantiate(prefab).GetComponent<ZombieEnemy>();
             obj.playerMovement = Player;

@@ -148,12 +148,12 @@ namespace cowsins
             else if (str.Contains("8"))
             {
                 ShowDanmu(_danmuInfo["8"], texture);
-                CreateSummoning(PlayerCoordinates.transform);
+                EnemyManager.Instance.CreateEnemy(EnemyType.Doll);
             }
             else if (str.Contains("["))
             {
                 ShowDanmu(_danmuInfo["["], texture);
-                EnemyManager.Instance.CreateEnemy(0);
+                EnemyManager.Instance.CreateEnemy(EnemyType.Girl);
             }
 
         }
@@ -165,7 +165,7 @@ namespace cowsins
         
         public void CallEnemy()
         {
-            EnemyManager.Instance.CreateEnemy();
+            EnemyManager.Instance.CreateEnemy(EnemyType.Any);
         }
 
         

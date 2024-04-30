@@ -16,7 +16,7 @@ public class EnemyDieState : EnemyStateBase
     public override void Update(float dt)
     {
         _currentTime += dt;
-        if (_currentTime > 1.5f)
+        if (_currentTime > 2.5f)
         {
             _zombie.Die();
         }
