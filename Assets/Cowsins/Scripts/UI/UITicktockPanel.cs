@@ -45,6 +45,7 @@ namespace cowsins
         private Vector2 _leftBottom = new Vector3(-51, -28);
         private Vector2 _rightUp = new Vector3(51, 72);
         public Texture2D headIcon;
+        public GameObject ControllerPanel;
         private Dictionary<string, string> _danmuInfo = new Dictionary<string, string>()
         {
             ["1"] = "召唤怪物",
@@ -69,6 +70,7 @@ namespace cowsins
             if (Instance != null && Instance != this) Destroy(this);
             else Instance = this;
             danmuPool = new DanmuPool(textPrefab);
+            ControllerPanel.SetActive(false);
         }
         
         public void ShowDanmu(string text, Texture2D texture)
@@ -112,13 +114,19 @@ namespace cowsins
         {
             if (str.Contains("1"))
             {
-                ShowDanmu(_danmuInfo["1"], texture);
-                CallEnemy();
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                ControllerPanel.SetActive(true);
+                //ShowDanmu(_danmuInfo["1"], texture);
+                //CallEnemy();
             }
             else if (str.Contains("2"))
             {
-                ShowDanmu(_danmuInfo["2"], texture);
-                RecoverHp();
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                ControllerPanel.SetActive(false);
+                // ShowDanmu(_danmuInfo["2"], texture);
+                // RecoverHp();
             }
             else if (str.Contains("3"))
             {
