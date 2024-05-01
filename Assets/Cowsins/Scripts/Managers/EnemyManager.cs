@@ -27,6 +27,10 @@ public class EnemyManager : MonoBehaviour {
     public PlayerMovement Player;
 
     public GameObject Bullet;
+
+    public GameObject TransferObj;
+
+    private List<Vector3> _transferList;
     
     private void Awake() {
         if (Instance == null) {
@@ -51,6 +55,18 @@ public class EnemyManager : MonoBehaviour {
         poolDic[Bullet.name] = bulletQueue;
         _bulletList.Clear();
         _enemysList.Clear();
+        _transferList = new List<Vector3>();
+        foreach (Transform item in TransferObj.transform)
+        {
+            _transferList.Add(item.position);
+        }
+    }
+
+    public Vector3 GetRandomTransferPos()
+    {
+        int count = _transferList.Count;
+        int random = UnityEngine.Random.Range(0, count);
+        return _transferList[random];
     }
 
     public void Update()
@@ -106,7 +122,11 @@ public class EnemyManager : MonoBehaviour {
         return Vector3.zero;
     }
 
-    
+    public void CallTransferPlayer()
+    {
+        Vector3 pos = GetRandomTransferPos();
+        Player.transform.position = pos;
+    }
 
     public ZombieEnemy CreateEnemy(EnemyType enemyType, Vector3? bornPos = null)
     {
@@ -144,6 +164,9 @@ public class EnemyManager : MonoBehaviour {
                 break;
             case EnemyType.Girl:
                 index = 0;
+                break;
+            case EnemyType.FatWomen:
+                index = 1;
                 break;
             case EnemyType.Doll:
                 index = 4;

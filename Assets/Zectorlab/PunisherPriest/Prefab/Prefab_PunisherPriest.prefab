@@ -550,6 +550,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7187929664021714488, guid: 56933c234f9174b48abf2d247260f69e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7228621293912280653, guid: 56933c234f9174b48abf2d247260f69e, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -982,6 +986,7 @@ MonoBehaviour:
   AttackClip: {fileID: 0}
   CreateClip: {fileID: 0}
   NavMeshAgent: {fileID: 0}
+  EnemyType: 0
   ChaseAni: 
   InGround: 0
 --- !u!1 &3731251607039052797 stripped

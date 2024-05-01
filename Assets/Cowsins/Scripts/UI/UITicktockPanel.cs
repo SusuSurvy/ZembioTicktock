@@ -190,6 +190,11 @@ namespace cowsins
         {
             EnemyManager.Instance.CreateEnemy(EnemyType.Girl);
         }
+
+        public void CallTransferPlayer()
+        {
+            EnemyManager.Instance.CallTransferPlayer();
+        }
         
         public void CallEnemyFat()
         {

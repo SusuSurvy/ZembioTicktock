@@ -73,6 +73,8 @@ public class ZombieEnemy : EnemyHealth, IPoolable
 
     public virtual Vector3 GetBornPos()
     {
+        return EnemyManager.Instance.GetRandomTransferPos();
+        /*
         float randomX = 0;
         float randomY = 0;
       
@@ -80,6 +82,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         randomX = UnityEngine.Random.Range(pos.x - 40, pos.x + 40);
         randomY = UnityEngine.Random.Range(pos.z - 40 , pos.z + 40);
         return new Vector3(randomX, pos.y, randomY);
+        */
     }
 
     public virtual void InitOriginalState()
@@ -151,7 +154,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     
     public virtual void SetChaseState()
     {
-        SetState( new EnemyDieState(playerMovement, this));
+        SetState( new EnemyChaseState(playerMovement, this));
     }
     
     public virtual void SetDieState()
