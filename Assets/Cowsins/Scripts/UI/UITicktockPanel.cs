@@ -46,6 +46,7 @@ namespace cowsins
         private Vector2 _rightUp = new Vector3(51, 72);
         public Texture2D headIcon;
         public GameObject ControllerPanel;
+        public GameObject SmokeExplore;
         private Dictionary<string, string> _danmuInfo = new Dictionary<string, string>()
         {
             ["1"] = "召唤怪物",
@@ -226,17 +227,28 @@ namespace cowsins
             Player.OpenLight();
         }
         
-        public void TransferPlayer()
+        public void CallLoseController()
         {
-          
+            Player.LoseGontroller();
         }
         
         public void ClearAllEnemy()
         {
             EnemyManager.Instance.KillAllEnemy();
         }
-        
-        
+
+        public void CallPlayerNoDamage()
+        {
+            Player.GrantNoDamage();
+        }
+        public void CallSmokeExplore()
+        {
+            Vector3 pos = Player.transform.position;
+            GameObject obj = Instantiate(SmokeExplore);
+            obj.transform.position = pos;
+        }
+
+
         public void CrazyAllEnemy()
         {
             EnemyManager.Instance.CrazyAllEnemy();

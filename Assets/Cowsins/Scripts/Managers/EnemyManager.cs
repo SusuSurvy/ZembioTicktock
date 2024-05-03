@@ -127,7 +127,6 @@ public class EnemyManager : MonoBehaviour {
         Vector3 pos = GetRandomTransferPos();
         Player.transform.position = pos;
     }
-
     public ZombieEnemy CreateEnemy(EnemyType enemyType, Vector3? bornPos = null)
     {
         ZombieEnemy enemy = Spawn(enemyType, bornPos);

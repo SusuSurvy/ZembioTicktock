@@ -75,7 +75,10 @@ public class PlayerStats : MonoBehaviour, IDamageable
     public void Damage(float _damage)
     {
         if (player.canDash && player.dashing && player.damageProtectionWhileDashing) return;
-
+            if (player.EnterNodamageState)
+            {
+                return;
+            }
         float damage = Mathf.Abs(_damage); 
         events.OnDamage.Invoke(); // Invoke the custom event
 

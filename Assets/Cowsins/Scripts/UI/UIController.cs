@@ -131,6 +131,10 @@ public class UIController : MonoBehaviour
         if (healthStatesEffect.color != new Color(healthStatesEffect.color.r,
             healthStatesEffect.color.g,
             healthStatesEffect.color.b, 0)) healthStatesEffect.color -= new Color(0, 0, 0, Time.deltaTime * fadeOutTime);
+        else
+        {
+            fadeOutTime = 0.5f;
+        }
 
         // EXPERIENCE
         // Calculate the target XP value
@@ -173,12 +177,14 @@ public class UIController : MonoBehaviour
     public void UpdateCoinsPanel()
     {
         healthStatesEffect.color = coinCollectColor;
+        fadeOutTime = 0.1f;
     }
         
     public void UpdateXPPanel()
     {
+            fadeOutTime = 0.2f;
             healthStatesEffect.color = xpCollectColor;
-    }
+        }
         private void HealthSetUp(float health, float shield,float maxHealth, float maxShield)
     {
         if (healthSlider != null)

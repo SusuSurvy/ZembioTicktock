@@ -370,8 +370,39 @@ public class PlayerMovement : MonoBehaviour
     {
         return transform.position + heightCenter;
     }
-    
-    private void Start()
+
+    private float _loseControllerTime = 0;
+        private bool _enterLoseController = false;
+
+    public void LoseGontroller()
+    {
+            UIController.instance.UpdateXPPanel();
+            _loseControllerTime = 0;
+            _enterLoseController = true;
+        stats.LoseControl();
+    }
+        private float _loseNodamageTime = 0;
+        public bool EnterNodamageState = false;
+      
+    public void GrantController()
+    {
+        stats.GrantControl();
+            _enterLoseController = false;
+    }
+        public void GrantNoDamage()
+        {
+            UIController.instance.UpdateCoinsPanel();
+            _loseControllerTime = 0;
+            EnterNodamageState = true;
+            _loseNodamageTime = 0;
+        }
+
+        public void LoseNoDamage()
+        {
+            EnterNodamageState = false;
+        }
+
+        private void Start()
     {
         BoxCollider collider = transform.GetComponent<BoxCollider>();
         heightCenter = collider.center;
@@ -407,6 +438,27 @@ public class PlayerMovement : MonoBehaviour
 
         private void Update()
         {
+            if (_enterLoseController)
+            {
+                if (stats.controllable == true)
+                {
+                    stats.LoseControl();
+                }
+                _loseControllerTime += Time.deltaTime;
+                if (_loseControllerTime > 5f)
+                {
+                    GrantController();
+                }
+            }
+
+            if (EnterNodamageState)
+            {
+                _loseNodamageTime += Time.deltaTime;
+                if (_loseNodamageTime > 5)
+                {
+                    LoseNoDamage();
+                }
+            }
             if (canWallBounce) CheckOppositeWall();
 
             if (InputManager.jumping && wallOpposite && canWallBounce && PlayerStats.Controllable&& CheckHeight()) WallBounce();
@@ -581,11 +633,11 @@ public class PlayerMovement : MonoBehaviour
         //
         // if (rb.velocity.sqrMagnitude < .02f) rb.velocity = Vector3.zero;
         //
-        // if (!move)
-        // {
-        //     if (grounded) rb.velocity = Vector3.zero; 
-        //     return;
-        // }
+         if (!move)
+         {
+             //if (grounded) rb.velocity = Vector3.zero; 
+             return;
+         }
         Vector3 movementInput = new Vector3(InputManager.x, 0f, InputManager.y);
 
         // 需要转换输入向量为世界空间向量
