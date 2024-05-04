@@ -956,7 +956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: 
-  maxHealth: 0
+  maxHealth: 20
   maxShield: 0
   deathEffect: {fileID: 0}
   healthSlider: {fileID: 0}

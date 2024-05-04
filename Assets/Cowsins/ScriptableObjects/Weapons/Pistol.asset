@@ -36,7 +36,7 @@ MonoBehaviour:
   coolSpeed: 0.3
   cooledPercentageAfterOverheat: 0.6
   infiniteBullets: 0
-  magazineSize: 17
+  magazineSize: 200
   bulletsPerFire: 1
   ammoCostPerFire: 1
   bulletRange: 100
@@ -131,7 +131,7 @@ MonoBehaviour:
   applyDifferentRecoilOnAiming: 1
   xRecoilAmountOnAiming: 40
   yRecoilAmountOnAiming: 2
-  damagePerBullet: 2
+  damagePerBullet: 1
   applyDamageReductionBasedOnDistance: 0
   minimumDistanceToApplyDamageReduction: 40.3
   damageReductionMultiplier: 1

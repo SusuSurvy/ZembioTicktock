@@ -52,6 +52,10 @@ namespace cowsins
         public float KeyValue;
         public int KeyCount;
 
+        public Text KillEnemyCount;
+        public Text PassCount;
+        public Image SucceedImg;
+
         private Dictionary<string, string> _danmuInfo = new Dictionary<string, string>()
         {
             ["1"] = "召唤怪物",
@@ -72,12 +76,18 @@ namespace cowsins
         public PlayerMovement Player;
         public static UITicktockPanel Instance { get; private set; }
 
+        public void ShowSucceed()
+        {
+            SucceedImg.gameObject.SetActive(true);
+        }
+
         private void Awake()
         {
             if (Instance != null && Instance != this) Destroy(this);
             else Instance = this;
             danmuPool = new DanmuPool(textPrefab);
             ControllerPanel.SetActive(false);
+            SucceedImg.gameObject.SetActive(false);
         }
         
         public void ShowDanmu(string text, Texture2D texture)
@@ -201,6 +211,16 @@ namespace cowsins
         public void CallEnemyGirl()
         {
             EnemyManager.Instance.CreateEnemy(EnemyType.Girl);
+        }
+
+        public void ShowKillEnemyCount(int count)
+        {
+            KillEnemyCount.text = count.ToString();
+        }
+
+        public void ShowPassCount(int count)
+        {
+            PassCount.text = count.ToString();
         }
 
         public void CallTransferPlayer()

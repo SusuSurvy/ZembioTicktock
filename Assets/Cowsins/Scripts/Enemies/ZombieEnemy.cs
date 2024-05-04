@@ -49,6 +49,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     public bool InGround = false;
 
     public Vector3? OriginalBornPos;
+    public BoxCollider Collider;
     public Vector3 GetTransCenter()
     {
         return transform.position + heightCenter;
@@ -57,8 +58,11 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     // Start is called before the first frame update
     void CreateEnemy()
     {
+        health = maxHealth;
         InGround = false;
         BoxCollider collider = transform.GetComponent<BoxCollider>();
+        Collider = collider;
+        Collider.enabled = true;
         heightCenter = collider.center;
         _material = GetComponentInChildren<SkinnedMeshRenderer>().material;
         NavMeshAgent = GetComponent<NavMeshAgent>();
@@ -206,6 +210,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         base.Damage(_damage);
         if (isDead)
         {
+            Collider.enabled = false;
             if (!(_currentState is EnemyDieState))
             {
                 SetState(new EnemyDieState(playerMovement, this));
@@ -213,7 +218,11 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         }
         else
         {
-            SetState(new EnemyBehitState(playerMovement, this));
+            if (EnemyType != EnemyType.Doll)
+            {
+                SetState(new EnemyBehitState(playerMovement, this));
+            }
+           
         }
     }
 

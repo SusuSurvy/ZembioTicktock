@@ -418,7 +418,8 @@ public class PlayerMovement : MonoBehaviour
 
         ResetStamina();
         events.OnSpawn.Invoke();
-    }
+        Invoke(nameof(EquipGun), 1);
+        }
 
 
     private void FixedUpdate()
@@ -486,16 +487,22 @@ public class PlayerMovement : MonoBehaviour
                     shouldRun = false;
                 }
 
-                // if (shouldRun && (canRunBackwards || Vector3.Dot(orientation.forward, rb.velocity) > 0))
-                // {
-                //     if (canRunWhileShooting || !InputManager.shooting)
-                //     {
-                //         currentSpeed = runSpeed;
-                //     }
-                // }
+                /*
+                 if (shouldRun && (canRunBackwards || Vector3.Dot(orientation.forward, rb.velocity) > 0))
+                 {
+                     if (canRunWhileShooting || !InputManager.shooting)
+                     {
+                         currentSpeed = runSpeed;
+                     }
+                 }
+                */
+                _agent.speed = 5;
+                _agent.acceleration = 5;
             }
             else
             {
+                _agent.speed = 2;
+                _agent.acceleration = 3;
                 currentSpeed = walkSpeed;
             }
 

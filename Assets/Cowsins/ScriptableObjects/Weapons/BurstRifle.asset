@@ -31,14 +31,14 @@ MonoBehaviour:
   explosionForce: 0
   explosionVFX: {fileID: 0}
   continuousFire: 0
-  fireRate: 0.8
+  fireRate: 0
   reloadTime: 3.5
   coolSpeed: 0
   cooledPercentageAfterOverheat: 0
   infiniteBullets: 0
   magazineSize: 15
   bulletsPerFire: 3
-  ammoCostPerFire: 3
+  ammoCostPerFire: 1
   bulletRange: 100
   timeBetweenShots: 0.1
   penetrationAmount: 10
@@ -149,7 +149,7 @@ MonoBehaviour:
   applyDifferentRecoilOnAiming: 0
   xRecoilAmountOnAiming: 0
   yRecoilAmountOnAiming: 0
-  damagePerBullet: 3
+  damagePerBullet: 1
   applyDamageReductionBasedOnDistance: 0
   minimumDistanceToApplyDamageReduction: 0
   damageReductionMultiplier: 0

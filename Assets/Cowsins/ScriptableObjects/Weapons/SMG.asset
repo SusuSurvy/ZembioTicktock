@@ -31,12 +31,12 @@ MonoBehaviour:
   explosionForce: 0
   explosionVFX: {fileID: 0}
   continuousFire: 0
-  fireRate: 0.12
+  fireRate: 0.06
   reloadTime: 3
   coolSpeed: 0
   cooledPercentageAfterOverheat: 0
   infiniteBullets: 0
-  magazineSize: 36
+  magazineSize: 100
   bulletsPerFire: 1
   ammoCostPerFire: 1
   bulletRange: 100
@@ -77,7 +77,7 @@ MonoBehaviour:
   applyDifferentRecoilOnAiming: 0
   xRecoilAmountOnAiming: 0
   yRecoilAmountOnAiming: 0
-  damagePerBullet: 1.5
+  damagePerBullet: 1
   applyDamageReductionBasedOnDistance: 0
   minimumDistanceToApplyDamageReduction: 0
   damageReductionMultiplier: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
     emptyMagReload: {fileID: 8300000, guid: aded5749092a3ea4ab4e69754d28a5c4, type: 3}
     emptyMagShoot: {fileID: 8300000, guid: 5959d65463fbfe342a9219287eb7315f, type: 3}
   pitchVariationFiringSFX: 0.15
-  camShakeAmount: 0.07
+  camShakeAmount: 0.01
   applyFOVEffectOnShooting: 1
   FOVValueToSubtract: 2
   AimingFOVValueToSubtract: 1

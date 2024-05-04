@@ -2059,7 +2059,7 @@ NavMeshAgent:
   m_Radius: 0.3
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 10
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -2082,7 +2082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: 
-  maxHealth: 0
+  maxHealth: 1
   maxShield: 0
   deathEffect: {fileID: 0}
   healthSlider: {fileID: 0}
@@ -2112,6 +2112,7 @@ MonoBehaviour:
   AttackClip: {fileID: 0}
   CreateClip: {fileID: 8300000, guid: bb95b93e0bd292841a3a526e7064f11d, type: 3}
   NavMeshAgent: {fileID: 0}
+  EnemyType: 0
   ChaseAni: 
   InGround: 0
 --- !u!65 &-5187800829589438605

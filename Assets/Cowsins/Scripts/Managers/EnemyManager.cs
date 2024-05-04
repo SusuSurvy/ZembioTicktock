@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using cowsins;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 public interface IPoolable {
@@ -13,7 +14,9 @@ public class EnemyManager : MonoBehaviour {
     public static EnemyManager Instance;
     // Prefab的引用
     public List<GameObject> prefabs;
-
+    private const string KillCountKey = "KillCount";
+    private const string PassCountKey = "PassCount";
+    private const string DateKey = "LastRecordDate";
     private List<ZombieEnemy> _enemysList = new List<ZombieEnemy>();
     private List<Bullet> _bulletList = new List<Bullet>();
     private bool _needCreate = false;
@@ -31,6 +34,9 @@ public class EnemyManager : MonoBehaviour {
     public GameObject TransferObj;
 
     private List<Vector3> _transferList;
+
+    private int _killEnemyCount = 0;
+    private int _killDelta = 0;
     
     private void Awake() {
         if (Instance == null) {
@@ -60,6 +66,48 @@ public class EnemyManager : MonoBehaviour {
         {
             _transferList.Add(item.position);
         }
+        CheckDateAndResetIfNecessary();
+        int currentKillCount = PlayerPrefs.GetInt(KillCountKey, 0);
+        _killEnemyCount = currentKillCount;
+        int passKillCount = PlayerPrefs.GetInt(PassCountKey, 0);
+        UITicktockPanel.Instance.ShowKillEnemyCount(_killEnemyCount);
+        UITicktockPanel.Instance.ShowPassCount(passKillCount);
+    }
+
+    public void CheckDateAndResetIfNecessary()
+    {
+        string lastRecordDate = PlayerPrefs.GetString(DateKey, "");
+        string today = DateTime.Now.ToString("yyyyMMdd");
+
+        if (!lastRecordDate.Equals(today))
+        {
+            PlayerPrefs.SetInt(PassCountKey, 0); // 重置击杀数
+            PlayerPrefs.SetInt(KillCountKey, 0); // 重置击杀数
+            PlayerPrefs.SetString(DateKey, today); // 更新记录日期
+            PlayerPrefs.Save(); // 保存更改
+        }
+    }
+
+    public void GameWin()
+    {
+        int passKillCount = PlayerPrefs.GetInt(PassCountKey, 0);
+        passKillCount++;
+        PlayerPrefs.SetInt(PassCountKey, passKillCount);
+        UITicktockPanel.Instance.ShowSucceed();
+        UITicktockPanel.Instance.ShowPassCount(passKillCount);
+        SaveData();
+        Invoke(nameof(ReloadGame), 1);
+    }
+
+    private void ReloadGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void SaveData()
+    {
+        PlayerPrefs.SetInt(KillCountKey, _killEnemyCount); // 重置击杀数
+        PlayerPrefs.Save(); // 保存更改
     }
 
     public Vector3 GetRandomTransferPos()
@@ -197,6 +245,14 @@ public class EnemyManager : MonoBehaviour {
     // 回收对象的方法
     public void Despawn(ZombieEnemy obj) {
         obj.OnDespawn();
+        _killEnemyCount++;
+        _killDelta++;
+        if (_killDelta > 10)
+        {
+            SaveData();
+            _killDelta = 0;
+        }
+        UITicktockPanel.Instance.ShowKillEnemyCount(_killEnemyCount);
         _enemysList.Remove(obj);
         poolDic[obj.transform.name].Enqueue(obj);
     }
