@@ -3,17 +3,20 @@ using cowsins;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 
 public class KeyProgress : MonoBehaviour
 {
+    private static int numberOfKeys = 0;
+    private float Keysvalue;
     public GuiProgressBarUI guiProgressBar;
     public GameObject UI;
     public UITicktockPanel UIValue;
-    private static int numberOfKeys = 0; 
-    private float Keysvalue; 
+    public UITicktockPanel Player;
+    public Text KeyText;
     public GameObject keyObject;
-    private float minDisplayCount = 2; 
+    private float minDisplayCount = 1; 
     private float maxDisplayCount = 3; 
     void Start()
     {
@@ -46,6 +49,7 @@ public class KeyProgress : MonoBehaviour
                         GetComponent<Renderer>().enabled = false;
                         Debug.Log("找到钥匙：" + gameObject);
                         UIValue.KeyValue += Keysvalue;
+                        Player.KeyCount++;
                         StartCoroutine(DelayedProgressUpdate(UIValue.KeyValue));
                         numberOfKeys--;
                     }
@@ -62,7 +66,7 @@ public class KeyProgress : MonoBehaviour
             guiProgressBar.Value += 0.010f;
             yield return new WaitForSeconds(0.05f);
         }
-
+        KeyText.text = "钥匙收集" + Player.KeyCount + "/7";
         yield return new WaitForSeconds(3.0f);
         UI.SetActive(false);
         if (UIValue.KeyValue == 1.0f)
@@ -71,7 +75,6 @@ public class KeyProgress : MonoBehaviour
         }
         GetComponent<Renderer>().enabled = true; 
         gameObject.SetActive(false);
-        //DisplayRandomEntities();
     }
 
     void DisplayRandomEntities()
@@ -98,7 +101,23 @@ public class KeyProgress : MonoBehaviour
         }
     }
 
+    IEnumerator RemoveKeyCoroutine()
+    {
+        Player.KeyCount--;
+        UIValue.KeyValue -= Keysvalue;
+        while (guiProgressBar.Value > UIValue.KeyValue)
+        {
+            UI.SetActive(true);
+            guiProgressBar.Value += 0.010f;
+            yield return new WaitForSeconds(0.05f);
+        }
+        KeyText.text = "钥匙收集" + Player.KeyCount + "/7";
+    }
 
+    void RemoveKey()
+    {
+        StartCoroutine(RemoveKeyCoroutine());
+    }
 
 
 

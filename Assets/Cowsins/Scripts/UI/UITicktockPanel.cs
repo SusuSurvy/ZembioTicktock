@@ -49,7 +49,8 @@ namespace cowsins
         public GameObject ControllerPanel;
         public GameObject SmokeExplore;
 
-        public float KeyValue = 0;
+        public float KeyValue;
+        public int KeyCount;
 
         private Dictionary<string, string> _danmuInfo = new Dictionary<string, string>()
         {
