@@ -231,6 +231,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "RemoveKey",
+                    "type": "Button",
+                    "id": "acbab981-8f54-4643-bf2e-4b743c494bd4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "CallEnemy1",
                     "type": "Button",
                     "id": "7dfce587-ad93-4251-b9d5-4dbfe91ce45c",
@@ -766,6 +775,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "CallEnemy1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "91b78020-cf24-4e52-aa68-4a3b7c7b7984",
+                    "path": "<Keyboard>/#(9)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "RemoveKey",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

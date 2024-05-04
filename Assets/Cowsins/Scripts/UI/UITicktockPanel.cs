@@ -45,8 +45,12 @@ namespace cowsins
         private Vector2 _leftBottom = new Vector3(-51, -28);
         private Vector2 _rightUp = new Vector3(51, 72);
         public Texture2D headIcon;
+
         public GameObject ControllerPanel;
         public GameObject SmokeExplore;
+
+        public float KeyValue = 0;
+
         private Dictionary<string, string> _danmuInfo = new Dictionary<string, string>()
         {
             ["1"] = "召唤怪物",
@@ -57,6 +61,7 @@ namespace cowsins
             ["6"] = "装备手枪",
             ["7"] = "装备加特林",
             ["8"] = "生成人偶",
+            ["9"] = "减少钥匙×1",
             ["["] = "生成突脸怪",
         };
         public GameObject textPrefab;
@@ -158,6 +163,11 @@ namespace cowsins
             {
                 ShowDanmu(_danmuInfo["8"], texture);
                 EnemyManager.Instance.CreateEnemy(EnemyType.Doll);
+            }
+            else if (str.Contains("9"))
+            {
+                ShowDanmu(_danmuInfo["9"], texture);
+
             }
             else if (str.Contains("["))
             {

@@ -253,6 +253,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""RemoveKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""acbab981-8f54-4643-bf2e-4b743c494bd4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""CallEnemy1"",
                     ""type"": ""Button"",
                     ""id"": ""7dfce587-ad93-4251-b9d5-4dbfe91ce45c"",
@@ -790,6 +799,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""CallEnemy1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91b78020-cf24-4e52-aa68-4a3b7c7b7984"",
+                    ""path"": ""<Keyboard>/#(9)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""RemoveKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -834,6 +854,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_GameControls_OpenLight = m_GameControls.FindAction("OpenLight", throwIfNotFound: true);
         m_GameControls_EquipJiatelin = m_GameControls.FindAction("EquipJiatelin", throwIfNotFound: true);
         m_GameControls_Summoning = m_GameControls.FindAction("Summoning", throwIfNotFound: true);
+        m_GameControls_RemoveKey = m_GameControls.FindAction("RemoveKey", throwIfNotFound: true);
         m_GameControls_CallEnemy1 = m_GameControls.FindAction("CallEnemy1", throwIfNotFound: true);
     }
 
@@ -921,6 +942,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_GameControls_OpenLight;
     private readonly InputAction m_GameControls_EquipJiatelin;
     private readonly InputAction m_GameControls_Summoning;
+    private readonly InputAction m_GameControls_RemoveKey;
     private readonly InputAction m_GameControls_CallEnemy1;
     public struct GameControlsActions
     {
@@ -951,6 +973,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         public InputAction @OpenLight => m_Wrapper.m_GameControls_OpenLight;
         public InputAction @EquipJiatelin => m_Wrapper.m_GameControls_EquipJiatelin;
         public InputAction @Summoning => m_Wrapper.m_GameControls_Summoning;
+        public InputAction @RemoveKey => m_Wrapper.m_GameControls_RemoveKey;
         public InputAction @CallEnemy1 => m_Wrapper.m_GameControls_CallEnemy1;
         public InputActionMap Get() { return m_Wrapper.m_GameControls; }
         public void Enable() { Get().Enable(); }
@@ -1036,6 +1059,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Summoning.started += instance.OnSummoning;
             @Summoning.performed += instance.OnSummoning;
             @Summoning.canceled += instance.OnSummoning;
+            @RemoveKey.started += instance.OnRemoveKey;
+            @RemoveKey.performed += instance.OnRemoveKey;
+            @RemoveKey.canceled += instance.OnRemoveKey;
             @CallEnemy1.started += instance.OnCallEnemy1;
             @CallEnemy1.performed += instance.OnCallEnemy1;
             @CallEnemy1.canceled += instance.OnCallEnemy1;
@@ -1118,6 +1144,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Summoning.started -= instance.OnSummoning;
             @Summoning.performed -= instance.OnSummoning;
             @Summoning.canceled -= instance.OnSummoning;
+            @RemoveKey.started -= instance.OnRemoveKey;
+            @RemoveKey.performed -= instance.OnRemoveKey;
+            @RemoveKey.canceled -= instance.OnRemoveKey;
             @CallEnemy1.started -= instance.OnCallEnemy1;
             @CallEnemy1.performed -= instance.OnCallEnemy1;
             @CallEnemy1.canceled -= instance.OnCallEnemy1;
@@ -1183,6 +1212,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnOpenLight(InputAction.CallbackContext context);
         void OnEquipJiatelin(InputAction.CallbackContext context);
         void OnSummoning(InputAction.CallbackContext context);
+        void OnRemoveKey(InputAction.CallbackContext context);
         void OnCallEnemy1(InputAction.CallbackContext context);
     }
 }
