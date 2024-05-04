@@ -108,7 +108,7 @@ public class KeyProgress : MonoBehaviour
         while (guiProgressBar.Value > UIValue.KeyValue)
         {
             UI.SetActive(true);
-            guiProgressBar.Value += 0.010f;
+            guiProgressBar.Value -= 0.010f;
             yield return new WaitForSeconds(0.05f);
         }
         KeyText.text = "Ô¿³×ÊÕ¼¯" + Player.KeyCount + "/7";
