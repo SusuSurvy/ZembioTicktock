@@ -987,7 +987,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   playerMovement: {fileID: 0}
-  AttackClip: {fileID: 0}
+  AttackClip: {fileID: 8300000, guid: 302a10b4cde4c2c4da2c4bbf0c153537, type: 3}
   CreateClip: {fileID: 0}
   NavMeshAgent: {fileID: 0}
   EnemyType: 0

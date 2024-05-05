@@ -14,7 +14,6 @@ public class RemoteAttackState : EnemyStateBase
         _zombie.NavMeshAgent.isStopped = true;
         base.OnEnter();
         _zombie.PlayAni("attack2");
-        SoundManager.Instance.PlaySound(_zombie.AttackClip, 0, 0, false, 0);
     }
 
     public override void Update(float dt)
@@ -24,6 +23,7 @@ public class RemoteAttackState : EnemyStateBase
         if (_currentTime > 2.5f)
         {
             EnemyManager.Instance.CreatBullet(_zombie.transform.position + new Vector3(0, 1, 0));
+            SoundManager.Instance.PlaySound(_zombie.AttackClip, 0, 1, false, 0);
             _currentTime = 0;
             if (_zombie.GetDistance() > _zombie.GetAttackDis() || !CanAttack(_zombie.GetTransCenter(), _player.GetTransCenter()))
             {
@@ -32,7 +32,7 @@ public class RemoteAttackState : EnemyStateBase
             else
             {
                 _zombie.PlayAni("attack2");
-                
+              
             }
         }
     }

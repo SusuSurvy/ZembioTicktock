@@ -15326,12 +15326,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   playerMovement: {fileID: 0}
-  AttackClip: {fileID: 0}
+  AttackClip: {fileID: 8300000, guid: de793a086ebf1f14fb859926b7402f56, type: 3}
   CreateClip: {fileID: 0}
   NavMeshAgent: {fileID: 0}
   EnemyType: 0
   ChaseAni: 
   InGround: 0
+  Collider: {fileID: 0}
 --- !u!1 &223977536674657492 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 985180483180702813, guid: 8cc53c1ea265e3d4f9554b542930a8cc, type: 3}

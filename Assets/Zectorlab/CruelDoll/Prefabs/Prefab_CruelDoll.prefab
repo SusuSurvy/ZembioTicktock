@@ -510,12 +510,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   playerMovement: {fileID: 0}
-  AttackClip: {fileID: 0}
+  AttackClip: {fileID: 8300000, guid: 3362327f3d8992d40a349f9a15cb855d, type: 3}
   CreateClip: {fileID: 0}
   NavMeshAgent: {fileID: 0}
   EnemyType: 0
   ChaseAni: 
   InGround: 0
+  Collider: {fileID: 0}
 --- !u!1001 &8246023217008042448
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -50,6 +50,7 @@ public class EnemyManager : MonoBehaviour {
 
     private void Reset()
     {
+        _needCreate = true;
         poolDic.Clear();
        
         foreach (var prefab in prefabs)
@@ -189,7 +190,7 @@ public class EnemyManager : MonoBehaviour {
         switch (enemyType)
         {
             case EnemyType.Any:
-                index = UnityEngine.Random.Range(0, prefabs.Count - 1); //不能随机生成人偶和boss
+                index = UnityEngine.Random.Range(0, prefabs.Count - 2); //不能随机生成人偶和boss
                 switch (index)
                 {
                     case 0:

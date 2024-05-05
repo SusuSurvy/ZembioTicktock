@@ -6994,12 +6994,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   playerMovement: {fileID: 0}
-  AttackClip: {fileID: 0}
+  AttackClip: {fileID: 8300000, guid: d1f664d122cca2c44beaaa2cbbe45dab, type: 3}
   CreateClip: {fileID: 0}
   NavMeshAgent: {fileID: 0}
   EnemyType: 0
   ChaseAni: 
   InGround: 0
+  Collider: {fileID: 0}
 --- !u!1 &133024
 GameObject:
   m_ObjectHideFlags: 0

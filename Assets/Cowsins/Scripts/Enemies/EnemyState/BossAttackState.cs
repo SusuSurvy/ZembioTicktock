@@ -22,6 +22,7 @@ public class BossAttackState : EnemyStateBase
         {
             _currentTime = 0;
             EnemyManager.Instance.CreateEnemy(EnemyType.Any, _zombie.transform.position + _zombie.transform.forward);
+    
             if (_zombie.GetDistance() > _zombie.GetAttackDis())
             {
                
@@ -30,6 +31,7 @@ public class BossAttackState : EnemyStateBase
             else
             {
                 _zombie.PlayAni("attack2");
+             
             }
         }
     }
