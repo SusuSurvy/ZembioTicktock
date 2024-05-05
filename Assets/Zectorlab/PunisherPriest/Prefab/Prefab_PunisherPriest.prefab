@@ -438,6 +438,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1105299395436653656, guid: 56933c234f9174b48abf2d247260f69e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1316711126266974178, guid: 56933c234f9174b48abf2d247260f69e, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -989,6 +993,7 @@ MonoBehaviour:
   EnemyType: 0
   ChaseAni: 
   InGround: 0
+  Collider: {fileID: 0}
 --- !u!1 &3731251607039052797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1053701374879422543, guid: 56933c234f9174b48abf2d247260f69e, type: 3}

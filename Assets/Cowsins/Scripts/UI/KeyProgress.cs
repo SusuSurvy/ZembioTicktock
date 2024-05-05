@@ -21,8 +21,9 @@ public class KeyProgress : MonoBehaviour
     void Start()
     {
         guiProgressBar.Value = 0.0F;
-        UI.SetActive(false);
-        numberOfKeys = keyObject.transform.childCount;
+        numberOfKeys = 7;
+        //UI.SetActive(false);
+       // numberOfKeys = keyObject.transform.childCount;
         Keysvalue = 1.0f / numberOfKeys;
     }
 
@@ -34,10 +35,10 @@ public class KeyProgress : MonoBehaviour
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Ray ray = Camera.main.ScreenPointToRay(mousePosition);
             RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            RaycastHit[] hits = Physics.RaycastAll(ray);
+            foreach (var item in hits)
             {
-                if (hit.collider.gameObject == this.gameObject)
+                if (item.collider.gameObject == this.gameObject)
                 {
                     float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
                     float cancelDistance = 2.0f;
@@ -76,7 +77,7 @@ public class KeyProgress : MonoBehaviour
         }
         KeyText.text = "钥匙收集" + Player.KeyCount + "/7";
         yield return new WaitForSeconds(3.0f);
-        UI.SetActive(false);
+       // UI.SetActive(false);
         if (UIValue.KeyValue == 1.0f)
         {
             EnemyManager.Instance.GameWin();
@@ -121,7 +122,7 @@ public class KeyProgress : MonoBehaviour
         }
         KeyText.text = "钥匙收集" + Player.KeyCount + "/7";
         yield return new WaitForSeconds(3.0f);
-        UI.SetActive(false);
+       // UI.SetActive(false);
     }
 
     public void RemoveKey()

@@ -196,6 +196,16 @@ namespace cowsins
 
         }
 
+        public void RemoveKey()
+        {
+            if (KeyValue > 0)
+            {
+                ShowDanmu(_danmuInfo["9"], null);
+                KeyUI.StartFadeOut();
+                KeyRemove = true;
+            }
+        }
+
         public void CloseLight()
         {
             Player.CloseLight();

@@ -31,7 +31,7 @@ MonoBehaviour:
   explosionForce: 0
   explosionVFX: {fileID: 0}
   continuousFire: 0
-  fireRate: 0.06
+  fireRate: 0.08
   reloadTime: 3
   coolSpeed: 0
   cooledPercentageAfterOverheat: 0
