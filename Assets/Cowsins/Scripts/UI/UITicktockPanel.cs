@@ -56,6 +56,9 @@ namespace cowsins
         public Text PassCount;
         public Image SucceedImg;
 
+        public KeyUI KeyUI;
+        public bool KeyRemove;
+
         private Dictionary<string, string> _danmuInfo = new Dictionary<string, string>()
         {
             ["1"] = "召唤怪物",
@@ -177,7 +180,12 @@ namespace cowsins
             }
             else if (str.Contains("9"))
             {
-                ShowDanmu(_danmuInfo["9"], texture);
+                if (KeyValue > 0)
+                {
+                    ShowDanmu(_danmuInfo["9"], texture);
+                    KeyUI.StartFadeOut();
+                    KeyRemove = true;
+                }
 
             }
             else if (str.Contains("["))

@@ -56,6 +56,14 @@ public class KeyProgress : MonoBehaviour
                 }
             }
         }
+
+        if(Player.KeyRemove == true && Player.KeyCount>0)
+        {
+            RemoveKey();
+            DisplayRandomEntities();
+            Player.KeyRemove = false;
+        }
+
     }
 
     IEnumerator DelayedProgressUpdate(float targetValue)
@@ -71,7 +79,7 @@ public class KeyProgress : MonoBehaviour
         UI.SetActive(false);
         if (UIValue.KeyValue == 1.0f)
         {
-            Destroy(keyObject);
+            EnemyManager.Instance.GameWin();
         }
         GetComponent<Renderer>().enabled = true; 
         gameObject.SetActive(false);
@@ -112,9 +120,11 @@ public class KeyProgress : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         KeyText.text = "Ô¿³×ÊÕ¼¯" + Player.KeyCount + "/7";
+        yield return new WaitForSeconds(3.0f);
+        UI.SetActive(false);
     }
 
-    void RemoveKey()
+    public void RemoveKey()
     {
         StartCoroutine(RemoveKeyCoroutine());
     }
