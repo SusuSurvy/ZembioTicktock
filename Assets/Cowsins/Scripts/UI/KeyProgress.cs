@@ -76,7 +76,7 @@ public class KeyProgress : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         KeyText.text = "Ô¿³×ÊÕ¼¯" + Player.KeyCount + "/7";
-        if (UIValue.KeyValue == 1.0f)
+        if (UIValue.KeyValue >= 1.0f)
         {
             EnemyManager.Instance.GameWin();
         }
