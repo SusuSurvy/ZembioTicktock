@@ -118,7 +118,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable
             damage = damage - shield;
             shield = 0;
             health -= damage;
-                Debug.LogError(health);
             if (shieldSlider != null) shieldSlider.GetComponent<Animator>().Play("UIDamageShieldEnemy");
             if (shieldSlider != null) healthSlider.GetComponent<Animator>().Play("UIDamageEnemy");
         }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -49,6 +50,8 @@ namespace cowsins
         public GameObject ControllerPanel;
         public GameObject SmokeExplore;
 
+        public UIButtonCallFun CallFunBtn;
+
         public float KeyValue;
         public int KeyCount;
 
@@ -58,7 +61,7 @@ namespace cowsins
 
         public KeyUI KeyUI;
         public bool KeyRemove;
-
+        
         private Dictionary<string, string> _danmuInfo = new Dictionary<string, string>()
         {
             ["1"] = "召唤怪物",
@@ -72,6 +75,8 @@ namespace cowsins
             ["9"] = "减少钥匙×1",
             ["["] = "生成突脸怪",
         };
+
+        private Dictionary<CallFunction, UnityAction> _callFunctionDic = new Dictionary<CallFunction, UnityAction>();
         public GameObject textPrefab;
         public Transform danmuContainer;
         private DanmuPool danmuPool;
@@ -91,6 +96,28 @@ namespace cowsins
             danmuPool = new DanmuPool(textPrefab);
             ControllerPanel.SetActive(false);
             SucceedImg.gameObject.SetActive(false);
+            _callFunctionDic[CallFunction.CallEnemyDoll] = CallEnemyDoll;
+            _callFunctionDic[CallFunction.CallEnemyGirl] = CallEnemyGirl;
+            _callFunctionDic[CallFunction.CallEnemyFat] = CallEnemyFat;
+            _callFunctionDic[CallFunction.CallEnemyRemote] = CallEnemyRemote;
+            _callFunctionDic[CallFunction.CallEnemyBoss] = CallEnemyBoss;
+            _callFunctionDic[CallFunction.CallLoseController] = CallLoseController;
+            _callFunctionDic[CallFunction.ClearAllEnemy] = ClearAllEnemy;
+            _callFunctionDic[CallFunction.CallPlayerNoDamage] = CallPlayerNoDamage;
+            _callFunctionDic[CallFunction.CallSmokeExplore] = CallSmokeExplore;
+            _callFunctionDic[CallFunction.CrazyAllEnemy] = CrazyAllEnemy;
+            _callFunctionDic[CallFunction.RecoverHp] = RecoverHp;
+            _callFunctionDic[CallFunction.CloseLight] = CloseLight;
+            _callFunctionDic[CallFunction.RemoveKey] = RemoveKey;
+            _callFunctionDic[CallFunction.CallTransferPlayer] = CallTransferPlayer;
+            _callFunctionDic[CallFunction.EquipJiatelin] = EquipJiatelin;
+            foreach (var info in GameDataInstance.Instance.TriggerFunctionSettingDic)
+            {
+                UIButtonCallFun btn = Instantiate(CallFunBtn);
+                btn.Init(info.Key, info.Value.TriggerNum, _callFunctionDic[info.Value.FuncType]);
+                btn.gameObject.SetActive(true);
+                btn.gameObject.transform.SetParent(CallFunBtn.transform.parent);
+            }
         }
         
         public void ShowDanmu(string text, Texture2D texture)
@@ -137,6 +164,7 @@ namespace cowsins
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 ControllerPanel.SetActive(true);
+            
                 //ShowDanmu(_danmuInfo["1"], texture);
                 //CallEnemy();
             }
@@ -148,51 +176,63 @@ namespace cowsins
                 // ShowDanmu(_danmuInfo["2"], texture);
                 // RecoverHp();
             }
-            else if (str.Contains("3"))
+            FunctionInfo info = null;
+            if (GameDataInstance.Instance.TriggerFunctionSettingDic.TryGetValue(str, out info))
             {
-                ShowDanmu(_danmuInfo["3"], texture);
-                ClearAllEnemy();
+                _callFunctionDic[info.FuncType]();
+                ShowDanmu(GameDataInstance.CallFunctionDes[info.FuncType], null);
             }
-            else if (str.Contains("4"))
+            else
             {
-                ShowDanmu(_danmuInfo["4"], texture);
-                CrazyAllEnemy();
+                return;
             }
-            else if (str.Contains("5"))
-            {
-                ShowDanmu(_danmuInfo["5"], texture);
-                Player.CloseLight();
-            }
-            else if (str.Contains("6"))
-            {
-                ShowDanmu(_danmuInfo["6"], texture);
-                EquipGun();
-            }
-            else if (str.Contains("7"))
-            {
-                ShowDanmu(_danmuInfo["7"], texture);
-                EquipJiatelin();
-            }
-            else if (str.Contains("8"))
-            {
-                ShowDanmu(_danmuInfo["8"], texture);
-                EnemyManager.Instance.CreateEnemy(EnemyType.Doll);
-            }
-            else if (str.Contains("9"))
-            {
-                if (KeyValue > 0)
-                {
-                    ShowDanmu(_danmuInfo["9"], texture);
-                    KeyUI.StartFadeOut();
-                    KeyRemove = true;
-                }
-
-            }
-            else if (str.Contains("["))
-            {
-                ShowDanmu(_danmuInfo["["], texture);
-                EnemyManager.Instance.CreateEnemy(EnemyType.Girl);
-            }
+          
+            return;
+            // else if (str.Contains("3"))
+            // {
+            //     ShowDanmu(_danmuInfo["3"], texture);
+            //     ClearAllEnemy();
+            // }
+            // else if (str.Contains("4"))
+            // {
+            //     ShowDanmu(_danmuInfo["4"], texture);
+            //     CrazyAllEnemy();
+            // }
+            // else if (str.Contains("5"))
+            // {
+            //     ShowDanmu(_danmuInfo["5"], texture);
+            //     Player.CloseLight();
+            // }
+            // else if (str.Contains("6"))
+            // {
+            //     ShowDanmu(_danmuInfo["6"], texture);
+            //     EquipGun();
+            // }
+            // else if (str.Contains("7"))
+            // {
+            //     ShowDanmu(_danmuInfo["7"], texture);
+            //     EquipJiatelin();
+            // }
+            // else if (str.Contains("8"))
+            // {
+            //     ShowDanmu(_danmuInfo["8"], texture);
+            //     EnemyManager.Instance.CreateEnemy(EnemyType.Doll);
+            // }
+            // else if (str.Contains("9"))
+            // {
+            //     if (KeyValue > 0)
+            //     {
+            //         ShowDanmu(_danmuInfo["9"], texture);
+            //         KeyUI.StartFadeOut();
+            //         KeyRemove = true;
+            //     }
+            //
+            // }
+            // else if (str.Contains("["))
+            // {
+            //     ShowDanmu(_danmuInfo["["], texture);
+            //     EnemyManager.Instance.CreateEnemy(EnemyType.Girl);
+            // }
 
         }
 
@@ -213,7 +253,7 @@ namespace cowsins
 
         public void RecoverHp()
         {
-            Player.RecoverHp(10);
+            Player.RecoverHp(GameDataInstance.Instance.GetRecoverHp());
         }
         
         public void CallEnemy()

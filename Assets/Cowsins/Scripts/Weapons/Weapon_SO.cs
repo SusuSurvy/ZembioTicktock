@@ -114,7 +114,8 @@ public class Weapon_SO : ScriptableObject
 
     [Tooltip("Turn it off to set a magazine size")] public bool infiniteBullets;
 
-    [Tooltip("How many bullets you can have per magazine")] public int magazineSize;
+    [Tooltip("How many bullets you can have per magazine")]
+    public int magazineSize;
 
     [Tooltip("Bullets instantiated per each shot. Grants the possibility of making shotguns, burstguns etc. Amount of bullets spawned every shot.")]
 

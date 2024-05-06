@@ -21,6 +21,16 @@ public class UIDataLoader : MonoBehaviour
         ["UserHp"] = "玩家血量",
         ["GunMaxBullet"] = "手枪最大子弹",
         ["JiatelinMaxBullet"] = "加特林最大子弹",
+        ["NoDameTime"] = "玩家无敌时间",
+        ["LoseControllerTime"] = "失去控制时间",
+        ["CreateEnemyTime"] = "生成怪物时间间隔", 
+        ["CrazyEnemyTime"] = "怪物狂暴时间", 
+        ["DollHp"] = "玩偶血量",
+        ["GirlHp"] = "突脸怪血量",
+        ["FatHp"] = "大型怪血量",
+        ["RemoteHp"] = "远程怪血量",
+        ["BossHp"] = "Boss血量",
+        ["RecoverHp"] = "玩家恢复血量",
     };
 
     public Button EnterGameBtn;
@@ -28,28 +38,7 @@ public class UIDataLoader : MonoBehaviour
 
     public InputField InputField;
 
-    private Dictionary<string, int> GameLoadData = new Dictionary<string, int>()
-    {
-        ["UserHp"] = 100,
-        ["GunMaxBullet"] = 50,
-        ["JiatelinMaxBullet"] = 100,
-    };
-
-    public int GetUserMaxHP()
-    {
-        return GameLoadData["UserHp"];
-    }
-    
-    public int GetGunMaxBullet()
-    {
-        return GameLoadData["GunMaxBullet"];
-    }
-    
-    public int GetJiatelinMaxBullet()
-    {
-        return GameLoadData["JiatelinMaxBullet"];
-    }
-
+  
     private List<UIDataItem> _items;
     private void Awake()
     {
@@ -60,7 +49,7 @@ public class UIDataLoader : MonoBehaviour
         } 
         EnterGameBtn.onClick.AddListener(LoginIn);
         _items = new List<UIDataItem>();
-        foreach (var info in GameLoadData)
+        foreach (var info in GameDataInstance.Instance.GameLoadData)
         {
             UIDataItem item = GameObject.Instantiate(ItemObj);
             item.InitInfo(info.Key, info.Value, GameNameConst[info.Key]);
@@ -74,7 +63,7 @@ public class UIDataLoader : MonoBehaviour
 
     public void SaveData(string key, int value)
     {
-        GameLoadData[key] = value;
+        GameDataInstance.Instance.GameLoadData[key] = value;
     }
 
     public void SaveDataAndEnterGame()
@@ -84,11 +73,13 @@ public class UIDataLoader : MonoBehaviour
             item.SaveData();
         }
        
-        foreach (var info in GameLoadData)
+        foreach (var info in GameDataInstance.Instance.GameLoadData)
         {
             PlayerPrefs.SetInt(info.Key, info.Value);
             PlayerPrefs.Save();
         }
+        SceneManager.LoadScene(1);
+        
     }
 
     private void OnClick()
@@ -213,22 +204,6 @@ public class UIDataLoader : MonoBehaviour
         string keyCode = GetMotherboardID();
         
     }
-
-    private void GerServerKeycode()
-    {
-        string keyCode = GetMotherboardID();
-        string cacheUrl = Application.persistentDataPath + "/" + "AstarPathFindingData.bytes";
-        string ossUrl = "10.10.5.156/100100000006330/AstarPathFindingData.bytes";
-        Oss.GetObject(ossUrl, cacheUrl, downloadUrl =>
-        {
-            if (downloadUrl != null)
-            {
-                Text.text = downloadUrl;
-                Debug.LogError(downloadUrl);
-            }
-        });
-    }
-    
     public long GetCurrentUnixTimestampSeconds()
     {
         DateTime now = DateTime.UtcNow;
@@ -246,22 +221,7 @@ public class UIDataLoader : MonoBehaviour
         TimeSpan elapsed = now - registrationDate;
         return elapsed.Days;
     }
-
-    // public void SignIn()
-    // {
-    //     ObjsData data = new ObjsData();
-    //     data.Kecode =  GetMotherboardID();
-    //     data.SignInTime = GetCurrentUnixTimestampSeconds();
-    //     data.PlayDay = 30;
-    //     string dataUrl =  Application.persistentDataPath + "/keycodeData.bytes" ;
-    //     File.WriteAllBytes(dataUrl, SerializeToByteArray(data));
-    //     string uploadUrl = string.Format("{0}/{1}", data.Kecode, "keycodeData.bytes");
-    //     Oss.PutObjectFromFile(uploadUrl, dataUrl, (str) =>
-    //     {
-    //         Text.text = str;
-    //     });
-    // }
-
+    
     private void EnterGame()
     {
         SceneManager.LoadScene(1);
@@ -269,8 +229,6 @@ public class UIDataLoader : MonoBehaviour
 
     public void LoginIn()
     {
-        SceneManager.LoadScene(1);
-        return;
         string keycode = GetMotherboardID();
         string ossUrl = string.Format("{0}/{1}", keycode, "keycodeData.bytes");
         string cacheUrl = Application.persistentDataPath + "/keycodeData.bytes";
@@ -290,8 +248,14 @@ public class UIDataLoader : MonoBehaviour
                 }
                 else
                 {
+                    if (!RegisteCallFunctionMgr.Instance.CheckAllSettingComplete())
+                    {
+                        Text.text = "礼物配置未完成，请先完成配置" ;
+                        return;
+                    }
                     Text.text = "您还可以玩" + lastDay + "天，即将进入游戏" ;
-                    SceneManager.LoadScene(1);
+                    SaveDataAndEnterGame();
+                    
                 }
 
             

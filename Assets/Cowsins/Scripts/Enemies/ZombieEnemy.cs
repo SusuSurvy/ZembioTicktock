@@ -58,7 +58,30 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     // Start is called before the first frame update
     void CreateEnemy()
     {
-        health = maxHealth;
+        switch (EnemyType)
+        {
+            case EnemyType.Boss:
+                health = GameDataInstance.Instance.GetBossHp();
+               
+                break;
+            case EnemyType.Doll:
+                health = GameDataInstance.Instance.GetDollHp();
+                break;
+            case EnemyType.Girl:
+                health = GameDataInstance.Instance.GetGirlHp();
+                break;
+            case EnemyType.FatWomen:
+                health = GameDataInstance.Instance.GetFatHp();
+                break;
+            case EnemyType.Remote:
+                health = GameDataInstance.Instance.GetRemoteHp();
+                break;
+            default:
+                health = maxHealth;
+                break;
+        }
+
+        maxHealth = health;
         InGround = false;
         BoxCollider collider = transform.GetComponent<BoxCollider>();
         Collider = collider;
@@ -245,7 +268,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
 
     public void CrazyEnemy()
     {
-        crazyTime = 5;
+        crazyTime = GameDataInstance.Instance.GetCrazyEnemyTime();
         NavMeshAgent.speed = crazySpeed;
         _material.color = crazylColor;
     }

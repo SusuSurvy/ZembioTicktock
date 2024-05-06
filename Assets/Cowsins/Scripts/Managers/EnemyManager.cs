@@ -37,7 +37,7 @@ public class EnemyManager : MonoBehaviour {
 
     private int _killEnemyCount = 0;
     private int _killDelta = 0;
-    
+    private float createEnemyTime;
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -52,7 +52,7 @@ public class EnemyManager : MonoBehaviour {
     {
         _needCreate = true;
         poolDic.Clear();
-       
+        createEnemyTime = GameDataInstance.Instance.GetCreateEnemyTime();
         foreach (var prefab in prefabs)
         {
             Queue<EnemyHealth> queue = new Queue<EnemyHealth>();
@@ -125,7 +125,7 @@ public class EnemyManager : MonoBehaviour {
             return;
         }
         _currentTime += Time.deltaTime;
-        if (_currentTime > 15)
+        if (_currentTime > createEnemyTime)
         {
             CreateEnemy(EnemyType.Any);
             _currentTime = 0;

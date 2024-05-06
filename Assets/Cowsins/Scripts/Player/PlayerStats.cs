@@ -39,10 +39,9 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        if (UIDataLoader.Instance != null)
-        {
-            maxHealth = UIDataLoader.Instance.GetUserMaxHP();
-        }
+      
+        maxHealth = GameDataInstance.Instance.GetUserMaxHP();
+     
         
         GetAllReferences();
         // Apply basic settings 

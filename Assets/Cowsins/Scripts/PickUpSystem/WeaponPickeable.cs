@@ -20,6 +20,16 @@ namespace cowsins {
             base.Start();
             if (dropped) return;
             GetVisuals();
+            Debug.LogError("333");
+            if (weapon.name.Contains("Pistol"))
+            {
+                weapon.magazineSize = GameDataInstance.Instance.GetGunMaxBullet();
+            }
+            else
+            {
+                weapon.magazineSize = GameDataInstance.Instance.GetJiatelinMaxBullet();
+            }
+
             currentBullets = weapon.magazineSize;
             totalBullets = weapon.totalMagazines * weapon.magazineSize;
             SetDefaultAttachments(); 
@@ -60,8 +70,8 @@ namespace cowsins {
             inv.slots[inv.currentWeapon].weapon = weapon;
             inv.slots[inv.currentWeapon].GetImage();
             //Now, let磗 set the new weapon graphics on the pickeable
-            currentBullets = saveBulletsLeftInMagazine;
-            totalBullets = saveTotalBullets;
+            // currentBullets = saveBulletsLeftInMagazine;
+            // totalBullets = saveTotalBullets;
 
     #if UNITY_EDITOR
                 UIController.instance.crosshair.GetComponent<CrosshairShape>().currentPreset = inv.weapon.crosshairPreset;

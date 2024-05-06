@@ -22,14 +22,11 @@ namespace SparkServer
 
 public class Oss
 {
-    static string accessKeyId = "*****";
-    static string accessKeySecret = "*****";
-    static string endpoint = "*****";
-    static string bucket = "*****";
+    static string accessKeyId = "******";
+    static string accessKeySecret = "******";
+    static string endpoint = "******";
+    static string bucket = "******";
     static OssClient client  = new OssClient(endpoint, accessKeyId, accessKeySecret);
-
-
-
     public static void PutObjectFromFile(string key, string fileName, Action<string> callback = null)
     {
         try

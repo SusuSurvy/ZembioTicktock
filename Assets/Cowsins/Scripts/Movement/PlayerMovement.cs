@@ -446,7 +446,7 @@ public class PlayerMovement : MonoBehaviour
                     stats.LoseControl();
                 }
                 _loseControllerTime += Time.deltaTime;
-                if (_loseControllerTime > 5f)
+                if (_loseControllerTime > GameDataInstance.Instance.GetLoseControllerTime())
                 {
                     GrantController();
                 }
@@ -455,7 +455,7 @@ public class PlayerMovement : MonoBehaviour
             if (EnterNodamageState)
             {
                 _loseNodamageTime += Time.deltaTime;
-                if (_loseNodamageTime > 5)
+                if (_loseNodamageTime > GameDataInstance.Instance.GetNoDamageTime())
                 {
                     LoseNoDamage();
                 }

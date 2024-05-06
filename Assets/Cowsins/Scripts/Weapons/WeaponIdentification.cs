@@ -27,7 +27,17 @@ public class WeaponIdentification : MonoBehaviour
         "Just make an empty object, call it firePoint for organization purposes and attach it here. ")]
     public Transform[] FirePoint;
 
-    [HideInInspector] public int totalMagazines, magazineSize, bulletsLeftInMagazine, totalBullets; // Internal use
+    [HideInInspector] public int totalMagazines, magazineSize, totalBullets;
+    [HideInInspector] public int bulletsLeftInMagazine
+    {
+        get { return _bulletsLeftInMagazine;}
+        set
+        {
+            _bulletsLeftInMagazine = value;
+        }
+    }
+    // Internal use
+    private int _bulletsLeftInMagazine;
 
     [Tooltip("Defines the default attachments for your weapon. The first time you pick it up, these attachments will be equipped.")]public DefaultAttachment defaultAttachments; 
 
