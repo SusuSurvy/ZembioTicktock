@@ -182,65 +182,12 @@ namespace cowsins
                 _callFunctionDic[info.FuncType]();
                 ShowDanmu(GameDataInstance.CallFunctionDes[info.FuncType], null);
             }
-            else
-            {
-                return;
-            }
-          
-            return;
-            // else if (str.Contains("3"))
-            // {
-            //     ShowDanmu(_danmuInfo["3"], texture);
-            //     ClearAllEnemy();
-            // }
-            // else if (str.Contains("4"))
-            // {
-            //     ShowDanmu(_danmuInfo["4"], texture);
-            //     CrazyAllEnemy();
-            // }
-            // else if (str.Contains("5"))
-            // {
-            //     ShowDanmu(_danmuInfo["5"], texture);
-            //     Player.CloseLight();
-            // }
-            // else if (str.Contains("6"))
-            // {
-            //     ShowDanmu(_danmuInfo["6"], texture);
-            //     EquipGun();
-            // }
-            // else if (str.Contains("7"))
-            // {
-            //     ShowDanmu(_danmuInfo["7"], texture);
-            //     EquipJiatelin();
-            // }
-            // else if (str.Contains("8"))
-            // {
-            //     ShowDanmu(_danmuInfo["8"], texture);
-            //     EnemyManager.Instance.CreateEnemy(EnemyType.Doll);
-            // }
-            // else if (str.Contains("9"))
-            // {
-            //     if (KeyValue > 0)
-            //     {
-            //         ShowDanmu(_danmuInfo["9"], texture);
-            //         KeyUI.StartFadeOut();
-            //         KeyRemove = true;
-            //     }
-            //
-            // }
-            // else if (str.Contains("["))
-            // {
-            //     ShowDanmu(_danmuInfo["["], texture);
-            //     EnemyManager.Instance.CreateEnemy(EnemyType.Girl);
-            // }
-
         }
 
         public void RemoveKey()
         {
-            if (KeyValue > 0)
+            if (KeyValue > 0.15f)
             {
-                ShowDanmu(_danmuInfo["9"], null);
                 KeyUI.StartFadeOut();
                 KeyRemove = true;
             }
@@ -300,12 +247,6 @@ namespace cowsins
         {
             EnemyManager.Instance.CreateEnemy(EnemyType.Boss);
         }
-
-        
-        public void EquipGun()
-        {
-            Player.EquipGun();
-        }
         public void EquipJiatelin()
         {
             Player.EquipJiatelin();
@@ -336,75 +277,9 @@ namespace cowsins
             GameObject obj = Instantiate(SmokeExplore);
             obj.transform.position = pos;
         }
-
-
         public void CrazyAllEnemy()
         {
             EnemyManager.Instance.CrazyAllEnemy();
         }
-
-        public void SetPosition(Vector3 pos)
-        {
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(pos, out hit, 100, NavMesh.AllAreas))
-            {
-                NavMeshAgent.Warp(hit.position);
-            }
-        }
-        void CreateSummoning(Transform characterTransform)
-        {
-            if (prefab != null && characterTransform != null)
-            {
-                Vector3 spawnPosition = GetValidSpawnPositionAround(characterTransform.position);
-                if (spawnPosition != Vector3.zero)
-                {
-                    instantiatedObject = Instantiate(prefab, spawnPosition, Quaternion.identity);
-                    instantiatedObject.SetActive(true);
-
-                    instantiatedObject.tag = "Building";
-                }
-            }
-        }
-
-        Vector3 GetValidSpawnPositionAround(Vector3 characterPosition)
-        {
-            Vector3 spawnPosition = Vector3.zero;
-            int maxAttempts = 10;
-            int attempts = 0;
-
-            while (attempts < maxAttempts)
-            {
-
-                float radius = 3f;
-                float angle = UnityEngine.Random.Range(0f, Mathf.PI * 2f);
-                float x = characterPosition.x + radius * Mathf.Cos(angle);
-                float z = characterPosition.z + radius * Mathf.Sin(angle);
-                float y = characterPosition.y;
-                spawnPosition = new Vector3(x, y, z);
-
-                Collider[] colliders = Physics.OverlapSphere(spawnPosition, 0.5f);
-
-                bool positionValid = true;
-                foreach (Collider collider in colliders)
-                {
-
-                    if (collider.gameObject.CompareTag("Building"))
-                    {
-                        positionValid = false;
-                        break;
-                    }
-                }
-
-                if (positionValid)
-                {
-                    return spawnPosition;
-                }
-
-                attempts++;
-            }
-
-            return Vector3.zero;
-        }
-
     }
 }

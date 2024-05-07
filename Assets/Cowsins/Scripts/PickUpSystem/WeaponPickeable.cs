@@ -20,7 +20,6 @@ namespace cowsins {
             base.Start();
             if (dropped) return;
             GetVisuals();
-            Debug.LogError("333");
             if (weapon.name.Contains("Pistol"))
             {
                 weapon.magazineSize = GameDataInstance.Instance.GetGunMaxBullet();

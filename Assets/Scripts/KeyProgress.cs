@@ -13,18 +13,20 @@ public class KeyProgress : MonoBehaviour
     public GuiProgressBarUI guiProgressBar;
     public GameObject UI;
     public UITicktockPanel UIValue;
-    public UITicktockPanel Player;
+    private UITicktockPanel Player;
     public Text KeyText;
     public GameObject keyObject;
     private float minDisplayCount = 1; 
     private float maxDisplayCount = 3; 
     void Start()
     {
-        guiProgressBar.Value = 0.0F;
+        Player = UIValue;
+        guiProgressBar.Value = 0.15F;
+        UIValue.KeyValue = 0.15f;
         numberOfKeys = 7;
         //UI.SetActive(false);
        // numberOfKeys = keyObject.transform.childCount;
-        Keysvalue = 1.0f / numberOfKeys;
+        Keysvalue = 0.85f / numberOfKeys;
     }
 
 
@@ -42,13 +44,9 @@ public class KeyProgress : MonoBehaviour
                 {
                     float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
                     float cancelDistance = 2.0f;
-                    Debug.Log("Distance: " + distance);
-                    Debug.Log("Cancel Distance: " + cancelDistance);
-
                     if (distance < cancelDistance)
                     {
                         GetComponent<Renderer>().enabled = false;
-                        Debug.Log("找到钥匙：" + gameObject);
                         UIValue.KeyValue += Keysvalue;
                         Player.KeyCount++;
                         StartCoroutine(DelayedProgressUpdate(UIValue.KeyValue));
@@ -72,10 +70,10 @@ public class KeyProgress : MonoBehaviour
         while (guiProgressBar.Value < targetValue)
         {
             UI.SetActive(true);
-            guiProgressBar.Value += 0.010f;
-            yield return new WaitForSeconds(0.05f);
+            guiProgressBar.Value += 0.001f;
+            yield return new WaitForSeconds(0.005f);
         }
-        KeyText.text = "钥匙收集" + Player.KeyCount + "/7";
+        KeyText.text = Player.KeyCount + "/7";
         if (UIValue.KeyValue >= 1.0f)
         {
             EnemyManager.Instance.GameWin();
@@ -120,7 +118,7 @@ public class KeyProgress : MonoBehaviour
             guiProgressBar.Value -= 0.010f;
             yield return new WaitForSeconds(0.05f);
         }
-        KeyText.text = "钥匙收集" + Player.KeyCount + "/7";
+        KeyText.text = Player.KeyCount + "/7";
         yield return new WaitForSeconds(3.0f);
        // UI.SetActive(false);
     }

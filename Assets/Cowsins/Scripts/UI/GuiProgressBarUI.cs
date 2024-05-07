@@ -7,6 +7,7 @@ namespace Assets.ProgressBars.Scripts
 {
     public class GuiProgressBarUI : MonoBehaviour
     {
+	    public Slider Slider;
 		private const float Epsilon = 0.003f;
         private const string OffsetProperty = "_Offset";
         private const string AnimOffsetProperty = "_AnimOffset";
@@ -30,37 +31,7 @@ namespace Assets.ProgressBars.Scripts
 				ValueUpdated();
 			}
 		}
-
-		[SerializeField] 
-		private Sprite _mainSprite;
-		public Sprite MainSprite {
-			get
-			{
-				return _mainSprite;
-			}
-			set
-			{
-				if(value == null) return;
-				_mainSprite = value;
-				MainSpriteUpdated();
-			}
-		}
-
-		[SerializeField] 
-		private Sprite _maskSprite;
-		public Sprite MaskSprite {
-			get
-			{
-				return _maskSprite;
-			}
-			set
-			{
-				if(value == null) return;
-				_maskSprite = value;
-				MaskSpriteUpdated();
-			}
-		}
-
+		
 		[SerializeField] 
 		private TextureWrapMode _textureWrapMode;
 		public TextureWrapMode TextureWrapMode {
@@ -71,7 +42,6 @@ namespace Assets.ProgressBars.Scripts
 			set
 			{
 				_textureWrapMode = value;
-				WrapModeChanged();
 			}
 		}
 
@@ -198,139 +168,26 @@ namespace Assets.ProgressBars.Scripts
 
         
         private void Start()
-		{            
+        {
+	        Slider.maxValue = 1;
+	        Slider.value = 0.15f;//图片本身问题，0.15之前是不显示的。
             GetComponent<Image>().material = Instantiate(GetComponent<Image>().material);
 			var rendererSprite = GetComponent<Image>().sprite;
-			if (_mainSprite == null) {
-				if(rendererSprite != null) 
-				{
-					_mainSprite = rendererSprite;
-				} else return;
-			}
-			if (rendererSprite == null) {
-				if(_mainSprite != null)
-				{
-                    GetComponent<Image>().sprite = _mainSprite;
-				}
-			}
-			if (_maskSprite == null) return;
-			_mainSprite.texture.wrapMode = TextureWrapMode;
-			_maskSprite.texture.wrapMode = TextureWrapMode;
-			try{
-				_maskPixels = _maskSprite.texture.GetPixels();
-			} catch(Exception)
-			{
-				_maskPixels = new Color[0];
-			}
-
-			GetComponent<Image>().material.SetTexture(MainTextureProperty, _mainSprite.texture);
-			GetComponent<Image>().material.SetTexture(MaskTextureProperty, _maskSprite.texture);
-        }
-
-		/// <summary>
-		/// update main sprite texture
-		/// </summary>
-		private void MainSpriteUpdated()
-		{
-            GetComponent<Image>().sprite = _mainSprite;
-			GetComponent<Image>().material.SetTexture(MainTextureProperty, _mainSprite.texture);
-			_mainSprite.texture.wrapMode = TextureWrapMode;
 		}
-
-		/// <summary>
-		/// update mask sprite texture
-		/// </summary>
-		private void MaskSpriteUpdated()
-		{
-			GetComponent<Image>().material.SetTexture(MaskTextureProperty, _maskSprite.texture);
-			_maskSprite.texture.wrapMode = TextureWrapMode;
-			try{
-				_maskPixels = _maskSprite.texture.GetPixels();
-			} catch(Exception)
-			{
-				_maskPixels = new Color[0];
-			}
-		}
-
-		/// <summary>
-		/// set new knob position if exist
-		/// </summary>
-		private void SetKnobPosition ()
-		{
-			if (_maskPixels != null && _maskPixels.Length > 0)
-				SetKnobPositionByMaskData ();
-			else 
-				SetKnobPositionByBarWidth ();
-		}
-
-		/// <summary>
+        /// <summary>
 		/// Sets the position of knob using current value offset
 		/// depends on bar width
 		/// </summary>
 		private void SetKnobPositionByBarWidth ()
 		{
-			if (_mainSprite == null)
-				return;
-//			var barWidth = _mainSprite.bounds.size.x;
-		    var barWidth = GetComponent<RectTransform>().rect.width;
-			if(_knob != null)
-			{
-				var value = _value;
-				if(value > _knobMaxPercent) value = _knobMaxPercent;
-				if(value < _knobMinPercent) value = _knobMinPercent;
-				_knob.localPosition = new Vector3(barWidth * value - barWidth*0.5f + _knobPositionOffset, _knob.localPosition.y, 0);
-			}
+			
 		}
 
 		/// <summary>
 		/// sets the positon of knob using value offset
 		/// depends on mask pixels data
 		/// </summary>
-		private void SetKnobPositionByMaskData()
-		{
-			if (_maskSprite == null)
-				return;
-			var texture = _maskSprite.texture;
-			
-			int x = 0;
-			int y = 0;
-			int width = texture.width;
-			int cnt = 0;
-			
-			int i = _maskPixels.Length;
-			while (--i > -1) {
-				if(_maskPixels[i].a < .9f) continue;
-				
-				if(_maskPixels[i].r > _value - Epsilon &&
-				   _maskPixels[i].r < _value + Epsilon)
-				{
-					x += i % width;
-					y += i / width;
-					cnt++;
-				}
-			}
-			
-			if (cnt != 0) {
-				x = x / cnt;
-				y = y / cnt;
-				if(_knob != null)
-				{
-				    const float pixelsPerUnit = 1f;
-				    const float halfWidth = pixelsPerUnit*2;
-
-					_knob.localPosition = new Vector3(x / pixelsPerUnit - width / halfWidth, y / pixelsPerUnit - width / halfWidth, 0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Wraps the mode changed.
-		/// </summary>
-		private void WrapModeChanged()
-		{
-			if(_mainSprite != null) _mainSprite.texture.wrapMode = TextureWrapMode;
-			if(_maskSprite != null) _maskSprite.texture.wrapMode = TextureWrapMode;
-		}
+		
 
 		/// <summary>
 		/// set current percent value and update knob position
@@ -338,13 +195,6 @@ namespace Assets.ProgressBars.Scripts
 		private void ValueUpdated()
 		{
 			SetPercent(_value);
-			SetKnobPosition();
-		}
-
-        private void Update()
-        {
-			_animOffset += 0.001f;
-			ValueUpdated();
 		}
 		
 		/// <summary>
@@ -352,21 +202,9 @@ namespace Assets.ProgressBars.Scripts
         /// </summary>
         /// <param name="value"></param>
         public void SetPercent(float value)
-        {
-			GetComponent<Image>().material.SetFloat(OffsetProperty, Value);
-			GetComponent<Image>().material.SetFloat(AnimOffsetProperty, _animOffset); 
-			if (_textMesh != null) {
-				if(_textIndication == TextIndicationType.Value)
-				{
-					_textMesh.text = FormatNumber(value * 100);
-				}
-				else 
-				{
-					var parts = _sectorsCount;
-					_textMesh.text = ((int)(value / (1f / parts))) + "/" + parts;
-				}
-			}
-        }
+		{
+			Slider.value = value;
+		}
 
 		/// <summary>
 		/// Formats the number to displayed string
