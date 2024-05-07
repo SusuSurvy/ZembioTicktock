@@ -10,6 +10,7 @@ using TMPro;
 using UnityEngine.UI; 
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 namespace cowsins {
 /// <summary>
@@ -30,7 +31,7 @@ public class UIController : MonoBehaviour
 
     [Tooltip("Slider that will display the health on screen"), SerializeField] private Slider healthSlider;
 
-    [Tooltip("Slider that will display the shield on screen"), SerializeField] private Slider shieldSlider;
+    [FormerlySerializedAs("shieldSlider")] [Tooltip("Slider that will display the shield on screen"), SerializeField] private Slider bulletSlider;
 
     [SerializeField, Tooltip("UI Element ( TMPro text ) that displays current and maximum health.")] private TextMeshProUGUI healthTextDisplay;
 
@@ -191,14 +192,14 @@ public class UIController : MonoBehaviour
         {
             healthSlider.maxValue = maxHealth; 
         }
-        if (shieldSlider != null)
-        {
-            shieldSlider.maxValue = maxShield;
-        }
+        // if (bulletSlider != null)
+        // {
+        //     bulletSlider.maxValue = maxShield;
+        // }
 
         healthDisplayMethod?.Invoke(health, shield);
 
-        if (shield == 0) shieldSlider.gameObject.SetActive(false);
+        //if (shield == 0) bulletSlider.gameObject.SetActive(false);
     }
 
     private void BarHealthDisplayMethod(float health, float shield)
@@ -206,8 +207,8 @@ public class UIController : MonoBehaviour
         if (healthSlider != null)
             healthSlider.value = health;
 
-        if (shieldSlider != null)
-            shieldSlider.value = shield;
+        // if (bulletSlider != null)
+        //     bulletSlider.value = shield;
     }
     private void NumericHealthDisplayMethod(float health, float shield)
     {
@@ -378,6 +379,7 @@ public class UIController : MonoBehaviour
     private void UpdateBullets(int bullets, int mag, bool activeReloadUI, bool activeLowAmmoUI)
     {
         bulletsUI.text = bullets.ToString();
+        bulletSlider.value = bullets;
         magazineUI.text = " / " + mag.ToString();
         reloadUI.gameObject.SetActive(activeReloadUI);
         lowAmmoUI.gameObject.SetActive(activeLowAmmoUI);
@@ -392,7 +394,14 @@ public class UIController : MonoBehaviour
         lowAmmoUI.gameObject.SetActive(false);
     }
 
-    private void SetWeaponDisplay(Weapon_SO weapon) => currentWeaponDisplay.sprite = weapon.icon;
+    private void SetWeaponDisplay(Weapon_SO weapon)
+    {
+        currentWeaponDisplay.sprite = weapon.icon;
+        bulletSlider.maxValue = weapon.magazineSize;
+    }
+
+   
+    
 
     private void EnableDisplay() => currentWeaponDisplay.gameObject.SetActive(true);
 
@@ -501,7 +510,7 @@ public class UIControllerEditor : Editor
                     {
                         EditorGUI.indentLevel++;
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("healthSlider"));
-                        EditorGUILayout.PropertyField(serializedObject.FindProperty("shieldSlider"));
+                        EditorGUILayout.PropertyField(serializedObject.FindProperty("bulletSlider"));
                         EditorGUI.indentLevel--;
                     }
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("numericHealthDisplay"));
