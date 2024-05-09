@@ -70,11 +70,11 @@ public class KeyProgress : MonoBehaviour
         while (guiProgressBar.Value < targetValue)
         {
             UI.SetActive(true);
-            guiProgressBar.Value += 0.001f;
+            guiProgressBar.Value += 0.003f;
             yield return new WaitForSeconds(0.005f);
         }
         KeyText.text = Player.KeyCount + "/7";
-        if (UIValue.KeyValue >= 1.0f)
+        if (UIValue.KeyValue >= 0.9f)
         {
             EnemyManager.Instance.GameWin();
         }

@@ -70,6 +70,11 @@ public class PlayerMovement : MonoBehaviour
     private float desiredX;
 
 
+    public void RemoveController()
+    {
+        stats.enabled = false;
+    }
+
     //Movements
     [Tooltip("If true: Speed while running backwards = runSpeed." +
     "       if false: Speed while running backwards = walkSpeed")]

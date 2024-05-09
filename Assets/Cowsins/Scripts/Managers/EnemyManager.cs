@@ -1,7 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using cowsins;
+using Knife.Portal;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using Random = System.Random;
 
@@ -38,6 +41,8 @@ public class EnemyManager : MonoBehaviour {
     private int _killEnemyCount = 0;
     private int _killDelta = 0;
     private float createEnemyTime;
+    public List<PortalTransition> PortalTransitionList;
+    public GameObject Cowsins;
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -94,10 +99,54 @@ public class EnemyManager : MonoBehaviour {
         int passKillCount = PlayerPrefs.GetInt(PassCountKey, 0);
         passKillCount++;
         PlayerPrefs.SetInt(PassCountKey, passKillCount);
-        UITicktockPanel.Instance.ShowSucceed();
         UITicktockPanel.Instance.ShowPassCount(passKillCount);
         SaveData();
-        Invoke(nameof(ReloadGame), 1);
+        DestroyAllEnemy();
+        Transform ts = Player.transform;
+        ts.GetComponent<WeaponController>().enabled = false;
+        ts.GetComponent<InteractManager>().enabled = false;
+        ts.GetComponent<WeaponStates>().enabled = false;
+        ts.GetComponent<WeaponAnimator>().enabled = false;
+        ts.GetComponent<NavMeshAgent>().enabled = false;
+        Player.RemoveController();
+        Player.playerCam.eulerAngles = new Vector3(0, -90, 0);;
+        PlayerStates.instance.enabled = false;
+        WeaponSway[] ws = GameObject.FindObjectsByType<WeaponSway>(FindObjectsSortMode.None);
+        foreach (var w in ws)
+        {
+            w.enabled = false;
+        }
+        
+        Player.enabled = false;
+        Player.transform.localPosition =new Vector3(0.4f, 0, -1.2f);;
+        Player.transform.eulerAngles = Vector3.zero;
+        foreach (var portal in PortalTransitionList)
+        {
+            portal.OpenPortal();
+        }
+
+        Cowsins.transform.position = new Vector3(5.64f, 0.1f, -0.36f);
+        Cowsins.transform.eulerAngles = new Vector3(0, -85.87f, 0);
+        StartCoroutine(MoveToPosition(Cowsins.transform.position, new Vector3(3, Cowsins.transform.position.y, Cowsins.transform.position.z), 2f));
+      //  Invoke(nameof(ReloadGame), 1);
+    }
+    
+    IEnumerator MoveToPosition(Vector3 fromPosition, Vector3 toPosition, float duration)
+    {
+        float elapsedTime = 0;
+        yield return new WaitForSeconds(1f);
+        while (elapsedTime < duration)
+        {
+            // 在这里，使用Lerp函数在指定的时间内平滑地从一个点移动到另一个点
+            Cowsins.transform.position = Vector3.Lerp(fromPosition, toPosition, (elapsedTime / duration));
+            elapsedTime += Time.deltaTime; // 增加经过的时间
+            yield return null; // 等待下一帧
+        }
+        Cowsins.transform.position = toPosition;
+        //UITicktockPanel.Instance.ShowSucceed();
+        yield return new WaitForSeconds(1f);
+        ReloadGame();
+        //Invoke(nameof(ReloadGame), 1); // 确保对象最终位于目标位置
     }
 
     private void ReloadGame()
