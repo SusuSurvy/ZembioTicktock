@@ -177,6 +177,14 @@ namespace cowsins
                 // ShowDanmu(_danmuInfo["2"], texture);
                 // RecoverHp();
             }
+            else if (str.Contains("9"))
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                ControllerPanel.SetActive(false);
+                ShowDanmu(_danmuInfo["9"], texture);
+                RemoveKey();
+            }
             FunctionInfo info = null;
             if (GameDataInstance.Instance.TriggerFunctionSettingDic.TryGetValue(str, out info))
             {
@@ -195,10 +203,10 @@ namespace cowsins
 
         public void RemoveKey()
         {
+            KeyRemove = true;
             if (KeyValue > 0.15f)
             {
                 KeyUI.StartFadeOut();
-                KeyRemove = true;
             }
         }
 

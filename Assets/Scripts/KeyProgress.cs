@@ -47,6 +47,7 @@ public class KeyProgress : MonoBehaviour
                     if (distance < cancelDistance)
                     {
                         GetComponent<Renderer>().enabled = false;
+                        GetComponent<BoxCollider>().enabled = false;
                         UIValue.KeyValue += Keysvalue;
                         Player.KeyCount++;
                         StartCoroutine(DelayedProgressUpdate(UIValue.KeyValue));
@@ -56,7 +57,7 @@ public class KeyProgress : MonoBehaviour
             }
         }
 
-        if(Player.KeyRemove == true && Player.KeyCount>0)
+        if(Player.KeyRemove == true)
         {
             RemoveKey();
             DisplayRandomEntities();
@@ -78,10 +79,9 @@ public class KeyProgress : MonoBehaviour
         {
             EnemyManager.Instance.GameWin();
         }
-        yield return new WaitForSeconds(3.0f);
-       // UI.SetActive(false);
-        GetComponent<Renderer>().enabled = true; 
-        gameObject.SetActive(false);
+        yield return new WaitForSeconds(1.0f);
+        GetComponent<Renderer>().enabled = true;
+        GetComponent<BoxCollider>().enabled = true;
     }
 
     void DisplayRandomEntities()
