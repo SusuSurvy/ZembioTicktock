@@ -33,13 +33,9 @@ public class GirlEnemy : ZombieEnemy
     
     public override Vector3 GetBornPos()
     {
-        float randomX = 0;
-        float randomY = 0;
+        Vector3 pos = playerMovement.transform. position;
+        Vector3 spawnPosition = pos + playerMovement.orientation.forward * 2f;
+        return new Vector3(spawnPosition.x, pos.y, spawnPosition.z);
 
-        float dis = 10;
-        Vector3 pos = playerMovement.transform.position;
-        randomX = UnityEngine.Random.Range(pos.x - dis, pos.x + dis);
-        randomY = UnityEngine.Random.Range(pos.z - dis , pos.z + dis);
-        return new Vector3(randomX, pos.y, randomY);
     }
 }

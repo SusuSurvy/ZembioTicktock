@@ -111,6 +111,7 @@ namespace cowsins
             _callFunctionDic[CallFunction.RemoveKey] = RemoveKey;
             _callFunctionDic[CallFunction.CallTransferPlayer] = CallTransferPlayer;
             _callFunctionDic[CallFunction.EquipJiatelin] = EquipJiatelin;
+            _callFunctionDic[CallFunction.DropWeapon] = DropGun;
             foreach (var info in GameDataInstance.Instance.TriggerFunctionSettingDic)
             {
                 UIButtonCallFun btn = Instantiate(CallFunBtn);
@@ -258,6 +259,11 @@ namespace cowsins
         public void EquipJiatelin()
         {
             Player.EquipJiatelin();
+        }
+        
+        public void DropGun()
+        {
+            Player.InteractManager.DropWeapon();
         }
         
         public void OpenLight()

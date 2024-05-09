@@ -25,11 +25,20 @@ public class FlickeringLight : MonoBehaviour
 
     public void OpenLight()
     {
-        myLight.enabled = true;
+        myLight.enabled = !myLight.enabled;
+        if (myLight.enabled == true)
+        {
+            SoundManager.Instance.PlaySound(openClip, 0, 0, false, 0);
+        }
+        else
+        {
+            SoundManager.Instance.PlaySound(closeClip, 0, 0, false, 0);
+        }
+
         // maxIntensity = 0.8f;
         // minIntensity = 0.5f;
         // myLight.spotAngle = 48;
-        SoundManager.Instance.PlaySound(openClip, 0, 0, false, 0);
+    
     }
 
     public void CloseLight()

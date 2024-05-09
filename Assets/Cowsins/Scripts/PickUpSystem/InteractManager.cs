@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 namespace cowsins {
 public class InteractManager : MonoBehaviour
@@ -188,8 +189,9 @@ public class InteractManager : MonoBehaviour
         // Prevent from spamming but let the user interact again
         Invoke("ResetInteractTimer", interactInterval);
         // Manage UI
+        DestroyImmediate(lookingAt.gameObject);
         lookingAt = null;
-
+       
         UIEvents.disableInteractionUI?.Invoke();
         UIEvents.onFinishInteractionProgress?.Invoke();
         events.OnFinishedInteraction.Invoke(); // Call our event
@@ -206,6 +208,22 @@ public class InteractManager : MonoBehaviour
 
         wcon.ReleaseCurrentWeapon();
     }
+
+    public void DropWeapon()
+    {
+        if (wcon.weapon == null || wcon.Reloading || !canDrop) return;
+        Vector3 pos = orientation.position + orientation.forward * droppingDistance;
+        pos.y -= 2;
+        WeaponPickeable pick = Instantiate(weaponGenericPickeable, pos, orientation.rotation) as WeaponPickeable;
+        pick.Drop(wcon, orientation);
+        WeaponIdentification wp = wcon.inventory[wcon.currentWeapon];
+        pick.SetPickeableAttachments(wp.barrel,wp.scope,wp.stock,wp.grip,wp.magazine,wp.flashlight,wp.laser); 
+
+        wcon.ReleaseCurrentWeapon();
+        pick.GetComponent<NavMeshAgent>().enabled = true;
+        pick.GetComponent<NavMeshAgent>().enabled = false;
+    }
+
     private void ResetInteractTimer() => alreadyInteracted = false;
 
     public void GenerateInspectionUI()
@@ -221,10 +239,13 @@ public class InteractManager : MonoBehaviour
     public void DropAttachment(Attachment atc, bool enableDefault)
     {
         // Spawn a new pickeable.
-        AttachmentPickeable pick = Instantiate(attachmentGenericPickeable, orientation.position + orientation.forward * droppingDistance, orientation.rotation) as AttachmentPickeable;
+        Vector3 pos = orientation.position + orientation.forward * droppingDistance;
+        pos.y -= 2;
+        AttachmentPickeable pick = Instantiate(attachmentGenericPickeable, pos, orientation.rotation) as AttachmentPickeable;
         // Assign the appropriate attachment identifier to the spawned pickeable.
         pick.attachmentIdentifier = atc.attachmentIdentifier;
         // Get visuals
+        
         pick.Drop(wcon, orientation);
 
         // Grab the current weaponidentification object.

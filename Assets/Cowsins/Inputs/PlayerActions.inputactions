@@ -105,15 +105,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Drop",
-                    "type": "Button",
-                    "id": "9b6f98f8-19cb-4ffe-9fc4-9f07705f0d8b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "ChangeWeapons",
                     "type": "Value",
                     "id": "e22ad45d-0997-4bf3-8439-55f3d7de3783",
@@ -247,6 +238,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Drop",
+                    "type": "Button",
+                    "id": "63aa8c01-6bec-4d47-a662-78d36945069b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -297,7 +297,7 @@
                 {
                     "name": "",
                     "id": "2bc79522-d599-40e6-a752-266e72890de1",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -434,28 +434,6 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Interacting",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9471ab10-b588-410c-b42e-6a5989debe69",
-                    "path": "<Keyboard>/g",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Drop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "eae6774f-58f9-499f-bc0e-fdf6c35f167b",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -786,6 +764,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "RemoveKey",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "78180be0-129b-4b2a-a8a5-981433b57c43",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

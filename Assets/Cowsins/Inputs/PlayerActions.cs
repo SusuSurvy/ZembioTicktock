@@ -127,15 +127,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Drop"",
-                    ""type"": ""Button"",
-                    ""id"": ""9b6f98f8-19cb-4ffe-9fc4-9f07705f0d8b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""ChangeWeapons"",
                     ""type"": ""Value"",
                     ""id"": ""e22ad45d-0997-4bf3-8439-55f3d7de3783"",
@@ -269,6 +260,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""63aa8c01-6bec-4d47-a662-78d36945069b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -319,7 +319,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2bc79522-d599-40e6-a752-266e72890de1"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -456,28 +456,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Interacting"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9471ab10-b588-410c-b42e-6a5989debe69"",
-                    ""path"": ""<Keyboard>/g"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Drop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""eae6774f-58f9-499f-bc0e-fdf6c35f167b"",
-                    ""path"": ""<Gamepad>/select"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -810,6 +788,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""RemoveKey"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""78180be0-129b-4b2a-a8a5-981433b57c43"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -840,7 +829,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_GameControls_Aiming = m_GameControls.FindAction("Aiming", throwIfNotFound: true);
         m_GameControls_Interacting = m_GameControls.FindAction("Interacting", throwIfNotFound: true);
         m_GameControls_Inspect = m_GameControls.FindAction("Inspect", throwIfNotFound: true);
-        m_GameControls_Drop = m_GameControls.FindAction("Drop", throwIfNotFound: true);
         m_GameControls_ChangeWeapons = m_GameControls.FindAction("ChangeWeapons", throwIfNotFound: true);
         m_GameControls_Pause = m_GameControls.FindAction("Pause", throwIfNotFound: true);
         m_GameControls_Movement = m_GameControls.FindAction("Movement", throwIfNotFound: true);
@@ -856,6 +844,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_GameControls_Summoning = m_GameControls.FindAction("Summoning", throwIfNotFound: true);
         m_GameControls_RemoveKey = m_GameControls.FindAction("RemoveKey", throwIfNotFound: true);
         m_GameControls_CallEnemy1 = m_GameControls.FindAction("CallEnemy1", throwIfNotFound: true);
+        m_GameControls_Drop = m_GameControls.FindAction("Drop", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -928,7 +917,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_GameControls_Aiming;
     private readonly InputAction m_GameControls_Interacting;
     private readonly InputAction m_GameControls_Inspect;
-    private readonly InputAction m_GameControls_Drop;
     private readonly InputAction m_GameControls_ChangeWeapons;
     private readonly InputAction m_GameControls_Pause;
     private readonly InputAction m_GameControls_Movement;
@@ -944,6 +932,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_GameControls_Summoning;
     private readonly InputAction m_GameControls_RemoveKey;
     private readonly InputAction m_GameControls_CallEnemy1;
+    private readonly InputAction m_GameControls_Drop;
     public struct GameControlsActions
     {
         private @PlayerActions m_Wrapper;
@@ -959,7 +948,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         public InputAction @Aiming => m_Wrapper.m_GameControls_Aiming;
         public InputAction @Interacting => m_Wrapper.m_GameControls_Interacting;
         public InputAction @Inspect => m_Wrapper.m_GameControls_Inspect;
-        public InputAction @Drop => m_Wrapper.m_GameControls_Drop;
         public InputAction @ChangeWeapons => m_Wrapper.m_GameControls_ChangeWeapons;
         public InputAction @Pause => m_Wrapper.m_GameControls_Pause;
         public InputAction @Movement => m_Wrapper.m_GameControls_Movement;
@@ -975,6 +963,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         public InputAction @Summoning => m_Wrapper.m_GameControls_Summoning;
         public InputAction @RemoveKey => m_Wrapper.m_GameControls_RemoveKey;
         public InputAction @CallEnemy1 => m_Wrapper.m_GameControls_CallEnemy1;
+        public InputAction @Drop => m_Wrapper.m_GameControls_Drop;
         public InputActionMap Get() { return m_Wrapper.m_GameControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1017,9 +1006,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Inspect.started += instance.OnInspect;
             @Inspect.performed += instance.OnInspect;
             @Inspect.canceled += instance.OnInspect;
-            @Drop.started += instance.OnDrop;
-            @Drop.performed += instance.OnDrop;
-            @Drop.canceled += instance.OnDrop;
             @ChangeWeapons.started += instance.OnChangeWeapons;
             @ChangeWeapons.performed += instance.OnChangeWeapons;
             @ChangeWeapons.canceled += instance.OnChangeWeapons;
@@ -1065,6 +1051,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @CallEnemy1.started += instance.OnCallEnemy1;
             @CallEnemy1.performed += instance.OnCallEnemy1;
             @CallEnemy1.canceled += instance.OnCallEnemy1;
+            @Drop.started += instance.OnDrop;
+            @Drop.performed += instance.OnDrop;
+            @Drop.canceled += instance.OnDrop;
         }
 
         private void UnregisterCallbacks(IGameControlsActions instance)
@@ -1102,9 +1091,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Inspect.started -= instance.OnInspect;
             @Inspect.performed -= instance.OnInspect;
             @Inspect.canceled -= instance.OnInspect;
-            @Drop.started -= instance.OnDrop;
-            @Drop.performed -= instance.OnDrop;
-            @Drop.canceled -= instance.OnDrop;
             @ChangeWeapons.started -= instance.OnChangeWeapons;
             @ChangeWeapons.performed -= instance.OnChangeWeapons;
             @ChangeWeapons.canceled -= instance.OnChangeWeapons;
@@ -1150,6 +1136,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @CallEnemy1.started -= instance.OnCallEnemy1;
             @CallEnemy1.performed -= instance.OnCallEnemy1;
             @CallEnemy1.canceled -= instance.OnCallEnemy1;
+            @Drop.started -= instance.OnDrop;
+            @Drop.performed -= instance.OnDrop;
+            @Drop.canceled -= instance.OnDrop;
         }
 
         public void RemoveCallbacks(IGameControlsActions instance)
@@ -1198,7 +1187,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnAiming(InputAction.CallbackContext context);
         void OnInteracting(InputAction.CallbackContext context);
         void OnInspect(InputAction.CallbackContext context);
-        void OnDrop(InputAction.CallbackContext context);
         void OnChangeWeapons(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
@@ -1214,5 +1202,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnSummoning(InputAction.CallbackContext context);
         void OnRemoveKey(InputAction.CallbackContext context);
         void OnCallEnemy1(InputAction.CallbackContext context);
+        void OnDrop(InputAction.CallbackContext context);
     }
 }

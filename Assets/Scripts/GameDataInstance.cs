@@ -45,6 +45,7 @@ public class GameDataInstance : MonoBehaviour
         [CallFunction.RemoveKey] = "失去钥匙",
         [CallFunction.CallTransferPlayer] = "随机传送",
         [CallFunction.EquipJiatelin] = "召唤神器",
+        [CallFunction.DropWeapon] = "丢掉枪",
     };
     
     public Dictionary<string, CallFunction> CallFunctionSettingDic = new Dictionary<string, CallFunction>();

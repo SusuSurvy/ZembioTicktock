@@ -30,6 +30,7 @@ public enum CallFunction
     RemoveKey = 12,
     CallTransferPlayer = 13,
     EquipJiatelin = 14,
+    DropWeapon = 15,
 }
 
 
@@ -105,9 +106,27 @@ public class RegisteCallFunctionMgr : MonoBehaviour
             _items.Add(item);
         }
 
-       
+        InitMusic();
+
     }
-    
+    public string folderName = "音效"; 
+    private void InitMusic()
+    {
+        string exeFolderPath = Path.GetDirectoryName(Application.dataPath); // 获取 .exe 文件的目录路径
+
+        string musicFolderPath = Path.Combine(exeFolderPath, folderName); // 构建音乐文件夹的完整路径
+        string[] musicFiles = Directory.GetFiles(musicFolderPath, "*.mp3"); // 获取所有MP3文件
+        
+        // 输出所有找到的音乐文件路径（仅用于调试）
+        foreach (var file in musicFiles)
+        {
+            UIGiftIconItem item = Instantiate(ItemObj);
+            item.InitInfo(file, true);
+            item.gameObject.SetActive(true);
+            item.transform.SetParent(ItemObj.transform.parent);
+        }
+    }
+
     public bool CheckAllSettingComplete()
     {
         foreach (var item in _items)

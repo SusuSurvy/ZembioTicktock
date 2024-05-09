@@ -62,10 +62,11 @@ public class Pickeable : Interactable
     public virtual void Drop(WeaponController wcon, Transform orientation)
     {
         dropped = true;
-        GetComponent<Rigidbody>().AddForce(orientation.forward * 4, ForceMode.Impulse);
-        GetComponent<Rigidbody>().AddForce(orientation.up * -2, ForceMode.Impulse);
+        GetComponent<Rigidbody>().isKinematic = true;
+        //GetComponent<Rigidbody>().AddForce(orientation.forward * 4, ForceMode.Impulse);
+        //GetComponent<Rigidbody>().AddForce(orientation.up * -2, ForceMode.Impulse);
         float random = Random.Range(-1f, 1f);
-        GetComponent<Rigidbody>().AddTorque(new Vector3(random, random, random) * 10);
+       // GetComponent<Rigidbody>().AddTorque(new Vector3(random, random, random) * 10);
     }
 
 }

@@ -125,7 +125,7 @@ public class AttachmentPickeable : Pickeable
         // Get whatever we need to display
         if(attachmentIdentifier == null)
         {
-            Debug.LogError("Attachment Identifier not set-up! Please assign a proper attachment identifier to your existing attachments, otherwise the system won´t work properly.");
+            Debug.LogError("Attachment Identifier not set-up! Please assign a proper attachment identifier to your existing attachments, otherwise the system wonç£˜ work properly.");
             return;  
         }
         interactText = attachmentIdentifier.attachmentName;

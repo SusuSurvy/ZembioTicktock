@@ -53,9 +53,11 @@ public class EnemyManager : MonoBehaviour {
         Reset();
     }
 
+  
+
     private void Reset()
     {
-        _needCreate = true;
+        _needCreate = false;
         poolDic.Clear();
         createEnemyTime = GameDataInstance.Instance.GetCreateEnemyTime();
         foreach (var prefab in prefabs)

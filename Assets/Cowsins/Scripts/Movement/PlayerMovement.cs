@@ -369,7 +369,7 @@ public class PlayerMovement : MonoBehaviour
     
     public WeaponPickeable Jiatelin;
     public WeaponPickeable NormalGun;
-
+    public InteractManager InteractManager;
     private Vector3 heightCenter;
     public Vector3 GetTransCenter()
     {
@@ -408,7 +408,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         private void Start()
-    {
+        { 
+            InteractManager = transform.GetComponent<InteractManager>();
         BoxCollider collider = transform.GetComponent<BoxCollider>();
         heightCenter = collider.center;
         playerScale = transform.localScale;
