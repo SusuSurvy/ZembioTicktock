@@ -44,11 +44,9 @@ public class Entrance : MonoBehaviour
         if (!_connectDouYin.enabled) return;
         _connectDouYin.OnGiftMessage = data =>
         {
-            Debug.LogError("送出礼物");
-            foreach (var VARIABLE in data)
-            {
-                Debug.LogError(VARIABLE.Value);
-            }
+            var giftName = data["giftName"];
+            int count = 1;
+            int.TryParse(data["giftCount"], out count);
             Text.text = CantactString(data);
             var url = data["head_img"];
             if (!_headIconDic.ContainsKey(url))
@@ -56,7 +54,12 @@ public class Entrance : MonoBehaviour
                 StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
                 {
                     _headIconDic[url] = teu;
+                    UITicktockPanel.Instance.SendMessageClient(giftName, _headIconDic[url], count);
                 }));
+            }
+            else
+            {
+                UITicktockPanel.Instance.SendMessageClient(giftName, _headIconDic[url], count);
             }
 
           
@@ -65,6 +68,7 @@ public class Entrance : MonoBehaviour
         {
             Debug.LogError("进入房间");
             var url = data["head_img"];
+        
             if (!_headIconDic.ContainsKey(url))
            {
                StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
@@ -72,6 +76,10 @@ public class Entrance : MonoBehaviour
                    _headIconDic[url] = teu;
                }));
            }
+            // else
+            // {
+            //     UITicktockPanel.Instance.SendMessageClient(giftName, _headIconDic[url]);
+            // }
         };
         _connectDouYin.OnChatMessage = data =>
         {
@@ -87,8 +95,8 @@ public class Entrance : MonoBehaviour
             var url = data["head_img"];
             if (_headIconDic.ContainsKey(url))
             {
-                Text.text = "显示头像";
-                UITicktockPanel.Instance.SendMessage(content, _headIconDic[url]);
+                //Text.text = "显示头像";
+                UITicktockPanel.Instance.SendMessageClient(content, _headIconDic[url]);
             }
             else
             {
@@ -97,13 +105,13 @@ public class Entrance : MonoBehaviour
                     _headIconDic[url] = teu;
                     if (teu != null)
                     {
-                        Text.text = "下载头像完成";  
+                        //Text.text = "下载头像完成";  
                     }
                     else
                     {
-                        Text.text = "头像为空";  
+                       // Text.text = "头像为空";  
                     }
-                    UITicktockPanel.Instance.SendMessage(content, _headIconDic[url]);
+                    UITicktockPanel.Instance.SendMessageClient(content, _headIconDic[url]);
                     //TODO
                 }));
             }

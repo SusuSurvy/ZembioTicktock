@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using cowsins;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+
+
+using UnityEngine.Networking;
+
 
 public enum CallFunction
 {
@@ -31,6 +36,8 @@ public enum CallFunction
 
 public class RegisteCallFunctionMgr : MonoBehaviour
 {
+    
+    
     public static RegisteCallFunctionMgr Instance { get; private set; }
     public UIGiftDataItem GiftItem;
     public UIGiftIconItem ItemObj;
@@ -47,23 +54,36 @@ public class RegisteCallFunctionMgr : MonoBehaviour
         ChooseGiftWindow.SetActive(false);
     }
 
-    private UnityAction<Sprite> _callback = null;
-    
-    public void GetGiftIcon(Sprite sprite)
+    private UnityAction<string> _callback = null;
+
+    public void ChooseMusic(UnityAction<string> ac)
+    {
+        _callback = ac;
+        ChooseGiftWindow.SetActive(true);
+    }
+
+    public void GetGiftIcon(string sprite)
     {
         ChooseGiftWindow.SetActive(false);
         _callback(sprite);
     }
 
-    public void SetFunctionSetting(string key, CallFunction value, int triggerNum)
+    public void SetFunctionSetting(string key, CallFunction value, int triggerNum, string musicName)
     {
         GameDataInstance.Instance.CallFunctionSettingDic[key] = value;
         FunctionInfo functionInfo = new FunctionInfo();
         functionInfo.FuncType = value;
         functionInfo.TriggerNum = triggerNum;
+        functionInfo.MusicName = musicName;
+        if (!string.IsNullOrEmpty(musicName))
+        {
+            GameDataInstance.Instance.LoadMusic(functionInfo);
+            // 开始播放音乐
+        }
+
         GameDataInstance.Instance.TriggerFunctionSettingDic[key] = functionInfo;
     }
-
+    
     private void Init()
     {
         _items = new List<UIGiftDataItem>();
@@ -84,8 +104,10 @@ public class RegisteCallFunctionMgr : MonoBehaviour
             item.transform.localScale = Vector3.one;
             _items.Add(item);
         }
-    }
 
+       
+    }
+    
     public bool CheckAllSettingComplete()
     {
         foreach (var item in _items)

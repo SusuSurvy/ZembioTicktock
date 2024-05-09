@@ -157,7 +157,7 @@ namespace cowsins
             danmuPool.ReturnToPool(danmuObj);
         }
 
-        public void SendMessage(string str, Texture2D texture = null)
+        public void SendMessageClient(string str, Texture2D texture = null, int count = 1)
         {
             if (str.Contains("1"))
             {
@@ -179,8 +179,16 @@ namespace cowsins
             FunctionInfo info = null;
             if (GameDataInstance.Instance.TriggerFunctionSettingDic.TryGetValue(str, out info))
             {
-                _callFunctionDic[info.FuncType]();
-                ShowDanmu(GameDataInstance.CallFunctionDes[info.FuncType], null);
+                if (info.TriggerMusic != null)
+                {
+                    SoundManager.Instance.PlaySound(info.TriggerMusic, 0, 0, false, 0);
+                }
+
+                for (int i = 0; i < count; i++)
+                {
+                    _callFunctionDic[info.FuncType]();
+                    ShowDanmu(GameDataInstance.CallFunctionDes[info.FuncType], texture);
+                }
             }
         }
 

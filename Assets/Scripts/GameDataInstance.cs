@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class FunctionInfo
 {
     public CallFunction FuncType;
     public int TriggerNum;
+    public AudioClip TriggerMusic;
+    public string MusicName;
 }
 
 public class GameDataInstance : MonoBehaviour
@@ -138,6 +141,29 @@ public class GameDataInstance : MonoBehaviour
     void Start()
     {
         
+    }
+
+    public void LoadMusic(FunctionInfo functionInfo)
+    {
+        StartCoroutine(PlayMusicFromFile("file://" + functionInfo.MusicName, functionInfo));
+    }
+
+    IEnumerator PlayMusicFromFile(string fileUrl, FunctionInfo info)
+    {
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(fileUrl, AudioType.MPEG))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
+                info.TriggerMusic = clip;
+            }
+            else
+            {
+                Debug.LogError("Music file load error: " + www.error);
+            }
+        }
     }
 
     // Update is called once per frame
