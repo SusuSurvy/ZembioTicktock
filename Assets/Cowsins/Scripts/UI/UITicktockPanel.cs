@@ -112,6 +112,7 @@ namespace cowsins
             _callFunctionDic[CallFunction.CallTransferPlayer] = CallTransferPlayer;
             _callFunctionDic[CallFunction.EquipJiatelin] = EquipJiatelin;
             _callFunctionDic[CallFunction.DropWeapon] = DropGun;
+            _callFunctionDic[CallFunction.ReduceBullet] = ReduceBullet;
             foreach (var info in GameDataInstance.Instance.TriggerFunctionSettingDic)
             {
                 UIButtonCallFun btn = Instantiate(CallFunBtn);
@@ -162,6 +163,7 @@ namespace cowsins
         {
             if (str.Contains("1"))
             {
+               
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 ControllerPanel.SetActive(true);
@@ -171,19 +173,16 @@ namespace cowsins
             }
             else if (str.Contains("2"))
             {
+               
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 ControllerPanel.SetActive(false);
-                // ShowDanmu(_danmuInfo["2"], texture);
+               // ShowDanmu(_danmuInfo["2"], texture);
                 // RecoverHp();
             }
-            else if (str.Contains("9"))
+            else if (str.Contains("3"))
             {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                ControllerPanel.SetActive(false);
-                ShowDanmu(_danmuInfo["9"], texture);
-                RemoveKey();
+               DropGun();
             }
             FunctionInfo info = null;
             if (GameDataInstance.Instance.TriggerFunctionSettingDic.TryGetValue(str, out info))
@@ -259,14 +258,43 @@ namespace cowsins
         {
             EnemyManager.Instance.CreateEnemy(EnemyType.Remote);
         }
-        
+
+        public void ReduceBullet()
+        {
+            if (Player.GetComponent<WeaponController>().weapon == null) return;
+            
+            Player.GetComponent<WeaponController>().id.totalBullets -= 10;
+            if (Player.GetComponent<WeaponController>().id.totalBullets < 0)
+            {
+                Player.GetComponent<WeaponController>().id.totalBullets = 0;
+            }
+        }
+
         public void CallEnemyBoss()
         {
             EnemyManager.Instance.CreateEnemy(EnemyType.Boss);
         }
+
+        private Coroutine ct;
         public void EquipJiatelin()
         {
             Player.EquipJiatelin();
+            if (ct != null)
+            {
+                StopCoroutine(ct);
+            }
+            ct = StartCoroutine(DropJiatelin());
+        }
+
+        private IEnumerator DropJiatelin()
+        {
+            yield return new WaitForSeconds(30f);
+            EquipGun();
+        }
+
+        public void EquipGun()
+        {
+            Player.EquipGun();
         }
         
         public void DropGun()

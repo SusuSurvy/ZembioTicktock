@@ -46,6 +46,7 @@ public class GameDataInstance : MonoBehaviour
         [CallFunction.CallTransferPlayer] = "随机传送",
         [CallFunction.EquipJiatelin] = "召唤神器",
         [CallFunction.DropWeapon] = "丢掉枪",
+        [CallFunction.ReduceBullet] = "减少子弹",
     };
     
     public Dictionary<string, CallFunction> CallFunctionSettingDic = new Dictionary<string, CallFunction>();
@@ -57,8 +58,8 @@ public class GameDataInstance : MonoBehaviour
     public Dictionary<string, int> GameLoadData = new Dictionary<string, int>()
     {
         ["UserHp"] = 100,
-        ["GunMaxBullet"] = 200,
-        ["JiatelinMaxBullet"] = 200,
+        ["GunMaxBullet"] = 8,
+        ["JiatelinMaxBullet"] = 1000,
         ["NoDameTime"] = 10,
         ["LoseControllerTime"] = 5,
         ["CreateEnemyTime"] = 10, 

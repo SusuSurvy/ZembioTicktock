@@ -79,7 +79,7 @@ public class KeyProgress : MonoBehaviour
         {
             EnemyManager.Instance.GameWin();
         }
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(60f);
         GetComponent<Renderer>().enabled = true;
         GetComponent<BoxCollider>().enabled = true;
     }

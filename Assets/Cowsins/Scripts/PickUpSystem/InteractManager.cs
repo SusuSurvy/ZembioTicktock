@@ -189,7 +189,7 @@ public class InteractManager : MonoBehaviour
         // Prevent from spamming but let the user interact again
         Invoke("ResetInteractTimer", interactInterval);
         // Manage UI
-        DestroyImmediate(lookingAt.gameObject);
+      //  DestroyImmediate(lookingAt.gameObject);
         lookingAt = null;
        
         UIEvents.disableInteractionUI?.Invoke();

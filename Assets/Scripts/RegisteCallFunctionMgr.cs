@@ -31,6 +31,7 @@ public enum CallFunction
     CallTransferPlayer = 13,
     EquipJiatelin = 14,
     DropWeapon = 15,
+    ReduceBullet = 16,
 }
 
 

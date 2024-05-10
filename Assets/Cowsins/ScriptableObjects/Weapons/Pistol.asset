@@ -36,7 +36,7 @@ MonoBehaviour:
   coolSpeed: 0.3
   cooledPercentageAfterOverheat: 0.6
   infiniteBullets: 0
-  magazineSize: 200
+  magazineSize: 8
   bulletsPerFire: 1
   ammoCostPerFire: 1
   bulletRange: 100
@@ -136,8 +136,8 @@ MonoBehaviour:
   minimumDistanceToApplyDamageReduction: 40.3
   damageReductionMultiplier: 1
   criticalDamageMultiplier: 1.5
-  limitedMagazines: 0
-  totalMagazines: 1
+  limitedMagazines: 1
+  totalMagazines: 4
   showBulletShells: 1
   bulletHoleImpact:
     defaultImpact: {fileID: 2462405574108921655, guid: e6d36bb0ebdf6cc4dacdeee8b6e8a0ce, type: 3}
