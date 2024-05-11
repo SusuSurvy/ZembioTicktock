@@ -70,13 +70,19 @@ public class GameDataInstance : MonoBehaviour
         ["RemoteHp"] = 2,
         ["BossHp"] = 50,
         ["RecoverHp"] = 10,
+        ["JiatelinTime"] = 60,
     };
 
     public int GetUserMaxHP()
     {
         return GameLoadData["UserHp"];
     }
-    
+
+    public int GetJiatelinTime()
+    {
+        return GameLoadData["JiatelinTime"];
+    }
+
     public int GetNoDamageTime()
     {
         return GameLoadData["NoDameTime"];

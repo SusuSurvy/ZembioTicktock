@@ -159,6 +159,11 @@ namespace cowsins
             danmuPool.ReturnToPool(danmuObj);
         }
 
+        public void Interacting()
+        {
+            Player.InteractManager.PerformInteraction();
+        }
+
         public void SendMessageClient(string str, Texture2D texture = null, int count = 1)
         {
             if (str.Contains("1"))
@@ -288,7 +293,7 @@ namespace cowsins
 
         private IEnumerator DropJiatelin()
         {
-            yield return new WaitForSeconds(30f);
+            yield return new WaitForSeconds(GameDataInstance.Instance.GetJiatelinTime());
             EquipGun();
         }
 

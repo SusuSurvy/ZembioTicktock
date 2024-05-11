@@ -154,42 +154,53 @@ public class InteractManager : MonoBehaviour
 
     private void DetectInput()
     {
+        // if (lookingAt == null)
+        // {
+        //     progressElapsed = -.01f;
+        //     return;
+        // }
+        // // If we dont detect an interactable then dont continue
+        // // However if we detected an interactable + we pressing the interact button, then: 
+        // if (InputManager.interacting)
+        // {
+        //     progressElapsed += Time.deltaTime;
+        //     if (progressRequiredToInteract > 0)
+        //     {
+        //         UIEvents.onInteractionProgressChanged?.Invoke(progressElapsed / progressRequiredToInteract);           
+        //     }
+        // }
+        // else
+        // {
+        //     progressElapsed = -.01f;
+        //     UIEvents.onFinishInteractionProgress?.Invoke(); 
+        // }
+        // // Interact
+        // if (progressElapsed >= progressRequiredToInteract) PerformInteraction();
+    }
+
+    public void PerformInteraction()
+    {
         if (lookingAt == null)
         {
             progressElapsed = -.01f;
             return;
         }
-        // If we dont detect an interactable then dont continue
-        // However if we detected an interactable + we pressing the interact button, then: 
-        if (InputManager.interacting)
-        {
-            progressElapsed += Time.deltaTime;
-            if (progressRequiredToInteract > 0)
-            {
-                UIEvents.onInteractionProgressChanged?.Invoke(progressElapsed / progressRequiredToInteract);           
-            }
-        }
-        else
-        {
-            progressElapsed = -.01f;
-            UIEvents.onFinishInteractionProgress?.Invoke(); 
-        }
-        // Interact
-        if (progressElapsed >= progressRequiredToInteract) PerformInteraction();
-    }
-
-    private void PerformInteraction()
-    {
         progressElapsed = -.01f;
         // prevent from spamming
         alreadyInteracted = true;
         // Perform any interaction you may like
         // Please note that classes that inherit from interactable can override the virtual void Interact()
-        lookingAt.GetComponent<Interactable>().Interact();
+        Interactable pickUpAble = lookingAt.GetComponent<Interactable>();
+        pickUpAble.Interact();
         // Prevent from spamming but let the user interact again
         Invoke("ResetInteractTimer", interactInterval);
         // Manage UI
-      //  DestroyImmediate(lookingAt.gameObject);
+        if (pickUpAble is WeaponPickeable)
+        {
+            DestroyImmediate(lookingAt.gameObject);
+        }
+
+        //  
         lookingAt = null;
        
         UIEvents.disableInteractionUI?.Invoke();

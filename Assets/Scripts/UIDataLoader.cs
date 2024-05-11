@@ -31,6 +31,7 @@ public class UIDataLoader : MonoBehaviour
         ["RemoteHp"] = "远程怪血量",
         ["BossHp"] = "Boss血量",
         ["RecoverHp"] = "玩家恢复血量",
+        ["JiatelinTime"] = "加特林持续时间",
     };
 
     public Button EnterGameBtn;
@@ -54,6 +55,8 @@ public class UIDataLoader : MonoBehaviour
             UIDataItem item = GameObject.Instantiate(ItemObj);
             item.InitInfo(info.Key, info.Value, GameNameConst[info.Key]);
             item.gameObject.transform.SetParent(this.transform);
+            item.transform.localScale = Vector3.one;
+            
             _items.Add(item);
         }
 

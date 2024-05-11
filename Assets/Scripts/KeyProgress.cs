@@ -17,9 +17,11 @@ public class KeyProgress : MonoBehaviour
     public Text KeyText;
     public GameObject keyObject;
     private float minDisplayCount = 1; 
-    private float maxDisplayCount = 3; 
+    private float maxDisplayCount = 3;
+    private bool canGet = true;
     void Start()
     {
+        canGet = true;
         Player = UIValue;
         guiProgressBar.Value = 0.15F;
         UIValue.KeyValue = 0.15f;
@@ -32,30 +34,47 @@ public class KeyProgress : MonoBehaviour
 
     void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (InputManager.interacting == true && canGet)
         {
-            Vector2 mousePosition = Mouse.current.position.ReadValue();
-            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-            RaycastHit hit;
-            RaycastHit[] hits = Physics.RaycastAll(ray);
-            foreach (var item in hits)
+            float distance = Vector3.Distance(transform.position, Player.Player.transform.position);
+            float cancelDistance = 2.0f;
+            if (distance < cancelDistance)
             {
-                if (item.collider.gameObject == this.gameObject)
-                {
-                    float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
-                    float cancelDistance = 2.0f;
-                    if (distance < cancelDistance)
-                    {
-                        GetComponent<Renderer>().enabled = false;
-                        GetComponent<BoxCollider>().enabled = false;
-                        UIValue.KeyValue += Keysvalue;
-                        Player.KeyCount++;
-                        StartCoroutine(DelayedProgressUpdate(UIValue.KeyValue));
-                        numberOfKeys--;
-                    }
-                }
+                canGet = false;
+                GetComponent<Renderer>().enabled = false;
+                GetComponent<BoxCollider>().enabled = false;
+                UIValue.KeyValue += Keysvalue;
+                Player.KeyCount++;
+                StartCoroutine(DelayedProgressUpdate(UIValue.KeyValue));
+                numberOfKeys--;
+             
             }
         }
+
+        // if (Mouse.current.leftButton.wasPressedThisFrame)
+        // {
+        //     Vector2 mousePosition = Mouse.current.position.ReadValue();
+        //     Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        //     RaycastHit hit;
+        //     RaycastHit[] hits = Physics.RaycastAll(ray);
+        //     foreach (var item in hits)
+        //     {
+        //         if (item.collider.gameObject == this.gameObject)
+        //         {
+        //             float distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+        //             float cancelDistance = 2.0f;
+        //             if (distance < cancelDistance)
+        //             {
+        //                 GetComponent<Renderer>().enabled = false;
+        //                 GetComponent<BoxCollider>().enabled = false;
+        //                 UIValue.KeyValue += Keysvalue;
+        //                 Player.KeyCount++;
+        //                 StartCoroutine(DelayedProgressUpdate(UIValue.KeyValue));
+        //                 numberOfKeys--;
+        //             }
+        //         }
+        //     }
+        // }
 
         if(Player.KeyRemove == true)
         {
@@ -80,6 +99,7 @@ public class KeyProgress : MonoBehaviour
             EnemyManager.Instance.GameWin();
         }
         yield return new WaitForSeconds(60f);
+        canGet = true;
         GetComponent<Renderer>().enabled = true;
         GetComponent<BoxCollider>().enabled = true;
     }

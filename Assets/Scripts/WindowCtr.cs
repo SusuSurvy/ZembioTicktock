@@ -9,14 +9,14 @@ public class WindowCtr : MonoBehaviour
 
     public Button BtnGameDataSetting;
 
-    public RegisteCallFunctionMgr UGiftSettingPanel;
+    public GameObject UGiftSettingPanel;
 
-    public UIDataLoader UIDataPanel;
+    public GameObject UIDataPanel;
 
     public Button BtnSetting;
 
     public GameObject SettingPanel;
-    // Start is called before the first frame update
+    // Start is called before the first frame updatein
     void Start()
     {
         UGiftSettingPanel.gameObject.SetActive(true);

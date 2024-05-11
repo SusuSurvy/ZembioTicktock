@@ -35,7 +35,7 @@ public class BulletsPickeable : Pickeable
         render.gameObject.SetActive(false);
         image.gameObject.SetActive(false);
         GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(300f);
+        yield return new WaitForSeconds(100f);
         graphics.gameObject.SetActive(true);
         render.gameObject.SetActive(true);
         image.gameObject.SetActive(true);
