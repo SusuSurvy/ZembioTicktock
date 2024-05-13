@@ -2342,6 +2342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIGiftIconItem
       objectReference: {fileID: 0}
+    - target: {fileID: 8488986202204696434, guid: 476e54d57442d4f45b1943d51db41a17, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -61,6 +63,7 @@ namespace cowsins
 
         public KeyUI KeyUI;
         public bool KeyRemove;
+        public RawImage RawImage;
         
         private Dictionary<string, string> _danmuInfo = new Dictionary<string, string>()
         {
@@ -120,8 +123,51 @@ namespace cowsins
                 btn.gameObject.SetActive(true);
                 btn.gameObject.transform.SetParent(CallFunBtn.transform.parent);
             }
-        }
+            InitHeadIcon();
         
+        }
+
+        private void InitHeadIcon()
+        {
+            string folderName = "头像";
+            string exeFolderPath = Path.GetDirectoryName(Application.dataPath); // 获取 .exe 文件的目录路径
+
+            string musicFolderPath = Path.Combine(exeFolderPath, folderName); // 构建音乐文件夹的完整路径
+            string[] musicFiles = Directory.GetFiles(musicFolderPath, "*.png"); // 获取所有MP3文件
+
+            // 输出所有找到的音乐文件路径（仅用于调试）
+            foreach (var file in musicFiles)
+            {
+                Debug.LogError(file);
+                StartCoroutine(PlayMusicFromFile("file://" + file));
+            }
+        }
+
+        IEnumerator PlayMusicFromFile(string fileUrl)
+        {
+            using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(fileUrl))
+            {
+                yield return uwr.SendWebRequest();
+
+                // 检查并处理可能发生的错误
+                if (uwr.result == UnityWebRequest.Result.ConnectionError || uwr.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogError(uwr.error);
+                }
+                else
+                {
+                    // 获取下载的图片
+                    var texture = DownloadHandlerTexture.GetContent(uwr);
+
+                    // 如果是要修改3D对象的纹理
+                    RawImage.texture = texture;
+
+                    // 如果是UI的Image，则使用下面的代码片段：
+                    // targetUIImage.sprite = Sprite.Create(texture as Texture2D, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+                }
+            }
+        }
+
         public void ShowDanmu(string text, Texture2D texture)
         {
             GameObject danmuObj = danmuPool.Get();
@@ -166,6 +212,7 @@ namespace cowsins
 
         public void SendMessageClient(string str, Texture2D texture = null, int count = 1)
         {
+            
             if (str.Contains("1"))
             {
                
@@ -185,10 +232,11 @@ namespace cowsins
                // ShowDanmu(_danmuInfo["2"], texture);
                 // RecoverHp();
             }
-            else if (str.Contains("3"))
-            {
-               DropGun();
-            }
+          //  else if (str.Contains("3"))
+           // {
+           //    DropGun();
+           // }
+           
             FunctionInfo info = null;
             if (GameDataInstance.Instance.TriggerFunctionSettingDic.TryGetValue(str, out info))
             {
@@ -199,8 +247,11 @@ namespace cowsins
 
                 for (int i = 0; i < count; i++)
                 {
-                    _callFunctionDic[info.FuncType]();
-                    ShowDanmu(GameDataInstance.CallFunctionDes[info.FuncType], texture);
+                    for (int j = 0; j < info.TriggerNum; j++)
+                    {
+                        _callFunctionDic[info.FuncType]();
+                    }
+                   // ShowDanmu(GameDataInstance.CallFunctionDes[info.FuncType], texture);
                 }
             }
         }

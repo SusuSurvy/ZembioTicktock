@@ -23,7 +23,7 @@ public class UIButtonCallFun : MonoBehaviour
 
     private void CallFunction()
     {
-        for (int i = 0; i < _triggerNum; i++)
+       // for (int i = 0; i < _triggerNum; i++)
         {
             UITicktockPanel.Instance.SendMessageClient(Text.text);
         }

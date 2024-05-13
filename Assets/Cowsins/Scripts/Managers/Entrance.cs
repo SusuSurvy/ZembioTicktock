@@ -47,20 +47,21 @@ public class Entrance : MonoBehaviour
             var giftName = data["giftName"];
             int count = 1;
             int.TryParse(data["giftCount"], out count);
-            Text.text = CantactString(data);
+            //Text.text = CantactString(data);
             var url = data["head_img"];
-            if (!_headIconDic.ContainsKey(url))
-            {
-                StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
-                {
-                    _headIconDic[url] = teu;
-                    UITicktockPanel.Instance.SendMessageClient(giftName, _headIconDic[url], count);
-                }));
-            }
-            else
-            {
-                UITicktockPanel.Instance.SendMessageClient(giftName, _headIconDic[url], count);
-            }
+            UITicktockPanel.Instance.SendMessageClient(giftName, null, count);
+           // if (!_headIconDic.ContainsKey(url))
+          //  {
+           //     StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
+           //     {
+            //        _headIconDic[url] = teu;
+            //        UITicktockPanel.Instance.SendMessageClient(giftName, _headIconDic[url], count);
+            //    }));
+          //  }
+          //  else
+         //   {
+          //      UITicktockPanel.Instance.SendMessageClient(giftName, _headIconDic[url], count);
+          //  }
 
           
         };
@@ -71,10 +72,10 @@ public class Entrance : MonoBehaviour
         
             if (!_headIconDic.ContainsKey(url))
            {
-               StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
-               {
-                   _headIconDic[url] = teu;
-               }));
+             //  StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
+             //  {
+             //      _headIconDic[url] = teu;
+             //  }));
            }
             // else
             // {
@@ -88,33 +89,33 @@ public class Entrance : MonoBehaviour
                 Debug.LogError(VARIABLE.Value);
             }
             var content = data["content"];
-            Text.text = CantactString(data);
+           // Text.text = CantactString(data);
            
             var name = data["name"];
             if (name.Contains("用户")) return;
             var url = data["head_img"];
-            if (_headIconDic.ContainsKey(url))
-            {
+         //   if (_headIconDic.ContainsKey(url))
+         //   {
                 //Text.text = "显示头像";
-                UITicktockPanel.Instance.SendMessageClient(content, _headIconDic[url]);
-            }
-            else
-            {
-                StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
-                {
-                    _headIconDic[url] = teu;
-                    if (teu != null)
-                    {
+               // UITicktockPanel.Instance.SendMessageClient(content, _headIconDic[url]);
+          //  }
+          //  else
+          //  {
+              //  StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
+              //  {
+                //    _headIconDic[url] = teu;
+               //     if (teu != null)
+               //     {
                         //Text.text = "下载头像完成";  
-                    }
-                    else
-                    {
+                //    }
+                //    else
+                //    {
                        // Text.text = "头像为空";  
-                    }
-                    UITicktockPanel.Instance.SendMessageClient(content, _headIconDic[url]);
+                //    }
+                 //   UITicktockPanel.Instance.SendMessageClient(content, _headIconDic[url]);
                     //TODO
-                }));
-            }
+              //  }));
+          //  }
            // if (!ReGexTools.IsChinese(content)) return;
           
         };

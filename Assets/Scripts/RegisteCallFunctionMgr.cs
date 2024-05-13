@@ -125,6 +125,7 @@ public class RegisteCallFunctionMgr : MonoBehaviour
             item.InitInfo(file, true);
             item.gameObject.SetActive(true);
             item.transform.SetParent(ItemObj.transform.parent);
+            item.transform.localScale = Vector3.one;
         }
     }
 
