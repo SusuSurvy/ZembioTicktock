@@ -60,7 +60,7 @@ public class UIDataLoader : MonoBehaviour
             _items.Add(item);
         }
 
-        InputField.text = SystemInfo.deviceUniqueIdentifier.ToString();
+        InputField.text = GetMotherboardID();
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -116,47 +116,48 @@ public class UIDataLoader : MonoBehaviour
     
     public string GetMotherboardID()
     {
-        if (InputField.text != "")
-        {
-            return InputField.text;
-        }
-        string motherboardID = "";
-        try
-        {
-            // 设置启动进程的参数
-            sysDia.ProcessStartInfo procStartInfo = new sysDia.ProcessStartInfo("cmd", "/c wmic baseboard get SerialNumber")
-            {
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-
-            // 启动进程以执行命令
-            using (sysDia.Process process = sysDia.Process.Start(procStartInfo))
-            {
-                // 读取命令的标准输出
-                motherboardID = process.StandardOutput.ReadToEnd();
-                process.WaitForExit();
-            }
-
-            //处理输出的字符串，提取主板序列号
-            string[] lines = motherboardID.Split('\n');
-            if (lines.Length >= 2)
-            {
-                motherboardID = lines[1].Trim(); // 通常序列号位于第二行
-            }
-            else
-            {
-                Debug.LogError("无法获取主板序列号。");
-                motherboardID = "";
-            }
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError("获取主板序列号时出错: " + e.Message);
-        }
-
-        return motherboardID;
+        return SystemInfo.deviceUniqueIdentifier.ToString();
+        // if (InputField.text != "")
+        // {
+        //     return InputField.text;
+        // }
+        // string motherboardID = "";
+        // try
+        // {
+        //     // 设置启动进程的参数
+        //     sysDia.ProcessStartInfo procStartInfo = new sysDia.ProcessStartInfo("cmd", "/c wmic baseboard get SerialNumber")
+        //     {
+        //         RedirectStandardOutput = true,
+        //         UseShellExecute = false,
+        //         CreateNoWindow = true
+        //     };
+        //
+        //     // 启动进程以执行命令
+        //     using (sysDia.Process process = sysDia.Process.Start(procStartInfo))
+        //     {
+        //         // 读取命令的标准输出
+        //         motherboardID = process.StandardOutput.ReadToEnd();
+        //         process.WaitForExit();
+        //     }
+        //
+        //     //处理输出的字符串，提取主板序列号
+        //     string[] lines = motherboardID.Split('\n');
+        //     if (lines.Length >= 2)
+        //     {
+        //         motherboardID = lines[1].Trim(); // 通常序列号位于第二行
+        //     }
+        //     else
+        //     {
+        //         Debug.LogError("无法获取主板序列号。");
+        //         motherboardID = "";
+        //     }
+        // }
+        // catch (System.Exception e)
+        // {
+        //     Debug.LogError("获取主板序列号时出错: " + e.Message);
+        // }
+        //
+        // return motherboardID;
     }
 
 
@@ -233,7 +234,7 @@ public class UIDataLoader : MonoBehaviour
     public void LoginIn()
     {
         string keycode = GetMotherboardID();
-        string ossUrl = string.Format("{0}/{1}", keycode, "keycodeData.bytes");
+        string ossUrl = string.Format("fengrenyuan/{0}/{1}", keycode, "keycodeData.bytes");
         string cacheUrl = Application.persistentDataPath + "/keycodeData.bytes";
         Oss.GetObject(ossUrl, cacheUrl, downloadUrl =>
         {
