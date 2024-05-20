@@ -116,6 +116,8 @@ namespace cowsins
             _callFunctionDic[CallFunction.EquipJiatelin] = EquipJiatelin;
             _callFunctionDic[CallFunction.DropWeapon] = DropGun;
             _callFunctionDic[CallFunction.ReduceBullet] = ReduceBullet;
+            _callFunctionDic[CallFunction.IncreaseBullet] = IncreaseBullet;
+            _callFunctionDic[CallFunction.RandomEnemy] = RandomEnemy;
             foreach (var info in GameDataInstance.Instance.TriggerFunctionSettingDic)
             {
                 UIButtonCallFun btn = Instantiate(CallFunBtn);
@@ -232,11 +234,11 @@ namespace cowsins
                // ShowDanmu(_danmuInfo["2"], texture);
                 // RecoverHp();
             }
-          //  else if (str.Contains("3"))
-           // {
-           //    DropGun();
-           // }
-           
+            else if (str.Contains("3"))
+            {
+                ClearAllEnemy();
+            }
+
             FunctionInfo info = null;
             if (GameDataInstance.Instance.TriggerFunctionSettingDic.TryGetValue(str, out info))
             {
@@ -274,7 +276,20 @@ namespace cowsins
         {
             Player.RecoverHp(GameDataInstance.Instance.GetRecoverHp());
         }
-        
+        public void RandomEnemy()
+        {
+            List<Action> enemyActions = new List<Action>
+            {
+                CallEnemyDoll,
+                CallEnemyGirl,
+                CallEnemyFat,
+                CallEnemyRemote,
+                CallEnemyBoss
+            };
+            int randomIndex = UnityEngine.Random.Range(0, enemyActions.Count);
+            enemyActions[randomIndex]();
+        }
+
         public void CallEnemy()
         {
             EnemyManager.Instance.CreateEnemy(EnemyType.Any);
@@ -324,6 +339,13 @@ namespace cowsins
             {
                 Player.GetComponent<WeaponController>().id.totalBullets = 0;
             }
+        }
+
+        public void IncreaseBullet()
+        {
+            if (Player.GetComponent<WeaponController>().weapon == null) return;
+
+            Player.GetComponent<WeaponController>().id.totalBullets += 10;
         }
 
         public void CallEnemyBoss()

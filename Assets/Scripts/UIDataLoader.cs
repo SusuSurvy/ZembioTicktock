@@ -252,11 +252,11 @@ public class UIDataLoader : MonoBehaviour
                 }
                 else
                 {
-                    if (!RegisteCallFunctionMgr.Instance.CheckAllSettingComplete())
-                    {
-                        Text.text = "礼物配置未完成，请先完成配置" ;
-                        return;
-                    }
+                    //if (!RegisteCallFunctionMgr.Instance.CheckAllSettingComplete())
+                    //{
+                    //    Text.text = "礼物配置未完成，请先完成配置" ;
+                    //    return;
+                    //}
                     Text.text = "您还可以玩" + lastDay + "天，即将进入游戏" ;
                     SaveDataAndEnterGame();
                     

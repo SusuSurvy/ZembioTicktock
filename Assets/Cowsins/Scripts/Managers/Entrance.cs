@@ -25,6 +25,7 @@ public class Entrance : MonoBehaviour
     
     public void Start()
     {
+      // _audioSource.clip = null;
       //  _audioSource.volume = configura.音量;
       //  button.onClick.AddListener(() => button.gameObject.SetActive(false));
         InitDouYinConnect();

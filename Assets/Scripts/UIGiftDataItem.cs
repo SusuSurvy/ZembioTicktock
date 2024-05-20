@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,16 @@ public class UIGiftDataItem : MonoBehaviour
         _key = type;
         NumField.gameObject.SetActive(CheckNeedNum());
         NumField.text = 1.ToString();
-        Btn.onClick.AddListener(() => { RegisteCallFunctionMgr.Instance.ChooseMusic(ChooseMusic); });
+        
+        if (_key == CallFunction.BackgroundMusic)
+        {
+
+
+        }
+        else
+        {
+            Btn.onClick.AddListener(() => { RegisteCallFunctionMgr.Instance.ChooseMusic(ChooseMusic); });
+        }
     }
 
     private void ChooseMusic(string str)

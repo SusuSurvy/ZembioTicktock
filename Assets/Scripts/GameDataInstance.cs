@@ -47,6 +47,10 @@ public class GameDataInstance : MonoBehaviour
         [CallFunction.EquipJiatelin] = "召唤神器",
         [CallFunction.DropWeapon] = "丢掉枪",
         [CallFunction.ReduceBullet] = "减少子弹",
+        [CallFunction.IncreaseBullet] = "增加子弹",
+        [CallFunction.RandomEnemy] = "随机怪物",
+        [CallFunction.BackgroundMusic] = "更换音乐",
+
     };
     
     public Dictionary<string, CallFunction> CallFunctionSettingDic = new Dictionary<string, CallFunction>();

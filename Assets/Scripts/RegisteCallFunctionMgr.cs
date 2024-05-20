@@ -11,6 +11,7 @@ using UnityEngine.UI;
 
 
 using UnityEngine.Networking;
+using UnityEngine.InputSystem;
 
 
 public enum CallFunction
@@ -32,6 +33,9 @@ public enum CallFunction
     EquipJiatelin = 14,
     DropWeapon = 15,
     ReduceBullet = 16,
+    IncreaseBullet = 17,
+    RandomEnemy = 18,
+    BackgroundMusic = 19,
 }
 
 
@@ -84,7 +88,7 @@ public class RegisteCallFunctionMgr : MonoBehaviour
         }
 
         GameDataInstance.Instance.TriggerFunctionSettingDic[key] = functionInfo;
-    }
+}
     
     private void Init()
     {
@@ -107,27 +111,37 @@ public class RegisteCallFunctionMgr : MonoBehaviour
             _items.Add(item);
         }
 
-        InitMusic();
+        InitMusic(folderName);
+        InitMusic(backgroundMusicFolderName);
+
 
     }
-    public string folderName = "音效"; 
-    private void InitMusic()
+    public string folderName = "音效";
+    public string backgroundMusicFolderName = "背景音乐";
+    private void InitMusic(string folderName)
     {
         string exeFolderPath = Path.GetDirectoryName(Application.dataPath); // 获取 .exe 文件的目录路径
 
         string musicFolderPath = Path.Combine(exeFolderPath, folderName); // 构建音乐文件夹的完整路径
         string[] musicFiles = Directory.GetFiles(musicFolderPath, "*.mp3"); // 获取所有MP3文件
-        
+
         // 输出所有找到的音乐文件路径（仅用于调试）
         foreach (var file in musicFiles)
         {
+            string musicFileName = Path.GetFileNameWithoutExtension(file); // 从文件路径中提取音乐文件的名称
+
+            // 实例化音效对象并初始化信息
             UIGiftIconItem item = Instantiate(ItemObj);
-            item.InitInfo(file, true);
+            item.InitInfo(musicFileName, true); // 传递音效名称
             item.gameObject.SetActive(true);
             item.transform.SetParent(ItemObj.transform.parent);
             item.transform.localScale = Vector3.one;
+            //Debug.Log(file);
         }
     }
+
+
+
 
     public bool CheckAllSettingComplete()
     {
