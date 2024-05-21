@@ -502,7 +502,7 @@ public class PlayerMovement : MonoBehaviour
                      }
                  }
                 */
-                _agent.speed = 5;
+                _agent.speed = 8;
                 _agent.acceleration = 5;
             }
             else
