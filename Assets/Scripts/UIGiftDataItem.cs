@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class UIGiftDataItem : MonoBehaviour
     public InputField NumField;
     public Button Btn;
     public Text MusicName;
+    private string _path;
     public void InitInfo(CallFunction type)
     {
         TextDes.text = GameDataInstance.CallFunctionDes[type];
@@ -30,9 +32,10 @@ public class UIGiftDataItem : MonoBehaviour
         }
     }
 
-    private void ChooseMusic(string str)
+    private void ChooseMusic(string str, string path)
     {
         MusicName.text = str;
+        _path = path;
     }
 
     private string GetKeyNum(string key)
@@ -59,7 +62,15 @@ public class UIGiftDataItem : MonoBehaviour
         InputField.text = str;
         int num = PlayerPrefs.GetInt(GetKeyNum(TextDes.text), 1);
         NumField.text = num.ToString();
-        MusicName.text = PlayerPrefs.GetString(GetMusicName(TextDes.text), "");
+        _path = PlayerPrefs.GetString(GetMusicName(TextDes.text), "");
+        if (!string.IsNullOrEmpty(_path))
+        {
+            MusicName.text = Path.GetFileNameWithoutExtension(_path); // 从文件路径中提取音乐文件的名称
+        }
+        else
+        {
+            MusicName.text = ("");  
+        }
     }
 
     public void SaveData()
@@ -70,7 +81,7 @@ public class UIGiftDataItem : MonoBehaviour
         }
 
         int num = int.Parse(NumField.text);
-        RegisteCallFunctionMgr.Instance.SetFunctionSetting(InputField.text, _key, num, MusicName.text);
+        RegisteCallFunctionMgr.Instance.SetFunctionSetting(InputField.text, _key, num, _path);
         PlayerPrefs.SetString(TextDes.text, InputField.text);
         if (CheckNeedNum())
         {
@@ -79,7 +90,7 @@ public class UIGiftDataItem : MonoBehaviour
 
         if (!string.IsNullOrEmpty(MusicName.text))
         {
-            PlayerPrefs.SetString(GetMusicName(TextDes.text), MusicName.text);
+            PlayerPrefs.SetString(GetMusicName(TextDes.text), _path);
         }
     }
 

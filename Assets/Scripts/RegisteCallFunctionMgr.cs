@@ -60,18 +60,18 @@ public class RegisteCallFunctionMgr : MonoBehaviour
         ChooseGiftWindow.SetActive(false);
     }
 
-    private UnityAction<string> _callback = null;
+    private UnityAction<string, string > _callback = null;
 
-    public void ChooseMusic(UnityAction<string> ac)
+    public void ChooseMusic(UnityAction<string, string> ac)
     {
         _callback = ac;
         ChooseGiftWindow.SetActive(true);
     }
 
-    public void GetGiftIcon(string sprite)
+    public void GetGiftIcon(string name, string path)
     {
         ChooseGiftWindow.SetActive(false);
-        _callback(sprite);
+        _callback(name, path);
     }
 
     public void SetFunctionSetting(string key, CallFunction value, int triggerNum, string musicName)
@@ -132,7 +132,7 @@ public class RegisteCallFunctionMgr : MonoBehaviour
 
             // 实例化音效对象并初始化信息
             UIGiftIconItem item = Instantiate(ItemObj);
-            item.InitInfo(musicFileName, true); // 传递音效名称
+            item.InitInfo(musicFileName, true, file); // 传递音效名称
             item.gameObject.SetActive(true);
             item.transform.SetParent(ItemObj.transform.parent);
             item.transform.localScale = Vector3.one;
@@ -154,7 +154,7 @@ public class RegisteCallFunctionMgr : MonoBehaviour
             if (!GameDataInstance.Instance.CallFunctionSettingDic.ContainsValue(info.Key))
             {
                 Debug.LogError(info.Value + "  还没有设置触发方式");
-                return false;
+                return true;
             }
         }
         return true;
