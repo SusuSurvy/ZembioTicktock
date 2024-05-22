@@ -118,6 +118,7 @@ namespace cowsins
             _callFunctionDic[CallFunction.ReduceBullet] = ReduceBullet;
             _callFunctionDic[CallFunction.IncreaseBullet] = IncreaseBullet;
             _callFunctionDic[CallFunction.RandomEnemy] = RandomEnemy;
+            _callFunctionDic[CallFunction.BackgroundMusic] = ChangeBackgroundMusic;
             foreach (var info in GameDataInstance.Instance.TriggerFunctionSettingDic)
             {
                 UIButtonCallFun btn = Instantiate(CallFunBtn);
@@ -275,6 +276,11 @@ namespace cowsins
         public void RecoverHp()
         {
             Player.RecoverHp(GameDataInstance.Instance.GetRecoverHp());
+        }
+        
+        public void ChangeBackgroundMusic()
+        {
+            EnemyManager.Instance.ChangeBackGroundMusic();
         }
         public void RandomEnemy()
         {

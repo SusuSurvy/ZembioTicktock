@@ -7,15 +7,15 @@ public class UIGiftIconItem : MonoBehaviour
 {
     public Text TextDes;
     public Button Btn;
-
+    public bool IsBackGroundMusic;
     private string _path;
     private string _key;
     
-    public void InitInfo(string name, bool canClick, string path)
+    public void InitInfo(string name, bool isBackGroundMusic, string path)
     {
         _path = path;
         TextDes.text = name;
-        Btn.interactable = canClick;
+        IsBackGroundMusic = isBackGroundMusic;
         Btn.onClick.AddListener(Onclick);
     }
 

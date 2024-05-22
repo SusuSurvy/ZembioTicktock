@@ -43,6 +43,7 @@ public class EnemyManager : MonoBehaviour {
     private float createEnemyTime;
     public List<PortalTransition> PortalTransitionList;
     public GameObject Cowsins;
+    private AudioSource _backgroundMusic;
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -80,6 +81,13 @@ public class EnemyManager : MonoBehaviour {
         int passKillCount = PlayerPrefs.GetInt(PassCountKey, 0);
         UITicktockPanel.Instance.ShowKillEnemyCount(_killEnemyCount);
         UITicktockPanel.Instance.ShowPassCount(passKillCount);
+        _backgroundMusic = transform.GetComponent<AudioSource>();
+    }
+
+    public void ChangeBackGroundMusic()
+    {
+        _backgroundMusic.clip = GameDataInstance.Instance.BackgroundMusic;
+        _backgroundMusic.Play();
     }
 
     public void CheckDateAndResetIfNecessary()

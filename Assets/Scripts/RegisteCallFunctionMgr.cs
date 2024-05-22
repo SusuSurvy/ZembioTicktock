@@ -64,6 +64,20 @@ public class RegisteCallFunctionMgr : MonoBehaviour
 
     public void ChooseMusic(UnityAction<string, string> ac)
     {
+        foreach (UIGiftIconItem item in musicItems)
+        {
+            item.gameObject.SetActive(!item.IsBackGroundMusic);
+        }
+        _callback = ac;
+        ChooseGiftWindow.SetActive(true);
+    }
+    
+    public void ChooseBackgroundMusic(UnityAction<string, string> ac)
+    {
+        foreach (UIGiftIconItem item in musicItems)
+        {
+            item.gameObject.SetActive(item.IsBackGroundMusic);
+        }
         _callback = ac;
         ChooseGiftWindow.SetActive(true);
     }
@@ -83,7 +97,10 @@ public class RegisteCallFunctionMgr : MonoBehaviour
         functionInfo.MusicName = musicName;
         if (!string.IsNullOrEmpty(musicName))
         {
-            GameDataInstance.Instance.LoadMusic(functionInfo);
+            if (key != GameDataInstance.CallFunctionDes[CallFunction.BackgroundMusic])
+            {
+                GameDataInstance.Instance.LoadMusic(functionInfo);
+            }
             // 开始播放音乐
         }
 
@@ -112,13 +129,14 @@ public class RegisteCallFunctionMgr : MonoBehaviour
         }
 
         InitMusic(folderName);
-        InitMusic(backgroundMusicFolderName);
+        InitMusic(backgroundMusicFolderName, true);
 
 
     }
     public string folderName = "音效";
     public string backgroundMusicFolderName = "背景音乐";
-    private void InitMusic(string folderName)
+    private List<UIGiftIconItem> musicItems = new List<UIGiftIconItem>();
+    private void InitMusic(string folderName, bool isBackgroundMusic = false)
     {
         string exeFolderPath = Path.GetDirectoryName(Application.dataPath); // 获取 .exe 文件的目录路径
 
@@ -132,10 +150,11 @@ public class RegisteCallFunctionMgr : MonoBehaviour
 
             // 实例化音效对象并初始化信息
             UIGiftIconItem item = Instantiate(ItemObj);
-            item.InitInfo(musicFileName, true, file); // 传递音效名称
+            item.InitInfo(musicFileName, isBackgroundMusic, file); // 传递音效名称
             item.gameObject.SetActive(true);
             item.transform.SetParent(ItemObj.transform.parent);
             item.transform.localScale = Vector3.one;
+            musicItems.Add(item);
             //Debug.Log(file);
         }
     }

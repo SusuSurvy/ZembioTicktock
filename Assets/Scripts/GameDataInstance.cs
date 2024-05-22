@@ -53,6 +53,8 @@ public class GameDataInstance : MonoBehaviour
 
     };
     
+    public AudioClip BackgroundMusic;
+    
     public Dictionary<string, CallFunction> CallFunctionSettingDic = new Dictionary<string, CallFunction>();
     
     public Dictionary<string, FunctionInfo> TriggerFunctionSettingDic = new Dictionary<string, FunctionInfo>();
@@ -153,6 +155,29 @@ public class GameDataInstance : MonoBehaviour
     void Start()
     {
         
+    }
+    
+    public void LoadBackGroundMusic(string url)
+    {
+        StartCoroutine(PlayMusicFromFile("file://" + url));
+    }
+
+    IEnumerator PlayMusicFromFile(string fileUrl)
+    {
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(fileUrl, AudioType.MPEG))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
+                BackgroundMusic = clip;
+            }
+            else
+            {
+                Debug.LogError("Music file load error: " + www.error);
+            }
+        }
     }
 
     public void LoadMusic(FunctionInfo functionInfo)

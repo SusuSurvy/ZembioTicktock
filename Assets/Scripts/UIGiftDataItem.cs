@@ -23,8 +23,7 @@ public class UIGiftDataItem : MonoBehaviour
         
         if (_key == CallFunction.BackgroundMusic)
         {
-
-
+            Btn.onClick.AddListener(() => { RegisteCallFunctionMgr.Instance.ChooseBackgroundMusic(ChooseMusic); });
         }
         else
         {
@@ -37,7 +36,7 @@ public class UIGiftDataItem : MonoBehaviour
         MusicName.text = str;
         _path = path;
     }
-
+    
     private string GetKeyNum(string key)
     {
         return key + "Num";
@@ -82,6 +81,11 @@ public class UIGiftDataItem : MonoBehaviour
 
         int num = int.Parse(NumField.text);
         RegisteCallFunctionMgr.Instance.SetFunctionSetting(InputField.text, _key, num, _path);
+        if (_key == CallFunction.BackgroundMusic)
+        {
+            GameDataInstance.Instance.LoadBackGroundMusic(_path);
+        }
+
         PlayerPrefs.SetString(TextDes.text, InputField.text);
         if (CheckNeedNum())
         {
