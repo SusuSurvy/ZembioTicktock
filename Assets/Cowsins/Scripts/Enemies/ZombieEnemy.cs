@@ -20,9 +20,10 @@ public enum EnemyType
     Girl = 1,
     FatWomen = 2,
     Remote = 3,
-    Boss = 4,
-    Doll = 5,
-    ExplosiveGhost = 6,
+    ExplosiveGhost = 4,
+    Boss = 5,
+    Doll = 6,
+
 }
 
 public class ZombieEnemy : EnemyHealth, IPoolable

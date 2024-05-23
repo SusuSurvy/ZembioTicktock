@@ -263,13 +263,13 @@ public class EnemyManager : MonoBehaviour {
                     case 2:
                         enemyType = EnemyType.Remote;
                         break;
-                    case 5:
+                    case 3:
                         enemyType = EnemyType.ExplosiveGhost;
                         break;
-                    case 3:
+                    case 4:
                         enemyType = EnemyType.Boss;
                         break;
-                    case 4:
+                    case 5:
                         enemyType = EnemyType.Doll;
                         break;
                 }
@@ -281,16 +281,16 @@ public class EnemyManager : MonoBehaviour {
                 index = 1;
                 break;
             case EnemyType.Doll:
-                index = 4;
+                index = 5;
                 break;
             case EnemyType.Remote:
                 index = 2;
                 break;
             case EnemyType.Boss:
-                index = 3;
+                index = 4;
                 break;
             case EnemyType.ExplosiveGhost: 
-                index = 5; 
+                index = 3; 
                 break;
         }
 
