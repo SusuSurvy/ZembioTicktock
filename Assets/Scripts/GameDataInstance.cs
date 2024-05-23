@@ -79,12 +79,17 @@ public class GameDataInstance : MonoBehaviour
         ["RecoverHp"] = 10,
         ["JiatelinTime"] = 60,
         ["ExplosiveGhost"] = 1,
-
+        ["LikeMessageInterval"] = 20,
     };
 
     public int GetUserMaxHP()
     {
         return GameLoadData["UserHp"];
+    }
+    
+    public int GetLikeMessageInterval()
+    {
+        return GameLoadData["LikeMessageInterval"];
     }
 
     public int GetJiatelinTime()

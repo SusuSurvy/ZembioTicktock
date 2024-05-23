@@ -51,20 +51,13 @@ public class Entrance : MonoBehaviour
             //Text.text = CantactString(data);
             var url = data["head_img"];
             UITicktockPanel.Instance.SendMessageClient(giftName, null, count);
-           // if (!_headIconDic.ContainsKey(url))
-          //  {
-           //     StartCoroutine(_connectDouYin.DownLoadHeadImage(url, teu =>
-           //     {
-            //        _headIconDic[url] = teu;
-            //        UITicktockPanel.Instance.SendMessageClient(giftName, _headIconDic[url], count);
-            //    }));
-          //  }
-          //  else
-         //   {
-          //      UITicktockPanel.Instance.SendMessageClient(giftName, _headIconDic[url], count);
-          //  }
-
-          
+        };
+        _connectDouYin.OnLikeMessage = data =>
+        {
+            int count = 1;
+            int.TryParse(data["total"], out count);
+            //Text.text = CantactString(data);
+            UITicktockPanel.Instance.LikeMessageTrigger(count);
         };
         _connectDouYin.OnEnterRoomMessage = data =>
         {

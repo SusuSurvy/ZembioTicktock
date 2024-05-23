@@ -18,6 +18,7 @@ public class ConnectDouYin: MonoBehaviour
     public Action<Dictionary<string,string>> OnChatMessage;
     public Action<Dictionary<string,string>> OnGiftMessage;
     public Action<Dictionary<string, string>> OnEnterRoomMessage;
+    public Action<Dictionary<string, string>> OnLikeMessage;
     private void Start()
     {
         Debug.LogError("开启websocket");
@@ -60,13 +61,17 @@ public class ConnectDouYin: MonoBehaviour
             {
                 OnChatMessage?.Invoke(msgArray);
             }
-            if (type == "GiftMessage")
+            else if (type == "GiftMessage")
             {
                 OnGiftMessage?.Invoke(msgArray);
             }
-            if (type=="MemberMessage")
+            else if (type=="MemberMessage")
             {
                 OnEnterRoomMessage?.Invoke(msgArray);
+            }
+            else if (type=="LikeMessage")
+            {
+                OnLikeMessage?.Invoke(msgArray);
             }
         }
     }

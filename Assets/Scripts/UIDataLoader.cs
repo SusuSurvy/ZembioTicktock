@@ -33,6 +33,7 @@ public class UIDataLoader : MonoBehaviour
         ["ExplosiveGhost"] = "爆炸鬼血量",
         ["RecoverHp"] = "玩家恢复血量",
         ["JiatelinTime"] = "加特林持续时间",
+        ["LikeMessageInterval"] = "点赞触发效果间隔",
     };
 
     public Button EnterGameBtn;

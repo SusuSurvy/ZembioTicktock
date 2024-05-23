@@ -213,13 +213,36 @@ namespace cowsins
         {
             Player.InteractManager.PerformInteraction();
         }
+        
+        private int _currentTriggerCount = 0;
+        public void LikeMessageTrigger(int total)
+        {
+            if (total - _currentTriggerCount >= GameDataInstance.Instance.GetLikeMessageInterval())
+            {
+                _currentTriggerCount += GameDataInstance.Instance.GetLikeMessageInterval();
+                int count = _callFunctionDic.Count;
+                int randomIndex = UnityEngine.Random.Range(0, count);
+                int currentIndex = 0;
+                foreach (var fUnityAction in _callFunctionDic)
+                {
+                    if (currentIndex == randomIndex)
+                    { 
+                        Debug.LogError(_currentTriggerCount);
+                        Debug.LogError(fUnityAction.Key);
+                        fUnityAction.Value();
+                        break;
+                    }
 
+                    currentIndex++;
+                }
+            }
+        }
+        
         public void SendMessageClient(string str, Texture2D texture = null, int count = 1)
         {
-            
+           
             if (str.Contains("1"))
             {
-               
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 ControllerPanel.SetActive(true);
