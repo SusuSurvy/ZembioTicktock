@@ -2059,7 +2059,7 @@ NavMeshAgent:
   m_Radius: 0.3
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 10
+  avoidancePriority: 48
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -2115,6 +2115,7 @@ MonoBehaviour:
   EnemyType: 0
   ChaseAni: 
   InGround: 0
+  Collider: {fileID: 0}
 --- !u!65 &-5187800829589438605
 BoxCollider:
   m_ObjectHideFlags: 0
