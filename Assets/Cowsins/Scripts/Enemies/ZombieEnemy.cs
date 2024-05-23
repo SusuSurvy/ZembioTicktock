@@ -22,6 +22,7 @@ public enum EnemyType
     Remote = 3,
     Boss = 4,
     Doll = 5,
+    ExplosiveGhost = 6,
 }
 
 public class ZombieEnemy : EnemyHealth, IPoolable
@@ -62,7 +63,6 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         {
             case EnemyType.Boss:
                 health = GameDataInstance.Instance.GetBossHp();
-               
                 break;
             case EnemyType.Doll:
                 health = GameDataInstance.Instance.GetDollHp();
@@ -75,6 +75,9 @@ public class ZombieEnemy : EnemyHealth, IPoolable
                 break;
             case EnemyType.Remote:
                 health = GameDataInstance.Instance.GetRemoteHp();
+                break;
+            case EnemyType.ExplosiveGhost:
+                health = GameDataInstance.Instance.GetExplosiveGhostHp();
                 break;
             default:
                 health = maxHealth;

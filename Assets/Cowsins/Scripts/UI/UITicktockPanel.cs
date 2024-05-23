@@ -119,6 +119,7 @@ namespace cowsins
             _callFunctionDic[CallFunction.IncreaseBullet] = IncreaseBullet;
             _callFunctionDic[CallFunction.RandomEnemy] = RandomEnemy;
             _callFunctionDic[CallFunction.BackgroundMusic] = ChangeBackgroundMusic;
+            _callFunctionDic[CallFunction.CallEnemyExplosiveGhost] = CallEnemyExplosiveGhost;
             foreach (var info in GameDataInstance.Instance.TriggerFunctionSettingDic)
             {
                 UIButtonCallFun btn = Instantiate(CallFunBtn);
@@ -237,8 +238,15 @@ namespace cowsins
             }
             else if (str.Contains("3"))
             {
-                ClearAllEnemy();
+                CallExplosiveGhost();
+                ShowDanmu(_danmuInfo["1"], texture);
             }
+            else if (str.Contains("4"))
+            {
+                CallEnemyGirl();
+                ShowDanmu(_danmuInfo["1"], texture);
+            }
+
 
             FunctionInfo info = null;
             if (GameDataInstance.Instance.TriggerFunctionSettingDic.TryGetValue(str, out info))
@@ -310,6 +318,10 @@ namespace cowsins
         {
             EnemyManager.Instance.CreateEnemy(EnemyType.Girl);
         }
+        public void CallEnemyExplosiveGhost()
+        {
+            EnemyManager.Instance.CreateEnemy(EnemyType.ExplosiveGhost);
+        }
 
         public void ShowKillEnemyCount(int count)
         {
@@ -334,6 +346,11 @@ namespace cowsins
         public void CallEnemyRemote()
         {
             EnemyManager.Instance.CreateEnemy(EnemyType.Remote);
+        }
+
+        public void CallExplosiveGhost()
+        {
+            EnemyManager.Instance.CreateEnemy(EnemyType.ExplosiveGhost);
         }
 
         public void ReduceBullet()

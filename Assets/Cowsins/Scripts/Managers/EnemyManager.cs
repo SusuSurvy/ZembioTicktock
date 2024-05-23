@@ -263,6 +263,9 @@ public class EnemyManager : MonoBehaviour {
                     case 2:
                         enemyType = EnemyType.Remote;
                         break;
+                    case 5:
+                        enemyType = EnemyType.ExplosiveGhost;
+                        break;
                     case 3:
                         enemyType = EnemyType.Boss;
                         break;
@@ -285,6 +288,9 @@ public class EnemyManager : MonoBehaviour {
                 break;
             case EnemyType.Boss:
                 index = 3;
+                break;
+            case EnemyType.ExplosiveGhost: 
+                index = 5; 
                 break;
         }
 

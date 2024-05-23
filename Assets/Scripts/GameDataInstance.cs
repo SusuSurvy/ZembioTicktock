@@ -50,6 +50,7 @@ public class GameDataInstance : MonoBehaviour
         [CallFunction.IncreaseBullet] = "增加子弹",
         [CallFunction.RandomEnemy] = "随机怪物",
         [CallFunction.BackgroundMusic] = "更换音乐",
+        [CallFunction.CallEnemyExplosiveGhost] = "召唤爆炸鬼",
 
     };
     
@@ -77,6 +78,8 @@ public class GameDataInstance : MonoBehaviour
         ["BossHp"] = 50,
         ["RecoverHp"] = 10,
         ["JiatelinTime"] = 60,
+        ["ExplosiveGhost"] = 1,
+
     };
 
     public int GetUserMaxHP()
@@ -142,8 +145,12 @@ public class GameDataInstance : MonoBehaviour
     {
         return GameLoadData["JiatelinMaxBullet"];
     }
+    public int GetExplosiveGhostHp()
+    {
+        return GameLoadData["ExplosiveGhost"];
+    }
 
-    
+
 
     #endregion
     private void Awake()

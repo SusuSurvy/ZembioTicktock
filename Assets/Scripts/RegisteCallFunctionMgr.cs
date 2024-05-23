@@ -36,6 +36,7 @@ public enum CallFunction
     IncreaseBullet = 17,
     RandomEnemy = 18,
     BackgroundMusic = 19,
+    CallEnemyExplosiveGhost = 20,
 }
 
 

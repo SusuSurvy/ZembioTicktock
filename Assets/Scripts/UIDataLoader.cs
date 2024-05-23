@@ -30,6 +30,7 @@ public class UIDataLoader : MonoBehaviour
         ["FatHp"] = "大型怪血量",
         ["RemoteHp"] = "远程怪血量",
         ["BossHp"] = "Boss血量",
+        ["ExplosiveGhost"] = "爆炸鬼血量",
         ["RecoverHp"] = "玩家恢复血量",
         ["JiatelinTime"] = "加特林持续时间",
     };
