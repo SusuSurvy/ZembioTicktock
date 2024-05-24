@@ -16,7 +16,7 @@ public class EnemyAttackState : EnemyStateBase
     {
         _zombie.transform.LookAt(_player.transform);
         _currentTime += dt;
-        if (_currentTime > 2f)
+        if (_currentTime > 2f * _zombie.GetAttackInterval())
         {
             SoundManager.Instance.PlaySound(_zombie.AttackClip, 0, 1, false, 0);
             _currentTime = 0;

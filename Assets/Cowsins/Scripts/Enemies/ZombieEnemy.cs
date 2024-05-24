@@ -38,6 +38,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     private float crazyTime = 0;
     private Color originalColor = new Color(154f / 255, 154f / 255, 154f / 255);
     private Color crazylColor = new Color(255f / 255, 117f / 255, 117f / 255);
+    private float _attackIntervalRatio = 1f;
     private EnemyStateBase _currentState;
 
     public EnemyType EnemyType;
@@ -85,6 +86,8 @@ public class ZombieEnemy : EnemyHealth, IPoolable
                 break;
         }
 
+        _attackIntervalRatio = 1f;
+        _animator.speed = 1f;
         maxHealth = health;
         InGround = false;
         BoxCollider collider = transform.GetComponent<BoxCollider>();
@@ -159,6 +162,8 @@ public class ZombieEnemy : EnemyHealth, IPoolable
             {
                 NavMeshAgent.speed = originalSpeed;
                 _material.color = originalColor;
+                _animator.speed = 1f;
+                _attackIntervalRatio = 1f;
             }
         }
     }
@@ -275,6 +280,13 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         crazyTime = GameDataInstance.Instance.GetCrazyEnemyTime();
         NavMeshAgent.speed = crazySpeed;
         _material.color = crazylColor;
+        _animator.speed = 1.6f;
+        _attackIntervalRatio = 0.625f;
+    }
+    
+    public float GetAttackInterval()
+    {
+        return _attackIntervalRatio;
     }
 
     public static implicit operator ZombieEnemy(GameObject v)

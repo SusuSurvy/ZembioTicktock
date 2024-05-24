@@ -20,7 +20,7 @@ public class RemoteAttackState : EnemyStateBase
     {
         _zombie.transform.LookAt(_player.transform);
         _currentTime += dt;
-        if (_currentTime > 2.5f)
+        if (_currentTime > 2.5f * _zombie.GetAttackInterval())
         {
             EnemyManager.Instance.CreatBullet(_zombie.transform.position + new Vector3(0, 1, 0));
             SoundManager.Instance.PlaySound(_zombie.AttackClip, 0, 1, false, 0);
