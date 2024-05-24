@@ -161,7 +161,15 @@ public class EnemyManager : MonoBehaviour {
 
     private void ReloadGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex == 1)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void SaveData()
