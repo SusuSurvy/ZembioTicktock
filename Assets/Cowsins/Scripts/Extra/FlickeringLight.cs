@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class FlickeringLight : MonoBehaviour
 {
-    private float minIntensity = 0.1f;  // 光的最小强度
-    private float maxIntensity = 1.5f;  // 光的最大强度
+    private float minIntensity = 2f;  // 光的最小强度
+    private float maxIntensity = 4.06f;  // 光的最大强度
     private float flickerDuration = 0.1f;  // 闪烁的频率
     private float minWaitTime = 0.05f;  // 闪烁的最小间隔时间
-    private float maxWaitTime = 0.1f;   // 闪烁的最大间隔时间
+    private float maxWaitTime = 0.2f;   // 闪烁的最大间隔时间
     private Light myLight;
     private float timer; // 计时器
     public AudioClip openClip;
@@ -17,7 +17,7 @@ public class FlickeringLight : MonoBehaviour
     void Start()
     {
         myLight = GetComponent<Light>();
-      //  StartCoroutine(Flicker());
+        StartCoroutine(Flicker());
         // maxIntensity = 0.8f;
         // minIntensity = 0.5f;
         // myLight.spotAngle = 48;

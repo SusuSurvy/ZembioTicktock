@@ -87,7 +87,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         }
 
         _attackIntervalRatio = 1f;
-        _animator.speed = 1f;
+      
         maxHealth = health;
         InGround = false;
         BoxCollider collider = transform.GetComponent<BoxCollider>();
@@ -97,6 +97,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         _material = GetComponentInChildren<SkinnedMeshRenderer>().material;
         NavMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponentInChildren<Animator>();
+        _animator.speed = 1f;
         NavMeshAgent.speed = originalSpeed;
         _material.color = originalColor;
         SetPosition(GetBornPos());
