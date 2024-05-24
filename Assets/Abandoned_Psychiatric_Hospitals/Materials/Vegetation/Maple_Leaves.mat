@@ -2,17 +2,20 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Maple_Leaves
   m_Shader: {fileID: 4800000, guid: b9e2206000f063e4482138f005c8e6e1, type: 3}
-  m_ShaderKeywords: _ALPHATEST_ON _MIXSMOOTHNESFROMBASE_ON
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHATEST_ON
+  - _MIXSMOOTHNESFROMBASE_ON
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -25,6 +28,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Albedo:
         m_Texture: {fileID: 2800000, guid: edfd48c766a8d4949b93eb80cb012e50, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Aspen_Leaves_N:
+        m_Texture: {fileID: 2800000, guid: ab3d463ad637645499dcdceee7f03099, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColor:
@@ -68,7 +75,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise:
-        m_Texture: {fileID: 2800000, guid: 3948ecb3ddda0914ab24867c36c4a45c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 26e819997ca443c449ab615eff7fae83, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
@@ -87,21 +94,31 @@ Material:
         m_Texture: {fileID: 2800000, guid: 6e949345ba1522140aba53848d069470, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Textures:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Textures1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
-    - _AmbientOcclusion: 0.3504248
-    - _Ambient_Occlusion: 0.29
+    - _AmbientOcclusion: 0.31
+    - _Ambient_Occlusion: 0.46
     - _Amplitude: 0.101
     - _BlendOp: 0
+    - _BrightnessMultiplier: 2.679832
     - _BumpScale: 1
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
     - _Cull: 0
-    - _Cutoff: 0.88
+    - _Cutoff: 0.85
     - _DetailNormalMapScale: 1
     - _DistortionBlend: 0.5
     - _DistortionEnabled: 0
@@ -109,8 +126,13 @@ Material:
     - _DistortionStrengthScaled: 0
     - _DstBlend: 0
     - _EmissionEnabled: 0
-    - _Emmisive_Power: 0.256
+    - _Emmisive_Power: 0.269
+    - _Emmive_Power: 0.08
+    - _FakeGlow: 0.3946598
+    - _FlameFlickerSpeed: 0.13
     - _FlipbookMode: 0
+    - _Float1: 0.08
+    - _Float2: 1.49
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -119,40 +141,46 @@ Material:
     - _Metallic: 0
     - _MixSmoothnesFromBase: 1
     - _Mode: 1
+    - _NoiseScale: 0.44
     - _NormalScale: 0.64
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Power_Normal: 2.22
-    - _Scale_Normal: 0
+    - _Power_Normal: 1.56
+    - _Scale_Normal: 0.25
     - _SmoothnesMin: 0
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
-    - _Smoothness_Power: 0
+    - _Smoothness_Power: -0.1
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Tilling_Color: 1.49
+    - _Tilling_Color: 0.61
+    - _Tilling_Contrast: 3.58
     - _UVSec: 0
-    - _UltraDetailScale: 12
+    - _UltraDetailScale: 110
     - _Wind: 5.89
-    - _WindPower: 0.096
-    - _WindScale: 0.223
-    - _WindSpeed: 0.228
-    - _Wind_Size: 0.222
+    - _WindPower: 0.098
+    - _WindScale: 0.201
+    - _WindSpeed: 0.246
+    - _Wind_Size: 0.181
     - _Wind_Speed: 4.39
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
     - _AlbedoColor: {r: 0.9150943, g: 0.9146048, b: 0.6949537, a: 0}
+    - _BaseColour: {r: 0.16620687, g: 0.28899768, b: 0.7830188, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.95114124, b: 0.9009434, a: 1}
-    - _Color_Tilling: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 0}
+    - _Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
+    - _Color0: {r: 0, g: 0, b: 0, a: 0}
+    - _Color_Tilling: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0}
+    - _CoreColour: {r: 0.8962264, g: 0.78634065, b: 0.36779106, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OuterColour: {r: 0.7924528, g: 0.29131955, b: 0.17568526, a: 0}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _SubSurfColor: {r: 0.2358491, g: 0.2018782, b: 0.1724368, a: 1}
-    - _Tilling: {r: 1.35, g: 0.99, b: 0, a: 0}
+    - _SubSurfColor: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
+    - _Tilling: {r: 2.1, g: 6.04, b: 0, a: 0}
     - _Tint: {r: 0.7830189, g: 0.7830189, b: 0.7276166, a: 0}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
