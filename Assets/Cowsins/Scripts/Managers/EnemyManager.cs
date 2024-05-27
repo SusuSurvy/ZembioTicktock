@@ -199,44 +199,6 @@ public class EnemyManager : MonoBehaviour {
         }
     }
 
-    Vector3 GetValidSpawnPositionAround(Vector3 characterPosition)
-    {
-        Vector3 spawnPosition = Vector3.zero;
-        int maxAttempts = 10;
-        int attempts = 0;
-
-        while (attempts < maxAttempts)
-        {
-            // 在角色周围随机生成位置
-            float radius = 5f; // 调整半径适合你的场景
-            float angle = UnityEngine.Random.Range(0f, Mathf.PI * 2f);
-            float x = characterPosition.x + radius * Mathf.Cos(angle);
-            float z = characterPosition.z + radius * Mathf.Sin(angle);
-            spawnPosition = new Vector3(x, 0.5f, z);
-
-            Collider[] colliders = Physics.OverlapSphere(spawnPosition, 0.5f); // 调整半径适合你的场景
-
-            bool positionValid = true;
-            foreach (Collider collider in colliders)
-            {
-                // 检查碰撞器是否是建筑物的碰撞器
-                if (collider.gameObject.CompareTag("Building"))
-                {
-                    positionValid = false;
-                    break;
-                }
-            }
-
-            if (positionValid)
-            {
-                return spawnPosition;
-            }
-
-            attempts++;
-        }
-
-        return Vector3.zero;
-    }
 
     public void CallTransferPlayer()
     {
@@ -358,7 +320,7 @@ public class EnemyManager : MonoBehaviour {
             enemy.Damage(99999);
         }
     }
-    
+
     public void CrazyAllEnemy()
     {
         foreach (var enemy in _enemysList)
