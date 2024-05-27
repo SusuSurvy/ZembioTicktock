@@ -26,15 +26,20 @@ public class EnemyAttackState : EnemyStateBase
             }
             else
             {
-                _player.Damage(3);
-                _zombie.PlayAni("attack2");
-              
+                if (_zombie.EnemyType == EnemyType.ExplosiveGhost)
+                {
+                    _player.Damage(6);
+                    _zombie.PlayAni("attack2");
+                    _zombie.Die();
+                }
+                else
+                {
+                    _player.Damage(3);
+                    _zombie.PlayAni("attack2");
+                }
             }
         }
-
-      
     }
-
 
     public EnemyAttackState(PlayerMovement player, ZombieEnemy zombie) : base(player, zombie)
     {
