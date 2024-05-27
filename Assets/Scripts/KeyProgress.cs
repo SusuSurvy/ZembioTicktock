@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class KeyProgress : MonoBehaviour
 {
     private static int numberOfKeys = 0;
+    private static int numberOfKeysCount = 0;
     private float Keysvalue;
     public GuiProgressBarUI guiProgressBar;
     public GameObject UI;
@@ -25,9 +26,10 @@ public class KeyProgress : MonoBehaviour
         Player = UIValue;
         guiProgressBar.Value = 0.15F;
         UIValue.KeyValue = 0.15f;
-        numberOfKeys = 1;
+        numberOfKeys = 7;
+        numberOfKeysCount = numberOfKeys;
         //UI.SetActive(false);
-       // numberOfKeys = keyObject.transform.childCount;
+        // numberOfKeys = keyObject.transform.childCount;
         Keysvalue = 0.85f / numberOfKeys;
     }
 
@@ -93,7 +95,7 @@ public class KeyProgress : MonoBehaviour
             guiProgressBar.Value += 0.003f;
             yield return new WaitForSeconds(0.005f);
         }
-        KeyText.text = Player.KeyCount + "/7";
+        KeyText.text = Player.KeyCount + "/" + numberOfKeysCount;
         if (UIValue.KeyValue >= 0.9f)
         {
             EnemyManager.Instance.GameWin();
@@ -138,7 +140,7 @@ public class KeyProgress : MonoBehaviour
             guiProgressBar.Value -= 0.010f;
             yield return new WaitForSeconds(0.05f);
         }
-        KeyText.text = Player.KeyCount + "/7";
+        KeyText.text = Player.KeyCount + "/" + numberOfKeysCount;
         yield return new WaitForSeconds(3.0f);
        // UI.SetActive(false);
     }
