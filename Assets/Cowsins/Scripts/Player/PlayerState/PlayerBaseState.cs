@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace cowsins {
 public abstract class PlayerBaseState
 {

@@ -56,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Object with the same height as your camera, used to orientate the player.")]
     public Transform orientation;
 
+    public Transform Head;
+
     private PlayerStats stats;
 
     // References
@@ -119,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
     [Min(0.01f)]
     [Tooltip("Max speed the player can reach. Velocity is clamped by this value.")] public float maxSpeedAllowed = 40;
 
-    [HideInInspector] public bool grounded { get; private set; }
+    [HideInInspector] public bool grounded { get;  set; }
 
     [Tooltip("Every object with this layer will be detected as ground, so you will be able to walk on it")]
     public LayerMask whatIsGround;
@@ -721,54 +723,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool hasJumped = false;
 
+    private Rigidbody rb;
     public void Jump()
     {
-        if(!allowJump)  return;
-
-        jumpCount--;
-        readyToJump = false;
-        hasJumped = true;
-
-        if (doubleJumpResetsFallDamage) GetComponent<PlayerStats>().height = transform.position.y;
-
-        //Add jump forces
-        // if (wallRunning) // When we wallrun, we want to add extra side forces
-        // {
-        //     rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-        //     rb.AddForce(transform.up * upwardsWallJumpForce);
-        //     rb.AddForce(wallNormal * normalWallJumpForce, ForceMode.Impulse);
-        // }
-        // else
-        // {
-        //     rb.AddForce(Vector2.up * jumpForce * 1.5f);
-        //     rb.AddForce(normalVector * jumpForce * 0.5f);
-        //     // Handle directional jumping
-        //     if (!grounded && directionalJumpMethod != DirectionalJumpMethod.None && maxJumps > 1 && !wallOpposite)
-        //     {
-        //         if (Vector3.Dot(rb.velocity, new Vector3(InputManager.x, 0, InputManager.y)) > .5f)
-        //             rb.velocity = rb.velocity / 2;
-        //         if (directionalJumpMethod == DirectionalJumpMethod.InputBased) // Input based method for directional jumping
-        //         {
-        //             rb.AddForce(orientation.right * InputManager.x * directionalJumpForce, ForceMode.Impulse);
-        //             rb.AddForce(orientation.forward * InputManager.y * directionalJumpForce, ForceMode.Impulse);
-        //         }
-        //         if (directionalJumpMethod == DirectionalJumpMethod.ForwardMovement) // Forward Movement method for directional jumping, dependant on orientation
-        //             rb.AddForce(orientation.forward * Mathf.Abs(InputManager.y) * directionalJumpForce, ForceMode.VelocityChange);
-        //     }
-        //
-        //     //If jumping while falling, reset y velocity.
-        //     if (rb.velocity.y < 0.5f)
-        //         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-        //     else if (rb.velocity.y > 0)
-        //         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / 2, rb.velocity.z);
-        // }
-
-        //staminaLoss
-        if (usesStamina) stamina -= staminaLossOnJump;
-           
-                
-            SoundManager.Instance.PlaySound(sounds.jumpSFX, 0, 0, false, 0);
-        Invoke(nameof(ResetJump), jumpCooldown);
+        SoundManager.Instance.PlaySound(sounds.jumpSFX, 0, 0, false, 0);
     }
 
     private float coyoteTimer;
@@ -907,6 +865,7 @@ public class PlayerMovement : MonoBehaviour
         _audio = GetComponent<AudioSource>();
         weapon = GetComponent<WeaponController>();
         stats = GetComponent<PlayerStats>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private bool cancellingGrounded;

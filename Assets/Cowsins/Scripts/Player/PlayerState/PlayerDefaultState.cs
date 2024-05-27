@@ -12,6 +12,7 @@ public class PlayerDefaultState : PlayerBaseState
     {
         player = _ctx.GetComponent<PlayerMovement>();
         stats = _ctx.GetComponent<PlayerStats>();
+        player.CanJump = true;
     }
 
     public override void UpdateState() {
@@ -30,7 +31,7 @@ public class PlayerDefaultState : PlayerBaseState
 
         if(stats.health <= 0 ) SwitchState(_factory.Die());
 
-        if (player.ReadyToJump && InputManager.jumping && (player.CanJump && (player.grounded || player.canCoyote) || player.wallRunning ||player.jumpCount > 0 && player.maxJumps > 1 && player.CanJump))
+        if (InputManager.jumping && (player.CanJump))
                 SwitchState(_factory.Jump());
 
         if(player.canDash && InputManager.dashing && (player.infiniteDashes ||player.currentDashes > 0 && !player.infiniteDashes)) SwitchState(_factory.Dash());

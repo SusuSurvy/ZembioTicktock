@@ -36,6 +36,7 @@ public class PlayerMovementEditor : Editor
                 case "Assignables":
                     EditorGUILayout.LabelField("ASSIGNABLES", EditorStyles.boldLabel);
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("playerCam"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("Head"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("orientation"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("useSpeedLines"));
                     if (myScript.useSpeedLines)
