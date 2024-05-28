@@ -12,11 +12,5 @@ public class GhostEnemy : ZombieEnemy
 
 
     }
-    public override Vector3 GetBornPos()
-    {
-        Vector3 pos = playerMovement.transform.position;
-        Vector3 spawnPosition = pos + playerMovement.orientation.forward * 2f;
-        return new Vector3(spawnPosition.x, pos.y, spawnPosition.z);
 
-    }
 }
