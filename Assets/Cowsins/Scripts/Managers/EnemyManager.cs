@@ -370,17 +370,9 @@ public class EnemyManager : MonoBehaviour
         return obj;
     }
 
-    public void Boom()
+    public void Boom(Vector3 pos)
     {
-        foreach (var enemy in _enemysList)
-        {
-            if (enemy.EnemyType == EnemyType.ExplosiveGhost)
-            {
                 GameObject node = GameObject.Instantiate(ExplosiveEffects);
-                node.transform.position = enemy.transform.position;
-                break;
-            }
-        }
-
+                node.transform.position = pos;
     }
 }

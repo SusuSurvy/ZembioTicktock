@@ -295,9 +295,15 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         throw new NotImplementedException();
     }
 
-    public void Boom()
+    public Vector3 GetPosition()
     {
-        EnemyManager.Instance.Boom();
+        return transform.position;
+    }
+
+
+    public void Boom(Vector3 pos)
+    {
+        EnemyManager.Instance.Boom(pos);
     }
 
 }
