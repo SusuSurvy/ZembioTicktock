@@ -378,18 +378,8 @@ public class EnemyManager : MonoBehaviour
             {
                 GameObject node = GameObject.Instantiate(ExplosiveEffects);
                 node.transform.position = enemy.transform.position;
-                Invoke("BoomDestroy", 5);
+                break;
             }
-        }
-
-    }
-
-    public void BoomDestroy()
-    {
-        GameObject[] effects = GameObject.FindGameObjectsWithTag("ExplosiveEffect");
-        foreach (var effect in effects)
-        {
-            Destroy(effect);
         }
 
     }
