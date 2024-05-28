@@ -6,6 +6,7 @@ using Knife.Portal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using static UnityEngine.EventSystems.EventTrigger;
 using Random = System.Random;
 
 public interface IPoolable {
@@ -13,7 +14,8 @@ public interface IPoolable {
     void OnDespawn();
 }
 
-public class EnemyManager : MonoBehaviour {
+public class EnemyManager : MonoBehaviour
+{
     public static EnemyManager Instance;
     // Prefab的引用
     public List<GameObject> prefabs;
@@ -24,13 +26,15 @@ public class EnemyManager : MonoBehaviour {
     private List<Bullet> _bulletList = new List<Bullet>();
     private bool _needCreate = false;
 
-    private Vector2 _leftBottom = new Vector3(-51,  -28);
-    private Vector2 _rightUp = new Vector3(51,  72);
+    private Vector2 _leftBottom = new Vector3(-51, -28);
+    private Vector2 _rightUp = new Vector3(51, 72);
     // 对象池容器
-    private Dictionary<string, Queue<EnemyHealth>>  poolDic = new Dictionary<string, Queue<EnemyHealth>>();
+    private Dictionary<string, Queue<EnemyHealth>> poolDic = new Dictionary<string, Queue<EnemyHealth>>();
 
     private float _currentTime = 0;
     public PlayerMovement Player;
+
+    public GameObject ExplosiveEffects;
 
     public GameObject Bullet;
 
@@ -44,17 +48,21 @@ public class EnemyManager : MonoBehaviour {
     public List<PortalTransition> PortalTransitionList;
     public GameObject Cowsins;
     private AudioSource _backgroundMusic;
-    private void Awake() {
-        if (Instance == null) {
+    private void Awake()
+    {
+        if (Instance == null)
+        {
             Instance = this;
-           // DontDestroyOnLoad(gameObject);
-        } else {
+            // DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
             Destroy(gameObject);
         }
         Reset();
     }
 
-  
+
 
     private void Reset()
     {
@@ -119,16 +127,16 @@ public class EnemyManager : MonoBehaviour {
         ts.GetComponent<WeaponAnimator>().enabled = false;
         ts.GetComponent<NavMeshAgent>().enabled = false;
         Player.RemoveController();
-        Player.playerCam.eulerAngles = new Vector3(0, -90, 0);;
+        Player.playerCam.eulerAngles = new Vector3(0, -90, 0); ;
         PlayerStates.instance.enabled = false;
         WeaponSway[] ws = GameObject.FindObjectsByType<WeaponSway>(FindObjectsSortMode.None);
         foreach (var w in ws)
         {
             w.enabled = false;
         }
-        
+
         Player.enabled = false;
-        Player.transform.localPosition =new Vector3(0.4f, 0, -1.2f);;
+        Player.transform.localPosition = new Vector3(0.4f, 0, -1.2f); ;
         Player.transform.eulerAngles = Vector3.zero;
         foreach (var portal in PortalTransitionList)
         {
@@ -138,9 +146,9 @@ public class EnemyManager : MonoBehaviour {
         Cowsins.transform.position = new Vector3(5.64f, 0.1f, -0.36f);
         Cowsins.transform.eulerAngles = new Vector3(0, -85.87f, 0);
         StartCoroutine(MoveToPosition(Cowsins.transform.position, new Vector3(3, Cowsins.transform.position.y, Cowsins.transform.position.z), 2f));
-      //  Invoke(nameof(ReloadGame), 1);
+        //  Invoke(nameof(ReloadGame), 1);
     }
-    
+
     IEnumerator MoveToPosition(Vector3 fromPosition, Vector3 toPosition, float duration)
     {
         float elapsedTime = 0;
@@ -259,8 +267,8 @@ public class EnemyManager : MonoBehaviour {
             case EnemyType.Boss:
                 index = 4;
                 break;
-            case EnemyType.ExplosiveGhost: 
-                index = 3; 
+            case EnemyType.ExplosiveGhost:
+                index = 3;
                 break;
         }
 
@@ -288,7 +296,8 @@ public class EnemyManager : MonoBehaviour {
 
 
     // 回收对象的方法
-    public void Despawn(ZombieEnemy obj) {
+    public void Despawn(ZombieEnemy obj)
+    {
         obj.OnDespawn();
         _killEnemyCount++;
         _killDelta++;
@@ -346,10 +355,13 @@ public class EnemyManager : MonoBehaviour {
     private Bullet SpawnBullet()
     {
         Bullet obj = null;
-        if (poolDic[Bullet.name].Count == 0) {
+        if (poolDic[Bullet.name].Count == 0)
+        {
             obj = Instantiate(Bullet).GetComponent<Bullet>();
             obj.name = Bullet.name;
-        } else {
+        }
+        else
+        {
             EnemyHealth enemyObj = poolDic[Bullet.name].Dequeue();
             obj = enemyObj.GetComponent<Bullet>();
         }
@@ -358,4 +370,27 @@ public class EnemyManager : MonoBehaviour {
         return obj;
     }
 
+    public void Boom()
+    {
+        foreach (var enemy in _enemysList)
+        {
+            if (enemy.EnemyType == EnemyType.ExplosiveGhost)
+            {
+                GameObject node = GameObject.Instantiate(ExplosiveEffects);
+                node.transform.position = enemy.transform.position;
+                Invoke("BoomDestroy", 5);
+            }
+        }
+
+    }
+
+    public void BoomDestroy()
+    {
+        GameObject[] effects = GameObject.FindGameObjectsWithTag("ExplosiveEffect");
+        foreach (var effect in effects)
+        {
+            Destroy(effect);
+        }
+
+    }
 }

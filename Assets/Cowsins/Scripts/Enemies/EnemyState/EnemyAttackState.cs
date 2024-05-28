@@ -30,6 +30,7 @@ public class EnemyAttackState : EnemyStateBase
                 {
                     _player.Damage(6);
                     _zombie.PlayAni("attack2");
+                    _zombie.Boom();
                     _zombie.Die();
                 }
                 else

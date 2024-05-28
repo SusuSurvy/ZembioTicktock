@@ -294,4 +294,10 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     {
         throw new NotImplementedException();
     }
+
+    public void Boom()
+    {
+        EnemyManager.Instance.Boom();
+    }
+
 }

@@ -11,6 +11,7 @@ TagManager:
   - Ramp
   - BodyShot
   - Building
+  - ExplosiveEffect
   layers:
   - Default
   - TransparentFX
