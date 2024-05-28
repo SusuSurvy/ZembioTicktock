@@ -2,6 +2,7 @@
 /* PlayerHealth.cs ver 1.0 */
 using UnityEngine;
 using System.Collections;
+using cowsins;
 
 namespace UltimateStatusBar_SpaceshipExample
 {
@@ -100,6 +101,7 @@ namespace UltimateStatusBar_SpaceshipExample
 		public void Death ()
 		{
 			GameManager.Instance.ShowDeathScreen();
+			UITicktockPanel.Instance.CancelRestart();
 			GetComponent<PlayerController>().canControl = false;
 
 			GameObject explo = ( GameObject )Instantiate( explosionParticles, transform.position, Quaternion.identity );

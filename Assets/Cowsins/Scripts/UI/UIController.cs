@@ -41,7 +41,7 @@ public class UIController : MonoBehaviour
             "to any you like, but note that color will be overriden by the script"), SerializeField]
     private Image healthStatesEffect;
 
-    [Tooltip(" Color of healthStatesEffect on different actions such as being hurt or healed"), SerializeField] private Color damageColor, healColor, coinCollectColor, xpCollectColor;
+    [Tooltip(" Color of healthStatesEffect on different actions such as being hurt or healed"), SerializeField] private Color damageColor, healColor, coinCollectColor, xpCollectColor, restartGameColor;
 
     [Tooltip("Time for the healthStatesEffect to fade out"), SerializeField] private float fadeOutTime;
 
@@ -179,6 +179,12 @@ public class UIController : MonoBehaviour
     {
         healthStatesEffect.color = coinCollectColor;
         fadeOutTime = 0.1f;
+    }
+    
+    public void UpdateRestartGamePanel()
+    {
+        fadeOutTime = 1f;
+        healthStatesEffect.color = restartGameColor;
     }
         
     public void UpdateXPPanel()
@@ -528,6 +534,7 @@ public class UIControllerEditor : Editor
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("healColor")); 
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("coinCollectColor"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("xpCollectColor"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("restartGameColor"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("fadeOutTime"));
 
                     break;

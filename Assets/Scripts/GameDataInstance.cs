@@ -51,7 +51,7 @@ public class GameDataInstance : MonoBehaviour
         [CallFunction.RandomEnemy] = "随机怪物",
         [CallFunction.BackgroundMusic] = "更换音乐",
         [CallFunction.CallEnemyExplosiveGhost] = "召唤爆炸鬼",
-
+        [CallFunction.TriggerRestartGame] = "重新开始游戏",
     };
     
     public AudioClip BackgroundMusic;
@@ -80,11 +80,17 @@ public class GameDataInstance : MonoBehaviour
         ["JiatelinTime"] = 60,
         ["ExplosiveGhost"] = 1,
         ["LikeMessageInterval"] = 20,
+        ["RestartGameTime"] = 30,
     };
 
     public int GetUserMaxHP()
     {
         return GameLoadData["UserHp"];
+    }
+    
+    public int GetRestartGameTime()
+    {
+        return GameLoadData["RestartGameTime"];
     }
     
     public int GetLikeMessageInterval()

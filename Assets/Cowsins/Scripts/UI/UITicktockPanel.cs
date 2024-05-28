@@ -65,6 +65,8 @@ namespace cowsins
         public bool KeyRemove;
         public RawImage RawImage;
         
+        public Text RestartGameText;
+        
         private Dictionary<string, string> _danmuInfo = new Dictionary<string, string>()
         {
             ["1"] = "召唤怪物",
@@ -99,6 +101,7 @@ namespace cowsins
             danmuPool = new DanmuPool(textPrefab);
             ControllerPanel.SetActive(false);
             SucceedImg.gameObject.SetActive(false);
+            RestartGameText.gameObject.SetActive(false);
             _callFunctionDic[CallFunction.CallEnemyDoll] = CallEnemyDoll;
             _callFunctionDic[CallFunction.CallEnemyGirl] = CallEnemyGirl;
             _callFunctionDic[CallFunction.CallEnemyFat] = CallEnemyFat;
@@ -120,6 +123,7 @@ namespace cowsins
             _callFunctionDic[CallFunction.RandomEnemy] = RandomEnemy;
             _callFunctionDic[CallFunction.BackgroundMusic] = ChangeBackgroundMusic;
             _callFunctionDic[CallFunction.CallEnemyExplosiveGhost] = CallEnemyExplosiveGhost;
+            _callFunctionDic[CallFunction.TriggerRestartGame] = TriggerRestartGame;
             foreach (var info in GameDataInstance.Instance.TriggerFunctionSettingDic)
             {
                 UIButtonCallFun btn = Instantiate(CallFunBtn);
@@ -345,6 +349,18 @@ namespace cowsins
         {
             EnemyManager.Instance.CreateEnemy(EnemyType.ExplosiveGhost);
         }
+        
+        private bool _triggerRestartGame = false;
+        private float _restartTime = 10f;
+        private int _currentRestartTimeInt = 0;
+        private float _currentRestartTime = 0;
+        public void TriggerRestartGame()
+        {
+            _restartTime = GameDataInstance.Instance.GetRestartGameTime();
+            _triggerRestartGame = true;
+            RestartGameText.gameObject.SetActive(true);
+            RestartGameText.text = "游戏将在" + (_restartTime - _currentRestartTimeInt).ToString("F0") + "秒后重启";
+        }
 
         public void ShowKillEnemyCount(int count)
         {
@@ -443,8 +459,16 @@ namespace cowsins
 
         public void CallPlayerNoDamage()
         {
+            CancelRestart();
             Player.GrantNoDamage();
         }
+
+        public void CancelRestart()
+        {
+            _triggerRestartGame = false;
+            RestartGameText.gameObject.SetActive(false);
+        }
+
         public void CallSmokeExplore()
         {
             Vector3 pos = Player.transform.position;
@@ -455,5 +479,28 @@ namespace cowsins
         {
             EnemyManager.Instance.CrazyAllEnemy();
         }
+        private void Update()
+        {
+            if (_triggerRestartGame == true)
+            {
+                _currentRestartTime += Time.deltaTime;
+                RestartGameText.transform.localScale = new Vector3(0.3f *(1 + (0.5f *_currentRestartTime)), 0.3f *(1 + (0.5f *_currentRestartTime)), 0.3f *(1 + (0.5f *_currentRestartTime)));
+                if (_currentRestartTime > 1)
+                {
+                    _currentRestartTime = 0;
+                    _currentRestartTimeInt++;
+                    if(_currentRestartTimeInt > _restartTime)
+                    {
+                        _currentRestartTime = 0;
+                        _triggerRestartGame = false;
+                        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+                    }
+                    UIController.instance.UpdateRestartGamePanel();
+                    RestartGameText.text = "游戏将在" + (_restartTime - _currentRestartTimeInt).ToString("F0") + "秒后重启";
+                }
+            }
+        }
     }
+    
+  
 }

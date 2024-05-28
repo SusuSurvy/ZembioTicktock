@@ -37,6 +37,7 @@ public enum CallFunction
     RandomEnemy = 18,
     BackgroundMusic = 19,
     CallEnemyExplosiveGhost = 20,
+    TriggerRestartGame = 21,
 }
 
 

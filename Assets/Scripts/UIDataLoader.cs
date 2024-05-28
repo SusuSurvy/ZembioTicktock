@@ -34,6 +34,7 @@ public class UIDataLoader : MonoBehaviour
         ["RecoverHp"] = "玩家恢复血量",
         ["JiatelinTime"] = "加特林持续时间",
         ["LikeMessageInterval"] = "点赞触发效果间隔",
+        ["RestartGameTime"] = "游戏重启时间",
     };
 
     public Button EnterGameBtn;
