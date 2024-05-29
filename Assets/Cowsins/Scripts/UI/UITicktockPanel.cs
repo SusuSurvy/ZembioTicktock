@@ -263,16 +263,21 @@ namespace cowsins
                // ShowDanmu(_danmuInfo["2"], texture);
                 // RecoverHp();
             }
-            else if (str.Contains("3"))
-            {
-                CallExplosiveGhost();
-                ShowDanmu(_danmuInfo["1"], texture);
-            }
-            else if (str.Contains("4"))
-            {
-                CallEnemyGirl();
-                ShowDanmu(_danmuInfo["1"], texture);
-            }
+            // else if (str.Contains("3"))
+            // {
+            //     CallExplosiveGhost();
+            //     ShowDanmu(_danmuInfo["1"], texture);
+            // }
+            // else if (str.Contains("5"))
+            // {
+            //     StartCoroutine(InvokeRepeatingMethod(10, CallSmokeExplore));
+            //     //CallSmokeExplore();
+            // }
+            // else if (str.Contains("4"))
+            // {
+            //     CallEnemyGirl();
+            //     ShowDanmu(_danmuInfo["1"], texture);
+            // }
 
 
             FunctionInfo info = null;
@@ -283,16 +288,35 @@ namespace cowsins
                     SoundManager.Instance.PlaySound(info.TriggerMusic, 0, 0, false, 0);
                 }
 
-                for (int i = 0; i < count; i++)
+                if (info.FuncType == CallFunction.CallSmokeExplore)
                 {
-                    for (int j = 0; j < info.TriggerNum; j++)
+                    int num = count * info.TriggerNum;
+                    StartCoroutine(InvokeRepeatingMethod(num, _callFunctionDic[info.FuncType]));
+                }
+                else
+                {
+                    for (int i = 0; i < count; i++)
                     {
-                        _callFunctionDic[info.FuncType]();
+                        for (int j = 0; j < info.TriggerNum; j++)
+                        {
+                            _callFunctionDic[info.FuncType]();
+                        }
                     }
-                   // ShowDanmu(GameDataInstance.CallFunctionDes[info.FuncType], texture);
                 }
             }
         }
+        
+        private IEnumerator InvokeRepeatingMethod(int count, UnityAction ac)
+        {
+            int currentCount = 0;
+            while (currentCount < count)
+            {
+                ac();
+                currentCount++;
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+
 
         public void RemoveKey()
         {
