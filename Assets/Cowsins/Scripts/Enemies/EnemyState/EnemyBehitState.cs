@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using cowsins;
 using UnityEngine;
 
-public class EnemyBehitState : EnemyStateBase
+public class  EnemyBehitState : EnemyStateBase
 {
     public override void OnEnter()
     {

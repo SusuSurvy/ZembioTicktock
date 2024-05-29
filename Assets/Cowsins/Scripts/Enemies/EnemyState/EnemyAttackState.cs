@@ -29,8 +29,8 @@ public class EnemyAttackState : EnemyStateBase
                 if (_zombie.EnemyType == EnemyType.ExplosiveGhost)
                 {
                     Vector3 explosiveGhostPosition = _zombie.GetPosition();
-                    Debug.Log("ExplosiveGhost ¹ÖÎïÎ»ÖÃ£º" + explosiveGhostPosition);
-                    _player.Damage(6);
+                    Debug.Log("ExplosiveGhost ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½" + explosiveGhostPosition);
+                    _player.DamageRatio(0.2f);
                     _zombie.PlayAni("attack2");
                     _zombie.Boom(explosiveGhostPosition);
                     _zombie.Die();

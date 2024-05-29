@@ -71,6 +71,12 @@ public class PlayerMovement : MonoBehaviour
 
     private float desiredX;
 
+    public void DamageRatio(float ratio)
+    {
+        int damage = (int)(stats.maxHealth * ratio);
+        Damage(damage);
+    }
+
 
     public void RemoveController()
     {
