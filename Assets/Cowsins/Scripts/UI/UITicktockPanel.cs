@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using static AlternateStateHandler.AlternateState;
 using static UnityEngine.EventSystems.EventTrigger;
 
 namespace cowsins
@@ -81,7 +83,18 @@ namespace cowsins
             ["["] = "生成突脸怪",
         };
 
+        private class TriggerInfo
+        {
+            public Coroutine Coroutine;
+            public int RemainingCalls;
+            public float Interval;
+            public CallFunction FunctionType;
+            public AudioClip AudioClip;
+        }
+
+
         private Dictionary<CallFunction, UnityAction> _callFunctionDic = new Dictionary<CallFunction, UnityAction>();
+        private Dictionary<CallFunction, TriggerInfo> _callFunctionCountDic = new Dictionary<CallFunction, TriggerInfo>();
         public GameObject textPrefab;
         public Transform danmuContainer;
         private DanmuPool danmuPool;
@@ -130,6 +143,7 @@ namespace cowsins
                 btn.Init(info.Key, info.Value.TriggerNum, _callFunctionDic[info.Value.FuncType]);
                 btn.gameObject.SetActive(true);
                 btn.gameObject.transform.SetParent(CallFunBtn.transform.parent);
+        
             }
             InitHeadIcon();
         
@@ -283,38 +297,126 @@ namespace cowsins
             FunctionInfo info = null;
             if (GameDataInstance.Instance.TriggerFunctionSettingDic.TryGetValue(str, out info))
             {
-                if (info.TriggerMusic != null)
+                int num = count * info.TriggerNum;
+                switch (info.FuncType)
                 {
-                    SoundManager.Instance.PlaySound(info.TriggerMusic, 0, 0, false, 0);
-                }
-
-                if (info.FuncType == CallFunction.CallSmokeExplore)
-                {
-                    int num = count * info.TriggerNum;
-                    StartCoroutine(InvokeRepeatingMethod(num, _callFunctionDic[info.FuncType]));
-                }
-                else
-                {
-                    for (int i = 0; i < count; i++)
-                    {
-                        for (int j = 0; j < info.TriggerNum; j++)
+                    //一次性触发总数
+                    case CallFunction.CallEnemyDoll:
+     
+                    case CallFunction.CallEnemyGirl:
+                     
+                    case CallFunction.CallEnemyFat:
+                       
+                    case CallFunction.CallEnemyRemote:
+                      
+                    case CallFunction.CallEnemyBoss:
+                    case CallFunction.CallEnemyExplosiveGhost:
+                        if (info.TriggerMusic != null)
                         {
-                            _callFunctionDic[info.FuncType]();
+                            SoundManager.Instance.PlaySound(info.TriggerMusic, 0, 0, false, 0);
                         }
-                    }
+                        for (int i = 0; i < num; i++)
+                        {
+                            _callFunctionDic[info.FuncType].Invoke();
+                          
+                        }
+                        break;
+                    //时间累加
+                    case CallFunction.CallLoseController:
+                        if (info.TriggerMusic != null)
+                        {
+                            SoundManager.Instance.PlaySound(info.TriggerMusic, 0, 0, false, 0);
+                        }
+                        Player.LoseGontroller(num);
+                        break;
+                    case CallFunction.CallPlayerNoDamage:
+                        if (info.TriggerMusic != null)
+                        {
+                            SoundManager.Instance.PlaySound(info.TriggerMusic, 0, 0, false, 0);
+                        }
+                        CancelRestart();
+                        Player.GrantNoDamage(num);
+                        break;
+                    case CallFunction.CrazyAllEnemy:
+                        if (info.TriggerMusic != null)
+                        {
+                            SoundManager.Instance.PlaySound(info.TriggerMusic, 0, 0, false, 0);
+                        }
+                        EnemyManager.Instance.CrazyAllEnemy(num);
+                        break;
+                    case CallFunction.EquipJiatelin:
+                        if (info.TriggerMusic != null)
+                        {
+                            SoundManager.Instance.PlaySound(info.TriggerMusic, 0, 0, false, 0);
+                        }
+                        EquipJiatelin(num);
+                        break;
+                    //每隔0.5s触发一次
+                    case CallFunction.CloseLight:
+                    case CallFunction.CallSmokeExplore:
+                    case CallFunction.RecoverHp:
+                    case CallFunction.ClearAllEnemy:
+                    case CallFunction.RemoveKey:
+                    case CallFunction.CallTransferPlayer:
+                    case CallFunction.DropWeapon:
+                    case CallFunction.ReduceBullet:
+                    case CallFunction.IncreaseBullet:
+                    case CallFunction.RandomEnemy:
+                        TriggerFunction(info.FuncType, num, 0.5f, info.TriggerMusic);
+                        break;
+                   //只触发一次
+                    case CallFunction.BackgroundMusic:
+                    case CallFunction.TriggerRestartGame:
+                        if (info.TriggerMusic != null)
+                        {
+                            SoundManager.Instance.PlaySound(info.TriggerMusic, 0, 0, false, 0);
+                        }
+                     
+                        _callFunctionDic[info.FuncType].Invoke();
+                        break;
+                    default:
+                        break;
                 }
             }
         }
-        
-        private IEnumerator InvokeRepeatingMethod(int count, UnityAction ac)
+
+        private void TriggerFunction(CallFunction type, int count, float interval, AudioClip clip)
         {
-            int currentCount = 0;
-            while (currentCount < count)
+            if (!_callFunctionCountDic.ContainsKey(type))
             {
-                ac();
-                currentCount++;
-                yield return new WaitForSeconds(0.5f);
+                _callFunctionCountDic[type] = new TriggerInfo
+                {
+                    RemainingCalls = 0,
+                    Interval = interval,
+                    FunctionType = type,
+                    Coroutine = null,
+                    AudioClip = clip
+                };
             }
+
+            var triggerInfo = _callFunctionCountDic[type];
+            triggerInfo.RemainingCalls += count;
+
+            if (triggerInfo.Coroutine == null)
+            {
+                triggerInfo.Coroutine = StartCoroutine(ExecuteFunction(triggerInfo));
+            }
+
+        }
+
+        private IEnumerator ExecuteFunction(TriggerInfo triggerInfo)
+        {
+            while (triggerInfo.RemainingCalls > 0)
+            {
+                _callFunctionDic[triggerInfo.FunctionType].Invoke();
+                if (triggerInfo.AudioClip != null)
+                {
+                    SoundManager.Instance.PlaySound(triggerInfo.AudioClip, 0, 0, false, 0);
+                }
+                yield return new WaitForSeconds(triggerInfo.Interval);
+                triggerInfo.RemainingCalls--;
+            }
+            triggerInfo.Coroutine = null; // 标记为不再运行
         }
 
 
@@ -440,20 +542,35 @@ namespace cowsins
         }
 
         private Coroutine ct;
+        private float equipJiatelinTime = 0;
         public void EquipJiatelin()
         {
-            Player.EquipJiatelin();
-            if (ct != null)
-            {
-                StopCoroutine(ct);
-            }
-            ct = StartCoroutine(DropJiatelin());
+            EquipJiatelin(1);
+          
         }
+
+        private void EquipJiatelin(int count)
+        {
+            equipJiatelinTime += GameDataInstance.Instance.GetJiatelinTime() * count;
+            Debug.LogError(equipJiatelinTime);
+            if (ct == null)
+            {
+                Player.EquipJiatelin();
+                ct = StartCoroutine(DropJiatelin());
+            }
+        }
+
 
         private IEnumerator DropJiatelin()
         {
-            yield return new WaitForSeconds(GameDataInstance.Instance.GetJiatelinTime());
+            while (equipJiatelinTime > 0)
+            {
+                equipJiatelinTime -= Time.deltaTime;
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
             EquipGun();
+            StopCoroutine(ct);
+            ct = null;
         }
 
         public void EquipGun()
@@ -473,7 +590,7 @@ namespace cowsins
         
         public void CallLoseController()
         {
-            Player.LoseGontroller();
+            Player.LoseGontroller(1);
         }
         
         public void ClearAllEnemy()
@@ -484,7 +601,7 @@ namespace cowsins
         public void CallPlayerNoDamage()
         {
             CancelRestart();
-            Player.GrantNoDamage();
+            Player.GrantNoDamage(1);
         }
 
         public void CancelRestart()
@@ -501,7 +618,7 @@ namespace cowsins
         }
         public void CrazyAllEnemy()
         {
-            EnemyManager.Instance.CrazyAllEnemy();
+            EnemyManager.Instance.CrazyAllEnemy(1);
         }
         private void Update()
         {

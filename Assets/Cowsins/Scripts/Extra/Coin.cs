@@ -12,7 +12,7 @@ namespace cowsins
             if (!other.CompareTag("Player")) return;
             int amountOfCoins = Random.Range(minCoins, maxCoins); 
             CoinManager.Instance.AddCoins(amountOfCoins);
-            UIController.instance.UpdateCoinsPanel(); 
+            UIController.instance.UpdateCoinsPanel(1); 
             UIEvents.onCoinsChange?.Invoke(CoinManager.Instance.coins);
             SoundManager.Instance.PlaySound(collectCoinSFX, 0, 1, false, 0); 
             Destroy(this.gameObject); 

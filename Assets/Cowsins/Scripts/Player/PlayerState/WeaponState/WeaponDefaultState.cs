@@ -30,7 +30,7 @@ public class WeaponDefaultState : WeaponBaseState
         
 
     public override void UpdateState() {
-        if (!stats.controllable) return;
+        //if (!stats.controllable) return;
         HandleInventory();
         if (InputManager.melee && controller.canMelee && controller.CanMelee) SwitchState(_factory.Melee());
         if (controller.weapon == null) return; 

@@ -17,7 +17,7 @@ public class WeaponShootingState : WeaponBaseState
     public override void UpdateState() {
         if (controller.weapon == null) return;
         CheckSwitchState();
-        if (!stats.controllable) return;
+     //   if (!stats.controllable) return;
         CheckAim();
     }
 

@@ -276,9 +276,9 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         gameObject.SetActive(false);
     }
 
-    public void CrazyEnemy()
+    public void CrazyEnemy(int count)
     {
-        crazyTime = GameDataInstance.Instance.GetCrazyEnemyTime();
+        crazyTime += GameDataInstance.Instance.GetCrazyEnemyTime() * count;
         NavMeshAgent.speed = crazySpeed;
         _material.color = crazylColor;
         _animator.speed = 1.6f;

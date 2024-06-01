@@ -16,7 +16,7 @@ public class WeaponReloadState : WeaponBaseState
 
     public override void UpdateState() {
         CheckSwitchState();
-        if (!stats.controllable) return;
+      //  if (!stats.controllable) return;
         CheckStopAim(); 
     }
 

@@ -171,14 +171,15 @@ public class UIController : MonoBehaviour
 
         healthDisplayMethod?.Invoke(health,shield);
 
-        Color colorSelected = damaged ? damageColor : healColor; 
+        Color colorSelected = damaged ? damageColor : healColor;
+       fadeOutTime = 1f;
         healthStatesEffect.color = colorSelected;
     }
 
-    public void UpdateCoinsPanel()
+    public void UpdateCoinsPanel(float time)
     {
         healthStatesEffect.color = coinCollectColor;
-        fadeOutTime = 0.1f;
+        fadeOutTime = 1/ time;
     }
     
     public void UpdateRestartGamePanel()
@@ -187,9 +188,9 @@ public class UIController : MonoBehaviour
         healthStatesEffect.color = restartGameColor;
     }
         
-    public void UpdateXPPanel()
+    public void UpdateXPPanel(float totalTime)
     {
-            fadeOutTime = 0.2f;
+            fadeOutTime = 1/ totalTime;
             healthStatesEffect.color = xpCollectColor;
         }
         private void HealthSetUp(float health, float shield,float maxHealth, float maxShield)

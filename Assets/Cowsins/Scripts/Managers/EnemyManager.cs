@@ -330,11 +330,11 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void CrazyAllEnemy()
+    public void CrazyAllEnemy(int count)
     {
         foreach (var enemy in _enemysList)
         {
-            enemy.CrazyEnemy();
+            enemy.CrazyEnemy(count);
         }
     }
 

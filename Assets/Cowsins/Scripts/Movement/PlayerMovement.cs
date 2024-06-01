@@ -387,12 +387,18 @@ public class PlayerMovement : MonoBehaviour
     private float _loseControllerTime = 0;
         private bool _enterLoseController = false;
 
-    public void LoseGontroller()
+        private float _totalLoseControllerTime;
+
+    public void LoseGontroller(int count)
     {
-            UIController.instance.UpdateXPPanel();
-            _loseControllerTime = 0;
-            _enterLoseController = true;
-        stats.LoseControl();
+            if(!_enterLoseController)
+            {
+                _loseControllerTime = 0;
+                _enterLoseController = true;
+                stats.LoseControl();
+            }
+            _totalLoseControllerTime += GameDataInstance.Instance.GetLoseControllerTime() * count;
+            UIController.instance.UpdateXPPanel(_totalLoseControllerTime - _loseControllerTime);
     }
         private float _loseNodamageTime = 0;
         public bool EnterNodamageState = false;
@@ -402,12 +408,19 @@ public class PlayerMovement : MonoBehaviour
         stats.GrantControl();
             _enterLoseController = false;
     }
-        public void GrantNoDamage()
+
+        private float _totalNoDamageTime;
+        public void GrantNoDamage(int count)
         {
-            UIController.instance.UpdateCoinsPanel();
-            _loseControllerTime = 0;
-            EnterNodamageState = true;
-            _loseNodamageTime = 0;
+            if (!EnterNodamageState)
+            {
+                EnterNodamageState = true;
+                _loseNodamageTime = 0;
+
+            }
+            _totalNoDamageTime += GameDataInstance.Instance.GetNoDamageTime() * count;
+            UIController.instance.UpdateCoinsPanel(_totalNoDamageTime - _loseNodamageTime);
+           
         }
 
         public void LoseNoDamage()
@@ -460,7 +473,7 @@ public class PlayerMovement : MonoBehaviour
                     stats.LoseControl();
                 }
                 _loseControllerTime += Time.deltaTime;
-                if (_loseControllerTime > GameDataInstance.Instance.GetLoseControllerTime())
+                if (_loseControllerTime > _totalLoseControllerTime)
                 {
                     GrantController();
                 }
@@ -469,7 +482,7 @@ public class PlayerMovement : MonoBehaviour
             if (EnterNodamageState)
             {
                 _loseNodamageTime += Time.deltaTime;
-                if (_loseNodamageTime > GameDataInstance.Instance.GetNoDamageTime())
+                if (_loseNodamageTime > _totalNoDamageTime)
                 {
                     LoseNoDamage();
                 }
