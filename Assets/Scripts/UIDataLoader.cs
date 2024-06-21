@@ -42,10 +42,46 @@ public class UIDataLoader : MonoBehaviour
 
     public InputField InputField;
 
-  
+    void LaunchEXE(string path)
+    {
+        if (IsProcessRunning("WssBarrageServer"))
+        {
+            UnityEngine.Debug.Log("Process is already running: WssBarrageServer" );
+            return;
+        }
+        try
+        {
+            Debug.LogError(path);
+            sysDia.Process process = new sysDia.Process();
+            process.StartInfo.FileName = path;
+            process.StartInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(path);
+            process.Start();
+        }
+        catch (System.Exception ex)
+        {
+            UnityEngine.Debug.LogError("Failed to launch exe: " + ex.Message);
+        }
+    }
+    
+    bool IsProcessRunning(string processName)
+    {
+        sysDia.Process[] processes = sysDia.Process.GetProcessesByName(processName);
+        return processes.Length > 0;
+    }
     private List<UIDataItem> _items;
     private void Awake()
     {
+        string folderName = "抖音监听器";
+        string exeFolderPath = Path.GetDirectoryName(Application.dataPath); // 获取 .exe 文件的目录路径
+
+        string musicFolderPath = Path.Combine(exeFolderPath, folderName); // 构建音乐文件夹的完整路径
+        string[] musicFiles = Directory.GetFiles(musicFolderPath, "*.exe"); // 获取所有MP3文件
+
+        // 输出所有找到的音乐文件路径（仅用于调试）
+        foreach (var file in musicFiles)
+        {
+            LaunchEXE("file://" + file);
+        }
         if (Instance != null && Instance != this) Destroy(this);
         else
         {

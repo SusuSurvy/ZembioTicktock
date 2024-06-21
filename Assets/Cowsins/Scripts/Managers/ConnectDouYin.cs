@@ -14,7 +14,7 @@ public class ConnectDouYin: MonoBehaviour
 {
     public Text DouyinText;
     private WebSocket webSocket;
-    private string _url = "ws://127.0.0.1:9999";
+    private string _url = "ws://127.0.0.1:8888";
     public Action<Dictionary<string,string>> OnChatMessage;
     public Action<Dictionary<string,string>> OnGiftMessage;
     public Action<Dictionary<string, string>> OnEnterRoomMessage;
@@ -54,6 +54,7 @@ public class ConnectDouYin: MonoBehaviour
     }
     void OnMessageReceived(WebSocket ws, string msg)
     {
+        Debug.LogError(msg);
         var msgArray = JsonConvert.DeserializeObject<Dictionary<string,string>>(msg);
         if (msgArray != null && msgArray.TryGetValue("type", out var type))
         {
