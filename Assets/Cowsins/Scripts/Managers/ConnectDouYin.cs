@@ -16,9 +16,9 @@ public class ConnectDouYin: MonoBehaviour
     private WebSocket webSocket;
     private string _url = "ws://127.0.0.1:8888";
     public Action<Dictionary<string,string>> OnChatMessage;
-    public Action<Dictionary<string,string>> OnGiftMessage;
+    public Action<GiftMsg> OnGiftMessage;
     public Action<Dictionary<string, string>> OnEnterRoomMessage;
-    public Action<Dictionary<string, string>> OnLikeMessage;
+    public Action<LikeMsg> OnLikeMessage;
     private void Start()
     {
         Debug.LogError("开启websocket");
@@ -54,25 +54,20 @@ public class ConnectDouYin: MonoBehaviour
     }
     void OnMessageReceived(WebSocket ws, string msg)
     {
-        Debug.LogError(msg);
-        var msgArray = JsonConvert.DeserializeObject<Dictionary<string,string>>(msg);
-        if (msgArray != null && msgArray.TryGetValue("type", out var type))
+        BarrageMsgPack msgArray = JsonConvert.DeserializeObject<BarrageMsgPack>(msg);
+        if (msgArray != null)
         {
-            if (type == "ChatMessage")
+            PackMsgType type = msgArray.Type;
+          
+            if (type == PackMsgType.礼物消息)
             {
-                OnChatMessage?.Invoke(msgArray);
+                GiftMsg giftMsg = JsonConvert.DeserializeObject<GiftMsg>(msgArray.Data);
+                OnGiftMessage.Invoke(giftMsg);
             }
-            else if (type == "GiftMessage")
+            else if (type == PackMsgType.点赞消息)
             {
-                OnGiftMessage?.Invoke(msgArray);
-            }
-            else if (type=="MemberMessage")
-            {
-                OnEnterRoomMessage?.Invoke(msgArray);
-            }
-            else if (type=="LikeMessage")
-            {
-                OnLikeMessage?.Invoke(msgArray);
+                LikeMsg giftMsg = JsonConvert.DeserializeObject<LikeMsg>(msgArray.Data);
+                OnLikeMessage.Invoke(giftMsg);
             }
         }
     }

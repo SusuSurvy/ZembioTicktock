@@ -258,7 +258,7 @@ namespace cowsins
         
         public void SendMessageClient(string str, Texture2D texture = null, int count = 1)
         {
-           
+            Debug.LogError(str);
             if (str.Contains("1"))
             {
                 Cursor.visible = true;

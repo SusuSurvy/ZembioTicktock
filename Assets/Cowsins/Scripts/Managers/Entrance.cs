@@ -45,17 +45,15 @@ public class Entrance : MonoBehaviour
         if (!_connectDouYin.enabled) return;
         _connectDouYin.OnGiftMessage = data =>
         {
-            var giftName = data["giftName"];
-            int count = 1;
-            int.TryParse(data["giftCount"], out count);
+            var giftName = data.GiftName;
+            int count = (int)data.GiftCount;
             //Text.text = CantactString(data);
-            var url = data["head_img"];
+ 
             UITicktockPanel.Instance.SendMessageClient(giftName, null, count);
         };
         _connectDouYin.OnLikeMessage = data =>
         {
-            int count = 1;
-            int.TryParse(data["total"], out count);
+            int count = data.Total;
             //Text.text = CantactString(data);
             UITicktockPanel.Instance.LikeMessageTrigger(count);
         };
