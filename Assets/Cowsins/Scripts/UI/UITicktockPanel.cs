@@ -237,21 +237,7 @@ namespace cowsins
             if (total - _currentTriggerCount >= GameDataInstance.Instance.GetLikeMessageInterval())
             {
                 _currentTriggerCount += GameDataInstance.Instance.GetLikeMessageInterval();
-                int count = _callFunctionDic.Count;
-                int randomIndex = UnityEngine.Random.Range(0, count);
-                int currentIndex = 0;
-                foreach (var fUnityAction in _callFunctionDic)
-                {
-                    if (currentIndex == randomIndex)
-                    { 
-                        Debug.LogError(_currentTriggerCount);
-                        Debug.LogError(fUnityAction.Key);
-                        fUnityAction.Value();
-                        break;
-                    }
-
-                    currentIndex++;
-                }
+                RandomLikeAction();
             }
         }
         
@@ -454,6 +440,36 @@ namespace cowsins
             };
             int randomIndex = UnityEngine.Random.Range(0, enemyActions.Count);
             enemyActions[randomIndex]();
+        }
+
+        public void RandomLikeAction()
+        {
+            List<Action> LikeActions = new List<Action>
+            {
+                CallEnemyGirl,
+                CallEnemyFat,
+                CallExplosiveGhost,
+                //CallEnemyRemote,
+                CallEnemyBoss,
+                CallLoseController,
+                CallEnemyExplosiveGhost,
+                CloseLight,
+                RecoverHp,
+                ClearAllEnemy,
+                CallPlayerNoDamage,
+                CallSmokeExplore,
+                CrazyAllEnemy,
+                RemoveKey,
+                CallTransferPlayer,
+                EquipJiatelin,
+                DropGun,
+                ReduceBullet,
+                IncreaseBullet,
+                RandomEnemy,
+                ChangeBackgroundMusic,
+            };
+            int randomIndex = UnityEngine.Random.Range(0, LikeActions.Count);
+            LikeActions[randomIndex]();
         }
 
         public void CallEnemy()

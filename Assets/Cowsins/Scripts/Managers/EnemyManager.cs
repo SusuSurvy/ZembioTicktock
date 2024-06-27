@@ -43,6 +43,7 @@ public class EnemyManager : MonoBehaviour
     private List<Vector3> _transferList;
 
     public GameObject VideoObj;
+    public GameObject KeyRoot;
 
     private int _killEnemyCount = 0;
     private int _killDelta = 0;
@@ -68,6 +69,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Reset()
     {
+        ActivateRandomChildren(KeyRoot);
         if (VideoObj != null)
         {
             VideoObj.gameObject.SetActive(false);
@@ -97,7 +99,6 @@ public class EnemyManager : MonoBehaviour
         UITicktockPanel.Instance.ShowPassCount(passKillCount);
         _backgroundMusic = transform.GetComponent<AudioSource>();
         _backgroundMusic.volume = GameDataInstance.Instance.BgAudioVolume;
-        Debug.LogError(_backgroundMusic.volume);
     }
 
     public void ChangeBackGroundMusic()
@@ -299,6 +300,54 @@ public class EnemyManager : MonoBehaviour
         obj.OnSpawn();
         _enemysList.Add(obj);
         return obj;
+    }
+    
+    // 一个方法，用于随机显示N个子物体中的7个
+    public void ActivateRandomChildren(GameObject obj)
+    {
+        Transform[] children = obj.GetComponentsInChildren<Transform>(true);
+        List<Transform> childList = new List<Transform>();
+
+        // 将所有子物体加入到列表中（排除父物体本身）
+        foreach (Transform child in children)
+        {
+            if (child != obj.transform) 
+            {
+                childList.Add(child);
+            }
+        }
+
+        // 如果子物体总数小于或等于7，则全部激活
+        if (childList.Count <= 7)
+        {
+            foreach (Transform child in childList)
+            {
+                child.gameObject.SetActive(true);
+            }
+            return;
+        }
+
+        // 随机选择子物体
+        List<Transform> selectedChildren = new List<Transform>();
+        while (selectedChildren.Count < 7)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, childList.Count);
+            if (!selectedChildren.Contains(childList[randomIndex]))
+            {
+                selectedChildren.Add(childList[randomIndex]);
+                childList[randomIndex].gameObject.SetActive(true);  // 激活随机选择的子物体
+            }
+        }
+
+        // 隐藏没有被选中的子物体
+        foreach (Transform child in childList)
+        {
+            if (!selectedChildren.Contains(child))
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+        obj.gameObject.SetActive(true);
     }
 
 

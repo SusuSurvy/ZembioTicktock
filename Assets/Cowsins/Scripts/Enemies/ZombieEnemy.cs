@@ -279,7 +279,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         NavMeshAgent.speed = crazySpeed;
         _material.color = crazylColor;
         _animator.speed = 1.6f;
-        _attackIntervalRatio = 0.625f;
+        _attackIntervalRatio = 0.4f;
     }
     
     public float GetAttackInterval()
