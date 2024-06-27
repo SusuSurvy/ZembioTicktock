@@ -31,6 +31,7 @@ public class SoundManager :MonoBehaviour
         src.spatialBlend = spatialBlend;
         float pitchAdded = randomPitch ? Random.Range(-pitch, pitch) : pitch; 
         src.pitch = 1 + pitchAdded;
+        src.volume = GameDataInstance.Instance.AudioVolume;
         src.PlayOneShot(clip);
         yield return null; 
     }

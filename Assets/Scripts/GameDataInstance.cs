@@ -30,10 +30,11 @@ public class GameDataInstance : MonoBehaviour
     #region 礼物相关
     public static Dictionary<CallFunction, string> CallFunctionDes = new Dictionary<CallFunction, string>()
     {
-        [CallFunction.CallEnemyDoll] = "召唤人偶",
+       // [CallFunction.CallEnemyDoll] = "召唤人偶",
         [CallFunction.CallEnemyGirl] = "召唤突脸怪",
         [CallFunction.CallEnemyFat] = "召唤大型怪",
-        [CallFunction.CallEnemyRemote] = "召唤远程怪",
+        [CallFunction.CallEnemyExplosiveGhost] = "召唤爆炸鬼",
+      //  [CallFunction.CallEnemyRemote] = "召唤远程怪",
         [CallFunction.CallEnemyBoss] = "召唤Boss",
         [CallFunction.CallLoseController] = "失去控制",
         [CallFunction.ClearAllEnemy] = "清空敌人",
@@ -50,11 +51,14 @@ public class GameDataInstance : MonoBehaviour
         [CallFunction.IncreaseBullet] = "增加子弹",
         [CallFunction.RandomEnemy] = "随机怪物",
         [CallFunction.BackgroundMusic] = "更换音乐",
-        [CallFunction.CallEnemyExplosiveGhost] = "召唤爆炸鬼",
+    
         [CallFunction.TriggerRestartGame] = "重新开始游戏",
     };
     
     public AudioClip BackgroundMusic;
+    
+    public float BgAudioVolume = 1;
+    public float AudioVolume = 1;
     
     public Dictionary<string, CallFunction> CallFunctionSettingDic = new Dictionary<string, CallFunction>();
     
@@ -71,10 +75,8 @@ public class GameDataInstance : MonoBehaviour
         ["LoseControllerTime"] = 5,
         ["CreateEnemyTime"] = 10, 
         ["CrazyEnemyTime"] = 5, 
-        ["DollHp"] = 1,
         ["GirlHp"] = 3,
         ["FatHp"] = 30,
-        ["RemoteHp"] = 2,
         ["BossHp"] = 50,
         ["RecoverHp"] = 10,
         ["JiatelinTime"] = 60,

@@ -43,7 +43,6 @@ namespace cowsins
     
     public class UITicktockPanel : MonoBehaviour
     {
-        public NavMeshAgent NavMeshAgent;
         public GameObject prefab;
         private GameObject instantiatedObject;
         public GameObject PlayerCoordinates; 
@@ -115,10 +114,10 @@ namespace cowsins
             ControllerPanel.SetActive(false);
             SucceedImg.gameObject.SetActive(false);
             RestartGameText.gameObject.SetActive(false);
-            _callFunctionDic[CallFunction.CallEnemyDoll] = CallEnemyDoll;
+            //_callFunctionDic[CallFunction.CallEnemyDoll] = CallEnemyDoll;
             _callFunctionDic[CallFunction.CallEnemyGirl] = CallEnemyGirl;
             _callFunctionDic[CallFunction.CallEnemyFat] = CallEnemyFat;
-            _callFunctionDic[CallFunction.CallEnemyRemote] = CallEnemyRemote;
+           // _callFunctionDic[CallFunction.CallEnemyRemote] = CallEnemyRemote;
             _callFunctionDic[CallFunction.CallEnemyBoss] = CallEnemyBoss;
             _callFunctionDic[CallFunction.CallLoseController] = CallLoseController;
             _callFunctionDic[CallFunction.ClearAllEnemy] = ClearAllEnemy;
@@ -301,13 +300,13 @@ namespace cowsins
                 switch (info.FuncType)
                 {
                     //一次性触发总数
-                    case CallFunction.CallEnemyDoll:
+                  //  case CallFunction.CallEnemyDoll:
      
                     case CallFunction.CallEnemyGirl:
                      
                     case CallFunction.CallEnemyFat:
                        
-                    case CallFunction.CallEnemyRemote:
+                 //   case CallFunction.CallEnemyRemote:
                       
                     case CallFunction.CallEnemyBoss:
                     case CallFunction.CallEnemyExplosiveGhost:
@@ -447,10 +446,10 @@ namespace cowsins
         {
             List<Action> enemyActions = new List<Action>
             {
-                CallEnemyDoll,
                 CallEnemyGirl,
                 CallEnemyFat,
-                CallEnemyRemote,
+                CallExplosiveGhost,
+                //CallEnemyRemote,
                 CallEnemyBoss
             };
             int randomIndex = UnityEngine.Random.Range(0, enemyActions.Count);
@@ -464,7 +463,7 @@ namespace cowsins
         
         public void CallEnemyDoll()
         {
-            EnemyManager.Instance.CreateEnemy(EnemyType.Doll);
+            //EnemyManager.Instance.CreateEnemy(EnemyType.Doll);
         }
         
         public void CallEnemyGirl()
@@ -510,7 +509,7 @@ namespace cowsins
         
         public void CallEnemyRemote()
         {
-            EnemyManager.Instance.CreateEnemy(EnemyType.Remote);
+           // EnemyManager.Instance.CreateEnemy(EnemyType.Remote);
         }
 
         public void CallExplosiveGhost()

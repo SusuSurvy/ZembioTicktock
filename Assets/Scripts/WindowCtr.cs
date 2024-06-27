@@ -10,6 +10,10 @@ public class WindowCtr : MonoBehaviour
     public Button BtnGameDataSetting;
 
     public GameObject UGiftSettingPanel;
+    
+    public Button BtnAudioSetting;
+    
+    public GameObject UAudioSettingPanel;
 
     public GameObject UIDataPanel;
 
@@ -27,16 +31,30 @@ public class WindowCtr : MonoBehaviour
         {
             BtnGiftSetting.interactable = false;
             BtnGameDataSetting.interactable = true;
+            BtnAudioSetting.interactable = true;
             UGiftSettingPanel.gameObject.SetActive(true);
             UIDataPanel.gameObject.SetActive(false);
+            UAudioSettingPanel.gameObject.SetActive(false);
         });
         
         BtnGameDataSetting.onClick.AddListener(() =>
         {
             BtnGiftSetting.interactable = true;
+            BtnAudioSetting.interactable = true;
             BtnGameDataSetting.interactable = false;
             UGiftSettingPanel.gameObject.SetActive(false);
             UIDataPanel.gameObject.SetActive(true);
+            UAudioSettingPanel.gameObject.SetActive(false);
+        });
+        
+        BtnAudioSetting.onClick.AddListener(() =>
+        {
+            BtnGiftSetting.interactable = true;
+            BtnAudioSetting.interactable = false;
+            BtnGameDataSetting.interactable = true;
+            UGiftSettingPanel.gameObject.SetActive(false);
+            UIDataPanel.gameObject.SetActive(false);
+            UAudioSettingPanel.gameObject.SetActive(true);
         });
         BtnSetting.onClick.AddListener(() =>
         {
@@ -46,8 +64,4 @@ public class WindowCtr : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

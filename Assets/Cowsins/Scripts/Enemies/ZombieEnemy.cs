@@ -19,10 +19,10 @@ public enum EnemyType
     Any = 0,
     Girl = 1,
     FatWomen = 2,
-    Remote = 3,
-    ExplosiveGhost = 4,
-    Boss = 5,
-    Doll = 6,
+   // Remote = 3,
+    ExplosiveGhost = 3,
+    Boss = 4,
+    //Doll = 6,
 
 }
 
@@ -66,18 +66,18 @@ public class ZombieEnemy : EnemyHealth, IPoolable
             case EnemyType.Boss:
                 health = GameDataInstance.Instance.GetBossHp();
                 break;
-            case EnemyType.Doll:
-                health = GameDataInstance.Instance.GetDollHp();
-                break;
+          //  case EnemyType.Doll:
+           //     health = GameDataInstance.Instance.GetDollHp();
+          //      break;
             case EnemyType.Girl:
                 health = GameDataInstance.Instance.GetGirlHp();
                 break;
             case EnemyType.FatWomen:
                 health = GameDataInstance.Instance.GetFatHp();
                 break;
-            case EnemyType.Remote:
-                health = GameDataInstance.Instance.GetRemoteHp();
-                break;
+          //  case EnemyType.Remote:
+          //      health = GameDataInstance.Instance.GetRemoteHp();
+          //      break;
             case EnemyType.ExplosiveGhost:
                 health = GameDataInstance.Instance.GetExplosiveGhostHp();
                 break;
@@ -251,11 +251,8 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         }
         else
         {
-            if (EnemyType != EnemyType.Doll)
-            {
-                SetState(new EnemyBehitState(playerMovement, this));
-            }
            
+            SetState(new EnemyBehitState(playerMovement, this));
         }
     }
 

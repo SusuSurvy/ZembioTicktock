@@ -42,6 +42,8 @@ public class EnemyManager : MonoBehaviour
 
     private List<Vector3> _transferList;
 
+    public GameObject VideoObj;
+
     private int _killEnemyCount = 0;
     private int _killDelta = 0;
     private float createEnemyTime;
@@ -66,6 +68,10 @@ public class EnemyManager : MonoBehaviour
 
     private void Reset()
     {
+        if (VideoObj != null)
+        {
+            VideoObj.gameObject.SetActive(false);
+        }
         _needCreate = true;
         poolDic.Clear();
         createEnemyTime = GameDataInstance.Instance.GetCreateEnemyTime();
@@ -90,11 +96,14 @@ public class EnemyManager : MonoBehaviour
         UITicktockPanel.Instance.ShowKillEnemyCount(_killEnemyCount);
         UITicktockPanel.Instance.ShowPassCount(passKillCount);
         _backgroundMusic = transform.GetComponent<AudioSource>();
+        _backgroundMusic.volume = GameDataInstance.Instance.BgAudioVolume;
+        Debug.LogError(_backgroundMusic.volume);
     }
 
     public void ChangeBackGroundMusic()
     {
         _backgroundMusic.clip = GameDataInstance.Instance.BackgroundMusic;
+        _backgroundMusic.volume = GameDataInstance.Instance.BgAudioVolume;
         _backgroundMusic.Play();
     }
 
@@ -176,9 +185,19 @@ public class EnemyManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(1);
+            if (VideoObj != null)
+            {
+                VideoObj.gameObject.SetActive(true);
+            }
+            Invoke(nameof(RestartGame), 16); 
         }
     }
+    
+    private void RestartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+    //Invoke(nameof(ReloadGame), 1); // 确保对象最终位于目标位置
 
     public void SaveData()
     {
@@ -229,7 +248,7 @@ public class EnemyManager : MonoBehaviour
         switch (enemyType)
         {
             case EnemyType.Any:
-                index = UnityEngine.Random.Range(0, prefabs.Count - 2); // 不能随机生成人偶和boss
+                index = UnityEngine.Random.Range(0, prefabs.Count - 1); // 不能随机生成人偶和boss
                 switch (index)
                 {
                     case 0:
@@ -239,16 +258,10 @@ public class EnemyManager : MonoBehaviour
                         enemyType = EnemyType.FatWomen;
                         break;
                     case 2:
-                        enemyType = EnemyType.Remote;
-                        break;
-                    case 3:
                         enemyType = EnemyType.ExplosiveGhost;
                         break;
-                    case 4:
+                    case 3:
                         enemyType = EnemyType.Boss;
-                        break;
-                    case 5:
-                        enemyType = EnemyType.Doll;
                         break;
                 }
                 break;
@@ -258,17 +271,11 @@ public class EnemyManager : MonoBehaviour
             case EnemyType.FatWomen:
                 index = 1;
                 break;
-            case EnemyType.Doll:
-                index = 5;
-                break;
-            case EnemyType.Remote:
-                index = 2;
-                break;
             case EnemyType.Boss:
-                index = 4;
+                index = 3;
                 break;
             case EnemyType.ExplosiveGhost:
-                index = 3;
+                index = 2;
                 break;
         }
 
