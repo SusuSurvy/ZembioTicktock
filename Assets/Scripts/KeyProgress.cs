@@ -26,7 +26,7 @@ public class KeyProgress : MonoBehaviour
         Player = UIValue;
         guiProgressBar.Value = 0.15F;
         UIValue.KeyValue = 0.15f;
-        numberOfKeys = 14;
+        numberOfKeys = 7;
         numberOfKeysCount = numberOfKeys;
         //UI.SetActive(false);
         // numberOfKeys = keyObject.transform.childCount;

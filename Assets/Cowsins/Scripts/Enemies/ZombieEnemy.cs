@@ -40,6 +40,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
     private Color crazylColor = new Color(255f / 255, 117f / 255, 117f / 255);
     private float _attackIntervalRatio = 1f;
     private EnemyStateBase _currentState;
+    private GameObject CrazyEffect;
 
     public EnemyType EnemyType;
 
@@ -104,6 +105,8 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         transform.LookAt(playerMovement.transform);
         GetChaseAniName();
         InitOriginalState();
+        CrazyEffect = transform.Find("CrazyEffect").gameObject;
+        CrazyEffect.SetActive(false);
     }
 
     public virtual Vector3 GetBornPos()
@@ -165,6 +168,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
                 _material.color = originalColor;
                 _animator.speed = 1f;
                 _attackIntervalRatio = 1f;
+                CrazyEffect.SetActive(false);
             }
         }
     }
@@ -280,6 +284,7 @@ public class ZombieEnemy : EnemyHealth, IPoolable
         _material.color = crazylColor;
         _animator.speed = 1.6f;
         _attackIntervalRatio = 0.4f;
+        CrazyEffect.SetActive(true);
     }
     
     public float GetAttackInterval()
