@@ -10,6 +10,7 @@ using System.Management.Instrumentation;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using sysDia = System.Diagnostics;
+using System.Diagnostics;
 
 public class UIDataLoader : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class UIDataLoader : MonoBehaviour
        // ["DollHp"] = "玩偶血量",
         ["GirlHp"] = "突脸怪血量",
         ["FatHp"] = "大型怪血量",
-        //["RemoteHp"] = "远程怪血量",
+        ["RemoteHp"] = "远程怪血量",
         ["BossHp"] = "Boss血量",
         ["ExplosiveGhost"] = "爆炸鬼血量",
         ["RecoverHp"] = "玩家恢复血量",
@@ -44,14 +45,9 @@ public class UIDataLoader : MonoBehaviour
 
     void LaunchEXE(string path)
     {
-        if (IsProcessRunning("WssBarrageServer"))
-        {
-            UnityEngine.Debug.Log("Process is already running: WssBarrageServer" );
-            return;
-        }
         try
         {
-            Debug.LogError(path);
+            UnityEngine.Debug.LogError(path);
             sysDia.Process process = new sysDia.Process();
             process.StartInfo.FileName = path;
             process.StartInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(path);
@@ -62,12 +58,28 @@ public class UIDataLoader : MonoBehaviour
             UnityEngine.Debug.LogError("Failed to launch exe: " + ex.Message);
         }
     }
-    
-    bool IsProcessRunning(string processName)
+
+    private bool IsProcessRunning(string exactProcessExecutableName)
     {
-        sysDia.Process[] processes = sysDia.Process.GetProcessesByName(processName);
-        return processes.Length > 0;
+        Process[] processes = Process.GetProcesses();
+        foreach (Process process in processes)
+        {
+            // 检查进程的主模块（注意这个操作可能会遇到权限问题）
+            try
+            {
+                if (process.MainModule.FileName.EndsWith(exactProcessExecutableName))
+                {
+                    return true;
+                }
+            }
+            catch (System.Exception)
+            {
+                //忽略访问未授权的进程
+            }
+        }
+        return false;
     }
+
     private List<UIDataItem> _items;
     private void Awake()
     {

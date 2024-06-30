@@ -9,7 +9,7 @@ public class  EnemyBehitState : EnemyStateBase
     {
         _currentTime = 0;
         base.OnEnter();
-        _zombie.NavMeshAgent.isStopped = true;
+       // _zombie.NavMeshAgent.isStopped = true;
         if (!_zombie.InGround)
         {
             int random = UnityEngine.Random.Range(0, 2);

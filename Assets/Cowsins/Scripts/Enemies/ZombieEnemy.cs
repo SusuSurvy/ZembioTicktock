@@ -19,9 +19,9 @@ public enum EnemyType
     Any = 0,
     Girl = 1,
     FatWomen = 2,
-   // Remote = 3,
-    ExplosiveGhost = 3,
-    Boss = 4,
+    Remote = 3,
+    ExplosiveGhost = 4,
+    Boss = 5,
     //Doll = 6,
 
 }

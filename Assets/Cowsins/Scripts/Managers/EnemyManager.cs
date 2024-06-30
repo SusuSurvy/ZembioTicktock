@@ -26,6 +26,8 @@ public class EnemyManager : MonoBehaviour
     private List<Bullet> _bulletList = new List<Bullet>();
     private bool _needCreate = false;
 
+    public ConnectDouYin _connectDouyin;
+
     private Vector2 _leftBottom = new Vector3(-51, -28);
     private Vector2 _rightUp = new Vector3(51, 72);
     // 对象池容器
@@ -66,7 +68,14 @@ public class EnemyManager : MonoBehaviour
     }
 
 
-
+    public void ConnectDouyin()
+    {
+        if (_connectDouyin != null)
+        {
+            _connectDouyin.enabled = true;
+        }
+     
+    }
     private void Reset()
     {
         ActivateRandomChildren(KeyRoot);
@@ -262,6 +271,9 @@ public class EnemyManager : MonoBehaviour
                         enemyType = EnemyType.ExplosiveGhost;
                         break;
                     case 3:
+                        enemyType = EnemyType.Remote;
+                        break;
+                    case 4:
                         enemyType = EnemyType.Boss;
                         break;
                 }
@@ -273,6 +285,9 @@ public class EnemyManager : MonoBehaviour
                 index = 1;
                 break;
             case EnemyType.Boss:
+                index = 4;
+                break;
+            case EnemyType.Remote:
                 index = 3;
                 break;
             case EnemyType.ExplosiveGhost:

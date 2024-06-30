@@ -34,7 +34,7 @@ public class GameDataInstance : MonoBehaviour
         [CallFunction.CallEnemyGirl] = "召唤突脸怪",
         [CallFunction.CallEnemyFat] = "召唤大型怪",
         [CallFunction.CallEnemyExplosiveGhost] = "召唤爆炸鬼",
-      //  [CallFunction.CallEnemyRemote] = "召唤远程怪",
+        [CallFunction.CallEnemyRemote] = "召唤远程怪",
         [CallFunction.CallEnemyBoss] = "召唤Boss",
         [CallFunction.CallLoseController] = "失去控制",
         [CallFunction.ClearAllEnemy] = "清空敌人",

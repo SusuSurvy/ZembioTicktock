@@ -19,7 +19,7 @@ public enum CallFunction
    // CallEnemyDoll = 0,
     CallEnemyGirl = 1,
     CallEnemyFat = 2,
-    //CallEnemyRemote = 3,
+    CallEnemyRemote = 3,
     CallEnemyBoss = 4,
     CallLoseController = 5,
     CloseLight = 6,

@@ -445,7 +445,7 @@ public class PlayerMovement : MonoBehaviour
 
         ResetStamina();
         events.OnSpawn.Invoke();
-        Invoke(nameof(EquipGun), 1);
+        Invoke(nameof(ConnectDouyin), 1);
         }
 
 
@@ -1100,6 +1100,12 @@ public class PlayerMovement : MonoBehaviour
     public void EquipJiatelin()
     {
         Jiatelin.Interact();
+    }
+
+    public void ConnectDouyin()
+    {
+       EnemyManager.Instance.ConnectDouyin();
+       EquipGun();
     }
     
     public void EquipGun()

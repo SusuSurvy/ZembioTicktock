@@ -62,12 +62,16 @@ public class ConnectDouYin: MonoBehaviour
             if (type == PackMsgType.礼物消息)
             {
                 GiftMsg giftMsg = JsonConvert.DeserializeObject<GiftMsg>(msgArray.Data);
-                OnGiftMessage.Invoke(giftMsg);
+                var giftName = giftMsg.GiftName;
+                int count = (int)giftMsg.GiftCount;
+                UITicktockPanel.Instance.SendMessageClient(giftName, null, count);
             }
             else if (type == PackMsgType.点赞消息)
             {
                 LikeMsg giftMsg = JsonConvert.DeserializeObject<LikeMsg>(msgArray.Data);
-                OnLikeMessage.Invoke(giftMsg);
+                int count = giftMsg.Total;
+                //Text.text = CantactString(data);
+                UITicktockPanel.Instance.LikeMessageTrigger(count);
             }
         }
     }

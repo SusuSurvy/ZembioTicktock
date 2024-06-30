@@ -117,7 +117,7 @@ namespace cowsins
             //_callFunctionDic[CallFunction.CallEnemyDoll] = CallEnemyDoll;
             _callFunctionDic[CallFunction.CallEnemyGirl] = CallEnemyGirl;
             _callFunctionDic[CallFunction.CallEnemyFat] = CallEnemyFat;
-           // _callFunctionDic[CallFunction.CallEnemyRemote] = CallEnemyRemote;
+            _callFunctionDic[CallFunction.CallEnemyRemote] = CallEnemyRemote;
             _callFunctionDic[CallFunction.CallEnemyBoss] = CallEnemyBoss;
             _callFunctionDic[CallFunction.CallLoseController] = CallLoseController;
             _callFunctionDic[CallFunction.ClearAllEnemy] = ClearAllEnemy;
@@ -292,7 +292,7 @@ namespace cowsins
                      
                     case CallFunction.CallEnemyFat:
                        
-                 //   case CallFunction.CallEnemyRemote:
+                    case CallFunction.CallEnemyRemote:
                       
                     case CallFunction.CallEnemyBoss:
                     case CallFunction.CallEnemyExplosiveGhost:
@@ -435,7 +435,7 @@ namespace cowsins
                 CallEnemyGirl,
                 CallEnemyFat,
                 CallExplosiveGhost,
-                //CallEnemyRemote,
+                CallEnemyRemote,
                 CallEnemyBoss
             };
             int randomIndex = UnityEngine.Random.Range(0, enemyActions.Count);
@@ -449,7 +449,7 @@ namespace cowsins
                 CallEnemyGirl,
                 CallEnemyFat,
                 CallExplosiveGhost,
-                //CallEnemyRemote,
+                CallEnemyRemote,
                 CallEnemyBoss,
                 CallLoseController,
                 CallEnemyExplosiveGhost,
@@ -525,7 +525,7 @@ namespace cowsins
         
         public void CallEnemyRemote()
         {
-           // EnemyManager.Instance.CreateEnemy(EnemyType.Remote);
+            EnemyManager.Instance.CreateEnemy(EnemyType.Remote);
         }
 
         public void CallExplosiveGhost()
