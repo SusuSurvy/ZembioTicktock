@@ -48,7 +48,7 @@ public class UIGiftDataItem : MonoBehaviour
 
     private bool CheckNeedNum()
     {
-        if ((int) _key < 5)
+        if ((int) _key <= 5)
         {
             return true;
         }

@@ -21,7 +21,7 @@ public enum CallFunction
     CallEnemyFat = 2,
     CallEnemyRemote = 3,
     CallEnemyBoss = 4,
-    CallLoseController = 5,
+    CallEnemyExplosiveGhost = 5,
     CloseLight = 6,
     CallPlayerNoDamage = 7,
     CallSmokeExplore = 8,
@@ -36,7 +36,7 @@ public enum CallFunction
     IncreaseBullet = 17,
     RandomEnemy = 18,
     BackgroundMusic = 19,
-    CallEnemyExplosiveGhost = 20,
+    CallLoseController = 20,
     TriggerRestartGame = 21,
 }
 
